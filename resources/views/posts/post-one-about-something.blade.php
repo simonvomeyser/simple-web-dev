@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <p>Welcome</p>
+    <p>post-one-about-something.blade.php</p>
 @endsection
