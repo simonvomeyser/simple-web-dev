@@ -23,7 +23,9 @@
     </head>
     <body>
         <header class="header">header</header>
-        @yield('content')
+        <main>
+            @yield('content')
+        </main>
         <footer class="footer">footer</footer>
     </body>
 </html>
