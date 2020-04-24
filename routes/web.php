@@ -18,7 +18,7 @@ use Illuminate\View\View;
 | contains the "web" middleware group. Now create something great!
 |
 */
-$files = File::allFiles(resource_path('views/posts'));
+$files = File::allFiles(config('posts.location'));
 
 // dd(app(FileViewFinder::class, ['paths' => [resource_path('views').'/posts']]));
 $posts = new Collection();
