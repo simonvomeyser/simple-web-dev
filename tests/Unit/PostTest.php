@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Post;
 use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
@@ -13,6 +14,6 @@ class ExampleTest extends TestCase
 
         $post->name = "A name";
 
-        $this->assertTrue($post->name = "A name");
+        $this->assertTrue($post->name == "A name");
     }
 }
