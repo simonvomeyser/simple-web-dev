@@ -38,7 +38,7 @@ class BladeBasedModel
     {
         // todo: loop over dynamic attributes
         $replace = [
-            '{{ title }}' => $this->name,
+            '{{ title }}' => $this->title,
 
             '{{ date }}' => Date::now(),
 
@@ -63,7 +63,7 @@ class BladeBasedModel
             $stub
         );
 
-        File::put($this->getViewFolder() . $this->getFilename() . '.blade.php', $replacedStub);
+        File::put($this->getViewFolder() . '/' . $this->getFilename() . '.blade.php', $replacedStub);
     }
 
     function getStub(): string
