@@ -16,6 +16,7 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         Config::set('posts.location', base_path('tests/Fixtures/posts'));
+        Config::set('view.paths', array_merge(config('view.paths'), [base_path('tests/Fixtures')]));
 
         // Cleanup posts folder    
     }
