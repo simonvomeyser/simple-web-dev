@@ -12,7 +12,7 @@
 
 @section('header_image', '{{ header_image }}')
 
-@section('list_header_image', '{{ list_header }}')
+@section('list_header_image', '{{ list_header_image }}')
 
 @section('content')
     {{ content }}
