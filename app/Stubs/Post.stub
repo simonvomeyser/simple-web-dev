@@ -10,9 +10,9 @@
 
 @section('tags', '{{ tags }}')
 
-@section('header-image', '{{ header-image }}')
+@section('header_image', '{{ header_image }}')
 
-@section('list-header-image', '{{ list-header }}')
+@section('list_header_image', '{{ list_header }}')
 
 @section('content')
     {{ content }}
