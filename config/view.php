@@ -15,6 +15,7 @@ return [
 
     'paths' => [
         resource_path('views'),
+        base_path('tests/Fixtures') // todo this should be added dynamically 
     ],
 
     /*
