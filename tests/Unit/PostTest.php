@@ -35,4 +35,13 @@ class PostTest extends TestCase
 
         $this->assertEquals($post->title, $savedPost->title);
     }
+
+    /** @test */
+    public function attributes_can_be_filled()
+    {
+        $post = new Post(['title' => 'something']);
+
+        $this->assertTrue($post->title === 'something');
+    }
+
 }

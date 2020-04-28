@@ -16,6 +16,10 @@ class BladeBasedModel
      */
     protected $attributes = [];
 
+    public function __construct(array $attributes = [])
+    {
+        $this->fill($attributes);
+    }
 
     public static function all()
     {
@@ -79,5 +83,23 @@ class BladeBasedModel
     function getViewFolder(): string
     {
         return config('posts.location', resource_path('views/posts')); // todo make dynamic, read from name or var
+    }
+
+    /**
+     * Fill the model with an array of attributes.
+     *
+     * @param  array  $attributes
+     * @return $this
+     *
+     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
+     */
+    public function fill(array $attributes)
+    {
+
+        foreach ($attributes as $key => $value) {
+            $this->attributes[$key] = $value;
+        }
+
+        return $this;
     }
 }
