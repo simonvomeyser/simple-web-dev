@@ -52,6 +52,14 @@ class PostTest extends TestCase
     }
 
     /** @test */
+    public function attributes_can_be_overwritten()
+    {
+        $post = factory(Post::class)->make(['title' => 'test']);
+
+        $this->assertEquals('test', $post->title);
+    }
+
+    /** @test */
     public function many_can_be_made_via_factory()
     {
         $posts = factory(Post::class, 3)->make();
