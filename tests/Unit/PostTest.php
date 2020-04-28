@@ -50,4 +50,12 @@ class PostTest extends TestCase
 
         $this->assertNotNull($post->title);
     }
+
+    /** @test */
+    public function many_can_be_made_via_factory()
+    {
+        $posts = factory(Post::class, 3)->make();
+
+        $this->assertCount(3, $posts);
+    }
 }
