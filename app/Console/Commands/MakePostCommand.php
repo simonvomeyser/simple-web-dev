@@ -2,11 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Str;
+use App\Post;
 use Illuminate\Console\Command;
-use Illuminate\Console\GeneratorCommand;
 
-class MakePostCommand extends GeneratorCommand
+class MakePostCommand extends Command
 {
 
     /**
@@ -15,7 +14,7 @@ class MakePostCommand extends GeneratorCommand
      * @var string
      */
     protected $signature = 'make:post 
-    {name : The name of the post, for example "This is my cool new Post"}
+    {title : The name of the post, for example "This is my cool new Post"}
     ';
 
     /**
@@ -26,7 +25,6 @@ class MakePostCommand extends GeneratorCommand
     protected $type = 'Post';
 
 
-
     /**
      * The console command description.
      *
@@ -34,61 +32,8 @@ class MakePostCommand extends GeneratorCommand
      */
     protected $description = 'Creates a new Blade Post';
 
-    /**
-     * Get the stub file for the generator.
-     *
-     * @return string
-     */
-    protected function getStub()
+    public function handle()
     {
-        return app_path('Stubs/Post.stub');
-    }
-
-    /**
-     * Get the destination class path.
-     *
-     * @param  string  $name
-     * @return string
-     */
-    protected function getPath($name)
-    {
-        $name = Str::slug($this->argument('name'));
-
-        return config('posts.location') . "/{$name}.blade.php";
-    }
-
-    /**
-     * Build the class with the given name.
-     *
-     * @param  string  $name
-     * @return string
-     */
-    protected function buildClass($name)
-    {
-        $replace = [
-            '{{ title }}' => $this->argument('name'),
-
-            '{{ release_date }}' => '',
-
-            '{{ slugs }}' => '[]',
-
-            '{{ tags }}' => '[]',
-
-            '{{ excerpt }}' => '',
-
-            '{{ header_image }}' => 'https://placehold.it/1024x768',
-
-            '{{ list_header_image }}' => 'https://placehold.it/600x300',
-
-            '{{ content }}' => '',
-        ];
-
-        $stub = $this->files->get($this->getStub());
-
-        return str_replace(
-            array_keys($replace),
-            array_values($replace),
-            $stub
-        );
+        factory(Post::class)->create(['title' => $this->argument('title')]);
     }
 }
