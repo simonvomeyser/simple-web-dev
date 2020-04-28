@@ -2,9 +2,9 @@
 
 namespace Tests;
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\File;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -15,14 +15,16 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        Config::set('posts.location', base_path('tests/Fixtures/posts'));
+        File::deleteDirectory(base_path('tests/Fixtures/posts'));
+        File::makeDirectory(base_path('tests/Fixtures/posts'), 0755, true);
 
-        // todo Cleanup posts folder    
+        Config::set('posts.location', base_path('tests/Fixtures/posts'));
     }
     protected function tearDown(): void
     {
         parent::tearDown();
 
-        // todo Cleanup posts folder    
+        File::deleteDirectory(base_path('tests/Fixtures/posts'));
+        File::cleanDirectory(base_path('tests/Fixtures/posts'));
     }
 }
