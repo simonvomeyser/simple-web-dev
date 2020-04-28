@@ -47,9 +47,9 @@ class BladeBasedModel
 
             '{{ release_date }}' => $this->release_date ?? Date::now(),
 
-            '{{ slugs }}' => $this->slugs ?? '[]',
+            '{{ slugs }}' => json_encode($this->slugs) ?? '[]',
 
-            '{{ tags }}' => $this->tags ?? '[]',
+            '{{ tags }}' => json_encode($this->tags) ?? '[]',
 
             '{{ excerpt }}' => $this->excerpt ?? '',
 
