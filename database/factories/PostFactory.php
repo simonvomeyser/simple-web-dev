@@ -29,6 +29,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'tags' => array_slice($tags, random_int(0, count($tags))),
         'header_image' => 'https://placehold.it/1024x768',
         'list_header_image' => 'https://placehold.it/1024x768',
-        'content' => $faker->paragraphs(),
+        'content' => implode('<br>', $faker->paragraphs()),
     ];
 });
