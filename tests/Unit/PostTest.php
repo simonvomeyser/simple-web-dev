@@ -5,7 +5,6 @@ namespace Tests\Unit;
 use App\Post;
 use App\User;
 use Tests\TestCase;
-use Illuminate\Support\Facades\Config;
 
 
 class PostTest extends TestCase
@@ -44,4 +43,11 @@ class PostTest extends TestCase
         $this->assertTrue($post->title === 'something');
     }
 
+    /** @test */
+    public function it_can_be_made_via_a_factory()
+    {
+        $post = factory(Post::class)->make();
+
+        $this->assertNotNull($post->title);
+    }
 }
