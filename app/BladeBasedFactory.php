@@ -23,6 +23,27 @@ class BladeBasedFactoryBuilder extends FactoryBuilder
             $this->getRawAttributes($attributes)
         );
     }
+
+    /**
+     * Create a collection of models and persist them to the database.
+     *
+     * @param  array  $attributes
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed
+     */
+    public function create(array $attributes = [])
+    {
+        $results = $this->make($attributes);
+
+        if ($results instanceof BladeBasedModel) {
+            $results->save();
+        } else {
+            $results->each(function ($model) {
+                $model->save();
+            });
+        }
+
+        return $results;
+    }
 }
 
 class BladeBasedFactory extends Factory

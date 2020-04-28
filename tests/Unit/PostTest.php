@@ -58,4 +58,16 @@ class PostTest extends TestCase
 
         $this->assertCount(3, $posts);
     }
+
+    /** @test */
+    public function it_can_be_created_via_a_factory()
+    {
+        $post = factory(Post::class)->create();
+
+        $savedPost = Post::all()->first();
+
+        $this->assertNotNull($savedPost);
+
+        $this->assertEquals($post->title, $savedPost->title);
+    }
 }
