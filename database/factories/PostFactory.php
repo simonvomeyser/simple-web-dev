@@ -18,14 +18,17 @@ use Illuminate\Support\Facades\Date;
 */
 
 $factory->define(Post::class, function (Faker $faker) {
+    $tags = ['Productivity', 'Dev Ops', 'Frontent', 'Backend'];
+    shuffle($tags);
+
     return [
         'title' => $faker->title,
         'release_date' => Date::now(),
         'slugs' => [],
         'excerpt' => $faker->text(25),
-        'tags' => array_rand(['Productivity', 'Dev Ops', 'Frontent', 'Backend'], random_int(1, 4)),
+        'tags' => array_slice($tags, random_int(0, count($tags))),
         'header_image' => 'https://placehold.it/1024x768',
         'list_header_image' => 'https://placehold.it/1024x768',
-        'excerpt' => $faker->randomHtml(),
+        'content' => $faker->paragraphs(),
     ];
 });
