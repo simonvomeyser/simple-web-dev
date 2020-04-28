@@ -2,7 +2,7 @@
 
 @section('title', '{{ title }}')
 
-@section('release_date', '{{ date }}')
+@section('release_date', '{{ release_date }}')
 
 @section('slugs', '{{ slugs }}')
 
