@@ -9,10 +9,17 @@ use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 class FactoryProxy
 {
+    public $elequentFactory;
+    public $bladeBasedFactory;
 
     public function __construct(Application $app)
     {
         $this->eloquentFactory = EloquentFactory::construct(
+            $app->make(FakerGenerator::class),
+            $app->databasePath('factories')
+        );
+
+        $this->bladeBasedFactory = BladeBasedFactory::construct(
             $app->make(FakerGenerator::class),
             $app->databasePath('factories')
         );
@@ -21,7 +28,7 @@ class FactoryProxy
     function of($class)
     {
         if ((new $class) instanceof BladeBasedModel) {
-            dd('Defer to bald based factory');
+            return $this->bladeBasedFactory->of($class);
         }
         return $this->eloquentFactory->of($class);
     }
