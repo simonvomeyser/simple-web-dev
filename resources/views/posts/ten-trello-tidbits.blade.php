@@ -44,14 +44,7 @@ item with every line break. Woha! The same thing works with the creation of card
 beforehand. This is a feature that has recently landed in some todo applications (Check out <a
     href="https://todoist.com">Todoist</a> my app of choice) but Trello is the place I saw it first.
 
-<figure
-    class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-    <div class="wp-block-embed__wrapper">
-        <iframe title="Batch Create Todos and Cards in Trello"
-            src="https://www.youtube.com/embed/t9rC4klx7o0?feature=oembed" frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-    </div>
-</figure>
+<x-video code="t9rC4klx7o0" title="Batch Create Cards in Trello" />
 
 <h2>Intuitive keyboard navigation</h2>
 I know that I am a little too much into shortcuts. I admit it. I spend hours learning shortcuts that will
