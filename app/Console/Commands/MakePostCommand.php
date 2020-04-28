@@ -8,7 +8,7 @@ use Illuminate\Console\GeneratorCommand;
 
 class MakePostCommand extends GeneratorCommand
 {
-    
+
     /**
      * The name and signature of the console command.
      *
@@ -54,7 +54,7 @@ class MakePostCommand extends GeneratorCommand
     {
         $name = Str::slug($this->argument('name'));
 
-        return config('posts.location')."/{$name}.blade.php";
+        return config('posts.location') . "/{$name}.blade.php";
     }
 
     /**
@@ -68,7 +68,7 @@ class MakePostCommand extends GeneratorCommand
         $replace = [
             '{{ title }}' => $this->argument('name'),
 
-            '{{ date }}' => '',
+            '{{ release_date }}' => '',
 
             '{{ slugs }}' => '[]',
 
@@ -76,18 +76,19 @@ class MakePostCommand extends GeneratorCommand
 
             '{{ excerpt }}' => '',
 
-            '{{ header-image }}' => 'https://placehold.it/1024x768',
+            '{{ header_image }}' => 'https://placehold.it/1024x768',
 
-            '{{ list-header-image }}' => 'https://placehold.it/600x300',
-            
+            '{{ list_header_image }}' => 'https://placehold.it/600x300',
+
             '{{ content }}' => '',
         ];
 
         $stub = $this->files->get($this->getStub());
 
         return str_replace(
-            array_keys($replace), array_values($replace), $stub
+            array_keys($replace),
+            array_values($replace),
+            $stub
         );
     }
-
 }

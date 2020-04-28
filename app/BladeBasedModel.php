@@ -40,7 +40,7 @@ class BladeBasedModel
         $replace = [
             '{{ title }}' => $this->title,
 
-            '{{ date }}' => Date::now(),
+            '{{ release_date }}' => $this->release_date ?? Date::now(),
 
             '{{ slugs }}' => $this->slugs ?? '[]',
 
