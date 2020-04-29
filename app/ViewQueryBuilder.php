@@ -20,9 +20,13 @@ class ViewQueryBuilder
 
     public function all()
     {
-        $files = File::allFiles($this->model->getViewFolder());
-
         $collection = collect();
+
+        if (!File::isDirectory($this->model->getViewFolder())) {
+            return $collection;
+        }
+
+        $files = File::allFiles($this->model->getViewFolder());
 
         foreach ($files as $value) {
             $viewName = Str::before($value->getFilenameWithoutExtension(), '.blade');
