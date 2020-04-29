@@ -13,9 +13,10 @@ abstract class TestCase extends BaseTestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
+        $this->refreshApplication();
         File::deleteDirectory(base_path('tests/Fixtures/posts'));
         File::makeDirectory(base_path('tests/Fixtures/posts'), 0755, true);
+        parent::setUp();
     }
     protected function tearDown(): void
     {
