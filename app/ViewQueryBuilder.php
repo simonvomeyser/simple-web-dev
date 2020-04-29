@@ -34,10 +34,9 @@ class ViewQueryBuilder
             $view = view("posts.$viewName");
             $data = $view->renderSections();
             $instance = new Post(); // todo make dynamic
-            $instance->title = $data['title'] ?? '';
-            $instance->slug = $viewName;
-            $instance->excerpt = $data['excerpt'] ?? '';
-            $instance->date = $data['date'] ?? '';
+            foreach ($data as $key => $value) {
+                $instance->$key = $value;
+            }
             $collection->add($instance);
         }
         return $collection;
