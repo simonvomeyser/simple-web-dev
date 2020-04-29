@@ -1,5 +1,6 @@
 <?php
 
+use App\Post;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\View\Factory;
@@ -18,28 +19,14 @@ use Illuminate\View\View;
 | contains the "web" middleware group. Now create something great!
 |
 */
-$files = File::allFiles(config('posts.location'));
 
-// dd(app(FileViewFinder::class, ['paths' => [resource_path('views').'/posts']]));
-$posts = new Collection();
-foreach ($files as $key => $value) {
-    $viewName = Str::before($value->getFilenameWithoutExtension(), '.blade');
-    $view = view("posts.$viewName");
-    $data = $view->renderSections();
-    $post = new stdClass();
-    $post->title = $data['title'] ?? '';
-    $post->slug = $viewName;
-    $post->excerpt = $data['excerpt'] ?? '';
-    $post->date = $data['date'] ?? '';
-    $posts->add($post);
-}
+$posts = Post::all();
 
-
-Route::get('/', function () use ($posts){
-    return view('welcome')->with("posts" , $posts->only(0,1));
+Route::get('/', function () use ($posts) {
+    return view('index')->with("posts", $posts->only(0, 1, 2));
 })->name('index');
 
-Route::get('posts/{slug}', function($slug) {
+Route::get('posts/{slug}', function ($slug) {
 
     // Later: Posts::findOrFail($slug)
 
