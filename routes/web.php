@@ -20,10 +20,10 @@ use Illuminate\View\View;
 |
 */
 
-$posts = Post::all();
 
-Route::get('/', function () use ($posts) {
-    return view('index')->with("posts", $posts->only(0, 1, 2));
+Route::get('/', function () {
+    $posts = Post::all();
+    return view('index')->with("posts", $posts);
 })->name('index');
 
 Route::get('posts/{slug}', function ($slug) {

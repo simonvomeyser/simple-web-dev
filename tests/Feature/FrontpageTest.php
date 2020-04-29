@@ -21,4 +21,19 @@ class FrontpageTestt extends TestCase
     {
         $this->get('/')->assertSee(__('posts.no-posts-found'));
     }
+
+    /** @test */
+    public function three_created_posts_are_found_with_essential_data()
+    {
+        $posts = factory('App\Post', 3)->create();
+
+        $response = $this->get('/');
+
+        foreach ($posts as $post) {
+            $response
+                ->assertSee($post->title)
+                ->assertSee($post->excerpt)
+                ->assertSee($post->list_header_image);
+        }
+    }
 }
