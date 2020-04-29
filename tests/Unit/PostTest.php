@@ -78,4 +78,12 @@ class PostTest extends TestCase
 
         $this->assertEquals($post->title, $savedPost->title);
     }
+
+    /** @test */
+    public function it_returns_a_link_to_itself()
+    {
+        $post = factory(Post::class)->make();
+
+        $this->assertNotNull($post->link());
+    }
 }

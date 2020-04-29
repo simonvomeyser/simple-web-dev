@@ -12,4 +12,9 @@ class Post extends BladeBasedModel
     {
         return Str::slug($this->title);
     }
+
+    function link(): string
+    {
+        return route('posts.single', Str::slug($this->title));
+    }
 }
