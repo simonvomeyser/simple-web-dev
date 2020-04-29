@@ -83,7 +83,7 @@ class BladeBasedModel
 
     function getViewFolder(): string
     {
-        return config('posts.location', resource_path('views/posts')); // todo make dynamic, read from name or var
+        return config('posts.location'); // todo make dynamic, read from name or var
     }
 
     /**
