@@ -12,7 +12,6 @@ use Illuminate\View\View;
 class ViewQueryBuilder
 {
     protected $model;
-    protected $arrayOfWhere;
 
     public function __construct(BladeBasedModel $model)
     {
@@ -22,12 +21,6 @@ class ViewQueryBuilder
     public function all()
     {
         return $this->get();
-    }
-    public function where($column, $operator, $value)
-    {
-        $this->whereData[] = compact('column', 'operator', 'value');
-
-        return $this;
     }
     public function get()
     {
