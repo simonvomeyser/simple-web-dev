@@ -22,7 +22,7 @@ $factory->define(Post::class, function (Faker $faker) {
     shuffle($tags);
 
     return [
-        'title' => $faker->title,
+        'title' => $faker->sentence(),
         'release_date' => Date::now(),
         'slugs' => [],
         'excerpt' => $faker->text(25),
