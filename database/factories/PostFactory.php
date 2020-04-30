@@ -23,7 +23,7 @@ $factory->define(Post::class, function (Faker $faker) {
 
     return [
         'title' => $faker->sentence(),
-        'release_date' => Date::now(),
+        'release_date' => Date::yesterday(),
         'slugs' => [],
         'excerpt' => $faker->text(25),
         'tags' => array_slice($tags, random_int(0, count($tags))),
