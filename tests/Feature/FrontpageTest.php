@@ -46,4 +46,15 @@ class FrontpageTestt extends TestCase
             return $posts->count() < 4;
         });
     }
+
+    /** @test */
+    public function posts_without_release_date_are_not_shown()
+    {
+        $postWithoutReleaseDate = factory('App\Post')->create(['release_date' => '']);
+        $postWithReleaseDate = factory('App\Post')->create();
+
+        $this->get('/')
+            ->assertSee($postWithReleaseDate->link())
+            ->assertDontSee($postWithoutReleaseDate->link());
+    }
 }

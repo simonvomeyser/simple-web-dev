@@ -2,6 +2,7 @@
 
 use App\Post;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
 use Illuminate\View\Factory;
 use Illuminate\Support\Facades\File;
@@ -22,7 +23,7 @@ use Illuminate\View\View;
 
 
 Route::get('/', function () {
-    $posts = Post::all();
+    $posts = Post::released();
     return view('index')->with("posts", $posts->only(0, 1, 2));
 })->name('index');
 
