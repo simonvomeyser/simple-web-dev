@@ -24,7 +24,7 @@ class BladeBasedModel
 
     public static function __callStatic($method, $parameters)
     {
-        return (new ViewQueryBuilder(new self))->all();
+        return (new ViewQueryBuilder(new static))->{$method}(...$parameters);
     }
 
     public function __set($key, $value)
