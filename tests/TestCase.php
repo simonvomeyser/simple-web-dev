@@ -20,9 +20,8 @@ abstract class TestCase extends BaseTestCase
     }
     protected function tearDown(): void
     {
-        parent::tearDown();
-
         File::deleteDirectory(base_path('tests/Fixtures/posts'));
         File::cleanDirectory(base_path('tests/Fixtures/posts'));
+        parent::tearDown();
     }
 }
