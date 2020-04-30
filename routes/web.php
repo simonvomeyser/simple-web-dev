@@ -23,7 +23,7 @@ use Illuminate\View\View;
 
 Route::get('/', function () {
     $posts = Post::all();
-    return view('index')->with("posts", $posts);
+    return view('index')->with("posts", $posts->only(0, 1, 2));
 })->name('index');
 
 Route::get('posts/{slug}', function ($slug) {

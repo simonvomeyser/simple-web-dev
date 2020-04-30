@@ -36,4 +36,14 @@ class FrontpageTestt extends TestCase
                 ->assertSee($post->list_header_image);
         }
     }
+
+    /** @test */
+    public function only_three_posts_are_passed_to_the_view()
+    {
+        factory('App\Post', 5)->create();
+
+        $this->get('/')->assertViewHas('posts', function ($posts) {
+            return $posts->count() < 4;
+        });
+    }
 }
