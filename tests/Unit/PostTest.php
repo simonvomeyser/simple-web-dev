@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use App\Post;
 use App\User;
 use Tests\TestCase;
+use Illuminate\Support\Carbon;
 
 
 class PostTest extends TestCase
@@ -85,5 +86,18 @@ class PostTest extends TestCase
         $post = factory(Post::class)->make();
 
         $this->assertNotNull($post->link());
+    }
+
+    /** @test */
+    public function released_posts_are_sorted_by_release_date()
+    {
+        $postYearAgo = factory('App\Post')->create(['release_date' => Carbon::now()->subYear()]);
+        $postYesterday = factory('App\Post')->create(['release_date' => Carbon::yesterday()]);
+        factory('App\Post')->create(['release_date' => Carbon::now()->subMonth()]);
+
+        $posts = Post::released();
+
+        $this->assertTrue($posts->first()->link() === $postYesterday->link());
+        $this->assertTrue($posts->last()->link() === $postYearAgo->link());
     }
 }

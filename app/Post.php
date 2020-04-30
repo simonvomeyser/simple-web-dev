@@ -28,6 +28,6 @@ class Post extends BladeBasedModel
             }
 
             return Carbon::parse($post->release_date)->isBefore(Carbon::now());
-        });
+        })->sortByDate('release_date');
     }
 }
