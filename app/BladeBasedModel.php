@@ -6,9 +6,11 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Traits\ForwardsCalls;
 
 class BladeBasedModel
 {
+    use ForwardsCalls;
 
     /**
      * The model's attributes.
@@ -22,10 +24,16 @@ class BladeBasedModel
         $this->fill($attributes);
     }
 
+    public function __call($method, $parameters)
+    {
+        return $this->forwardCallTo($this->newQuery(), $method, $parameters);
+    }
+
     public static function __callStatic($method, $parameters)
     {
-        return (new ViewQueryBuilder(new static))->{$method}(...$parameters);
+        return (new static)->$method(...$parameters);
     }
+
 
     public function __set($key, $value)
     {
@@ -112,5 +120,10 @@ class BladeBasedModel
     public function newCollection(array $models = [])
     {
         return new Collection($models);
+    }
+
+    public function newQuery()
+    {
+        return new ViewQueryBuilder(new static);
     }
 }
