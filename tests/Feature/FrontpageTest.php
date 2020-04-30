@@ -2,9 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Carbon;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class FrontpageTestt extends TestCase
 {
@@ -48,13 +49,15 @@ class FrontpageTestt extends TestCase
     }
 
     /** @test */
-    public function posts_without_release_date_are_not_shown()
+    public function only_released_posts_are_not_shown()
     {
         $postWithoutReleaseDate = factory('App\Post')->create(['release_date' => '']);
+        $postWithFutureReleaseDate = factory('App\Post')->create(['release_date' => Carbon::tomorrow()]);
         $postWithReleaseDate = factory('App\Post')->create();
 
         $this->get('/')
             ->assertSee($postWithReleaseDate->link())
-            ->assertDontSee($postWithoutReleaseDate->link());
+            ->assertDontSee($postWithoutReleaseDate->link())
+            ->assertDontSee($postWithFutureReleaseDate->link());
     }
 }
