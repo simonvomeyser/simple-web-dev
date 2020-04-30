@@ -27,6 +27,10 @@ Route::get('/', function () {
     return view('index')->with("posts", $posts->only(0, 1, 2));
 })->name('index');
 
+Route::get('/posts', function () {
+    return view('index')->with("posts", Post::released());
+})->name('posts');
+
 Route::get('posts/{slug}', function ($slug) {
 
     // Later: Posts::findOrFail($slug)

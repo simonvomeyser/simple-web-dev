@@ -38,7 +38,7 @@ class AllPostsPageTest extends TestCase
     }
 
     /** @test */
-    public function only_released_posts_are_not_shown()
+    public function only_released_posts_are_shown()
     {
         $postWithoutReleaseDate = factory('App\Post')->create(['release_date' => '']);
         $postWithFutureReleaseDate = factory('App\Post')->create(['release_date' => Carbon::tomorrow()]);
