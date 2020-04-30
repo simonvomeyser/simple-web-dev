@@ -22,7 +22,7 @@ class BladeBasedModel
         $this->fill($attributes);
     }
 
-    public static function all()
+    public static function __callStatic($method, $parameters)
     {
         return (new ViewQueryBuilder(new self))->all();
     }
