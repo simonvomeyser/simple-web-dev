@@ -40,7 +40,7 @@ class Post extends BladeBasedModel
     public static function findBySlug($slug)
     {
         return static::all()->filter(function ($post) use ($slug) {
-            return $post->slug === $slug;
+            return $post->slug() === $slug;
         })->first();
     }
 }

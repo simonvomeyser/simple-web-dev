@@ -1,3 +1,3 @@
 <div class="post-content">
-    {!! nl2br($slot) !!}
+    {!! $slot !!}
 </div>
