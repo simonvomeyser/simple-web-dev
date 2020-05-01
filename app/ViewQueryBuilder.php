@@ -35,7 +35,7 @@ class ViewQueryBuilder
         foreach ($files as $value) {
             $viewName = Str::before($value->getFilenameWithoutExtension(), '.blade');
 
-            $view = view("posts.$viewName");
+            $view = view($this->model->lowerBaseName() . "." . $viewName);
             $data = $view->renderSections();
             $instance = new Post(); // todo make dynamic
             foreach ($data as $key => $value) {

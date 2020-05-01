@@ -14,14 +14,14 @@ abstract class TestCase extends BaseTestCase
     protected function setUp(): void
     {
         $this->refreshApplication();
-        File::deleteDirectory(base_path('tests/Fixtures/posts'));
-        File::makeDirectory(base_path('tests/Fixtures/posts'), 0755, true);
+        File::deleteDirectory(base_path('tests/Fixtures/post'));
+        File::makeDirectory(base_path('tests/Fixtures/post'), 0755, true);
         parent::setUp();
     }
     protected function tearDown(): void
     {
-        File::deleteDirectory(base_path('tests/Fixtures/posts'));
-        File::cleanDirectory(base_path('tests/Fixtures/posts'));
+        File::deleteDirectory(base_path('tests/Fixtures/post'));
+        File::cleanDirectory(base_path('tests/Fixtures/post'));
         parent::tearDown();
     }
 }
