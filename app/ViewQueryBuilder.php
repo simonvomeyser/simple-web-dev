@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Reflection;
+use ReflectionClass;
+use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\View\View;
 
 class ViewQueryBuilder
 {
@@ -37,7 +39,8 @@ class ViewQueryBuilder
 
             $view = view($this->model->lowerBaseName() . "." . $viewName);
             $data = $view->renderSections();
-            $instance = new Post(); // todo make dynamic
+
+            $instance = (new ReflectionClass($this->model))->newInstance();
             foreach ($data as $key => $value) {
                 $instance->$key = $value;
             }
