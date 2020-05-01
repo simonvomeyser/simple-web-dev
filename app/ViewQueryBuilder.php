@@ -2,14 +2,9 @@
 
 namespace App;
 
-use Reflection;
 use ReflectionClass;
-use Illuminate\View\View;
 use Illuminate\Support\Str;
-use Illuminate\Container\Container;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
-use Illuminate\Filesystem\Filesystem;
 
 class ViewQueryBuilder
 {
