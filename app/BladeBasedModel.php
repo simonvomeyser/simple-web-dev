@@ -19,6 +19,8 @@ abstract class BladeBasedModel
      */
     protected $attributes = [];
 
+    public $exists = false;
+
     public function __construct(array $attributes = [])
     {
         $this->fill($attributes);
@@ -77,6 +79,7 @@ abstract class BladeBasedModel
         );
 
         File::put($this->getViewFolder() . '/' . $this->getFilename() . '.blade.php', $replacedStub);
+        $this->exists = true;
     }
 
     function getStub(): string
@@ -88,6 +91,8 @@ abstract class BladeBasedModel
     {
         return Hash::make();
     }
+
+
 
     function baseName(): string
     {

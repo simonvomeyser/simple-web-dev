@@ -128,4 +128,14 @@ class PostTest extends TestCase
 
         $this->assertSame($foundPost->slug, $post->slug);
     }
+
+    /** @test */
+    public function a_post_can_be_checked_if_it_exists()
+    {
+        $post1 = factory(Post::class)->create();
+        $post2 = factory(Post::class)->make();
+
+        $this->assertTrue($post1->exists);
+        $this->assertFalse($post2->exists);
+    }
 }

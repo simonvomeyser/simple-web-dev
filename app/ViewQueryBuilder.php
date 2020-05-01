@@ -39,6 +39,7 @@ class ViewQueryBuilder
             foreach ($data as $key => $value) {
                 $instance->$key = $value;
             }
+            $instance->exists = true;
             $collection->add($instance);
         }
         return $collection;
