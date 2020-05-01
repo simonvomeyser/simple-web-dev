@@ -2,13 +2,15 @@
 
 namespace App;
 
+use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Traits\ForwardsCalls;
 
-abstract class BladeBasedModel
+abstract class BladeBasedModel implements Responsable
 {
     use ForwardsCalls;
 
@@ -113,7 +115,6 @@ abstract class BladeBasedModel
 
     function getViewFolder(): string
     {
-        // todo make dynamic, read from name or var
         // todo, find a better way to to this, mock this, create fake files in memory?
         if (env('APP_ENV') === 'testing') {
             return base_path('tests/Fixtures/' . $this->lowerBaseName());
@@ -153,5 +154,16 @@ abstract class BladeBasedModel
     public function newQuery()
     {
         return new ViewQueryBuilder(new static);
+    }
+
+    /**
+     * Create an HTTP response that represents the object.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function toResponse($request)
+    {
+        return new Response($this->view()) ?? abort(404);
     }
 }
