@@ -6,7 +6,7 @@ use App\Post;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Support\Carbon;
-
+use Illuminate\View\View;
 
 class PostTest extends TestCase
 {
@@ -137,5 +137,15 @@ class PostTest extends TestCase
 
         $this->assertTrue($post1->exists);
         $this->assertFalse($post2->exists);
+    }
+
+    /** @test */
+    public function a_view_response_can_be_retrieved_from_an_existing_blade_based_model()
+    {
+        $post1 = factory(Post::class)->create();
+        $post2 = factory(Post::class)->make();
+
+        $this->assertFalse(!!$post2->view());
+        $this->assertRegExp('/<html.*html>/s', $post1->view());
     }
 }

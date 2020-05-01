@@ -92,7 +92,14 @@ abstract class BladeBasedModel
         return Hash::make();
     }
 
+    function view(): string
+    {
+        if (!$this->exists) {
+            return false;
+        }
 
+        return view($this->lowerBaseName() . '.' . $this->getFilename());
+    }
 
     function baseName(): string
     {
