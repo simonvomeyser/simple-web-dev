@@ -127,9 +127,9 @@ class PostTest extends TestCase
     {
         $post = factory(Post::class)->create();
 
-        $foundPost = Post::findBySlug($post->slug);
+        $foundPost = Post::findBySlug($post->slug());
 
-        $this->assertSame($foundPost->slug, $post->slug);
+        $this->assertSame($foundPost->slug(), $post->slug());
     }
 
     /** @test */
