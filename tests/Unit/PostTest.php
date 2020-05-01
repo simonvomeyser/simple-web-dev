@@ -5,8 +5,11 @@ namespace Tests\Unit;
 use App\Post;
 use App\User;
 use Tests\TestCase;
-use Illuminate\Support\Carbon;
 use Illuminate\View\View;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostTest extends TestCase
 {
@@ -147,5 +150,26 @@ class PostTest extends TestCase
 
         $this->assertFalse(!!$post2->view());
         $this->assertRegExp('/<html.*html>/s', $post1->view());
+    }
+
+    /** @test */
+    public function a_blade_based_model_is_responsable()
+    {
+        Route::get('test', function () {
+            return factory(Post::class)->create();
+        });
+
+        $response = $this->get('test');
+        $this->assertRegExp('/<html.*html>/s', $response->getContent());
+    }
+    /** @test */
+    public function a_not_existent_blade_based_model_throws_a_404()
+    {
+
+        Route::get('test', function () {
+            return factory(Post::class)->make();
+        });
+        $response = $this->get('test');
+        $this->assertTrue(get_class($response->exception) === NotFoundHttpException::class);
     }
 }
