@@ -38,7 +38,6 @@ abstract class BladeBasedModel implements Responsable
         return (new static)->$method(...$parameters);
     }
 
-
     public function __set($key, $value)
     {
         $this->attributes[$key] = $value;
@@ -51,7 +50,7 @@ abstract class BladeBasedModel implements Responsable
         return $this->attributes[$key] ?? null;
     }
 
-    function save()
+    public function save()
     {
         // todo: loop over dynamic attributes
         $replace = [
@@ -80,47 +79,47 @@ abstract class BladeBasedModel implements Responsable
             $stub
         );
 
-        File::put($this->getViewFolder() . '/' . $this->getFilename() . '.blade.php', $replacedStub);
+        File::put($this->getViewFolder().'/'.$this->getFilename().'.blade.php', $replacedStub);
         $this->exists = true;
     }
 
-    function getStub(): string
+    public function getStub(): string
     {
         return app_path('Stubs/Post.stub'); // todo make dynamic, read from name or var
     }
 
-    function getFilename(): string
+    public function getFilename(): string
     {
         return Hash::make();
     }
 
-    function view(): string
+    public function view(): string
     {
-        if (!$this->exists) {
+        if (! $this->exists) {
             return false;
         }
 
-        return view($this->lowerBaseName() . '.' . $this->getFilename());
+        return view($this->lowerBaseName().'.'.$this->getFilename());
     }
 
-    function baseName(): string
+    public function baseName(): string
     {
         return class_basename(new static);
     }
 
-    function lowerBaseName(): string
+    public function lowerBaseName(): string
     {
         return strtolower($this->baseName());
     }
 
-    function getViewFolder(): string
+    public function getViewFolder(): string
     {
         // todo, find a better way to to this, mock this, create fake files in memory?
         if (env('APP_ENV') === 'testing') {
-            return base_path('tests/Fixtures/' . $this->lowerBaseName());
+            return base_path('tests/Fixtures/'.$this->lowerBaseName());
         }
 
-        return resource_path('views/' . $this->lowerBaseName());
+        return resource_path('views/'.$this->lowerBaseName());
     }
 
     /**
@@ -133,13 +132,13 @@ abstract class BladeBasedModel implements Responsable
      */
     public function fill(array $attributes)
     {
-
         foreach ($attributes as $key => $value) {
             $this->attributes[$key] = $value;
         }
 
         return $this;
     }
+
     /**
      * Create a new Eloquent Collection instance.
      *

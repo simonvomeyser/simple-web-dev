@@ -25,11 +25,12 @@ class FactoryProxy
         );
     }
 
-    function of($class)
+    public function of($class)
     {
         if ((new $class) instanceof BladeBasedModel) {
             return $this->bladeBasedFactory->of($class);
         }
+
         return $this->eloquentFactory->of($class);
     }
 

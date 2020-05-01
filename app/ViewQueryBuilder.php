@@ -2,9 +2,9 @@
 
 namespace App;
 
-use ReflectionClass;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use ReflectionClass;
 
 class ViewQueryBuilder
 {
@@ -19,11 +19,12 @@ class ViewQueryBuilder
     {
         return $this->get();
     }
+
     public function get()
     {
         $collection = collect();
 
-        if (!File::isDirectory($this->model->getViewFolder())) {
+        if (! File::isDirectory($this->model->getViewFolder())) {
             return $collection;
         }
 
@@ -32,7 +33,7 @@ class ViewQueryBuilder
         foreach ($files as $value) {
             $viewName = Str::before($value->getFilenameWithoutExtension(), '.blade');
 
-            $view = view($this->model->lowerBaseName() . "." . $viewName);
+            $view = view($this->model->lowerBaseName().'.'.$viewName);
             $data = $view->renderSections();
 
             $instance = (new ReflectionClass($this->model))->newInstance();
@@ -42,6 +43,7 @@ class ViewQueryBuilder
             $instance->exists = true;
             $collection->add($instance);
         }
+
         return $collection;
     }
 }

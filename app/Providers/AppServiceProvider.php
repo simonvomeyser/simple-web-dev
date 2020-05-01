@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use App\FactoryProxy;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 class AppServiceProvider extends ServiceProvider
 {

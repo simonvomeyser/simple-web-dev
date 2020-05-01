@@ -4,12 +4,12 @@ namespace Tests\Unit;
 
 use App\Post;
 use App\User;
-use Tests\TestCase;
-use Illuminate\View\View;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Route;
+use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Tests\TestCase;
 
 class PostTest extends TestCase
 {
@@ -18,9 +18,9 @@ class PostTest extends TestCase
     {
         $post = new Post();
 
-        $post->title = "A name";
+        $post->title = 'A name';
 
-        $this->assertTrue($post->title == "A name");
+        $this->assertTrue($post->title == 'A name');
     }
 
     /** @test */
@@ -28,7 +28,7 @@ class PostTest extends TestCase
     {
         $post = new Post();
 
-        $post->title = "A name";
+        $post->title = 'A name';
 
         $post->save();
 
@@ -148,7 +148,7 @@ class PostTest extends TestCase
         $post1 = factory(Post::class)->create();
         $post2 = factory(Post::class)->make();
 
-        $this->assertFalse(!!$post2->view());
+        $this->assertFalse((bool) $post2->view());
         $this->assertRegExp('/<html.*html>/s', $post1->view());
     }
 
@@ -162,10 +162,10 @@ class PostTest extends TestCase
         $response = $this->get('test');
         $this->assertRegExp('/<html.*html>/s', $response->getContent());
     }
+
     /** @test */
     public function a_not_existent_blade_based_model_throws_a_404()
     {
-
         Route::get('test', function () {
             return factory(Post::class)->make();
         });

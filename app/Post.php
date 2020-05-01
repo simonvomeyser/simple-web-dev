@@ -7,20 +7,19 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
-
 class Post extends BladeBasedModel
 {
-    function getFilename(): string
+    public function getFilename(): string
     {
         return Str::slug($this->title);
     }
 
-    function link(): string
+    public function link(): string
     {
         return $this->slug();
     }
 
-    function slug(): string
+    public function slug(): string
     {
         return Str::slug($this->title);
     }
@@ -28,8 +27,7 @@ class Post extends BladeBasedModel
     public static function released()
     {
         return static::all()->filter(function ($post) {
-
-            if (!$post->release_date) {
+            if (! $post->release_date) {
                 return false;
             }
 

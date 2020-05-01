@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 
 class MakePostCommand extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -23,7 +22,6 @@ class MakePostCommand extends Command
      * @var string
      */
     protected $type = 'Post';
-
 
     /**
      * The console command description.

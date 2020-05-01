@@ -3,11 +3,11 @@
 namespace App;
 
 use Faker\Generator as Faker;
-use InvalidArgumentException;
-use Symfony\Component\Finder\Finder;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Database\Eloquent\FactoryBuilder;
+use InvalidArgumentException;
 use stdClass;
+use Symfony\Component\Finder\Finder;
 
 class BladeBasedFactoryBuilder extends FactoryBuilder
 {
