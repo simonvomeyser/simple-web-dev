@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Traits\ForwardsCalls;
 
-class BladeBasedModel
+abstract class BladeBasedModel
 {
     use ForwardsCalls;
 
@@ -91,7 +91,9 @@ class BladeBasedModel
 
     function getViewFolder(): string
     {
-        return config('posts.location'); // todo make dynamic, read from name or var
+        // todo make dynamic, read from name or var
+        // todo, find a better way to to this, mock this, create fake files in memory?
+        return env('APP_ENV') === 'testing' ? base_path('tests/Fixtures/posts') : resource_path('views/posts');
     }
 
     /**
