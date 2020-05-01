@@ -103,6 +103,7 @@ class PostTest extends TestCase
     {
         $post = new Post();
         $this->assertTrue('Post' === $post->baseName());
+        $this->assertTrue('post' === $post->lowerBaseName());
     }
 
     /** @test */

@@ -94,11 +94,20 @@ abstract class BladeBasedModel
         return class_basename(new static);
     }
 
+    function lowerBaseName(): string
+    {
+        return strtolower($this->baseName());
+    }
+
     function getViewFolder(): string
     {
         // todo make dynamic, read from name or var
         // todo, find a better way to to this, mock this, create fake files in memory?
-        return env('APP_ENV') === 'testing' ? base_path('tests/Fixtures/posts') : resource_path('views/posts');
+        if (env('APP_ENV') === 'testing') {
+            return base_path('tests/Fixtures/' . $this->lowerBaseName());
+        }
+
+        return resource_path('views/' . $this->lowerBaseName());
     }
 
     /**
