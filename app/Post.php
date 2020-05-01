@@ -4,6 +4,7 @@ namespace App;
 
 use App\BladeBasedModel;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 
@@ -16,7 +17,12 @@ class Post extends BladeBasedModel
 
     function link(): string
     {
-        return route('posts.single', Str::slug($this->title));
+        return $this->slug();
+    }
+
+    function slug(): string
+    {
+        return Str::slug($this->title);
     }
 
     public static function released()
@@ -29,5 +35,12 @@ class Post extends BladeBasedModel
 
             return Carbon::parse($post->release_date)->isBefore(Carbon::now());
         })->sortByDate('release_date');
+    }
+
+    public static function findBySlug($slug)
+    {
+        return static::all()->filter(function ($post) use ($slug) {
+            return $post->slug === $slug;
+        })->first();
     }
 }

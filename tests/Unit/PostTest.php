@@ -118,4 +118,14 @@ class PostTest extends TestCase
         $this->assertTrue($posts->first()->link() === $postYesterday->link());
         $this->assertTrue($posts->last()->link() === $postYearAgo->link());
     }
+
+    /** @test */
+    public function posts_can_be_found_by_their_slug()
+    {
+        $post = factory(Post::class)->create();
+
+        $foundPost = Post::findBySlug($post->slug);
+
+        $this->assertSame($foundPost->slug, $post->slug);
+    }
 }
