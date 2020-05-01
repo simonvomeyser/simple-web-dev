@@ -89,6 +89,16 @@ class PostTest extends TestCase
     }
 
     /** @test */
+    public function only_released_posts_are_returned_from_released_scope()
+    {
+        factory('App\Post')->create(['release_date' => '']);
+        factory('App\Post')->create(['release_date' => Carbon::tomorrow()]);
+        factory('App\Post')->create();
+
+        $this->assertCount(1, Post::released());
+    }
+
+    /** @test */
     public function released_posts_are_sorted_by_release_date()
     {
         $postYearAgo = factory('App\Post')->create(['release_date' => Carbon::now()->subYear()]);
