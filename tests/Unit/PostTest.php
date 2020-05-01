@@ -99,6 +99,13 @@ class PostTest extends TestCase
     }
 
     /** @test */
+    public function it_returns_the_right_instance_classname()
+    {
+        $post = new Post();
+        $this->assertTrue('Post' === $post->baseName());
+    }
+
+    /** @test */
     public function released_posts_are_sorted_by_release_date()
     {
         $postYearAgo = factory('App\Post')->create(['release_date' => Carbon::now()->subYear()]);

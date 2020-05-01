@@ -89,6 +89,11 @@ abstract class BladeBasedModel
         return Hash::make();
     }
 
+    function baseName(): string
+    {
+        return class_basename(new static);
+    }
+
     function getViewFolder(): string
     {
         // todo make dynamic, read from name or var
