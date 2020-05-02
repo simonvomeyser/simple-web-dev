@@ -175,6 +175,7 @@ class PostTest extends TestCase
     /** @test */
     public function a_blade_based_model_is_responsable()
     {
+        // todo improve test to actually create ad hoc route
         Route::get('test', function () {
             return factory(Post::class)->create();
         });
