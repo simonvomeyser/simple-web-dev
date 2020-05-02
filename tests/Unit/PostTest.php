@@ -3,18 +3,15 @@
 namespace Tests\Unit;
 
 use App\Post;
-use App\User;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
-use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tests\TestCase;
 
 class PostTest extends TestCase
 {
     /** @test */
-    public function aPostCanBeCreated()
+    public function a_post_can_be_created()
     {
         $post = new Post();
 
@@ -24,7 +21,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function aPostCanBeSavedAndRetrieved()
+    public function a_post_can_be_saved_and_retrieved()
     {
         $post = new Post();
 
@@ -40,7 +37,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function attributesCanBeFilled()
+    public function attributes_can_be_filled()
     {
         $post = new Post(['title' => 'something']);
 
@@ -48,7 +45,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function itCanBeMadeViaAFactory()
+    public function it_can_be_made_via_a_factory()
     {
         $post = factory(Post::class)->make();
 
@@ -56,7 +53,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function attributesCanBeOverwritten()
+    public function attributes_can_be_overwritten()
     {
         $post = factory(Post::class)->make(['title' => 'test']);
 
@@ -64,7 +61,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function manyCanBeMadeViaFactory()
+    public function many_can_be_made_via_factory()
     {
         $posts = factory(Post::class, 3)->make();
 
@@ -72,7 +69,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function itCanBeCreatedViaAFactory()
+    public function it_can_be_created_via_a_factory()
     {
         $post = factory(Post::class)->create();
 
@@ -84,7 +81,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function itReturnsALinkToItself()
+    public function it_returns_a_link_to_itself()
     {
         $post = factory(Post::class)->make();
 
@@ -92,7 +89,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function onlyReleasedPostsAreReturnedFromReleasedScope()
+    public function only_released_posts_are_returned_from_released_scope()
     {
         factory('App\Post')->create(['release_date' => '']);
         factory('App\Post')->create(['release_date' => Carbon::tomorrow()]);
@@ -102,7 +99,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function itReturnsTheRightInstanceClassname()
+    public function it_returns_the_right_instance_classname()
     {
         $post = new Post();
         $this->assertTrue('Post' === $post->baseName());
@@ -110,7 +107,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function releasedPostsAreSortedByReleaseDate()
+    public function released_posts_are_sorted_by_release_date()
     {
         $postYearAgo = factory('App\Post')->create(['release_date' => Carbon::now()->subYear()]);
         $postYesterday = factory('App\Post')->create(['release_date' => Carbon::yesterday()]);
@@ -123,7 +120,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function postsCanBeFoundByTheirSlug()
+    public function posts_can_be_found_by_their_slug()
     {
         $post = factory(Post::class)->create();
 
@@ -133,7 +130,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function aPostCanBeCheckedIfItExists()
+    public function a_post_can_be_checked_if_it_exists()
     {
         $post1 = factory(Post::class)->create();
         $post2 = factory(Post::class)->make();
@@ -143,7 +140,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function aViewResponseCanBeRetrievedFromAnExistingBladeBasedModel()
+    public function a_view_response_can_be_retrieved_from_an_existing_blade_based_model()
     {
         $post1 = factory(Post::class)->create();
         $post2 = factory(Post::class)->make();
@@ -153,7 +150,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function aBladeBasedModelIsResponsable()
+    public function a_blade_based_model_is_responsable()
     {
         Route::get('test', function () {
             return factory(Post::class)->create();
@@ -164,7 +161,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function aNotExistentBladeBasedModelThrows404()
+    public function a_not_existent_blade_based_model_throws404()
     {
         Route::get('test', function () {
             return factory(Post::class)->make();
