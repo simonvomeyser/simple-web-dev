@@ -11,7 +11,7 @@ class Post extends BladeBasedModel
 {
     public function getFilename(): string
     {
-        return Str::slug($this->title);
+        return $this->slug();
     }
 
     public function link(): string
