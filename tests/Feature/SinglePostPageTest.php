@@ -35,4 +35,10 @@ class SinglePostPageTest extends TestCase
 
         $this->assertNotSame($newLink, $oldLink);
     }
+
+    /** @test */
+    public function the_filename_can_be_different_from_the_title_or_the_slug()
+    {
+        // todo implement
+    }
 }
