@@ -27,7 +27,7 @@ class Post extends BladeBasedModel
     public static function released()
     {
         return static::all()->filter(function ($post) {
-            if (! $post->release_date) {
+            if (!$post->release_date) {
                 return false;
             }
 

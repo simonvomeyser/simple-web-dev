@@ -79,7 +79,7 @@ abstract class BladeBasedModel implements Responsable
             $stub
         );
 
-        File::put($this->getViewFolder().'/'.$this->getFilename().'.blade.php', $replacedStub);
+        File::put($this->getViewFolder() . '/' . $this->getFilename() . '.blade.php', $replacedStub);
         $this->exists = true;
     }
 
@@ -95,11 +95,11 @@ abstract class BladeBasedModel implements Responsable
 
     public function view(): string
     {
-        if (! $this->exists) {
+        if (!$this->exists) {
             return false;
         }
 
-        return view($this->lowerBaseName().'.'.$this->getFilename());
+        return view($this->lowerBaseName() . '.' . $this->getFilename());
     }
 
     public function baseName(): string
@@ -116,10 +116,11 @@ abstract class BladeBasedModel implements Responsable
     {
         // todo, find a better way to to this, mock this, create fake files in memory?
         if (env('APP_ENV') === 'testing') {
-            return base_path('tests/Fixtures/'.$this->lowerBaseName());
+            return base_path('tests/Fixtures/' . $this->lowerBaseName());
         }
 
-        return resource_path('views/'.$this->lowerBaseName());
+        dd(resource_path('views/' . $this->lowerBaseName()));
+        return resource_path('views/' . $this->lowerBaseName());
     }
 
     /**
