@@ -18,7 +18,7 @@ class PostsPageTest extends TestCase
     /** @test */
     public function the_page_shows_no_post_if_none_are_present()
     {
-        $this->get(route('posts'))->assertSee(__('posts.no-posts-found'));
+        $this->get(route('posts'))->assertSee(trans('posts.no-posts-found'));
     }
 
     /** @test */
