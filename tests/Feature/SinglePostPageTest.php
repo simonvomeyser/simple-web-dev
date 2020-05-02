@@ -9,7 +9,7 @@ use Tests\TestCase;
 class SinglePostPageTest extends TestCase
 {
     /** @test */
-    public function a_post_is_reachable_via_its_filename_slug()
+    public function isReachableViaItsFilenameSlug()
     {
         $post = factory('App\Post')->create();
 
