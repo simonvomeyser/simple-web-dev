@@ -2,15 +2,21 @@
 
 @section('title', 'Ten Trello Tidbits or Why Their UX Team Deserves a Hug ')
 
-@section('release_date', '')
+@section('release_date', 'Saturday, 2. May 2020')
 
 @section('slug', 'ten-trello-tidbits')
 
-@section('excerpt', '')
+@section('excerpt')
 
-@section('tags', '[]')
+I want to show a few things that Trello does really well and with an incredible amount of focus on User Experience (UX).
 
-@section('header_image', 'https://placehold.it/1024x768')
+I mean.. I regularly feel hugged by the trello UX team.. is that really just me?
+
+@endsection
+
+@section('tags', '["Producitvity", "Tools"]')
+
+@section('header_image', 'https://res.cloudinary.com/simonvomeyser/image/upload/v1532495798/Trello/trello-header.png')
 
 @section('list_header_image', 'https://placehold.it/1024x768')
 
