@@ -4,7 +4,7 @@
 
 @section('release_date', '')
 
-@section('slugs', '[]')
+@section('slug', 'ten-trello-tidbits')
 
 @section('excerpt', '')
 
