@@ -21,7 +21,7 @@ class Post extends BladeBasedModel
 
     public function slug(): string
     {
-        return Str::slug($this->title);
+        return !!$this->slug ? $this->slug : Str::slug($this->title);
     }
 
     public static function released()
