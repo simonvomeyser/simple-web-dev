@@ -1,14 +1,7 @@
 <?php
 
 use App\Post;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
-use Illuminate\View\Factory;
-use Illuminate\View\FileViewFinder;
-use Illuminate\View\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +21,7 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/posts', function () {
-    return view('index')->with('posts', Post::released());
+    return view('posts')->with('posts', Post::released());
 })->name('posts');
 
 Route::get('/{slug}', function ($slug) {
