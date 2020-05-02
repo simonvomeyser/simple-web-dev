@@ -24,7 +24,7 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence(),
         'release_date' => Date::yesterday(),
-        'slugs' => [],
+        'slug' => '',
         'excerpt' => $faker->text(25),
         'tags' => array_slice($tags, random_int(0, count($tags))),
         'header_image' => 'https://placehold.it/1024x768',

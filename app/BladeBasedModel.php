@@ -53,26 +53,16 @@ abstract class BladeBasedModel implements Responsable
 
     public function save()
     {
-        // todo: loop over dynamic attributes
-        $replace = [
-            '{{ title }}' => $this->title,
-
-            '{{ release_date }}' => $this->release_date ?? Date::now(),
-
-            '{{ slugs }}' => json_encode($this->slugs) ?? '[]',
-
-            '{{ tags }}' => json_encode($this->tags) ?? '[]',
-
-            '{{ excerpt }}' => $this->excerpt ?? '',
-
-            '{{ header_image }}' => $this->header_image ?? 'https://placehold.it/1024x768',
-
-            '{{ list_header_image }}' => $this->list_header_image ?? 'https://placehold.it/600x300',
-
-            '{{ content }}' => $this->content ?? '',
-        ];
-
         $stub = File::get($this->getStub());
+
+        $stubSections = $this->getStubSections($stub);
+
+        $replace = [];
+
+        foreach ($stubSections as $stubSectionName) {
+            // todo: Add a "defaults" attribute to replace images etc.
+            $replace['%%' . $stubSectionName . '%%'] = $this->propertyToString($stubSectionName);
+        }
 
         $replacedStub = str_replace(
             array_keys($replace),
@@ -82,6 +72,21 @@ abstract class BladeBasedModel implements Responsable
 
         File::put($this->getViewFolder() . '/' . $this->getFilename() . '.blade.php', $replacedStub);
         $this->exists = true;
+    }
+    protected function getStubSections(string $stub)
+    {
+        preg_match_all('/%%(.*?)%%/s', $stub, $matches);
+        return $matches ? $matches[1] : [];
+    }
+
+    protected function propertyToString($prop)
+    {
+        // todo check for casts and maybe a __toString method on objects
+        if (is_array($this->$prop)) {
+            return json_encode($this->$prop);
+        }
+
+        return $this->$prop ?? '';
     }
 
     public function getStub(): string

@@ -1,20 +1,20 @@
 @extends('layouts.post')
 
-@section('title', '{{ title }}')
+@section('title', '%%title%%')
 
-@section('release_date', '{{ release_date }}')
+@section('release_date', '%%release_date%%')
 
-@section('slugs', '{{ slugs }}')
+@section('slug', '%%slug%%')
 
-@section('excerpt', '{{ excerpt }}')
+@section('excerpt', '%%excerpt%%')
 
-@section('tags', '{{ tags }}')
+@section('tags', '%%tags%%')
 
-@section('header_image', '{{ header_image }}')
+@section('header_image', '%%header_image%%')
 
-@section('list_header_image', '{{ list_header_image }}')
+@section('list_header_image', '%%list_header_image%%')
 
 @section('content')
-    {{ content }}
+    %%content%%
 @endsection
  
