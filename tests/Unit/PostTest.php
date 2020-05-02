@@ -152,8 +152,6 @@ class PostTest extends TestCase
         $this->assertSame($foundPost->slug(), $post->slug());
     }
 
-
-
     /** @test */
     public function a_post_can_be_checked_if_it_exists()
     {
