@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Traits\ForwardsCalls;
+use App\ViewQueryBuilder;
 
 abstract class BladeBasedModel implements Responsable
 {
@@ -104,7 +105,7 @@ abstract class BladeBasedModel implements Responsable
 
     public function baseName(): string
     {
-        return class_basename(new static);
+        return \class_basename(new static);
     }
 
     public function lowerBaseName(): string
@@ -119,7 +120,7 @@ abstract class BladeBasedModel implements Responsable
             return base_path('tests/Fixtures/' . $this->lowerBaseName());
         }
 
-        dd(resource_path('views/' . $this->lowerBaseName()));
+        // todo: make this dynamic
         return resource_path('views/' . $this->lowerBaseName());
     }
 
