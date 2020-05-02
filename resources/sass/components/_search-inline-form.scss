@@ -1,0 +1,59 @@
+.search-inline-form {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include e('inner') {
+    position: relative;
+    width:100%;
+    max-width: 400px;
+    input {
+      width: 100%;
+      border-radius: 1rem;
+      color: $neutral-400;
+      border: 1px solid $neutral-200;
+      padding: .5rem 105px .5rem 16px;
+    }
+    button {
+      width: 100px;
+      position: absolute;
+      top: .12rem;
+      right: .12rem;
+      height: 2rem;
+    }
+    label {
+      position: absolute;
+      top: -0.35rem;
+      left: 1.5rem;
+      color: $neutral-300;
+      font-size: 12px;
+    }
+  }
+
+  @include e('label-background') {
+    position: absolute;
+    background: $white;
+    top: 0;
+    left: 1.3rem;
+    width: 2.2rem;
+    height: 1px;
+  }
+}
+
+@include breakpoint('mobile') {
+  .search-inline-form {
+    @include e('inner') {
+      width: 100%;
+      max-width: unset;
+      input {
+        padding: .4rem 85px .4rem 14px;
+      }
+      button {
+        font-size: 16px;
+        width: 90px;
+        height: 1.9rem;
+      }
+    }
+  }
+}

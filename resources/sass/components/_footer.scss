@@ -1,0 +1,29 @@
+.footer {
+  margin-bottom: 1rem;
+  font-size: 16px;
+  a {
+    color: $primary-300;
+    text-decoration: none;
+  }
+  ul {
+    width: 100%;
+    justify-content: flex-end;
+    display: flex;
+  }
+  li + li  {
+    margin-left: .5rem;
+    &:before {
+      color: $primary-300;
+      content: "|";
+      margin-right: .5rem;
+    }
+  }
+}
+
+@include breakpoint('mobile') {
+  .footer {
+    ul {
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  
+  @include m(narrow) {
+    max-width: 850px;
+  }
+}
+
+@include breakpoint('mobile') {
+  .container {
+    padding: 0 1rem;
+  }
+}

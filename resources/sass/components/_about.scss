@@ -1,0 +1,37 @@
+.about {
+  margin-bottom: 2rem;
+
+  @include e("back") {
+    margin-bottom: 1rem;
+  }
+  @include e("heading") {
+    font-size: 40px;
+    font-family: $fontFamilySpecail;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  @include e("explaination") {
+    margin-bottom: 3rem;
+    p + p {
+      margin-top: 1rem;
+    }
+  }
+}
+
+@include breakpoint("mobile") {
+  .about {
+    @include e("heading") {
+      font-size: 32px;
+      margin-bottom: 1.5rem;
+    }
+    @include e("explaination") {
+      p {
+        font-size: 18px;
+      }
+    }
+    @include e("explaination") {
+      margin-bottom: 2rem;
+    }
+
+  }
+}

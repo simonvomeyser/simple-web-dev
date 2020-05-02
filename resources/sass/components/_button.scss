@@ -1,0 +1,20 @@
+.button {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $primary;
+  text-decoration: none;
+  padding: 7px;
+  font-size: 14px;
+  color: $white;
+  border-radius: 1rem;
+  @include anim();
+
+  @include m("full-width") {
+    width: 100%;
+  }
+  &:hover {
+    opacity: .75;
+  }
+}

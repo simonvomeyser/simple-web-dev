@@ -1,0 +1,27 @@
+html {
+  box-sizing: border-box;
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  font-family: $fontFamilyDefault;
+  font-weight: 300;
+  padding: 0;
+  background-color: $background;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}

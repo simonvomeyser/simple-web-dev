@@ -1,0 +1,35 @@
+// Colors
+// =================================================
+$white: #fff;
+$black: #000;
+
+$primary: #8798FD;
+$primary-100: #F5F6FB;
+$primary-150: #D6DCFE;
+$primary-200: #BEC8FD;
+$primary-300: #A3B3C6;
+$primary-400: #9397C1;
+
+$neutral-100: #FCFCFC;
+$neutral-200: #E5E8EC;
+$neutral-300: #AAAAAA;
+$neutral-350: #646464;
+$neutral-400: #384E66;
+$neutral-450: #152A41;
+$neutral-500: #232323;
+
+$background: $neutral-100;
+$navbar-background-color: $white;
+$text-copy: $neutral-500;
+$text-h1: $neutral-500;
+$text-h2: $neutral-400;
+
+// Other
+// =================================================
+
+$fontFamilyDefault : 'Roboto', sans-serif;
+$fontFamilySpecail : 'Sanchez', serif;
+
+$shadow-key-umbra-opacity:      0.20 !default;
+$shadow-key-penumbra-opacity:   0.14 !default;
+$shadow-ambient-shadow-opacity: 0.12 !default;

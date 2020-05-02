@@ -1,0 +1,18 @@
+.posts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+}
+
+@include breakpoint('tablet') {
+  .posts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@include breakpoint('mobile') {
+  .posts {
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+}

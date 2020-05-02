@@ -1,0 +1,9 @@
+.main {
+  margin-bottom: 2rem;
+}
+
+@include breakpoint('mobile') {
+  .main {
+    margin-bottom: 1rem;
+  }
+}

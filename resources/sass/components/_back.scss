@@ -1,0 +1,34 @@
+.back {
+  position: relative;
+  width: 30px;
+  height: 30px;
+
+  img {
+    @include anim();
+    width: 30px;
+    height: 30px;
+  }
+
+  @include e('text') {
+    opacity: 0;
+    padding-left: 35px;
+    position: absolute;
+    top: -2px;
+    width: auto;
+    white-space: nowrap;
+    left: -5px;
+    text-decoration: none;
+    @include anim();
+  }
+  
+  &:hover, &:focus {
+    .back__text {
+      opacity: 1;
+      left: 0;
+    }
+  }
+}
+
+@include breakpoint('mobile') {
+
+}
