@@ -2,9 +2,8 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Support\Carbon;
-use Illuminate\Support\HtmlString;
 use Tests\TestCase;
+use Illuminate\Support\HtmlString;
 
 class SinglePostPageTest extends TestCase
 {
