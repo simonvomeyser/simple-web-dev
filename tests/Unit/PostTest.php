@@ -133,7 +133,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function posts_can_be_found_by_their_slug()
+    public function posts_can_be_found_by_their_filename_slug()
     {
         $post = factory(Post::class)->create();
 
@@ -141,6 +141,18 @@ class PostTest extends TestCase
 
         $this->assertSame($foundPost->slug(), $post->slug());
     }
+
+    /** @test */
+    public function posts_can_also_be_found_by_their_definded_slug()
+    {
+        $post = factory(Post::class)->create(['slug' => 'this-is-a-slug']);
+
+        $foundPost = Post::findBySlug('this-is-a-slug');
+
+        $this->assertSame($foundPost->slug(), $post->slug());
+    }
+
+
 
     /** @test */
     public function a_post_can_be_checked_if_it_exists()
