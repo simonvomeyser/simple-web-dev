@@ -3,10 +3,11 @@
 namespace Tests\Unit;
 
 use App\Post;
+use Tests\TestCase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Tests\TestCase;
 
 class PostTest extends TestCase
 {
@@ -96,6 +97,18 @@ class PostTest extends TestCase
         factory('App\Post')->create();
 
         $this->assertCount(1, Post::released());
+    }
+
+    /** @test */
+    public function all_posts_are_returned_from_released_scope_when_in_local_development_mode()
+    {
+        factory('App\Post')->create(['release_date' => '']);
+        factory('App\Post')->create(['release_date' => Carbon::tomorrow()]);
+        factory('App\Post')->create();
+
+        Config::set('app.env', 'local');
+
+        $this->assertCount(3, Post::released());
     }
 
     /** @test */

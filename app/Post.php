@@ -27,6 +27,11 @@ class Post extends BladeBasedModel
     public static function released()
     {
         return static::all()->filter(function ($post) {
+            // todo: find better way to do this
+            if (config('app.env') === 'local') {
+                return true;
+            }
+
             if (!$post->release_date) {
                 return false;
             }
