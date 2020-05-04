@@ -6,7 +6,14 @@
 
 @section('slug', 'the-laravel-scheduler-without-cronjobs')
 
-@section('excerpt', 'Id et eveniet non.')
+@section('excerpt')
+
+The Laravel Scheduler is an awesome tool since it greatly simplifies the usage of confusing cron job definitions I am
+too not smart enough for.
+
+Learn to use this feature without access to your servers cron jobs on cheap hosters
+
+@endsection
 
 @section('tags', '["Backend", "Dev Ops", "Laravel"]')
 
