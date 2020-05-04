@@ -27,6 +27,9 @@
         <div class="post-preview__excerpt">
             <div>{{$post->excerpt}}</div>
         </div>
+        <div class="post-preview__date">
+            <div>Written {{$post->release_date()->diffForHumans()}}</div>
+        </div>
         <div class="post-preview__button">
             <a href="{{$post->link()}}" class="button">Read more</a>
         </div>

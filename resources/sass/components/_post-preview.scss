@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
 
-  @include e('thumbnail') {
+  @include e("thumbnail") {
     padding-top: 56.25%;
     position: relative;
     overflow: hidden;
@@ -14,43 +14,44 @@
       height: 100%;
       width: auto;
       max-width: unset;
-      transform: translate(-50%, -50%)
+      transform: translate(-50%, -50%);
     }
   }
 
-  @include e('under-image'){
-    padding: .5rem;
+  @include e("under-image") {
+    padding: 0.5rem;
     height: 100%;
     display: flex;
     flex-direction: column;
   }
 
-  @include e('est-reading-time'){
+  @include e("est-reading-time") {
   }
 
-  @include e('meta'){
+  @include e("meta") {
     display: flex;
     justify-content: space-between;
   }
 
-  @include e('heading'){
+  @include e("heading") {
     font-family: $fontFamilySpecail;
     font-size: 24px;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
-  @include e('excerpt'){
+  @include e("excerpt") {
     font-size: 14px;
     flex: 1;
     margin-bottom: 1rem;
   }
-  @include e('button'){
+  @include e("date") {
+    font-size: 14px;
+    color: $neutral-350;
   }
-
 }
 
-@include breakpoint('mobile') {
+@include breakpoint("mobile") {
   .post-preview {
-    @include e('meta') {
+    @include e("meta") {
       display: none;
     }
   }

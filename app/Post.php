@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
+
 class Post extends BladeBasedModel
 {
     public function getFilename(): string
@@ -28,6 +29,11 @@ class Post extends BladeBasedModel
     public function tags(): array
     {
         return json_decode(html_entity_decode($this->tags)) ?? [];
+    }
+    // todo: this should be "casts"
+    public function release_date(): Carbon
+    {
+        return Carbon::parse($this->release_date);
     }
 
     public function readingTime(): string
