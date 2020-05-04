@@ -29,7 +29,9 @@
         <div>{{$item->excerpt}}</div>
     </div>
     @empty
-    <p>{{__('posts.no-posts-found')}}</p>
+    <div class="no-posts">
+        <img src="{{asset('images/found-nothing.svg')}}" alt="Oh no, a sad looking doggo">
+    </div>
     @endforelse
 
     </div>
