@@ -24,12 +24,12 @@ Route::get('/posts', function () {
     return view('posts')->with('posts', Post::released());
 })->name('posts');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 Route::get('/{slug}', function ($slug) {
     $post = Post::findBySlug($slug);
 
     return $post ?? abort(404);
 })->name('posts.single');
-
-Route::get('/about', function () {
-    return 'todo';
-})->name('about');
