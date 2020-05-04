@@ -2,7 +2,7 @@
 
 @section('title', 'Ten Trello Tidbits or Why Their UX Team Deserves a Hug ')
 
-@section('release_date', 'Saturday, 2. May 2020')
+@section('release_date', 'October 2019')
 
 @section('slug', 'ten-trello-tidbits')
 

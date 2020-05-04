@@ -2,7 +2,7 @@
 
 @section('title', 'BEM by Example – Part 2, the header')
 
-@section('release_date', '2020-05-01 00:00:00')
+@section('release_date', 'December 2019')
 
 @section('slug', 'bem-by-example-part-2')
 

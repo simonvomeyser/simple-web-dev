@@ -2,7 +2,7 @@
 
 @section('title', 'Use the Laravel Scheduler without access to cronjobs')
 
-@section('release_date', '2020-05-01 00:00:00')
+@section('release_date', 'March 2020')
 
 @section('slug', 'the-laravel-scheduler-without-cronjobs')
 

@@ -2,7 +2,7 @@
 
 @section('title', 'CSS Structure with BEM in a real world Example')
 
-@section('release_date', '2020-05-07')
+@section('release_date', 'November 2019')
 
 @section('slug', 'bem-by-example')
 

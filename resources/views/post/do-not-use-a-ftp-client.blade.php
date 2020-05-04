@@ -2,7 +2,7 @@
 
 @section('title', 'You might not need a FTP client to deploy your website…')
 
-@section('release_date', '2020-05-01 00:00:00')
+@section('release_date', 'February 2020')
 
 @section('slug', 'do-not-use-a-ftp-client')
 
