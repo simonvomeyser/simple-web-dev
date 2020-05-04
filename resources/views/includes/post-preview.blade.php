@@ -7,7 +7,12 @@
     <div class="post-preview__under-image">
         <div class="post-preview__meta">
             <div class="post-preview__categories">
-                todo: categories
+
+                @foreach ($post->tags() as $tag)
+                <a href="{{route('posts', ["tag" => $tag]) }}" class="pill" title="Show other posts with {{$tag}}">
+                    {{$tag}}
+                </a>
+                @endforeach
             </div>
             <div class="post-preview__est-reading-time">
                 <div class="est-reading-time">
