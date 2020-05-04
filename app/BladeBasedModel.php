@@ -2,16 +2,19 @@
 
 namespace App;
 
-use Illuminate\Contracts\Support\Responsable;
+use App\ViewQueryBuilder;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Traits\ForwardsCalls;
-use App\ViewQueryBuilder;
+use Illuminate\Contracts\Support\Responsable;
 
-abstract class BladeBasedModel implements Responsable
+//todo: implement , ArrayAccess, Jsonable, JsonSerializable,
+
+abstract class BladeBasedModel implements Responsable, Arrayable
 {
     use ForwardsCalls;
 
@@ -171,5 +174,15 @@ abstract class BladeBasedModel implements Responsable
     public function toResponse($request)
     {
         return new Response($this->view()) ?? abort(404);
+    }
+
+    /**
+     * Get the instance as an array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->attributes;
     }
 }
