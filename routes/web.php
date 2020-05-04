@@ -29,3 +29,7 @@ Route::get('/{slug}', function ($slug) {
 
     return $post ?? abort(404);
 })->name('posts.single');
+
+Route::get('/about', function () {
+    return 'todo';
+})->name('about');
