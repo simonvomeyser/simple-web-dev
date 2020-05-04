@@ -18,23 +18,15 @@
 </section>
 <section class="container">
 
-    <p>Welcome, here are all your blade posts</p>
+    <h1>Welcome, here are all your blade posts</h1>
 
-    @forelse ($posts as $item)
-    <div>
-        <a href="{{ $item->link() }}">
-            <img src="{{$item->list_header_image}}" alt="List image of the post {{$item->title}}">
-        </a>
-        <div>{{$item->title}}</div>
-        <div>{{$item->excerpt}}</div>
-    </div>
-    @empty
-    <div class="no-posts">
-        <img src="{{asset('images/found-nothing.svg')}}" alt="Oh no, a sad looking doggo">
-    </div>
-    @endforelse
+    <div class="posts">
+
+        @each('includes.post-preview', $posts, 'post', 'includes.no-posts-found')
 
     </div>
+
+
 </section>
 
 @endsection
