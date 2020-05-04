@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Post;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostTest extends TestCase
 {
+    use WithFaker;
+
     /** @test */
     public function a_post_can_be_created()
     {
@@ -192,5 +195,16 @@ class PostTest extends TestCase
         });
         $response = $this->get('test');
         $this->assertTrue(get_class($response->exception) === NotFoundHttpException::class);
+    }
+
+    /** @test */
+    public function it_estimates_reading_time()
+    {
+        $longPost = factory(Post::class)->create(['content' => $this->faker->sentences(700, true)]);
+        $mediumPost = factory(Post::class)->create(['content' => $this->faker->sentences(300, true)]);
+        $shortPost = factory(Post::class)->create(['content' => $this->faker->sentences(100, true)]);
+
+        $this->assertTrue($longPost->readingTime() > $mediumPost->readingTime());
+        $this->assertTrue($mediumPost->readingTime() > $shortPost->readingTime());
     }
 }

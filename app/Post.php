@@ -24,6 +24,13 @@ class Post extends BladeBasedModel
         return !!$this->slug ? $this->slug : Str::slug($this->title);
     }
 
+    public function readingTime(): string
+    {
+        $word = str_word_count(strip_tags($this->content));
+        $minutes = floor($word / 200);
+        return $minutes;
+    }
+
     public static function released()
     {
         return static::all()->filter(function ($post) {
