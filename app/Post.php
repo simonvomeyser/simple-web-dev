@@ -24,6 +24,12 @@ class Post extends BladeBasedModel
         return !!$this->slug ? $this->slug : Str::slug($this->title);
     }
 
+    // todo: this should be "casts"
+    public function tags(): array
+    {
+        return json_decode(html_entity_decode($this->tags)) ?? [];
+    }
+
     public function readingTime(): string
     {
         $word = str_word_count(strip_tags($this->content));
