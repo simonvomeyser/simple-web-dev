@@ -10,7 +10,10 @@
                 todo: categories
             </div>
             <div class="post-preview__est-reading-time">
-                todo: reading time
+                <div class="est-reading-time">
+                    <span>{{$post->readingTime()}} min read</span>
+                    <img src="{{asset('images/clock.svg')}}" alt="Symbol of a clock">
+                </div>
             </div>
         </div>
         <div class="post-preview__heading">
