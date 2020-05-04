@@ -31,10 +31,15 @@
         </div>
     </header>
 
-    <main>
+    <main class="main">
         @yield('main')
     </main>
-    <footer class="footer">footer</footer>
+    <footer class="footer container">
+        <ul>
+            <li><a href="#">Legal Notice</a></li>
+            <li><a href="#">Privacy</a></li>
+        </ul>
+    </footer>
 </body>
 
 </html>
