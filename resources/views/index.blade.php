@@ -7,7 +7,7 @@
 
     <div class="posts">
 
-        @each('includes.post-preview', $posts, 'post')
+        @each('includes.post-preview', $posts, 'post', 'includes.no-posts-found')
 
     </div>
 </section>
