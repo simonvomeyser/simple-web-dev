@@ -60,4 +60,22 @@ class FrontPageTest extends TestCase
             ->assertDontSee($postWithoutReleaseDate->link())
             ->assertDontSee($postWithFutureReleaseDate->link());
     }
+
+
+    /** @test */
+    public function the_three_latest_posts_are_found()
+    {
+        factory('App\Post', 3)->create(['release_date' => Carbon::now()->subMonth()]);
+        $currentPosts = factory('App\Post', 3)->create(['release_date' => Carbon::yesterday()]);
+        factory('App\Post', 3)->create(['release_date' => Carbon::now()->subYear()]);
+
+        $response = $this->get('/');
+
+        foreach ($currentPosts as $post) {
+            $response
+                ->assertSee($post->title)
+                ->assertSee($post->excerpt)
+                ->assertSee($post->list_header_image);
+        }
+    }
 }

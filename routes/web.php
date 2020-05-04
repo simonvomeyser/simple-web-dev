@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $posts = Post::released();
+    $latestThreePosts = Post::released()->forPage(1, 3);
 
-    return view('index')->with('posts', $posts->only(0, 1, 2));
+    return view('index')->with('posts', $latestThreePosts);
 })->name('index');
 
 Route::get('/posts', function () {
