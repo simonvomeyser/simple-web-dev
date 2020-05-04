@@ -16,9 +16,11 @@ I currently find BEM immensely helpful but i did not find examples using it in a
 
 @section('tags', '["Frontend", "Tutorial"]')
 
-@section('header_image', 'https://placehold.it/1024x768')
+@section('header_image',
+'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-1-list-header-image.png')
 
-@section('list_header_image', 'https://placehold.it/1024x768')
+@section('list_header_image',
+'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-1-list-header-image.png')
 
 @section('content')
 

@@ -16,9 +16,11 @@ But there are a few small steps that really are easy without sailing rough seas 
 
 @section('tags', '["Backend","Dev Ops"]')
 
-@section('header_image', 'https://placehold.it/1024x768')
+@section('header_image',
+'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png')
 
-@section('list_header_image', 'https://placehold.it/1024x768')
+@section('list_header_image',
+'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png')
 
 @section('content')
 

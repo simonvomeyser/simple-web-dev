@@ -17,9 +17,11 @@ Learn to use this feature without access to your servers cron jobs on cheap host
 
 @section('tags', '["Backend", "Dev Ops", "Laravel"]')
 
-@section('header_image', 'https://placehold.it/1024x768')
+@section('header_image',
+'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611629/laravel-scheduler/laravel-scheduler-list-header-image.jpg')
 
-@section('list_header_image', 'https://placehold.it/1024x768')
+@section('list_header_image',
+'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611629/laravel-scheduler/laravel-scheduler-list-header-image.jpg')
 
 @section('content')
 

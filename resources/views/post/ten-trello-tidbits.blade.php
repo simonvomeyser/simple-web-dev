@@ -18,7 +18,8 @@ I mean.. I regularly feel hugged by the trello UX team.. is that really just me?
 
 @section('header_image', 'https://res.cloudinary.com/simonvomeyser/image/upload/v1532495798/Trello/trello-header.png')
 
-@section('list_header_image', 'https://placehold.it/1024x768')
+@section('list_header_image',
+'https://res.cloudinary.com/simonvomeyser/image/upload/v1588430767/Trello/Header-Trello.png')
 
 @section('content')
 
