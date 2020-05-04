@@ -3,6 +3,7 @@
 namespace App;
 
 use App\ViewQueryBuilder;
+use ArrayAccess;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
@@ -14,7 +15,7 @@ use Illuminate\Contracts\Support\Responsable;
 
 //todo: implement , ArrayAccess, Jsonable, JsonSerializable,
 
-abstract class BladeBasedModel implements Responsable, Arrayable
+abstract class BladeBasedModel implements Responsable, Arrayable, ArrayAccess
 {
     use ForwardsCalls;
 
@@ -44,14 +45,14 @@ abstract class BladeBasedModel implements Responsable, Arrayable
 
     public function __set($key, $value)
     {
-        $this->attributes[$key] = $value;
+        $this->setAttribute($key, $value);
 
         return $this;
     }
 
     public function __get($key)
     {
-        return $this->attributes[$key] ?? null;
+        return $this->getAttribute($key);
     }
 
     public function save()
@@ -184,5 +185,61 @@ abstract class BladeBasedModel implements Responsable, Arrayable
     public function toArray()
     {
         return $this->attributes;
+    }
+
+    public function getAttribute($key)
+    {
+        return $this->attributes[$key] ?? null;
+    }
+
+    public function setAttribute($key, $value)
+    {
+        $this->attributes[$key] = $value;
+    }
+
+
+    /**
+     * Determine if the given attribute exists.
+     *
+     * @param  mixed  $offset
+     * @return bool
+     */
+    public function offsetExists($offset)
+    {
+        return !is_null($this->getAttribute($offset));
+    }
+
+    /**
+     * Get the value for a given offset.
+     *
+     * @param  mixed  $offset
+     * @return mixed
+     */
+    public function offsetGet($offset)
+    {
+        return $this->getAttribute($offset);
+    }
+
+    /**
+     * Set the value for a given offset.
+     *
+     * @param  mixed  $offset
+     * @param  mixed  $value
+     * @return void
+     */
+    public function offsetSet($offset, $value)
+    {
+        $this->setAttribute($offset, $value);
+    }
+
+    /**
+     * Unset the value for a given offset.
+     *
+     * @param  mixed  $offset
+     * @return void
+     */
+    public function offsetUnset($offset)
+    {
+        unset($this->attributes[$offset]);
     }
 }
