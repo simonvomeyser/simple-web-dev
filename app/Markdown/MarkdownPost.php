@@ -2,6 +2,7 @@
 
 namespace App\Markdown;
 
+use Illuminate\Support\Str;
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
@@ -27,7 +28,17 @@ class MarkdownPost
         $this->parseContent($yamlObject->body());
     }
 
-    public function mapToProperties(array $frontMatterData)
+    public function getLink()
+    {
+        return route('posts.single', ['slug' => $this->getSlug()]);
+    }
+
+    public function getSlug()
+    {
+        return $this->slug ?? Str::slug($this->title);
+    }
+
+    protected function mapToProperties(array $frontMatterData)
     {
         foreach ($frontMatterData as $key => $value) {
             $this->$key = $value;
@@ -38,14 +49,12 @@ class MarkdownPost
         }
     }
 
-    public function parseContent(string $markdown)
+    protected function parseContent(string $markdown)
     {
         $this->content = Markdown::parse($markdown);
     }
 
-
-
-    public static function getFolderPath(): string
+    protected static function getFolderPath(): string
     {
         if (env('APP_ENV') === 'testing') {
             return base_path('tests/Fixtures/');

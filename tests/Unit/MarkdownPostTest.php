@@ -56,6 +56,9 @@ class MarkdownPostTest extends TestCase
     /** @test */
     public function it_returns_a_link_to_itself()
     {
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertStringContainsString(config('app.url'), $post->getLink());
     }
 
     /** @test */
