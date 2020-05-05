@@ -2,8 +2,9 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Markdown\MarkdownPost;
+use Illuminate\Foundation\Testing\WithFaker;
 
 class MarkdownPostTest extends TestCase
 {
@@ -12,10 +13,27 @@ class MarkdownPostTest extends TestCase
     /** @test */
     public function a_post_can_be_created_from_a_markdown_file()
     {
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertNotNull($post);
     }
 
     /** @test */
-    public function it_parses_the_frontmatter_data_in_the_right_datatypes()
+    public function it_parses_the_frontmatter_data()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertNotEmpty($post->title);
+        $this->assertNotEmpty($post->content);
+        $this->assertNotEmpty($post->excerpt);
+        $this->assertNotEmpty($post->release_date);
+        $this->assertNotEmpty($post->slug);
+        $this->assertNotEmpty($post->tags);
+        $this->assertNotEmpty($post->header_image);
+        $this->assertNotEmpty($post->list_image);
+    }
+
+    public function it_parses_special_frontmatter_data_in_the_right_datatypes()
     {
     }
 
