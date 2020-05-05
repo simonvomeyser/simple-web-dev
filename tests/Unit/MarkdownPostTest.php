@@ -44,6 +44,16 @@ class MarkdownPostTest extends TestCase
     }
 
     /** @test */
+    public function it_parses_the_markdown_content_to_html()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertStringContainsString('<a href=', $post->content);
+        $this->assertStringContainsString('<p>', $post->content);
+        $this->assertStringContainsString('<h2>', $post->content);
+    }
+
+    /** @test */
     public function it_returns_a_link_to_itself()
     {
     }
