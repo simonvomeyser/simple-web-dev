@@ -122,9 +122,9 @@ be used to represent almost anything. Most commonly though, it is used in a <a
 “todo” “doing” or “backlog”.
 
 I’ve also seen people use (and myself used) Trello for the wildest things. An example is using the lists for
-every weekday and the cards for things they to do. Another <a
-    href="https://blog.hubspot.com/sales/personal-connections-template">example</a> is to create cards for
-to organize the people in your network to improve relationships with them or use Lists for every member of
+every weekday and the cards for things they have to do. Another <a
+    href="https://blog.hubspot.com/sales/personal-connections-template">example</a> is to create cards to organize the
+people in your network to improve relationships with them or use Lists for every member of
 your team to organize their todos.
 
 The possibilities are <a href="https://trello.com/inspiration">endless</a>, and this is why I am a big fan of
@@ -134,8 +134,8 @@ helps you immensely. After all:
 
 <blockquote>
     When you find the right process, the tool you use will become insignificant.
-
 </blockquote>
+
 <h2>Create cards via E-Mail</h2>
 A nice feature is the fact, that every board comes with a dedicated email address. When you are poor person
 in charge of client communication, you can simply send a task from a conversation to a board. From there
