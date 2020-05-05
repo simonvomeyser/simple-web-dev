@@ -3,6 +3,7 @@
 namespace App\Markdown;
 
 use Illuminate\Mail\Markdown;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -30,6 +31,10 @@ class MarkdownPost
     {
         foreach ($frontMatterData as $key => $value) {
             $this->$key = $value;
+        }
+
+        if ($this->release_date) {
+            $this->release_date = Carbon::parse($this->release_date);
         }
     }
 

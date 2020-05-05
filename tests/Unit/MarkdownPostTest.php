@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Markdown\MarkdownPost;
+use Illuminate\Support\Carbon;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class MarkdownPostTest extends TestCase
@@ -33,8 +34,13 @@ class MarkdownPostTest extends TestCase
         $this->assertNotEmpty($post->list_image);
     }
 
+    /** @test */
     public function it_parses_special_frontmatter_data_in_the_right_datatypes()
     {
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertTrue(Carbon::class === get_class($post->release_date));
+        $this->assertTrue(is_array($post->tags));
     }
 
     /** @test */
