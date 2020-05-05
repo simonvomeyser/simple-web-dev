@@ -54,7 +54,24 @@ class MarkdownPost
         $this->content = Markdown::parse($markdown);
     }
 
-    protected static function getFolderPath(): string
+    public static function all()
+    {
+        $collection = collect();
+
+        if (!File::isDirectory(static::getFolderPath())) {
+            return $collection;
+        }
+
+        $files = File::allFiles(static::getFolderPath());
+
+        foreach ($files as $file) {
+            $collection->add(new self($file->getFilename()));
+        }
+
+        return $collection;
+    }
+
+    public static function getFolderPath(): string
     {
         if (env('APP_ENV') === 'testing') {
             return base_path('tests/Fixtures/');

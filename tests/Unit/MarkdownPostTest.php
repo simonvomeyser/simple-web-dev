@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Markdown\MarkdownPost;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class MarkdownPostTest extends TestCase
@@ -59,6 +60,16 @@ class MarkdownPostTest extends TestCase
         $post = new MarkdownPost('post-number-one.md');
 
         $this->assertStringContainsString(config('app.url'), $post->getLink());
+    }
+
+    /** @test */
+    public function all_posts_can_be_retrieved()
+    {
+        $posts = MarkdownPost::all();
+
+        $filesInFixtures = File::allFiles(MarkdownPost::getFolderPath());
+
+        $this->assertCount(count($filesInFixtures), $posts);
     }
 
     /** @test */
