@@ -47,6 +47,10 @@ class MarkdownPost
         if ($this->release_date) {
             $this->release_date = Carbon::parse($this->release_date);
         }
+
+        if (!$this->tags) {
+            $this->tags = [];
+        }
     }
 
     protected function parseContent(string $markdown)

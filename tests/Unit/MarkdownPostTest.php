@@ -42,6 +42,9 @@ class MarkdownPostTest extends TestCase
 
         $this->assertTrue(Carbon::class === get_class($post->release_date));
         $this->assertTrue(is_array($post->tags));
+        $postTwo = new MarkdownPost('post-number-two.md');
+        $this->assertTrue(is_array($postTwo->tags));
+        $this->assertTrue(empty($postTwo->tags));
     }
 
     /** @test */
