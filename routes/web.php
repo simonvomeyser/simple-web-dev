@@ -1,5 +1,6 @@
 <?php
 
+use App\Markdown\MarkdownPost;
 use App\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $latestThreePosts = Post::released()->forPage(1, 3);
+    $latestThreePosts = MarkdownPost::released()->forPage(1, 3);
 
     return view('index')->with('posts', $latestThreePosts);
 })->name('index');

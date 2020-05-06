@@ -19,6 +19,8 @@ class MarkdownPost
     public $header_image;
     public $list_image;
 
+    public static $folderPath;
+
     public function __construct($file)
     {
         $fileContents = File::get(static::getFolderPath() . $file);
@@ -102,10 +104,11 @@ class MarkdownPost
 
     public static function getFolderPath(): string
     {
-        if (env('APP_ENV') === 'testing') {
-            return base_path('tests/Fixtures/');
-        }
+        return static::$folderPath ?? resource_path('markdown/');
+    }
 
-        return resource_path('markdown/');
+    public static function fake($folderPath = null)
+    {
+        static::$folderPath = $folderPath ?? base_path('tests/Fixtures/');
     }
 }

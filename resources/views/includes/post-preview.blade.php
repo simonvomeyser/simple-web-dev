@@ -1,14 +1,14 @@
 <article class="post-preview">
     <div class="post-preview__thumbnail">
-        <a href="{{ $post->link() }}">
-            <img src="{{$post->list_header_image}}" alt="List image of the post {{$post->title}}">
+        <a href="{{ $post->getLink() }}">
+            <img src="{{$post->list_image}}" alt="List image of the post {{$post->title}}">
         </a>
     </div>
     <div class="post-preview__under-image">
         <div class="post-preview__meta">
             <div class="post-preview__categories">
 
-                @foreach ($post->tags() as $tag)
+                @foreach ($post->tags as $tag)
                 <a href="{{route('posts', ["tag" => $tag]) }}" class="pill" title="Show other posts with {{$tag}}">
                     {{$tag}}
                 </a>
@@ -28,10 +28,10 @@
             <div>{{$post->excerpt}}</div>
         </div>
         <div class="post-preview__date">
-            <div>Written {{$post->release_date()->diffForHumans()}}</div>
+            <div>Written {{$post->release_date->diffForHumans()}}</div>
         </div>
         <div class="post-preview__button">
-            <a href="{{$post->link()}}" class="button">Read more</a>
+            <a href="{{$post->getLink()}}" class="button">Read more</a>
         </div>
 
     </div>

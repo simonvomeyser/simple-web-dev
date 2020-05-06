@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Markdown\MarkdownPost;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
@@ -20,21 +21,24 @@ class FrontPageTest extends TestCase
     /** @test */
     public function the_page_shows_no_post_if_none_are_present()
     {
+        MarkdownPost::fake('empty/folder');
         $this->get('/')->assertSee(__('posts.no-posts-found'));
     }
 
     /** @test */
-    public function three_created_posts_are_found_with_essential_data()
+    public function released_posts_are_shown_in_right_order()
     {
-        $posts = factory('App\Post', 3)->create();
+        MarkdownPost::fake();
 
         $response = $this->get('/');
+
+        $posts = MarkdownPost::released()->forPage(1, 3);
 
         foreach ($posts as $post) {
             $response
                 ->assertSee($post->title)
                 ->assertSee($post->excerpt)
-                ->assertSee($post->list_header_image);
+                ->assertSee($post->list_image);
         }
     }
 
