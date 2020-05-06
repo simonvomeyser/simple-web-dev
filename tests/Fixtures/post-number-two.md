@@ -1,6 +1,6 @@
 ---
 title: Post number two
-release_date: March 2020
+release_date: March 2018
 slug: slug-of-post-two
 excerpt:
     vestibulum proin sed aliquam montes at donec condimentum. Egestas praesent quisque laoreet ipsum est elementum integer pretium eget

@@ -78,21 +78,19 @@ class MarkdownPostTest extends TestCase
     /** @test */
     public function only_released_posts_are_returned_from_released_scope()
     {
-    }
+        $releasedPosts = MarkdownPost::released();
 
-    /** @test */
-    public function all_posts_are_returned_from_released_scope_when_in_local_development_mode()
-    {
-    }
-
-    /** @test */
-    public function it_returns_the_right_instance_classname()
-    {
+        foreach ($releasedPosts as $post) {
+            $this->assertTrue($post->release_date->isPast());
+        }
     }
 
     /** @test */
     public function released_posts_are_sorted_by_release_date()
     {
+        $posts = MarkdownPost::released();
+
+        $this->assertTrue($posts->first()->release_date->isAfter($posts->last()->release_date));
     }
 
     /** @test */

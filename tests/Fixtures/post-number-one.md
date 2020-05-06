@@ -1,6 +1,6 @@
 ---
 title: Post number one
-release_date: October 2019
+release_date: October 2017
 slug: just-a-slug
 excerpt:
     Torquent sit nibh euismod magna mi imperdiet luctus blandit platea, vulputate fusce senectus nam dolor etiam adipiscing lorem lectus quam.

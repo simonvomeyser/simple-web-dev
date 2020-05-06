@@ -52,6 +52,10 @@ class MarkdownPost
             $this->tags = [];
         }
     }
+    public function isReleased()
+    {
+        return $this->release_date && $this->release_date->isPast();
+    }
 
     protected function parseContent(string $markdown)
     {
@@ -72,8 +76,16 @@ class MarkdownPost
             $collection->add(new self($file->getFilename()));
         }
 
-        return $collection;
+        return $collection->sortByDate('release_date');
     }
+
+    public static function released()
+    {
+        return static::all()->filter(function ($post) {
+            return $post->isReleased();
+        });
+    }
+
 
     public static function getFolderPath(): string
     {
