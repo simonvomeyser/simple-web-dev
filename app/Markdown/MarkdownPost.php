@@ -33,6 +33,13 @@ class MarkdownPost
         return route('posts.single', ['slug' => $this->getSlug()]);
     }
 
+    public function readingTime()
+    {
+        $word = str_word_count(strip_tags($this->content));
+        $minutes = intval(floor($word / 200));
+        return $minutes ?? 1;
+    }
+
     public function getSlug()
     {
         return $this->slug ?? Str::slug($this->title);

@@ -103,33 +103,12 @@ class MarkdownPostTest extends TestCase
         $this->assertEquals($postBySlug->content, $post->content);
     }
 
-    /** @test */
-    public function posts_can_also_be_found_by_their_definded_slug()
-    {
-    }
-
-    /** @test */
-    public function a_post_can_be_checked_if_it_exists()
-    {
-    }
-
-    /** @test */
-    public function a_view_response_can_be_retrieved_from_an_existing_blade_based_model()
-    {
-    }
-
-    /** @test */
-    public function a_blade_based_model_is_responsable()
-    {
-    }
-
-    /** @test */
-    public function a_not_existent_blade_based_model_throws404()
-    {
-    }
 
     /** @test */
     public function it_estimates_reading_time()
     {
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertIsInt($post->readingTime());
     }
 }
