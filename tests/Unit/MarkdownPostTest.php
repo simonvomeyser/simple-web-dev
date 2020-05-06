@@ -13,6 +13,12 @@ class MarkdownPostTest extends TestCase
 {
     use WithFaker;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        MarkdownPost::fake();
+    }
+
     /** @test */
     public function a_post_can_be_created_from_a_markdown_file()
     {
