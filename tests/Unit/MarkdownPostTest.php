@@ -7,6 +7,7 @@ use App\Markdown\MarkdownPost;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Mail\Markdown;
 
 class MarkdownPostTest extends TestCase
 {
@@ -94,8 +95,12 @@ class MarkdownPostTest extends TestCase
     }
 
     /** @test */
-    public function posts_can_be_found_by_their_filename_slug()
+    public function posts_can_be_found_by_their_slug()
     {
+        $postBySlug = MarkdownPost::find('post-number-one-has-a-long-slug');
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertEquals($postBySlug->content, $post->content);
     }
 
     /** @test */

@@ -86,6 +86,12 @@ class MarkdownPost
         });
     }
 
+    public static function find($slug)
+    {
+        return static::all()->filter(function ($post) use ($slug) {
+            return $post->slug === $slug;
+        })->first();;
+    }
 
     public static function getFolderPath(): string
     {
