@@ -122,18 +122,14 @@ class MarkdownPostTest extends TestCase
     public function the_returned_posts_have_incrementing_keys_stating_with_0()
     {
         $posts = MarkdownPost::all();
-        $i = 0;
+        $this->assertSame($posts->first()->title, $posts[0]->title);
+        $this->assertSame($posts->last()->title, $posts[$posts->count() - 1]->title);
 
-        foreach ($posts as $post) {
-            $this->assertArrayHasKey($i, $posts);
-            $i++;
-        }
-
-        $i = 0;
         $releasedPosts = MarkdownPost::released();
-        foreach ($releasedPosts as $post) {
-            $this->assertArrayHasKey($i, $posts);
-            $i++;
+        $expectedArray = range(1, $releasedPosts->count() - 1);
+
+        foreach ($expectedArray as $expectedKey) {
+            $this->assertArrayHasKey($expectedKey, $releasedPosts->toArray());
         }
     }
 }

@@ -85,14 +85,14 @@ class MarkdownPost
             $collection->add(new self($file->getFilename()));
         }
 
-        return $collection->sortByDate('release_date');
+        return $collection->sortByDate('release_date')->values();
     }
 
     public static function released()
     {
         return static::all()->filter(function ($post) {
             return $post->isReleased();
-        });
+        })->values();
     }
 
     public static function find($slug)
