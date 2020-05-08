@@ -7,7 +7,6 @@ use App\Markdown\MarkdownPost;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Mail\Markdown;
 
 class MarkdownPostTest extends TestCase
 {
