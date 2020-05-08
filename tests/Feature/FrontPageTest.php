@@ -22,7 +22,7 @@ class FrontPageTest extends TestCase
     public function the_page_shows_no_post_if_none_are_present()
     {
         MarkdownPost::fake('empty/folder');
-        $this->get('/')->assertSee(__('posts.no-posts-found'));
+        $this->get('/')->assertSee(trans('posts.no-posts-found'));
     }
 
     /** @test */
