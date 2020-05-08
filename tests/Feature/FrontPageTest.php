@@ -26,19 +26,19 @@ class FrontPageTest extends TestCase
     }
 
     /** @test */
-    public function released_posts_are_shown_in_right_order()
+    public function released_posts_and_their_preview_are_shown_in_right_order()
     {
         MarkdownPost::fake();
 
         $response = $this->get('/');
 
-        $posts = MarkdownPost::released()->forPage(1, 3);
+        $posts = MarkdownPost::released()->forPage(1, 3)->toArray();
 
+        $response->assertSeeInOrder([$posts[0]->title, $posts[1]->title, $posts[2]->title]);
+
+        // Inner order of properties
         foreach ($posts as $post) {
-            $response
-                ->assertSee($post->title)
-                ->assertSee($post->excerpt)
-                ->assertSee($post->list_image);
+            $response->assertSeeInOrder([$post->list_image, $post->title, $post->excerpt]);
         }
     }
 
