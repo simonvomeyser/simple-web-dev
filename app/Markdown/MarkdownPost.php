@@ -39,7 +39,7 @@ class MarkdownPost
     {
         $word = str_word_count(strip_tags($this->content));
         $minutes = intval(floor($word / 200));
-        return $minutes ?? 1;
+        return $minutes > 0 ? $minutes : 1;
     }
 
     public function getSlug()

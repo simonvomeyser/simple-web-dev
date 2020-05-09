@@ -118,6 +118,24 @@ class MarkdownPostTest extends TestCase
     }
 
     /** @test */
+    public function really_short_posts_have_one_minute_instead_of_zero_reading_time()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+        $post->content = "<p>Really short statement</p>";
+
+        $this->assertGreaterThan(0, $post->readingTime());
+    }
+
+    /** @test */
+    public function a_long_posts_reading_time_matches_expected_length()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+        $post->content = $this->faker->paragraphs(70, true);
+
+        $this->assertGreaterThan(6, $post->readingTime());
+    }
+
+    /** @test */
     public function the_returned_posts_have_incrementing_keys_stating_with_0()
     {
         $posts = MarkdownPost::all();
