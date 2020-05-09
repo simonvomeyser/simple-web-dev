@@ -18,14 +18,21 @@
 </section>
 <section class="container">
 
+    @if ($posts->count())
+
     <h1>Welcome, here are all your blade posts</h1>
 
     <div class="posts">
-
-        @each('includes.post-preview', $posts, 'post', 'includes.no-posts-found')
-
+        @each('includes.post-preview', $posts, 'post')
     </div>
 
+    @else
+
+    <h1>No posts found</h1>
+
+    @include('includes.no-posts-found')
+
+    @endif
 
 </section>
 

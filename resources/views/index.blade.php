@@ -3,14 +3,22 @@
 @section('main')
 <section class="container">
 
+    @if ($posts->count())
+
     <h1>The 3 most recent posts:</h1>
 
     <div class="posts">
-
-        @each('includes.post-preview', $posts, 'post', 'includes.no-posts-found')
-
+        @each('includes.post-preview', $posts, 'post')
     </div>
-</section>
 
+    @else
+
+    <h1>No posts found</h1>
+
+    @include('includes.no-posts-found')
+
+    @endif
+
+</section>
 
 @endsection
