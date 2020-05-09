@@ -16,9 +16,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(EloquentFactory::class, function ($app) {
-            return new FactoryProxy($app);
-        });
     }
 
     /**
