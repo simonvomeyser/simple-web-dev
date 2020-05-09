@@ -1,27 +1,22 @@
-@extends('layouts.post')
+---
+title: 'Ten Trello Tidbits or Why Their UX Team Deserves a Hug '
 
-@section('title', 'Ten Trello Tidbits or Why Their UX Team Deserves a Hug ')
+release_date: 'October 2019'
 
-@section('release_date', 'October 2019')
+slug: 'ten-trello-tidbits'
 
-@section('slug', 'ten-trello-tidbits')
+excerpt:
+    I want to show a few things that Trello does really well and with an incredible amount of focus on User Experience (UX).
 
-@section('excerpt')
+    I mean.. I regularly feel hugged by the trello UX team.. is that really just me?
 
-I want to show a few things that Trello does really well and with an incredible amount of focus on User Experience (UX).
+tags: 
+    - Producitvity
+    - Tools
 
-I mean.. I regularly feel hugged by the trello UX team.. is that really just me?
-
-@endsection
-
-@section('tags', '["Producitvity", "Tools"]')
-
-@section('header_image', 'https://res.cloudinary.com/simonvomeyser/image/upload/v1532495798/Trello/trello-header.png')
-
-@section('list_header_image',
-'https://res.cloudinary.com/simonvomeyser/image/upload/v1588430767/Trello/Header-Trello.png')
-
-@section('content')
+header_image: 'https://res.cloudinary.com/simonvomeyser/image/upload/v1532495798/Trello/trello-header.png'
+list_image: 'https://res.cloudinary.com/simonvomeyser/image/upload/v1588430767/Trello/Header-Trello.png'
+---
 
 I am receiving way to many E-mails with subjects like “Re: Re: Re: The logo should be more blue-ish”. This made facepalm
 a lot, but also try at a lot of different project management tools. A comparison between a few of them should be the
@@ -253,5 +248,3 @@ what because their grandma programmed JIRA?
 I am just trying to be helpful and have a little fun. Let’s all be friends and hug each other more often,
 like the Trello UX team does with it’s users.
 
-
-@endsection

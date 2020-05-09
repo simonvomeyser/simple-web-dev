@@ -1,29 +1,26 @@
-@extends('layouts.post')
+---
+title: Use the Laravel Scheduler without access to cronjobs
 
-@section('title', 'Use the Laravel Scheduler without access to cronjobs')
+release_date: March 2020
 
-@section('release_date', 'March 2020')
+slug: the-laravel-scheduler-without-cronjobs
 
-@section('slug', 'the-laravel-scheduler-without-cronjobs')
+excerpt:
+    The Laravel Scheduler is an awesome tool since it greatly simplifies the usage of confusing cron job definitions I am
+    too not smart enough for.
 
-@section('excerpt')
+    Learn to use this feature without access to your servers cron jobs on cheap hosters
 
-The Laravel Scheduler is an awesome tool since it greatly simplifies the usage of confusing cron job definitions I am
-too not smart enough for.
+tags: 
+    - Backend
+    - Dev Ops
+    - Laravel
 
-Learn to use this feature without access to your servers cron jobs on cheap hosters
+header_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1588611629/laravel-scheduler/laravel-scheduler-list-header-image.jpg
 
-@endsection
+list_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1588611629/laravel-scheduler/laravel-scheduler-list-header-image.jpg
 
-@section('tags', '["Backend", "Dev Ops", "Laravel"]')
-
-@section('header_image',
-'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611629/laravel-scheduler/laravel-scheduler-list-header-image.jpg')
-
-@section('list_header_image',
-'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611629/laravel-scheduler/laravel-scheduler-list-header-image.jpg')
-
-@section('content')
+---
 
 
 The Laravel Scheduler is an awesome tool since it greatly simplifies the usage of confusing cron job definitions I
@@ -209,5 +206,3 @@ Testing that certain commands are run is really easy. With this, you are all set
 
 
 Hooray! Happy hacking and see you soon. 🙂
-
-@endsection

@@ -1,26 +1,23 @@
-@extends('layouts.post')
+---
+title: BEM by Example – Part 2, the header
 
-@section('title', 'BEM by Example – Part 2, the header')
+release_date: December 2019
 
-@section('release_date', 'December 2019')
+slug: bem-by-example-part-2
 
-@section('slug', 'bem-by-example-part-2')
+excerpt:
+    This is the second part of my "BEM by Example" series.
 
-@section('excerpt')
-This is the second part of my "BEM by Example" series.
+    In this post we will setup the project and then (finally, gosh! ?) implement the header of the Design.
 
-In this post we will setup the project and then (finally, gosh! ?) implement the header of the Design.
-@endsection
+tags: 
+    - Frontend
+    - Tutorial
 
-@section('tags', '["Frontend","Tutorial"]')
+header_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-2-list-header-image.png
 
-@section('header_image',
-'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-2-list-header-image.png')
-
-@section('list_header_image',
-'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-2-list-header-image.png')
-
-@section('content')
+list_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-2-list-header-image.png
+---
 
 Howdy ho and welcome back! This is the second part of my BEM by Example series. If you skipped<a
     href="http://blog.simonvomeyser.de/css-structure-with-bem-in-a-real-world-example-part-1/"> the first part</a> make
@@ -83,7 +80,7 @@ BEM.
 
 If you have no idea what I am talking about: Just keep in mind that most modern projects usually will have a more
 complicated setup. Since this has no benefit for understanding BEM we can simply start with a single HTML file and a
-single CSS file. The way frontend web development used to be ... 'member? I 'member.
+single CSS file. The way frontend web development used to be ... member? I 'member.
 
 <img src="https://res.cloudinary.com/simonvomeyser/image/upload/v1539064839/Group.png" width="503" height="317" />
 
@@ -529,5 +526,3 @@ basics of how to approach frontend work BEM-Style. Yo!
 There is still a lot to say so let me know if you want to see a third part where I will try to not fuck up the other
 parts of the <a href="https://res.cloudinary.com/simonvomeyser/image/upload/v1536816215/BEM%20by%20Example/Desktop.png"
     target="_blank" rel="noopener noreferrer">design</a>. ?
-
-@endsection

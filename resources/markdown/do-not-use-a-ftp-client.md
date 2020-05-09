@@ -1,28 +1,25 @@
-@extends('layouts.post')
+---
 
-@section('title', 'You might not need a FTP client to deploy your website…')
+title: You might not need a FTP client to deploy your website…
 
-@section('release_date', 'February 2020')
+release_date: February 2020
 
-@section('slug', 'do-not-use-a-ftp-client')
+slug: do-not-use-a-ftp-client
 
-@section('excerpt')
+excerpt:
+    For a long time I was really hesitant to dive into the world of alternatives to FTP Clients for deployment.
 
-For a long time I was really hesitant to dive into the world of alternatives to FTP Clients for deployment.
+    But there are a few small steps that really are easy without sailing rough seas on docker ships.
 
-But there are a few small steps that really are easy without sailing rough seas on docker ships.
+tags:
+    - Backend
+    - Dev Ops
 
-@endsection
+header_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
 
-@section('tags', '["Backend","Dev Ops"]')
+list_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
 
-@section('header_image',
-'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png')
-
-@section('list_header_image',
-'https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png')
-
-@section('content')
+---
 
 For a long time I was really hesitant to dive into the world of alternatives to FTP Clients
 when I wanted to deploy, upload or update a web project.
@@ -365,5 +362,3 @@ pew) manual FTP uploads or a total Docker/Kubernetes/AWS/Whatever craziness.
     Grow with your skills, try what is possible and gradually move away from FTP
     Clients.
 </blockquote>
-
-@endsection
