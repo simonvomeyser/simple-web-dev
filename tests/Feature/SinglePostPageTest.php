@@ -2,43 +2,34 @@
 
 namespace Tests\Feature;
 
-use App\Post;
+use App\Markdown\MarkdownPost;
 use Tests\TestCase;
-use Illuminate\Support\HtmlString;
 
 class SinglePostPageTest extends TestCase
 {
     /** @test */
-    public function isReachableViaItsFilenameSlug()
+    public function all_posts_are_reachable_via_their_link()
     {
-        $post = factory('App\Post')->create();
+        MarkdownPost::fake();
+        $posts = MarkdownPost::all();
 
-        $this->get($post->link())
-            ->assertSee($post->title)
-            ->assertSee(new HtmlString($post->content))
-            ->assertSee($post->header_image);
-    }
-
-
-    /** @test */
-    public function a_post_can_be_retrived_with_a_different_filename_than_title()
-    {
-        $post = factory(Post::class)->create();
-
-        $oldLink = $post->link();
-        $this->get($post->link())->assertOk();
-
-        $post->slug = 'something';
-        $post->save();
-        $newLink = $post->link();
-        $this->get($post->link())->assertOk();
-
-        $this->assertNotSame($newLink, $oldLink);
+        foreach ($posts as $post) {
+            $this->get($post->getLink())
+                ->assertOk();
+        }
     }
 
     /** @test */
-    public function the_filename_can_be_different_from_the_title_or_the_slug()
+    public function all_posts_contain_their_content_on_their_page()
     {
-        // todo implement
+        MarkdownPost::fake();
+        $posts = MarkdownPost::all();
+
+        foreach ($posts as $post) {
+            $this->get($post->getLink())
+                ->assertSee($post->title)
+                ->assertSee($post->content)
+                ->assertSee($post->header_image);
+        }
     }
 }
