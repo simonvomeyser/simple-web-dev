@@ -2,8 +2,9 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Support\Carbon;
 use Tests\TestCase;
+use App\Markdown\MarkdownPost;
+use Illuminate\Support\Carbon;
 
 class PostsPageTest extends TestCase
 {
@@ -18,35 +19,54 @@ class PostsPageTest extends TestCase
     /** @test */
     public function the_page_shows_no_post_if_none_are_present()
     {
+        MarkdownPost::fake('empty/folder');
+
         $this->get(route('posts'))->assertSee(trans('posts.no-posts-found'));
     }
 
     /** @test */
     public function posts_are_found_with_essential_data()
     {
-        $posts = factory('App\Post', 6)->create();
+        MarkdownPost::fake();
+        $posts = MarkdownPost::released();
 
         $response = $this->get(route('posts'));
 
         foreach ($posts as $post) {
             $response
                 ->assertSee($post->title)
-                ->assertSee($post->link())
+                ->assertSee($post->getLink())
                 ->assertSee($post->excerpt)
-                ->assertSee($post->list_header_image);
+                ->assertSee($post->list_image);
         }
     }
 
     /** @test */
     public function only_released_posts_are_shown()
     {
-        $postWithoutReleaseDate = factory('App\Post')->create(['release_date' => '']);
-        $postWithFutureReleaseDate = factory('App\Post')->create(['release_date' => Carbon::tomorrow()]);
-        $postWithReleaseDate = factory('App\Post')->create();
+        MarkdownPost::fake();
+
+        $unreleasedPosts = MarkdownPost::all()->filter(function (MarkdownPost $post) {
+            return !$post->isReleased();
+        });
+
+        $response = $this->get(route('posts'));
+
+        foreach ($unreleasedPosts as $post) {
+            $response
+                ->assertDontSee($post->title)
+                ->assertDontSee($post->getLink());
+        }
+    }
+
+    /** @test */
+    public function released_posts_are_shown_in_right_order()
+    {
+        MarkdownPost::fake();
+
+        $posts = MarkdownPost::released();
 
         $this->get(route('posts'))
-            ->assertSee($postWithReleaseDate->link())
-            ->assertDontSee($postWithoutReleaseDate->link())
-            ->assertDontSee($postWithFutureReleaseDate->link());
+            ->assertSeeInOrder([$posts[0]->title, $posts[1]->title, $posts[2]->title]);
     }
 }

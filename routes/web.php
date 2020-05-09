@@ -22,7 +22,7 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/posts', function () {
-    return view('posts')->with('posts', Post::released());
+    return view('posts')->with('posts', MarkdownPost::released());
 })->name('posts');
 
 Route::get('/about', function () {
