@@ -149,4 +149,20 @@ class MarkdownPostTest extends TestCase
             $this->assertArrayHasKey($expectedKey, $releasedPosts->toArray());
         }
     }
+
+    /** @test */
+    public function it_returns_a_human_readable_releasedate()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+        $diffForHumans = $post->release_date->diffForHumans();
+        $this->assertTrue($post->getReadableRelease() === $diffForHumans);
+
+        $post->release_date = Carbon::tomorrow();
+        $diffForHumans = $post->release_date->diffForHumans();
+        $this->assertStringContainsString($diffForHumans, $post->getReadableRelease());
+        $this->assertStringContainsString('Planned for', $post->getReadableRelease());
+
+        $post->release_date = null;
+        $this->assertStringContainsString('Draft', $post->getReadableRelease());
+    }
 }

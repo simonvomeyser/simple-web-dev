@@ -66,6 +66,17 @@ class MarkdownPost
         return $this->release_date && $this->release_date->isPast();
     }
 
+    public function getReadableRelease()
+    {
+        $date = $this->release_date;
+
+        if (!$date) {
+            return "Draft";
+        }
+
+        return ($date->isFuture() ? 'Planned for ' : '') . $date->diffForHumans();
+    }
+
     protected function parseContent(string $markdown)
     {
         $this->content = Markdown::parse($markdown);
