@@ -1,7 +1,6 @@
 <?php
 
 use App\Markdown\MarkdownPost;
-use App\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +29,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/{slug}', function ($slug) {
-    $post = Post::findBySlug($slug);
+    $post = MarkdownPost::find($slug);
 
-    return $post ?? abort(404);
+    return $post ? view('post')->with(compact('post')) : abort(404);
 })->name('posts.single');
