@@ -15,7 +15,6 @@
                     </div>
                     <div class="post-meta__beneath-heading">
                         @each('includes.tag-pill', $post->tags, 'tag')
-                        todo Reading time
                     </div>
                 </div>
                 <div class="post-meta__right">
