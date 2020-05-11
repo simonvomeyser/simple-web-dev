@@ -19,10 +19,11 @@ header_image: 'https://res.cloudinary.com/simonvomeyser/image/upload/v1532495798
 list_image: 'https://res.cloudinary.com/simonvomeyser/image/upload/v1588430767/Trello/Header-Trello.png'
 ---
 
-I am receiving way to many E-mails with subjects like “Re: Re: Re: The logo should be more blue-ish”. This made facepalm
-a lot, but also try at a lot of different project management tools. A comparison between a few of them should be the
-topic of another post, but I want to mention a few things that <a href="http://trello.com/">Trello</a> in
-particular does really well and <strong>with an incredible amount of focus on User Experience (UX)</strong>.
+I am receiving way to many E-mails with subjects like *Re: Re: Re: The logo should be more blue-ish* 
+
+Since constantly facepalming is no way to live your life I tried tot of tools to improve communication. Comparing them should be the topic of another post, but [Trello](https://trello.com) is something you will definetely stumble across during a search like this.
+
+In this post I want to mention a few things that the Trello Team does really well and with an incredible amount of focus on User Experience (UX).
 
 I mean.. I regularly feel hugged by the trello UX team.. is that really just me?
 
