@@ -34,7 +34,7 @@
         <div class="post__image">
             <img src="{{$post->header_image}}" alt="Header image of {{$post->title}}">
         </div>
-        <div class="post__content rich-text ">
+        <div class="post__content markdown">
             {{$post->content}}
         </div>
 

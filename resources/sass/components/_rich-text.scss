@@ -1,11 +1,27 @@
-.rich-text {
+.markdown {
   font-size: 20px;
   line-height: 1.5;
   color: $neutral-400;
-  p, pre[class*="language-"],.wp-block-code, .wp-block-embed ,
-  blockquote, ul, ol, .twitter-tweet, .sidenote-shortcode {
+  p,
+  pre[class*="language-"],
+  .wp-block-code,
+  .wp-block-embed,
+  blockquote,
+  ul,
+  ol,
+  .twitter-tweet,
+  .sidenote-shortcode {
     margin-top: 1.25rem;
   }
+  em,
+  i {
+    font-style: italic;
+  }
+  strong,
+  b {
+    font-weight: bold;
+  }
+
   blockquote {
     position: relative;
     text-align: center;
@@ -21,15 +37,15 @@
       z-index: -1;
       overflow: hidden;
       position: absolute;
-      top: .5rem;
+      top: 0.5rem;
       left: 1rem;
       width: 100px;
       height: 100px;
       content: " ";
-      opacity: .25;
+      opacity: 0.25;
       background-size: contain;
       background-repeat: no-repeat;
-      background-image: url('/images/quote.svg')
+      background-image: url("/images/quote.svg");
     }
     > * {
       max-width: 600px;
@@ -65,7 +81,10 @@
     overflow: auto;
     padding: 1.6em;
   }
-  code, kbd, tt, var {
+  code,
+  kbd,
+  tt,
+  var {
     color: $neutral-400;
     font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
   }
@@ -138,8 +157,8 @@
   ul {
     list-style: circle;
     padding-left: 2rem;
-    li+li {
-      margin-top: .5rem;
+    li + li {
+      margin-top: 0.5rem;
     }
   }
 }
@@ -148,8 +167,15 @@
   .rich-text {
     font-size: 18px;
     color: $neutral-400;
-    p, pre[class*="language-"],.wp-block-code, .wp-block-embed ,
-    ul, ol, .twitter-tweet, .sidenote-shortcode, blockquote{
+    p,
+    pre[class*="language-"],
+    .wp-block-code,
+    .wp-block-embed,
+    ul,
+    ol,
+    .twitter-tweet,
+    .sidenote-shortcode,
+    blockquote {
       margin-top: 1rem;
     }
     blockquote {
@@ -170,7 +196,10 @@
       font-size: 1.3rem;
     }
   }
-  code, kbd, tt, var {
+  code,
+  kbd,
+  tt,
+  var {
     color: $neutral-400;
     font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
   }
