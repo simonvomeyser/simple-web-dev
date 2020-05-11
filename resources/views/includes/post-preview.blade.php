@@ -6,13 +6,10 @@
     </div>
     <div class="post-preview__under-image">
         <div class="post-preview__meta">
-            <div class="post-preview__categories">
+            <div class="post-preview__tags">
 
-                @foreach ($post->tags as $tag)
-                <a href="{{route('posts', ["tag" => $tag]) }}" class="pill" title="Show other posts with {{$tag}}">
-                    {{$tag}}
-                </a>
-                @endforeach
+                @each('includes.tag-pill', $post->tags, 'tag')
+
             </div>
             <div class="post-preview__est-reading-time">
                 <div class="est-reading-time">

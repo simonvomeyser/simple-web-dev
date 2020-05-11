@@ -14,7 +14,7 @@
                         <h1> {{$post->title}} </h1>
                     </div>
                     <div class="post-meta__beneath-heading">
-                        todo Pills
+                        @each('includes.tag-pill', $post->tags, 'tag')
                         todo Reading time
                     </div>
                 </div>
@@ -24,10 +24,10 @@
                             alt="Image of Simon trying to look professional">
                     </div>
                     <div class="post-meta__author">
-                        written by Simon
+                        written by Simon <br>
                     </div>
                     <div class="post-meta__date">
-                        <div>Written {{$post->getReadableRelease()}}</div>
+                        <div>{{$post->getReadableRelease()}}</div>
                     </div>
                 </div>
             </div>
