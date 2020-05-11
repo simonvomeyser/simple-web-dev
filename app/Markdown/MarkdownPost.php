@@ -26,8 +26,8 @@ class MarkdownPost
         $fileContents = File::get(static::getFolderPath() . $file);
         $yamlObject = YamlFrontMatter::parse($fileContents);
 
-        $this->mapToProperties($yamlObject->matter());
         $this->parseContent($yamlObject->body());
+        $this->mapToProperties($yamlObject->matter());
     }
 
     public function getLink()
@@ -59,6 +59,12 @@ class MarkdownPost
 
         if (!$this->tags) {
             $this->tags = [];
+        }
+
+        if ($this->excerpt) {
+            $this->excerpt = Markdown::parse($this->excerpt);
+        } else {
+            $this->excerpt = '';
         }
     }
     public function isReleased()

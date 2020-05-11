@@ -25,7 +25,7 @@
             <h2>{{$post->title}}</h2>
         </div>
         <div class="post-preview__excerpt">
-            <div>{{$post->excerpt}}</div>
+            <div>{!! $post->excerpt !!}</div>
         </div>
         <div class="post-preview__date">
             <div>Written {{$post->release_date->diffForHumans()}}</div>

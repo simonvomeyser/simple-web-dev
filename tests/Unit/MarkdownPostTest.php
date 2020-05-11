@@ -64,6 +64,14 @@ class MarkdownPostTest extends TestCase
     }
 
     /** @test */
+    public function it_parses_the_markdown_excerpt_to_html()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertStringContainsString('<p>', $post->excerpt);
+    }
+
+    /** @test */
     public function it_returns_a_link_to_itself()
     {
         $post = new MarkdownPost('post-number-one.md');
