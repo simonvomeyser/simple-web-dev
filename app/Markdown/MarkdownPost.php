@@ -5,7 +5,10 @@ namespace App\Markdown;
 use Illuminate\Support\Str;
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\HtmlString;
+use League\CommonMark\Environment;
 use Illuminate\Support\Facades\File;
+use League\CommonMark\CommonMarkConverter;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class MarkdownPost
@@ -26,7 +29,7 @@ class MarkdownPost
         $fileContents = File::get(static::getFolderPath() . $file);
         $yamlObject = YamlFrontMatter::parse($fileContents);
 
-        $this->parseContent($yamlObject->body());
+        $this->content = $this->parseMarkdownToHTML($yamlObject->body());
         $this->mapToProperties($yamlObject->matter());
     }
 
@@ -62,7 +65,7 @@ class MarkdownPost
         }
 
         if ($this->excerpt) {
-            $this->excerpt = Markdown::parse($this->excerpt);
+            $this->excerpt = $this->parseMarkdownToHTML($this->excerpt);
         } else {
             $this->excerpt = '';
         }
@@ -83,9 +86,15 @@ class MarkdownPost
         return ($date->isFuture() ? 'Planned for ' : '') . $date->diffForHumans();
     }
 
-    protected function parseContent(string $markdown)
+    protected function parseMarkdownToHTML(string $markdown)
     {
-        $this->content = Markdown::parse($markdown);
+        $environment = Environment::createCommonMarkEnvironment();
+
+        $converter = new CommonMarkConverter([
+            'allow_unsafe_links' => false,
+        ], $environment);
+
+        return new HtmlString($converter->convertToHtml($markdown));
     }
 
     public static function all()
