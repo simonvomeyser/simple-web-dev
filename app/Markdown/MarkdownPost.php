@@ -3,13 +3,13 @@
 namespace App\Markdown;
 
 use Illuminate\Support\Str;
-use Illuminate\Mail\Markdown;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\HtmlString;
 use League\CommonMark\Environment;
 use Illuminate\Support\Facades\File;
 use League\CommonMark\CommonMarkConverter;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
+use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 
 class MarkdownPost
 {
@@ -93,8 +93,15 @@ class MarkdownPost
     {
         $environment = Environment::createCommonMarkEnvironment();
 
+        $environment->addExtension(new ExternalLinkExtension());
+
         $converter = new CommonMarkConverter([
             'allow_unsafe_links' => false,
+            'external_link' => [
+                'internal_hosts' => config('app.url'),
+                'open_in_new_window' => true,
+                'html_class' => 'external-link',
+            ],
         ], $environment);
 
         return new HtmlString($converter->convertToHtml($markdown));
