@@ -65,7 +65,10 @@ class MarkdownPost
         }
 
         if ($this->excerpt) {
-            $this->excerpt = $this->parseMarkdownToHTML($this->excerpt);
+            // Needed since YAML Lib seems to parse double newline as one
+            // This needs to happen so Markdown with more "p" tags can be created
+            $doubleNewlineExcerpt = preg_replace('/([\n\r])/', '$1$1', $this->excerpt);
+            $this->excerpt = $this->parseMarkdownToHTML($doubleNewlineExcerpt);
         } else {
             $this->excerpt = '';
         }

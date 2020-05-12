@@ -8,7 +8,6 @@ slug: bem-by-example
 excerpt:
     This little series is about writing better CSS by making use of BEM!
 
-
     I currently find BEM immensely helpful but i did not find examples using it in a real world scenario.
 
 tags: 

@@ -8,9 +8,8 @@ slug: the-laravel-scheduler-without-cronjobs
 excerpt:
     The Laravel Scheduler is an awesome tool since it greatly simplifies the usage of confusing cron job definitions I am simply not smart enough for.
 
-
     Learn to use this feature without access to your servers cron jobs on cheap hosters
-    
+
 tags: 
     - Backend
     - Dev Ops

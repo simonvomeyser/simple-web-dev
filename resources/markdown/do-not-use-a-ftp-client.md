@@ -9,7 +9,6 @@ slug: do-not-use-a-ftp-client
 excerpt:
     For a long time I was really hesitant to dive into the world of alternatives to FTP Clients for deployment.
 
-
     But there are a few small steps that really are easy without sailing rough seas on docker ships.
 
 tags:
