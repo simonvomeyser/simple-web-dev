@@ -13,4 +13,12 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .browserSync(process.env.APP_URL)
+    .browserSync({
+        proxy: process.env.APP_URL,
+        files: [
+            'app/**/*.php',
+            'resources/views/**/*.php',
+            'resources/**/*.md',
+            `${Config.publicPath || 'public'}/**/*.(js|css)`
+        ],
+    })
