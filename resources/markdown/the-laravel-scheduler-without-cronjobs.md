@@ -66,7 +66,7 @@ Some of them are listed at [cronjobservices.com](https://www.cronjobservices.com
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1553756347/laravel-scheduler/Screenshot_2019-03-28_at_07.56.20.png) Screenshot from <https://www.cronjobservices.com/>
 
-I personally tried <https://cron-job.org> and I am really happy with them, it is free and allows cronjobs to run every minute.
+I personally tried `cron-job.org` and I am really happy with them, it is free and allows cronjobs to run every minute.
 
 Hey, that's all I wanted to say already 🙂
 
