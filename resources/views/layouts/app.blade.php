@@ -38,6 +38,8 @@
             <li><a href="#">Privacy</a></li>
         </ul>
     </footer>
+    @stack('footer-scripts')
+
 </body>
 
 </html>
