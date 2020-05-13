@@ -14,31 +14,35 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="header__inner container">
+    <div id="app">
+        <header class="header">
+            <div class="header__inner container">
 
-            <a class="header__logo" href="{{route('index')}}">
-                <img src="{{asset('images/logo.svg')}}" alt="The page's logo, looking all fancy and stuff">
-            </a>
-            <nav class="header__nav">
-                <ul>
-                    <li><a href="{{route('posts')}}">All Posts</a></li>
-                    <li><a href="{{route('about')}}">About</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+                <a class="header__logo" href="{{route('index')}}">
+                    <img src="{{asset('images/logo.svg')}}" alt="The page's logo, looking all fancy and stuff">
+                </a>
+                <nav class="header__nav">
+                    <ul>
+                        <li><a href="{{route('posts')}}">All Posts</a></li>
+                        <li><a href="{{route('about')}}">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-    <main class="main">
-        @yield('main')
-    </main>
-    <footer class="footer container">
-        <ul>
-            <li><a href="#">Legal Notice</a></li>
-            <li><a href="#">Privacy</a></li>
-        </ul>
-    </footer>
+        <main class="main">
+            @yield('main')
+        </main>
+        <footer class="footer container">
+            <ul>
+                <li><a href="#">Legal Notice</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </footer>
+    </div>
+
     @stack('footer-scripts')
+    <script src="{{mix('js/app.js')}}"></script>
 
 </body>
 
