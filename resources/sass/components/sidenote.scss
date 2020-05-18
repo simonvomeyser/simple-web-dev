@@ -1,36 +1,37 @@
-.sidenote-shortcode {
+.sidenote {
   overflow: hidden;
   margin-bottom: 1rem;
-}
-.sidenote-shortcode .sidenote-shortcode__title {
-  position: relative;
-  display: block;
-  cursor: pointer;
-  padding: 1rem 2rem 1rem 1rem;
-  background-color: #F5F6FB;
-  color: $neutral-400;
-  border: 0;
-  width: 100%;
-  text-align: left;
-  border-bottom: 2px solid $neutral-400;
-}
-.sidenote-shortcode .sidenote-shortcode__content {
-  display: none;
-  padding: 1rem;
-  background-color: #F5F6FB;
-  overflow: hidden;
-}
 
-.sidenote-shortcode .sidenote-shortcode__chevron {
-  position: absolute;
-  right: calc(1.4rem);
-  top: calc(.8rem);
-  font-size: 1.2em;
-  width: 30px;
-  height: 30px;
-  svg {
-    fill: $neutral-400;
+  @include e(heading) {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    padding: 1rem 2rem 1rem 1rem;
+    background-color: #f5f6fb;
+    color: $neutral-400;
+    border: 0;
+    width: 100%;
+    text-align: left;
+    border-bottom: 2px solid $neutral-400;
+  }
+  @include e(content) {
+    display: none;
+    padding: 1rem;
+    background-color: #f5f6fb;
+    overflow: hidden;
+  }
+
+  @include e(chevron) {
+    position: absolute;
+    right: calc(1.4rem);
+    top: calc(0.8rem);
+    font-size: 1.2em;
     width: 30px;
     height: 30px;
+    svg {
+      fill: $neutral-400;
+      width: 30px;
+      height: 30px;
+    }
   }
 }
