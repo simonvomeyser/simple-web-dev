@@ -58,10 +58,21 @@ class MarkdownPostTest extends TestCase
     {
         $post = new MarkdownPost('post-number-one.md');
 
-        $this->assertStringContainsString('<a href=', $post->content);
         $this->assertStringContainsString('<p>', $post->content);
         $this->assertStringContainsString('<h2>', $post->content);
     }
+    /** @test */
+    public function it_parses_the_markdown_links_to_external_links()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertStringContainsString('<a ', $post->content);
+        $this->assertStringContainsString('target="_blank"', $post->content);
+        $this->assertStringContainsString('rel="noopener noreferrer"', $post->content);
+        $this->assertStringContainsString('href=', $post->content);
+        $this->assertStringContainsString('</a>', $post->content);
+    }
+
 
     /** @test */
     public function it_parses_the_markdown_excerpt_to_html()
