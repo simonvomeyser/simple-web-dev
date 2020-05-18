@@ -82,40 +82,29 @@ So after all this advertising, what the hell is BEM? In all it's simplicity, the
 </div>
 ```
 
-Nothing more than a classname. That's dead simple right? Inside of a block, you will have _Elements_. These are (most of the time) _direct_ children of a block. To show that they belong to the block, their classname should now be the blocks name and then their own, connected by two underscores. So <div
+Nothing more than a classname. That's dead simple right? Inside of a block, you will have _Elements_. These are (most of the time) _direct_ children of a block. To show that they belong to the block, their classname should now be the blocks name and then their own, connected by two underscores. So `class="newsletter__heading"` thereby means the **Element** _Heading_ is inside of the **Block** _Newsletter_. Not that complicated right? We end up with the following markup:
 
-<tt>class="newsletter<strong>heading"&gt;</strong></tt>
-
-**thereby means the** Element**_Heading_ is inside of the** Block** _Newsletter_. Not that complicated right? We end up with the following markup:
-
-<x-code>
-</x-code>
-
-**
-
-<div class="newsletter"><strong>
-        &lt;div class="newsletter</strong>heading"&gt;
-            Newsletter
-        </div>
-
-<input type="email" class="newsletter__input">
-
- 
-
-<button class="newsletter__button">Unsubscribe</button>
-
- 
-
-<button class="newsletter__button">Subscribe</button>
+```html
+<div class="newsletter">
+  <div class="newsletter__heading">
+    Newsletter
+  </div>
+  <input type="email" class="newsletter__input">
+  <button class="newsletter__button">Unsubscribe</button>
+  <button class="newsletter__button">Subscribe</button>
+</div>
+```
 
 This looks a litte verbose and this is what some people don't like about BEM. If you ask me, it's really reasonable and you can understand at a glance what hierarchy is at play here. If you wrap the elements in divs or place the class name on them (like with the input) depends wholly on the context, both is possible. The last part of the puzzle is to explain how **Modifiers** work. These can be attached to elements (or blocks themself) to alter their appearance. In our example, and since we are dirty spammers that want people to subscribe, we want the second button to stand out more. We will _add_ a modifier class like so.
 
-<x-code><button class="newsletter__button">
-        Unsubscribe
-    </button>
-    <button class="newsletter__button newsletter__button--call-to-action">
-        Subscribe
-    </button></x-code>
+```html
+<button class="newsletter__button">
+    Unsubscribe
+</button>
+<button class="newsletter__button newsletter__button--call-to-action">
+    Subscribe
+</button>
+```
 
 It's important to combine the original class and the modifier class even if it looks a bit ugly (like your ...) . This has a host of [reasons](http://getbem.com/faq/#why-the-modifier-css-classes-are-not-represented-as-a-combined-selector-) but to keep it short: No CSS duplication, a more semantic markup and benefits of a higher specificity should be enough reason to endure a markup that is a little more verbose.
 
@@ -123,50 +112,42 @@ It's important to combine the original class and the modifier class even if it l
 
 For the CSS you should create a file containing all the blocks CSS and name it like the Block. So this content should go in a `newsletter.css`
 
-<x-code>
-    .newsletter {
-    text-align: center;
-    }</x-code>
+```css
+.newsletter {
+  text-align: center;
+}
 
+.newsletter .newsletter__heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.newsletter .newsletter__input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  min-width: 300px;
+}
+
+.newsletter .newsletter__button {
+  padding: 0.5rem;
+  color: #c0c0c0;
+  background: #fafafa;
+  font-size: 16px;
+}
+
+.newsletter .newsletter__button.newsletter__button--call-to-action {
+  background: #74B9FF ;
+  border-color: #74B9FF;
+  color: white;
+}
 ```
-.newsletter .newsletter<strong>heading {
-font-size: 2rem;
-margin-bottom: 1rem;
-}
-
-.newsletter .newsletter</strong>input {
-display: block;
-width: 100%;
-padding: 10px;
-margin-bottom: 1rem;
-min-width: 300px;
-}
-
-.newsletter .newsletter<strong>button {
-padding: 0.5rem;
-color: #c0c0c0;
-background: #fafafa;
-font-size: 16px;
-}
-
-.newsletter .newsletter</strong>button.newsletter__button--call-to-action {
-background: #74B9FF ;
-border-color: #74B9FF;
-color: white;
-}
-```
-
-
 
 Wohoo! We did our first frontend work using the BEM naming convention. You can find the whole example in this codepen:
 
-<div class="cp_embed_wrapper">
-  <iframe name="cp_embed_1" src="https://codepen.io/simonvomeyser/embed/rroJzG?height=365&amp;theme-id=0&amp;slug-hash=rroJzG&amp;default-tab=css%2Cresult&amp;user=simonvomeyser&amp;pen-title=Simple%20BEM%20Newsletter%20Example&amp;name=cp_embed_1" scrolling="no" frameborder="0" height="365" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="Simple BEM Newsletter Example" class="cp_embed_iframe " style="width: 100%; overflow:hidden; display:block;" loading="lazy" id="cp_embed_rroJzG">
-</iframe>
-</div>
-
-<script async="" src="https://static.codepen.io/assets/embed/ei.js">
-</script>
+<embed-playground src="https://codepen.io/simonvomeyser/embed/rroJzG">
+</embed-playground>
 
 There are a lot of things we could discuss about this isolated example already, but this will happen in the next post often enough. Just to warn you in advance:
 
