@@ -1,0 +1,10 @@
+.embed-playground {
+  width: 100%;
+  position: relative;
+
+  iframe {
+    width: 100%;
+    overflow: hidden;
+    display: block;
+  }
+}
