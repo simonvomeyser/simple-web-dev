@@ -1,6 +1,6 @@
 <template>
   <div class="sidenote">
-    <button class="sidenote__heading">
+    <button class="sidenote__heading" @click.prevent="open = !open">
       Read more: {{heading}}
       <div class="sidenote__chevron">
         <svg
@@ -27,16 +27,28 @@
       </div>
     </button>
 
-    <div class="sidenote__content">
-      <slot></slot>
-    </div>
+    <slide-up-down :active="open" :duration="500">
+      <div class="sidenote__content">
+        <slot></slot>
+      </div>
+    </slide-up-down>
   </div>
 </template>
 
 <script>
+import SlideUpDown from "vue-slide-up-down";
+
 export default {
+  data() {
+    return {
+      open: false
+    };
+  },
   props: {
     heading: String
+  },
+  components: {
+    SlideUpDown
   }
 };
 </script>

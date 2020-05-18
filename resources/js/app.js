@@ -8,7 +8,7 @@ new Vue({
     components: {
         EmbedVideo,
         EmbedPlayground,
-        Sidenote,
+        Sidenote
     }
 });
 
