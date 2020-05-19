@@ -67,7 +67,7 @@ do to greatly improve your ability to sleep at night when deploying a project.
     crazy complicated!
 
 </blockquote>
-<x-sidenote title="Read more: On using Git">
+<sidenote heading="Read more: On using Git">
     You should <strong>always</strong> use a version control system! If you don’t do it some of these tricks
     won’t work.
 
@@ -84,7 +84,7 @@ do to greatly improve your ability to sleep at night when deploying a project.
         src="https://res.cloudinary.com/simonvomeyser/image/upload/v1548395373/dont-use-ftp/justdoit.gif" width="1280"
         height="720">
 
-</x-sidenote>
+</sidenote>
 
 <h2>rsync and other command line tools</h2>
 
