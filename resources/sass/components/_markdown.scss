@@ -1,7 +1,14 @@
 .markdown {
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: 22px;
+  line-height: 1.6;
   color: $neutral-400;
+  a {
+    text-decoration: none;
+    color: $primary-400;
+
+
+  }
+
   p,
   pre[class*="language-"],
   blockquote,
@@ -9,7 +16,7 @@
   ol,
   .twitter-tweet,
   .sidenote-shortcode {
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
   }
   em,
   i {
@@ -24,7 +31,7 @@
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 0 auto;
+    margin: 1rem auto;
   }
 
   blockquote {
@@ -32,6 +39,7 @@
     text-align: center;
     overflow: hidden;
     background: $primary-100;
+    font-size: 20px;
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -68,14 +76,14 @@
   h5,
   h6 {
     color: $neutral-400;
-    margin-top: 1.6em;
+    margin-top: 2.5em;
     margin-bottom: -0.25em;
     font-size: 1.2rem;
   }
   h2 {
     position: relative;
-    font-size: 1.4rem;
-    color: black;
+    font-size: 28px;
+    color: $neutral-400;
     font-weight: 300;
     padding-left: 1rem;
     &::before {
@@ -85,7 +93,7 @@
       content: " ";
       display: block;
       width: 5px;
-      background: $primary-300;
+      background: $primary-200;
       height: 100%;
     }
   }
