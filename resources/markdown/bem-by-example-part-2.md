@@ -49,14 +49,10 @@ attempt would maybe look something like this video. You can do that on a piece o
 
 <embed-video code="vFJz-XFBmAQ"></embed-video>
 
-So you see I think we'll need a Block named <code>header</code> (or how you want) with two Elements, a
-<code>navbar</code>  and an <code>image</code> . This might change during implementation, my workflow usually involves
-refactoring later because I am not the sharpest tool in the shed. But in all seriousness:
+So you see I think we'll need a Block named `header` (or how you want) with two Elements, a `navbar` and an `image` . This might change during implementation, my workflow usually involves refactoring later because I am not the sharpest tool in the shed. But in all seriousness:
 
-<blockquote>
-    Refactoring is always part of the process. Relax, nobody gets it perfect right away.
+> Refactoring is always part of the process. Relax, nobody gets it perfect right away.
 
-</blockquote>
 Before we start to create a rough draft of the HTML we need to setup a project of course. No worries, this will be
 really down to earth.
 
