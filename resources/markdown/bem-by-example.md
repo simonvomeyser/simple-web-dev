@@ -157,6 +157,6 @@ In my opinion, if you use BEM or name all your classes like Lord of the Rings ch
 
 My approach will be really pragmatic and if you like it, we will have a great time. So let's start, everybody ready?
 
-[Off to the Part Two Mobile!](https://simple-web-dev.com/bem-by-example-part-2/)
+[Off to the Part Two Mobile!](/bem-by-example-part-2)
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1536262168/BEM%20by%20Example/ezgif-2-9f1f6fb085.gif)
