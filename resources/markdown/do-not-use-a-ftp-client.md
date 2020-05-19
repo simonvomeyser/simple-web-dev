@@ -93,9 +93,9 @@ work
 on windows and the setup looked like this to me:
 
 
-<x-code>
-    blasync -wtf -bLa /usr/bin/wtf --force --danger site-to-destroy.com
-</x-code>
+```bash
+blasync -wtf -bLa /usr/bin/wtf --force --danger site-to-destroy.com
+```
 
 And I was like “no way I am even trying that, my computer will blow up or try to kill all humans if I do”
 
@@ -123,9 +123,9 @@ you want to manually backup your files (don’t, please don’t).
 Between two folders it is really easy to use rsync:
 
 
-<x-code>
-    rsync -a my-files/ backup/
-</x-code>
+```bash
+rsync -a my-files/ backup/
+```
 
 This will sync all files from <code>my-files</code> to <code>backup</code>. The parameter <code>-a</code> says it
 should include subfolders and preserve file properties
@@ -133,16 +133,16 @@ should include subfolders and preserve file properties
 
 An example to download all files from a remote folder would be:
 
-<x-code>
-    rsync -a ssh-username@domain.com:/www/htdocs/some-website/uploads ~/Desktop/uploads
-</x-code>
+```bash
+rsync -a ssh-username@domain.com:/www/htdocs/some-website/uploads ~/Desktop/uploads
+```
 
 When you now turn this around, you could simply sync your directory you develop your website in and only upload the
 changes, rsync does all this comparing work for you. Use this:
 
-<x-code>
-    rsync -a ~/Desktop/my-website/ ssh-username@domain.com:/www/htdocs/my-webiste/
-</x-code>
+```bash
+rsync -a ~/Desktop/my-website/ ssh-username@domain.com:/www/htdocs/my-webiste/
+```
 
 Of course there are thousand of option how to overwrite, ignore some, show progress, test run before you nuke
 anything and so on. I found a <a href="https://www.youtube.com/watch?v=qE77MbDnljA">cool video</a> that will help
@@ -194,21 +194,21 @@ The simplest way in an existing project to get going with git-ftp is:
 are
 stored in the file <code>.git/config</code>&nbsp;if you ever want to change them)
 
-<x-code>
+```bash
 
-    git config git-ftp.url "ftp://your-website.net:21/the_location/"
-    git config git-ftp.user "ftp-user"
-    git config git-ftp.password "secr3t"
+git config git-ftp.url "ftp://your-website.net:21/the_location/"
+git config git-ftp.user "ftp-user"
+git config git-ftp.password "secr3t"
 
-</x-code>
+```
 
 And tell git-ftp to use the current state as a starting point only.
 
-<x-code>
+```bash
 
-    git ftp catchup
+git ftp catchup
 
-</x-code>
+```
 
 Then you work and work and work, (hopefully) commit a lot, push, merge and do all the git craziness we love and
 still
@@ -217,11 +217,11 @@ don’t understand fully.
 
 When you want to “deploy” your site, just run the following command:
 
-<x-code>
+```bash
 
-    git ftp push
+git ftp push
 
-</x-code>
+```
 
 And voilà: Your file should be online in no time.
 
@@ -308,24 +308,24 @@ The key idea is that you will have a file in your repository that states which s
 for
 a deploy to a server. Here is an example of this file in an old Laravel project I worked on
 
-<x-code>
+```bash
     [
-    {
-    "commands": [
-    "cd /var/www/website-live",
-    "php artisan backup:run",
-    "git pull",
-    "composer install",
-    "php artisan migrate --force",
-    "php artisan clear-compiled",
-    "php artisan view:clear",
-    "php artisan config:clear"
-    ],
-    "host": "example.com",
-    "username": "name"
-    }
+        {
+        "commands": [
+            "cd /var/www/website-live",
+            "php artisan backup:run",
+            "git pull",
+            "composer install",
+            "php artisan migrate --force",
+            "php artisan clear-compiled",
+            "php artisan view:clear",
+            "php artisan config:clear"
+        ],
+        "host": "example.com",
+        "username": "name"
+        }
     ]
-</x-code>
+```
 
 What is happening here should be quite clear. It’s just a series of SSH commands which can be run with only one
 command.
