@@ -20,6 +20,13 @@
     font-weight: bold;
   }
 
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
   blockquote {
     position: relative;
     text-align: center;
