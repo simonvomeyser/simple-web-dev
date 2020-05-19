@@ -10,7 +10,7 @@
 
     <div class="post">
         <div class="post__back">
-            <x-back />
+            @include('includes.back')
         </div>
         <div class="post__meta">
             <div class="post-meta">
