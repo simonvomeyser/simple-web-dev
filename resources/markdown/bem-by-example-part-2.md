@@ -1,22 +1,22 @@
 ---
-title: BEM by Example – Part 2, the header
-
+title: 'BEM by Example – Part 2, the header'
 release_date: December 2019
-
 slug: bem-by-example-part-2
+excerpt: >-
+  This is the second part of my "BEM by Example" series.
 
-excerpt:
-    This is the second part of my "BEM by Example" series.
-
-    In this post we will setup the project and then (finally, gosh! ?) implement the header of the Design.
-tags: 
-    - Frontend
-    - Tutorial
-
-header_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-2-list-header-image.png
-
-list_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-2-list-header-image.png
+  In this post we will setup the project and then (finally, gosh! ?) implement
+  the header of the Design.
+tags:
+  - Frontend
+  - Tutorial
+header_image: >-
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-2-list-header-image.png
+list_image: >-
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-2-list-header-image.png
 ---
+
+
 
 Howdy ho and welcome back! This is the second part of my BEM by Example series. If you skipped [the first part](http://blog.simonvomeyser.de/css-structure-with-bem-in-a-real-world-example-part-1/) make sure you at least know what that [core concepts of BEM](http://getbem.com/) are.
 
