@@ -50,6 +50,11 @@
     font-size: 14px;
     color: $neutral-350;
   }
+  @include e("tags") {
+    .pill + .pill {
+      margin-left: .5rem;
+    }
+  }
 }
 
 @include breakpoint("mobile") {
