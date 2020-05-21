@@ -137,7 +137,7 @@ Even if you do, you might want them to blend in and not to stand out because the
 
  I am not using any [resets](https://cssreset.com/what-is-a-css-reset/) because I think the [arguments](http://getbem.com/faq/#global-css-resets) of the creators of BEM are quite good. You could though, I don't judge.
 
-<sidenote heading="On BEM and Frameworks like Bootstrap, Fundation Tailwind and others">
+<sidenote heading="On BEM and Frameworks like Bootstrap, Foundation Tailwind and others">
 
 While it is totally possible to use a BEM naming convention and also use a CSS Framework (I did it quite often
 because
@@ -158,7 +158,7 @@ conventions:
 </header>
 ```
 
-Still, if you want to use Boostrap's (or some other Frameworks) immense power just do it. Pragmatic-Man would say:
+Still, if you want to use Bootstrap's (or some other Frameworks) immense power just do it. Pragmatic-Man would say:
 If it
 brings you more benefits than problems you already have your decision. You are smart enough to figure that out on
 your
@@ -376,7 +376,7 @@ Aww snap, back to the drawing board.
 
 One of the things I always wondered was where to put my media queries. With BEM, this ist quite approachable: **Just put them into the Block they belong to**. This does help a lot with maintainability since you exactly know where to search when something goes sideways.
 
-> Each block is only responsible for it's own behaviour on different viewports
+> Each block is only responsible for it's own behavior on different viewports
 
 In our situation, the content of the `navbar` is clearly off, so let's repeat our mantra "I will look at things in isolation". When looking only at this block (in the `navbar.css` file) it is a quick fix, we add a media query and turn on `flex-wrap`, center the elements and maybe decrease the font a little.
 
@@ -397,13 +397,13 @@ In our situation, the content of the `navbar` is clearly off, so let's repeat ou
 }
 ```
 
-Note that this is only one way to do it. This tutorial is not about the best mobile styles and the way I did it here will look butt ugly when we add more links to the menu. Also the approach here is not really mobile first... but it does the job!
+Note that this is only one way to do it. This tutorial is not about the best mobile styles and the way I did it here will look butt ugly when we add more links to the menu. Also the approach here is not really mobile-first... but it does the job!
 
 <sidenote heading="On mobile first">
 
-There are a myriad of reasons I am not doing this tutorial in a mobile first manner. The main one is that this post is all about didactics meaning how does someone learn the best way. People that are coding alongside a tutorial and using it as reference are most likely doing that on a desktop machine.
+There are a myriad of reasons I am not doing this tutorial in a mobile-first manner. The main one is that this post is all about didactics meaning how does someone learn the best way. People that are coding alongside a tutorial and using it as a reference are most likely doing that on a desktop machine.
 
-I also try to be not that dogmatic about mobile first in general. I can clearly see the benefits and a lot has been [written and discussed](https://mayvendev.com/blog/mobilefirst) about this issue. I develop mobile first from time to time, but as long as you are empathic towards your users, your development is not taking way too long and the **end product** is serving the customer well, does it really matter how you got there? Evaluate the tradeoffs and do what you (and your team) thinks will create the best software for the customer. Just my two 50 cents.
+I also try to be not that dogmatic about mobile-first in general. I can clearly see the benefits and a lot has been [written and discussed](https://mayvendev.com/blog/mobilefirst) about this issue. I develop mobile-first from time to time, but as long as you are empathic towards your users, your development is not taking way too long and the **end product** is serving the customer well, does it really matter how you got there? Evaluate the tradeoffs and do what you (and your team) thinks will create the best software for the customer. Just my two 50 cents.
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1540301660/2_50_cents.png)
 
@@ -428,4 +428,4 @@ Smaller font size, center all content in it, tadaa... it really seems like we ar
 
 Like with everything in development there are so many things we could have done differently but I hope you got the basics of how to approach frontend work BEM-Style!
 
-There is still a lot to say so let me know if you want to see a third part :)
+There is still a lot to say so let me know if you want to see the third part :)
