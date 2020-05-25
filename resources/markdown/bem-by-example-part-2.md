@@ -18,22 +18,23 @@ list_image: >-
 
 
 
-Howdy ho and welcome back! This is the second part of my BEM by Example series. If you skipped [the first part](http://blog.simonvomeyser.de/css-structure-with-bem-in-a-real-world-example-part-1/) make sure you at least know what that [core concepts of BEM](http://getbem.com/) are.
+Howdy ho and welcome back! This is the second part of my BEM by Example series. If you skipped [the first part](/bem-by-example) make sure you at least know what that [core concepts of BEM](http://getbem.com/) are.
 
-In this post we will setup the project and then (finally, gosh! ?) implement the header of the Design I showed you in [Part 1](https://blog.simonvomeyser.de/css-structure-with-bem-in-a-real-world-example-part-1/).
+In this post we will setup the project and then (finally!) implement the header of the Design.
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1538713180/Header.png)
 
-This can be found [on Figma](https://www.figma.com/file/DyCnbDJJ38ODholutt2WtOfp/BEM-by-Example), where you can get the exact colors and export assets. [Here is an old school image](https://res.cloudinary.com/simonvomeyser/image/upload/v1536816215/BEM%20by%20Example/Desktop.png) if you want to travel the hard road.
+This can be found [on Figma](https://www.figma.com/file/DyCnbDJJ38ODholutt2WtOfp/BEM-by-Example), where you can get the exact colors and export assets. [Here is an old school image](https://res.cloudinary.com/simonvomeyser/image/upload/v1536816215/BEM%20by%20Example/Desktop.png) if you want to travel the old-school road.
 
-You can of course use your own colors, background images and logos. Show me what you build! :)
-Alongside of this tutorial you will find some boxes like the one after this paragraph. In there I will mention things
-that are not necessarily important, yet interesting additional information. If you have no idea the title of the aside
-means you can simply ignore it to not get confused. Nothing mandatory here.
+You can of course use your own colors, background images and logos!
+
+Alongside of this tutorial you will find some boxes like the one after this paragraph. In there I will mention things that are not necessarily important, yet interesting additional information. 
+
+If you have no idea the title of the aside means you can simply ignore it to not get confused. Nothing mandatory here.
 
 <sidenote heading="I am a side note, click me if you are a nerd.">
 
-Cool eh? I will contain some additional information for nerds like you and me.
+Cool eh? I will contain some additional information for nerds.
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1540881762/tenor.gif)
 
@@ -41,31 +42,32 @@ Cool eh? I will contain some additional information for nerds like you and me.
 
 ## The first steps
 
-The first thing I would do when a designer hands my such an amazing design like the on above is.. maybe hug him or her.
-Designers need a lot of love because they get picked on for constantly drawing unicorns ? .
+The first thing I would do when a designer hands my such an amazing design like the on above is.. maybe hug him or her. Designers need a lot of love because they get picked on for constantly drawing unicorns. 🦄
 
-The thing I would do to prepare doing the frontend is trying to dissect the design and find the first "Block". My
-attempt would maybe look something like this video. You can do that on a piece of paper or simply in your head
+The second thing is trying to dissect the design and find our first "Block"!
 
-<embed-video code="vFJz-XFBmAQ"></embed-video>
+My attempt would maybe look something like this video. You can do that on a piece of paper or simply in your head:
 
-So you see I think we'll need a Block named `header` (or how you want) with two Elements, a `navbar` and an `image` . This might change during implementation, my workflow usually involves refactoring later because I am not the sharpest tool in the shed. But in all seriousness:
+<embed-video id="tutorial-video-1" code="vFJz-XFBmAQ"></embed-video>
 
-> Refactoring is always part of the process. Relax, nobody gets it perfect right away.
+So you see I think we'll seem to need a Block named `header` with two Elements, a `navbar` and an `image`. This might change during implementation, my workflow usually involves refactoring later because I am not the sharpest tool in the shed. But in all seriousness:
+
+> Refactoring is always part of the process. Relax, nobody gets naming and hierarchy perfect right away.
 
 Before we start to create a rough draft of the HTML we need to setup a project of course. No worries, this will be
 really down to earth.
 
 ## The minimal project setup
-Since we want this example to be as straightforward as possible we are going to use no CSS preprocessor, no Webpack, no
-parcel-di-gulpi-grunts. I know that all these things have enormous benefits but I want to keep this tutorial focused on
-BEM.
 
-If you have no idea what I am talking about: Just keep in mind that most modern projects usually will have a more complicated setup. Since this has no benefit for understanding BEM we can simply start with a single HTML file and a single CSS file. The way frontend web development used to be ... member? I 'member.
+Since we want this example to be as straightforward as possible we are going to use no CSS preprocessor, no Webpack, no gulping-grunts. 
+
+If you have no idea what I am talking about: Just keep in mind that most modern projects usually will have a more complicated setup. 
+
+Since this has no benefit for understanding BEM we can simply start with a single HTML file and a single CSS file. The way frontend web development used to be ... member? I 'member.
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1539064839/Group.png)
 
-The HTML file needs a few things that are a [recommended minimum](https://github.com/joshbuchea/HEAD#recommended-minimum) for a modern website. We then include the stylesheet we will write in the next step and we are already set in terms of our markup preparation.
+The HTML file needs a few things that are a [recommended minimum](https://github.com/joshbuchea/HEAD#recommended-minimum) for a modern website. We then include the stylesheet and are set in terms of our *markup* preparation.
 
 ```html
 <!DOCTYPE html>
@@ -88,19 +90,20 @@ The HTML file needs a few things that are a [recommended minimum](https://github
 Now it's time to look at the basic styles!
 
 ## Style prep, Global Styles and BEM
+
 What to prepare before writing my first BEM Block was a big head-scratcher for me.
 
 <blockquote>
 
 BEM Blocks should be independent, so should there be global styles at all?
 
-![](https://res.cloudinary.com/simonvomeyser/image/upload/v1538977861/giphy.gif)
-
 </blockquote>
 
-This is the first time I will turn in my alter ego "Pragmatic Man" and hope you will become my sidekick "Common Sense
-Kid": I prefer to use a few minimal global styles as a setup even if that means not fully complying to the BEM principle
-of complete Block reusability .
+![](https://res.cloudinary.com/simonvomeyser/image/upload/v1538977861/giphy.gif)
+
+This is the first time I will turn in my alter ego "Pragmatic Man" and hope you will like him and his sidekick "Common Sense Kid": 
+
+I prefer to use a few minimal global styles as a setup even if that means not fully complying to the BEM principle of complete Block reusability.
 
 ```css
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
@@ -124,29 +127,19 @@ body {
 
 As you see these defaults are pretty minimal. I am setting a bigger font-size and defaulting to a prettier font which I imported. I am also [setting the box model](https://css-tricks.com/international-box-sizing-awareness-day/). You could do all that on every component but I think it's just not practical.
 
-<blockquote>
-
-Let's be honest: We are not going to port any of these blocks over to other sites
-right?
-
-</blockquote>
-
-Even if you do, you might want them to blend in and not to stand out because they use a completely different font or font-size. The box model is something that should [be a default anyways](https://css-tricks.com/international-box-sizing-awareness-day/) and setting margin and padding on the body? Come on, let's not argue about stuff like that. It's simply not that important.
+Let's not argue about stuff like that. It's simply not that important.
 
 > For me, BEM is more about structure inside a single project than about reusability across projects.
 
- I am not using any [resets](https://cssreset.com/what-is-a-css-reset/) because I think the [arguments](http://getbem.com/faq/#global-css-resets) of the creators of BEM are quite good. You could though, I don't judge.
+I am not using any [resets](https://cssreset.com/what-is-a-css-reset/) because I think the [arguments](http://getbem.com/faq/#global-css-resets) of the creators of BEM are quite good. You could though, I don't judge.
 
 <sidenote heading="On BEM and Frameworks like Bootstrap, Foundation Tailwind and others">
 
-While it is totally possible to use a BEM naming convention and also use a CSS Framework (I did it quite often
-because
-they are awesome and help a lot) I nowadays would prefer not to. Your markup will stay way more concise since you
-will
-only use one naming convention and not mix it up.
+While it is totally possible to use a BEM naming convention and also use a CSS Framework (I did it quite often because they help a lot) I nowadays would prefer not to. 
 
-Something like this using Bootstrap 4 just does not appeal to me and is messy and confusing because it mixes naming
-conventions:
+Your markup will stay way more concise since you will only use one naming convention and not mix it up.
+
+Something like this using Bootstrap 4 just does not appeal to me and is messy and confusing because it mixes naming conventions:
 
 ```html
 <header class="header mx-auto p-3">
@@ -158,11 +151,7 @@ conventions:
 </header>
 ```
 
-Still, if you want to use Bootstrap's (or some other Frameworks) immense power just do it. Pragmatic-Man would say:
-If it
-brings you more benefits than problems you already have your decision. You are smart enough to figure that out on
-your
-own :)
+Still, if you want to use Bootstrap's (or some other Frameworks) immense power just do it. If it brings you more benefits than problems you already have your decision.
 
 > What's most important is getting to work, so let's do that!
 
@@ -190,7 +179,7 @@ So, our next steps would be to include the stylesheet in the head and then write
 <body>
     <header class="header">
         <div class="header__navbar">
-            <!-- Navbar block will go here -->
+            <!-- the next block will go here -->
         </div>
         <div class="header__image">
             The benefits of BEM
@@ -200,9 +189,7 @@ So, our next steps would be to include the stylesheet in the head and then write
 
 </html>
 ```
-Are you still following? Just don't care about the navigation right now and look from the outside to the inside.
-
-
+Are you still following? Just don't care about the navigation (the next block) right now and look from the outside to the inside.
 
 > Always look at blocks in isolation is the key to not get confused!
 
@@ -243,13 +230,11 @@ Pretty good right? You could use another Block or Element for the big text sayin
 
 This tutorial would be blown out of proportion if I would explain every line of CSS. This can't be a tutorial about how the awesomeness of Flexbox works or how other CSS magic is done.
 
-If you find yourself confused about the CSS and not about BEM itself: No problem, you need to take a step back and watch a few tutorials before going on here. Key is identifying **where** your head is stuck.
+If you find yourself confused about the CSS and not about BEM itself: No problem, you need to take a step back and watch a few tutorials before going on here. Key is always identifying **where** your head is stuck.
 
 There are a lot of beginner tutorials for CSS just a Google Search away. If it is Flexbox what makes your head flex I can highly recommend [Wes Bos and his tutorials](https://flexbox.io/) about that.
 
 > Like with every problem or thing you don't understand: Dissect it into smaller in smaller pieces and attack them one be one.
-
- Don't feel bad, you can do it! ?‍??
 
 </sidenote>
 
@@ -257,12 +242,9 @@ There are a lot of beginner tutorials for CSS just a Google Search away. If it i
 
 The navbar should most certainly be **it's own block** to keep things structured. So now we are **only** looking at the content of the `header__navbar` element. Again, isolation is key to not get confused
 
-> When things start to get messy, chances are good you need to create a new block
-
-
 <embed-video code="pPX8I8_GQVk"></embed-video>
 
-So my first guess for the markup would be like this, the naming is arbitrary (call the block _batman-navbar_ or _gandalf-nav_ if you want)
+So my first guess for the markup would be like this, the naming is arbitrary (call the block _navbar_, _nav_ or _batman-nav_ if you want)
 
 ```html
 ...
@@ -272,7 +254,7 @@ So my first guess for the markup would be like this, the naming is arbitrary (ca
         Learn BEM
     </div>
     <div class="navbar__list">
-        <!-- An ul element as block?  -->
+        <!-- the next sub block?  -->
     </div>
 </nav>
 
@@ -285,12 +267,12 @@ There is something to be discussed: What should we do with the `ul` element cont
 
 ```html
 <!-- Do not do it like this! -->
-<ul class="bad-menu">
-    <li class="bad-menu__item">
-        <a class="bad-menu__link" href="#about">Home</a>
+<ul class="menu">
+    <li class="menu__item">
+        <a class="menu__link" href="#about">Home</a>
     </li>
-    <li class="bad-menu__item bad-menu__item--active">
-        <a class="bad-menu__link" href="#about">About</a>
+    <li class="menu__item menu__item--active">
+        <a class="menu__link" href="#about">About</a>
     </li>
     ...
 </ul>
@@ -378,7 +360,9 @@ One of the things I always wondered was where to put my media queries. With BEM,
 
 > Each block is only responsible for it's own behavior on different viewports
 
-In our situation, the content of the `navbar` is clearly off, so let's repeat our mantra "I will look at things in isolation". When looking only at this block (in the `navbar.css` file) it is a quick fix, we add a media query and turn on `flex-wrap`, center the elements and maybe decrease the font a little.
+In our situation, the content of the `navbar` is clearly off, so let's repeat our mantra "I will look at things in isolation". 
+
+When looking only at this block (in the `navbar.css` file) it is a quick fix, we add a media query and turn on `flex-wrap`, center the elements and maybe decrease the font a little.
 
 ```css
 @media (max-width: 900px) {
@@ -397,13 +381,19 @@ In our situation, the content of the `navbar` is clearly off, so let's repeat ou
 }
 ```
 
-Note that this is only one way to do it. This tutorial is not about the best mobile styles and the way I did it here will look butt ugly when we add more links to the menu. Also the approach here is not really mobile-first... but it does the job!
+Note that this is only one way to do it. This tutorial is not about the best mobile style approach and the way I did it here will look really ugly when we add more links to the menu. But it does the job for now!
 
 <sidenote heading="On mobile first">
 
-There are a myriad of reasons I am not doing this tutorial in a mobile-first manner. The main one is that this post is all about didactics meaning how does someone learn the best way. People that are coding alongside a tutorial and using it as a reference are most likely doing that on a desktop machine.
+There are a myriad of reasons I am not doing this tutorial in a mobile-first manner. The main one is that this post is more about didactics meaning how does somebody learn better. 
 
-I also try to be not that dogmatic about mobile-first in general. I can clearly see the benefits and a lot has been [written and discussed](https://mayvendev.com/blog/mobilefirst) about this issue. I develop mobile-first from time to time, but as long as you are empathic towards your users, your development is not taking way too long and the **end product** is serving the customer well, does it really matter how you got there? Evaluate the tradeoffs and do what you (and your team) thinks will create the best software for the customer. Just my two 50 cents.
+People that are coding alongside a tutorial and using it as a reference are most likely doing that on a desktop machine.
+
+I also try to be not that dogmatic about mobile-first in general. I can clearly see the benefits and a lot has been [written and discussed](https://mayvendev.com/blog/mobilefirst) about this issue. 
+
+I develop mobile-first from time to time, but as your development is not taking way too long and the **end product** is serving the customer well, does it really matter how you got there? 
+
+Evaluate the tradeoffs and do what you (and your team) thinks will create the best software for the customer. Just my two 50 cents.
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1540301660/2_50_cents.png)
 
@@ -428,4 +418,4 @@ Smaller font size, center all content in it, tadaa... it really seems like we ar
 
 Like with everything in development there are so many things we could have done differently but I hope you got the basics of how to approach frontend work BEM-Style!
 
-There is still a lot to say so let me know if you want to see the third part :)
+There is still a lot to say so let me know if you want to see the third part 🙂
