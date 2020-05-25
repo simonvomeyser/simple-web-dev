@@ -5,8 +5,10 @@
   a {
     text-decoration: none;
     color: $primary-400;
-
-
+    @include anim();
+    &:hover {
+      color: $primary;
+    }
   }
 
   p,
