@@ -10,13 +10,17 @@
       color: $primary;
     }
   }
+  .twitter-tweet {
+    margin: 0 auto !important;  
+    margin-top: 1.5rem !important;
+  }
+
 
   p,
   pre[class*="language-"],
   blockquote,
   ul,
   ol,
-  .twitter-tweet,
   .embed-playground,
   .embed-video,
   .sidenote {
@@ -38,7 +42,7 @@
     margin: 1rem auto;
   }
 
-  blockquote {
+  blockquote:not(.twitter-tweet) {
     position: relative;
     text-align: center;
     overflow: hidden;
