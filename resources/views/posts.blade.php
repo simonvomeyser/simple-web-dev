@@ -20,8 +20,6 @@
 
     @if ($posts->count())
 
-    <h1>Welcome, here are all your blade posts</h1>
-
     <div class="posts">
         @each('includes.post-preview', $posts, 'post')
     </div>

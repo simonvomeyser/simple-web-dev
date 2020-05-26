@@ -6,27 +6,19 @@
     </div>
     <div class="post-preview__under-image">
         <div class="post-preview__meta">
-            <div class="post-preview__tags">
-
-                @each('includes.tag-pill', $post->tags, 'tag')
-
-            </div>
-            <div class="post-preview__est-reading-time">
-                <div class="est-reading-time">
-                    <span>{{$post->readingTime()}} min read</span>
-                    <img src="{{asset('images/clock.svg')}}" alt="Symbol of a clock">
-                </div>
+            <div>Written {{$post->release_date->diffForHumans()}}</div>
+            <div>
+                <span>{{$post->readingTime()}} min read</span>
             </div>
         </div>
         <div class="post-preview__heading">
             <h2>{{$post->title}}</h2>
         </div>
+
         <div class="post-preview__excerpt">
             <div>{!! $post->excerpt !!}</div>
         </div>
-        <div class="post-preview__date">
-            <div>Written {{$post->release_date->diffForHumans()}}</div>
-        </div>
+
         <div class="post-preview__button">
             <a href="{{$post->getLink()}}" class="button">Read more</a>
         </div>

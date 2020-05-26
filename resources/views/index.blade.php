@@ -5,8 +5,6 @@
 
     @if ($posts->count())
 
-    <h1>The 3 most recent posts:</h1>
-
     <div class="posts">
         @each('includes.post-preview', $posts, 'post')
     </div>
