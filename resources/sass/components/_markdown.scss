@@ -1,5 +1,5 @@
 .markdown {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.6;
   color: $neutral-400;
   a {
@@ -84,15 +84,16 @@
   h5,
   h6 {
     color: $neutral-400;
+    font-weight: 400;
     margin-top: 2.5em;
     margin-bottom: -0.25em;
-    font-size: 1.2rem;
+    font-size: 26px;
   }
   h2 {
     position: relative;
-    font-size: 28px;
+    font-size: 30px;
     color: $neutral-400;
-    font-weight: 300;
+    font-weight: 400;
     padding-left: 1rem;
     &::before {
       position: absolute;

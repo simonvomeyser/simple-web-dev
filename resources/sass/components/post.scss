@@ -1,16 +1,13 @@
 .post {
   position: relative;
   
+  @include e('meta') {
+    margin-bottom: 1rem;
+  }
   @include e('content') {
     margin-bottom: 1rem;
   }
   @include e('back') {
     margin-bottom: 2rem;
-  }
-}
-
-@include breakpoint("mobile") {
-  .post {
-    padding-top: 0;
   }
 }

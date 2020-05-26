@@ -3,8 +3,8 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid  $neutral-300;
-  color: $neutral-300; 
+  border: 1px solid  $neutral-400;
+  color: $neutral-400; 
   height: 20px;
   padding: 0 10px;
   border-radius: 20px;
@@ -13,6 +13,7 @@
 
   &:hover {
     border: 1px solid $primary;
-    color: $primary;
+    color: white;
+    background-color: $primary;
   }
 }
