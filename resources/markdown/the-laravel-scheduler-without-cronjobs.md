@@ -18,31 +18,29 @@ list_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1588611629/laravel-scheduler/laravel-scheduler-list-header-image.jpg
 ---
 
-The Laravel Scheduler is an awesome tool since it greatly simplifies the usage of confusing cron job definitions I always seem to be too stupid for.
+The Laravel Scheduler is an awesome tool since it greatly simplifies the usage of confusing cron job definitions I always was not smart enough for.
 
-I like the fact that it (like many things Laravel) offers great readability 🙂
+I like the fact that moves schedules in the project's version control and it offers great readability 🙂
 
-<figure class="wp-block-image">
-  <img src="https://res.cloudinary.com/simonvomeyser/image/upload/v1552377554/laravel-scheduler/dodge-laravel-scheduler.png" alt="" class="wp-image-294">
-</figure>
+![](https://res.cloudinary.com/simonvomeyser/image/upload/v1552377554/laravel-scheduler/dodge-laravel-scheduler.png)
 
 The setup also seems to be really simple, see [the docs](https://laravel.com/docs/5.7/scheduling#introduction)
 
 > When using the scheduler, you only need to add the following Cron entry to your server
 
-Nooo! What's a "Cron"? Nooo! I can not do that since I am using a cheap hosting service like bluehost or hostegater!
+Hm, what's a "Cron"? (looks it up) Nooo! I can not do that since I am using a cheap hosting service like Bluehost or Hostegater!
 
 ## I have no direct access to my server 🥺
 
-I personally still have some projects where I have no root access and either can't setup cronjobs at all.. or have a (usually butt ugly) interface to set up cronjobs on only a route to visit periodically, maybe not even every minute.
+I personally still have some projects where I have no root access and either can't setup cronjobs at all.. or have a (usually lightspeed ugly) interface to set up cronjobs on only a route to visit periodically, maybe not even every minute.
 
-Some customers still want to use cheap hosting.. and that should be okay ¯_(ツ)_/¯
+Some customers still want to use cheap hosting.. and that should be okay 🤷‍♂️
 
-I found a pretty approachable solution to still use the power of the Laravel Scheduler!
+I found a pretty approachable solution to this!
 
 ## Setup a GET route for the scheduler
 
-The first and central thing you should do is to setup a `/scheduler` route that will serve as an alternative to running the command `php artisan schedule:run` from the commandline.
+The first and central thing you should do is to setup a `/scheduler` route that will serve as an alternative to running the command `php artisan schedule:run` from the command-line.
 
 ```php
 Route::get('/scheduler', function() {
@@ -54,13 +52,13 @@ This makes the command accessible via a simple GET request. Hooray, we are almos
 
 Just keep in mind that some of them won't allow calling your`/scheduler` route every minute. An option could be to set up your Laravel schedules according to limitations of the service you use: If your hoster allows a cronjob to visit a route every 20 minutes you can still plan things in 20, 40, 60 Minute increments.
 
-If you, on the other hand, set up something that should happen every 5 minutes but only can hit the route all 20 minutes, you are asking for headache! Even worse, some combination that is not divisible without remainder will make your brain melt. You did set up a task that should run every 7 minutes but you hit the route only every 60 minutes? The least common multiple is 420, so it will only run every 7 hours 🤯
+If you, on the other hand, set up something that should happen every 5 minutes but only can hit the route all 20 minutes, you are asking for trouble. Some combinations not divisible without remainder will even make your brain melt. You did set up a task that should run every 7 minutes but you hit the route only every 60 minutes? The least common multiple is 420, so it will only run every 7 hours 🤯
 
-## No cronjobs at all with your hoster? Still no problem!
+## No or only random cronjobs at all with your hoster?
 
-Since visiting the new route yourself every minute would make you a modern day Sisyphus - Why not use a product that offers "cronjobs as a service"?
+Since visiting the new route yourself every minute would make you a modern-day Sisyphus - Why not use a product that offers "cronjobs as a service"?
 
-CaaS, I even like how that sounds. Almost like the dutch word for cheese. Hmmm cheeese. 🧀
+CaaS, I even like how that sounds. Almost like the dutch word for cheese. Hmmm cheese! 🧀
 
 Some of them are listed at [cronjobservices.com](https://www.cronjobservices.com/), they did good work of comparing some of them. But hey, other options are just a googly [search](https://www.google.de/search?q=cronjob+as+a+service) away 🙂
 
