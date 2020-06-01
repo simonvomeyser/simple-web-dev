@@ -4,6 +4,7 @@ namespace App\Markdown;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\HtmlString;
 use League\CommonMark\Environment;
 use Illuminate\Support\Facades\File;
@@ -109,6 +110,10 @@ class MarkdownPost
 
     public static function all()
     {
+        if (Cache::has('markdownPosts')) {
+            return Cache::get('markdownPosts');
+        }
+
         $collection = collect();
 
         if (!File::isDirectory(static::getFolderPath())) {
