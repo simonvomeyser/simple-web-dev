@@ -109,6 +109,7 @@
   pre {
     // override prism
     background: $primary-100;
+    font-size: 18px;
     font-family: "Courier 10 Pitch", Courier, monospace;
     line-height: 1.6;
     max-width: 100%;
@@ -117,6 +118,7 @@
   }
   code {
     // inline
+    font-size: 18px;
     background-color: $primary-100;
     font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
     color: $neutral-400;
