@@ -5,8 +5,7 @@ slug: bem-by-example-part-2
 excerpt: >-
   This is the second part of my "BEM by Example" series.
 
-  In this post we will setup the project and then (finally, gosh! ?) implement
-  the header of the Design.
+  In this post we will setup the project and then (finally) implement the header of the Design.
 tags:
   - Frontend
   - Tutorial
