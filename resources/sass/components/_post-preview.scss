@@ -5,14 +5,10 @@
   @include anim();
 
   &:hover {
-    @include shadow(4);
     .post-preview__thumbnail {
       img {
         transform: translate3d(-50%, -50%, 0) scale3d(1.01, 1.01, 1);
       }
-    }
-    .post-preview__button {
-      transform: scale3d(1.01, 1.01, 1);
     }
   }
   @include e("button") {
