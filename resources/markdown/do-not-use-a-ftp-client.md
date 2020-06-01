@@ -41,7 +41,7 @@ While I nowadays use and love some of these tools, I discovered that there are a
 
 > There are some small wins you can improve your deployment process with that are not crazy complicated!
 
-<sidenote heading="Read more: On using Git">
+<sidenote heading="Please use git!">
 
 You should <strong>always</strong> use a version control system! If you don’t do it some of these tricks
 won’t work.
@@ -49,7 +49,7 @@ won’t work.
 If you think it is too complicated for your simple project chances are good you just need to familiarize
 yourself more with git in general. The basics are really easy and highly beneficial.
 
-Believe me, I am all and always for keeping things simple but in this case the benefits far outweight the
+Believe me, I am all and always for keeping things simple but in this case the benefits far ooutweighthe
 costs. Just do it!
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1548395373/dont-use-ftp/justdoit.gif)
