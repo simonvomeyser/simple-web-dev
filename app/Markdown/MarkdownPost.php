@@ -2,6 +2,7 @@
 
 namespace App\Markdown;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Env;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
@@ -109,6 +110,20 @@ class MarkdownPost
         return new HtmlString($converter->convertToHtml($markdown));
     }
 
+    public function contains($word)
+    {
+        $lowerCaseWord = Str::lower($word);
+
+        $tagsContainWord = !!Arr::where($this->tags, function ($tag) use ($lowerCaseWord) {
+           return Str::contains(Str::lower($tag), $lowerCaseWord);
+        });
+
+        return $tagsContainWord ||
+            Str::contains(Str::lower($this->title), $lowerCaseWord) ||
+            Str::contains(Str::lower($this->excerpt), $lowerCaseWord);
+
+    }
+
     public static function all()
     {
         if (env('APP_ENV') !== 'local' && Cache::has('markdownPosts')) {
@@ -129,6 +144,14 @@ class MarkdownPost
 
         return $collection->sortByDate('release_date')->values();
     }
+
+    public static function search($searchString)
+    {
+        return static::released()->filter(function ($post) use ($searchString) {
+            return $post->contains($searchString);
+        })->values();
+    }
+ 
 
     public static function released()
     {
