@@ -9,6 +9,8 @@
   font-size: 14px;
   color: $white;
   border-radius: 1rem;
+  border: none;
+
   @include anim();
 
   @include m("full-width") {
