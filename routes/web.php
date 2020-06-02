@@ -1,6 +1,7 @@
 <?php
 
 use App\Markdown\MarkdownPost;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+
+    $searchString = $request->input('q');
+
+    if ($searchString) {
+        $posts = MarkdownPost::search($searchString);
+        return view('index')->with(compact('posts', 'searchString'));
+    }
+
     return view('index')->with('posts', MarkdownPost::released());
 })->name('index');
 
