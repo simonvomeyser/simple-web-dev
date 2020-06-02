@@ -111,7 +111,7 @@ class MarkdownPost
 
     public static function all()
     {
-        if (env('APP_ENV') === 'production' && Cache::has('markdownPosts')) {
+        if (env('APP_ENV') !== 'local' && Cache::has('markdownPosts')) {
             return Cache::get('markdownPosts');
         }
 
