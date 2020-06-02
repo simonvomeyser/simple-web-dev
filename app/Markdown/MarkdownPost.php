@@ -115,13 +115,12 @@ class MarkdownPost
         $lowerCaseWord = Str::lower($word);
 
         $tagsContainWord = !!Arr::where($this->tags, function ($tag) use ($lowerCaseWord) {
-           return Str::contains(Str::lower($tag), $lowerCaseWord);
+            return Str::contains(Str::lower($tag), $lowerCaseWord);
         });
 
         return $tagsContainWord ||
             Str::contains(Str::lower($this->title), $lowerCaseWord) ||
             Str::contains(Str::lower($this->excerpt), $lowerCaseWord);
-
     }
 
     public static function all()
@@ -151,7 +150,7 @@ class MarkdownPost
             return $post->contains($searchString);
         })->values();
     }
- 
+
 
     public static function released()
     {
