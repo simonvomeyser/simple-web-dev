@@ -4,14 +4,9 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Markdown\MarkdownPost;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\File;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class SearchMarkdownPostTest extends TestCase
 {
-    use WithFaker;
-
     public function setUp(): void
     {
         parent::setUp();
