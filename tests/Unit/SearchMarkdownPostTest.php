@@ -36,4 +36,30 @@ class SearchMarkdownPostTest extends TestCase
         $this->assertNotNull($foundPosts);
         $this->assertSame($foundPosts->first()->title, $post->title);
     }
+
+    /** @test */
+    public function only_the_searched_post_is_found()
+    {
+        $this->assertCount(1, MarkdownPost::search('Post number one'));
+    }
+
+    /** @test */
+    public function searched_tags_are_found()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+        $foundPosts = MarkdownPost::search('Post NUMBER one Tag');
+
+        $this->assertNotNull($foundPosts);
+        $this->assertSame($foundPosts->first()->title, $post->title);
+    }
+
+    /** @test */
+    public function searched_excerpt_parts_are_found()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+        $foundPosts = MarkdownPost::search('A searchable part of the excerpt.');
+
+        $this->assertNotNull($foundPosts);
+        $this->assertSame($foundPosts->first()->title, $post->title);
+    }
 }

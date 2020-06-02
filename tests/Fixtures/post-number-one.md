@@ -6,9 +6,12 @@ excerpt:
     Torquent sit nibh euismod magna mi imperdiet luctus blandit platea, vulputate fusce senectus nam dolor etiam adipiscing lorem lectus quam.
     
     vestibulum proin sed aliquam montes at donec condimentum. Egestas praesent quisque laoreet ipsum est elementum integer pretium eget
+
+    A searchable part of the excerpt.
 tags: 
     - Productivity
     - Tools
+    - Post Number One Tag
 header_image: https://placehold.it/1024x768 
 list_image: https://placehold.it/1024x768 
 ---
