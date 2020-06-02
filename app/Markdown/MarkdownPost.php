@@ -2,12 +2,13 @@
 
 namespace App\Markdown;
 
+use Illuminate\Support\Env;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\HtmlString;
 use League\CommonMark\Environment;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Cache;
 use League\CommonMark\CommonMarkConverter;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
@@ -110,7 +111,7 @@ class MarkdownPost
 
     public static function all()
     {
-        if (Cache::has('markdownPosts')) {
+        if (env('APP_ENV') === 'production' && Cache::has('markdownPosts')) {
             return Cache::get('markdownPosts');
         }
 
