@@ -5,10 +5,12 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Markdown\MarkdownPost;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class SearchTest extends TestCase
 {
+    use WithFaker;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -32,5 +34,14 @@ class SearchTest extends TestCase
         $this->get('/?q=' . urlencode('Post number one'))
             ->assertSee($post->title)
             ->assertDontSee($postTwo->title);
+    }
+
+    /** @test */
+    public function the_searched_word_can_be_seen()
+    {
+        $query = 'Post number one';
+
+        $this->get('/?q=' . urlencode('Post number one'))
+            ->assertSee($query);
     }
 }

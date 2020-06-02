@@ -6,15 +6,23 @@
         <div class="search-inline-form__inner">
             <span class="search-inline-form__label-background"></span>
             <label for="search-input">Search</label>
-            <input type="text" value="?" name="q" id="search-input"><button type="submit" class="button">find</button>
+            <input type="text" value="{{ $searchString ?? '' }}" name="q" id="search-input"><button type="submit" class="button">find</button>
         </div>
     </form>
-    <div class="search-result-info">
-        Found ??
-    </div>
-    <div class="search-result-info">
-        Found ??
-    </div>
+    @if (isset($searchString))
+        <div class="search-result-info">
+            @if ($posts->count())
+                Wohoo! I found {{$posts->count()}} posts with that!
+            @else
+                Oh no, there are no posts when you search for that! 
+            @endif
+        </div>
+
+        <div class="search-result-info">
+
+            <a href="{{route('index')}}">clear search</a>
+        </div>
+    @endif
 </section>
 
 <section class="container">
