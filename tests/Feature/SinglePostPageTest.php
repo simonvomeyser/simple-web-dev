@@ -10,6 +10,7 @@ class SinglePostPageTest extends TestCase
     /** @test */
     public function all_posts_are_reachable_via_their_link()
     {
+        $this->withoutExceptionHandling();
         MarkdownPost::fake();
         $posts = MarkdownPost::all();
 

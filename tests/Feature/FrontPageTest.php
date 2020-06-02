@@ -29,7 +29,7 @@ class FrontPageTest extends TestCase
 
         $response = $this->get('/');
 
-        $posts = MarkdownPost::released()->forPage(1, 3)->toArray();
+        $posts = MarkdownPost::released();
 
         $response->assertSeeInOrder([$posts[0]->title, $posts[1]->title, $posts[2]->title]);
 
@@ -38,23 +38,37 @@ class FrontPageTest extends TestCase
             $response->assertSeeInOrder([$post->list_image, $post->title, $post->excerpt]);
         }
     }
-
     /** @test */
-    public function only_three_posts_are_passed_to_the_view()
+    public function posts_are_found_with_essential_data()
     {
         MarkdownPost::fake();
+        $posts = MarkdownPost::released();
 
-        $this->get('/')->assertViewHas('posts', function ($posts) {
-            return $posts->count() < 4;
-        });
+        $response = $this->get('/');
+
+        foreach ($posts as $post) {
+            $response
+                ->assertSee($post->title)
+                ->assertSee($post->getLink())
+                ->assertSee($post->excerpt)
+                ->assertSee($post->list_image);
+        }
     }
-
+    /** @test */
     public function only_released_posts_are_shown()
     {
         MarkdownPost::fake();
 
-        $this->get('/')->assertViewHas('posts', function ($posts) {
-            return $posts->isReleased();
+        $unreleasedPosts = MarkdownPost::all()->filter(function (MarkdownPost $post) {
+            return !$post->isReleased();
         });
+
+        $response = $this->get('/');
+
+        foreach ($unreleasedPosts as $post) {
+            $response
+                ->assertDontSee($post->title)
+                ->assertDontSee($post->getLink());
+        }
     }
 }

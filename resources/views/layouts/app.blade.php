@@ -23,7 +23,6 @@
                 </a>
                 <nav class="header__nav">
                     <ul>
-                        <li><a href="{{route('posts')}}">All Posts</a></li>
                         <li><a href="{{route('about')}}">About</a></li>
                     </ul>
                 </nav>

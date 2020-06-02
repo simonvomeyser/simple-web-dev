@@ -15,14 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $latestThreePosts = MarkdownPost::released()->forPage(1, 3);
-
-    return view('index')->with('posts', $latestThreePosts);
+    return view('index')->with('posts', MarkdownPost::released());
 })->name('index');
-
-Route::get('/posts', function () {
-    return view('posts')->with('posts', MarkdownPost::released());
-})->name('posts');
 
 Route::get('/about', function () {
     return view('about');
