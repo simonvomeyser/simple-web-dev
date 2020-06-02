@@ -13,9 +13,9 @@ tags:
   - Dev Ops
   - Laravel
 header_image: >-
-  https://res.cloudinary.com/simonvomeyser/image/upload/v1588611629/laravel-scheduler/laravel-scheduler-list-header-image.jpg
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1591085383/laravel-scheduler/Blog_Header.png
 list_image: >-
-  https://res.cloudinary.com/simonvomeyser/image/upload/v1588611629/laravel-scheduler/laravel-scheduler-list-header-image.jpg
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1591085383/laravel-scheduler/Blog_Header.png
 ---
 
 The Laravel Scheduler is an awesome tool since it greatly simplifies the usage of confusing cron job definitions I always was not smart enough for.
