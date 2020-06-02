@@ -10,6 +10,7 @@ excerpt: >-
 tags:
   - Frontend
   - Tutorial
+  - CSS
 header_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1588611505/BEM%20by%20Example/bem-1-list-header-image.png
 list_image: >-
