@@ -35,8 +35,6 @@
 
     @else
 
-    <h1>No posts found</h1>
-
     @include('includes.no-posts-found')
 
     @endif
