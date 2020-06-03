@@ -2,6 +2,7 @@
 
 namespace App\Markdown;
 
+use App\CommonMarkExtensions\LazyImageRenderer;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Env;
 use Illuminate\Support\Str;
@@ -97,6 +98,7 @@ class MarkdownPost
         $environment = Environment::createCommonMarkEnvironment();
 
         $environment->addExtension(new ExternalLinkExtension());
+        $environment->addInlineRenderer('League\CommonMark\Inline\Element\Image', new LazyImageRenderer());
 
         $converter = new CommonMarkConverter([
             'allow_unsafe_links' => false,

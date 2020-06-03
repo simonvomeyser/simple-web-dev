@@ -1,7 +1,7 @@
 <template>
   <div class="embed-video embed-video--16by9">
-    <iframe :src="src" frameborder="0" allowfullscreen allow="autoplay"></iframe>
-  </div>
+    <iframe loading="lazy" class="lozad" :data-src="src" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+ </div>
 </template>
 
 <script>

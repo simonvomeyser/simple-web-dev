@@ -1,7 +1,7 @@
 <article class="post-preview">
     <div class="post-preview__thumbnail">
         <a href="{{ $post->getLink() }}">
-            <img src="{{$post->list_image}}" alt="List image of the post {{$post->title}}">
+            <img class="lozad" data-src="{{$post->list_image}}" alt="List image of the post {{$post->title}}">
         </a>
     </div>
     <div class="post-preview__under-image">
