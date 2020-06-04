@@ -10,14 +10,12 @@
         </div>
     </form>
     @if (isset($searchString))
-        <div class="search-result-info">
-            @if ($posts->count())
-                Wohoo! I found {{$posts->count()}} posts with that!
-            @else
-                Oh no, there are no posts when you search for that! 
-            @endif
-        </div>
-
+        @if (!$posts->count())
+            <div class="search-result-info">
+                    Oh no, there are no posts when you search for that! 
+                </div>
+        @endif
+            
         <div class="search-result-info">
 
             <a href="{{route('index')}}">clear search</a>
