@@ -33,4 +33,18 @@ class SinglePostPageTest extends TestCase
                 ->assertSee($post->header_image);
         }
     }
+
+    /** @test */
+    public function it_contains_at_least_the_first_simlar_post()
+    {
+        MarkdownPost::fake();
+        $post = MarkdownPost::all()->first();
+
+        $firstSimilarPost = $post->similar()->first();
+        
+        $this->get($post->getLink())
+            ->assertSee($firstSimilarPost->title)
+            ->assertSee($firstSimilarPost->excerpt)
+            ->assertSee($firstSimilarPost->getLink());
+    }
 }

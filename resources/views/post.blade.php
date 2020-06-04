@@ -28,6 +28,17 @@
         <div class="post__content markdown">
             {{$post->content}}
         </div>
+        @if ($post->similar())
+            <div class="post__similar-heading">
+                Read more posts
+            </div>
+            <div class="post__similar-list">
+                @each('includes.post-preview', $post->similar()->take(2), 'post')
+            </div>
+        @endif
+        <div class="post__back">
+            <a href="/" class="button button--min-width button--secondary">Back to all posts</a>
+        </div>
 
     </div>
 </div>

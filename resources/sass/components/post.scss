@@ -7,7 +7,34 @@
   @include e('content') {
     margin-bottom: 1rem;
   }
+  @include e('similar-heading') {
+    color: $neutral-400;
+    font-weight: 400;
+    margin-top: 2.5em;
+    margin-bottom: -0.25em;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  @include e('similar-list') {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin-bottom: 2rem;
+  }
   @include e('back') {
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@include breakpoint('mobile') {
+  .post {
+    @include e('similar-list') {
+      grid-template-columns: 1fr;
+      grid-gap: 1rem;
+    }
   }
 }

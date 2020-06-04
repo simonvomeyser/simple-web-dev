@@ -16,6 +16,18 @@
   @include m("full-width") {
     width: 100%;
   }
+  @include m("min-width") {
+    min-width: 150px;
+  }
+  @include m("secondary") {
+    border: 2px solid $primary;
+    background-color: transparent;
+    text-decoration: none;
+    padding: 7px;
+    font-size: 14px;
+    color: $primary;
+    border-radius: 1rem;
+  }
   &:hover {
     opacity: .75;
   }
