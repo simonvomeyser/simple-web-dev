@@ -7,10 +7,12 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Env;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
 use League\CommonMark\Environment;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
+use InvalidArgumentException;
 use League\CommonMark\CommonMarkConverter;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
@@ -110,6 +112,20 @@ class MarkdownPost
         ], $environment);
 
         return new HtmlString($converter->convertToHtml($markdown));
+    }
+
+    /**
+     * @todo Find a better implemention, this only filters out current
+     * @return Collection
+     * @throws InvalidArgumentException
+     */
+    public function similar()
+    {
+        $similar = static::released()->filter(function ($post) {
+            return $post->slug !== $this->slug;
+        });
+
+        return $similar;
     }
 
     public function contains($word)

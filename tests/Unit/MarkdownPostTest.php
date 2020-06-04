@@ -184,4 +184,22 @@ class MarkdownPostTest extends TestCase
         $post->release_date = null;
         $this->assertStringContainsString('Draft', $post->getReadableRelease());
     }
+
+    /** @test */
+    public function similar_posts_can_retrieved()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+
+        $this->assertNotCount(0, $post->similar());
+    }
+
+    /** @test */
+    public function similar_posts_do_not_contain_the_post_itself()
+    {
+        $post = new MarkdownPost('post-number-one.md');
+
+        foreach ($post->similar() as $similarPost) {
+            $this->assertTrue($post->title !== $similarPost);
+        }
+    }
 }
