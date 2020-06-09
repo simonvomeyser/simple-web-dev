@@ -11,7 +11,7 @@
         </div>
         <div class="about__copy">
             <p>
-                This site is intendend to be a small diary of things I learn while on this intimidating journey through web development land. 
+                This site is intended to be a small diary of things I learn while on this intimidating journey through web development land. 
             </p>
             <p>
                 I strongly believe in sharing knowledge and even though I am neither smart, a writer nor the least bit funny I will attempt to write articles about things I learned and also crack a few jokes here and there. 
