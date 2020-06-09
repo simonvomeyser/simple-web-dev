@@ -5,7 +5,7 @@
   }
   @include e("name") {
     font-size: 32px;
-    font-family: $fontFamilySpecail;
+    font-family: $fontFamilySpecial;
     margin-bottom: 1rem;
   }
   @include e("image") {
