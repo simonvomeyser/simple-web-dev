@@ -9,9 +9,9 @@
     margin-bottom: 1rem;
   }
   @include e("image") {
-    padding-right: 3rem;
+    padding-right: 4rem;
     img {
-      width: 275px;
+      width: 230px;
     }
   }
   @include e("meta") {

@@ -10,10 +10,14 @@
     text-align: center;
     margin-bottom: 2rem;
   }
-  @include e("explaination") {
+  @include e("copy") {
     margin-bottom: 3rem;
-    p + p {
-      margin-top: 1rem;
+    font-size: 20px;
+    line-height: 1.6;
+    color: $neutral-400;
+
+    p, blockquote {
+      margin-bottom: 1.5rem;
     }
   }
 }
