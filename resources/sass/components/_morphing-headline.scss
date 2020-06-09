@@ -9,7 +9,12 @@
     background-color: $primary-150;
     display: inline-block;
     color: $neutral-400;
-    padding: 3px 10px;
+    padding: 3pxmargin-bottom 10px;
     min-width: 140px;
+  }
+}
+@include breakpoint("mobile") {
+  .morphing-headline {
+    display: none;
   }
 }
