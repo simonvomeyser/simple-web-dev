@@ -9,8 +9,8 @@
     background-color: $primary-150;
     display: inline-block;
     color: $neutral-400;
-    padding: 3pxmargin-bottom 10px;
-    min-width: 140px;
+    padding: 3px 10px;
+    min-width: 100px;
   }
 }
 @include breakpoint("mobile") {

@@ -2,9 +2,7 @@
 
 @section('main')
 <section class="container">
-    <div class="morphing-headline">
-        A blog about web dev and <span>Laravel</span>
-    </div>
+    <morphing-headline></morphing-headline>
 </section>
 <section class="container">
     <form action="/" method="get" class="search-inline-form">
