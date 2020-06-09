@@ -25,13 +25,12 @@
 @include breakpoint("mobile") {
   .about {
     @include e("heading") {
-      font-size: 32px;
+      font-size: 24px;
+      text-align: left;
       margin-bottom: 1.5rem;
     }
-    @include e("explaination") {
-      p {
-        font-size: 18px;
-      }
+    @include e("copy") {
+      font-size: 18px;
     }
     @include e("explaination") {
       margin-bottom: 2rem;
