@@ -1,0 +1,60 @@
+.fancy-quote {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  background: $primary-100;
+  font-size: 20px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 112px;
+
+  &::before {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    width: 100px;
+    height: 100px;
+    content: " ";
+    opacity: 0.25;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("/images/quote.svg");
+  }
+  > * {
+    max-width: 600px;
+    margin: 0 auto;
+    z-index: 1;
+    font-size: 1.2em;
+    font-style: italic;
+    padding: 1rem;
+  }
+  footer {
+    position: absolute;
+    margin: 0;
+    font-size: 12px;
+    bottom: -5px;
+    right: 0;
+  }
+}
+
+@include breakpoint("mobile") {
+  .about {
+    @include e("heading") {
+      font-size: 32px;
+      margin-bottom: 1.5rem;
+    }
+    @include e("explaination") {
+      p {
+        font-size: 18px;
+      }
+    }
+    @include e("explaination") {
+      margin-bottom: 2rem;
+    }
+
+  }
+}
