@@ -1,18 +1,20 @@
 .header {
   background-color: $white;
   border-bottom: 3px solid $neutral-200;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem 0;
   margin-bottom: 2rem;
 
   @include e('logo') {
     img {
-      width: 100%;
+      height: 60px;
+      width: auto;
     }
   }
 
   @include e('inner') {
-    display: flex;
+      display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   ul {
