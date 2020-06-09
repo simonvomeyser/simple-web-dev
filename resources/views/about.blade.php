@@ -4,20 +4,35 @@
 <section class="container container--narrow">
     <div class="about">
         <div class="about__back">
-            todo, back
+
         </div>
         <div class="about__heading">
             <h1>About simple web dev</h1>
         </div>
-        <div class="about__explaination">
+        <div class="about__copy">
             <p>
-                This site is a small blog called simple web dev (you might have picked that up by now).
+                This site is intendend to be a small diary of things I learn while on this intimidating journey through web development land. 
             </p>
             <p>
-                We strive to provide simple yet helpful articles about things we learn every day in the world of web
-                development. This blog should do nothing more and nothing less than to share some knowledge about our
-                favorite technologies like Laravel, Vue.js and React. We also write about the Frontentd, UX,
-                Productivity, Tooling and attempt a few shots at Dev Ops.
+                I strongly believe in sharing knowledge and even though I am neither smart, a writer nor the least bit funny I will attempt to write articles about things I learned and also crack a few jokes here and there. 
+            </p>
+
+            <blockquote class="fancy-quote">
+                <span>
+                    But I am no super-genius. Or are I?
+                </span>
+                <footer>Homer J. Simpson</footer>
+            </blockquote>
+
+            <p>
+                I have no idea where this experiment will lead to but I want to try it if only for the benefit of me getting out of my comfort zone and noticing how little I actually understood something while I try to explain it. 
+            </p>
+            <p>
+                Feel free to interact with me or send any feedback. If somebody besides my mum is interested in this blog I may add comments.
+            </p>
+            <p>
+                That's all, take care! 🙂👍 
+                <br>- Simon
             </p>
         </div>
         <div class="about__authors">
@@ -43,17 +58,6 @@
                             simon.vom.eyser@gmail.com
                         </a>
                     </div>
-                </div>
-                <div class="author__copy">
-                    <p>
-                        Hey, I’m Simon vom Eyser and I am freelancing web developer from NRW, Germany, (“Hi Simon,
-                        welcome to our self help group”)
-                    </p>
-                    <p>
-                        I like coffee, bad jokes and yet still try to be a professional which is quite an interesting
-                        endeavour. I’m involved in web development since the good old Myspace days and couldn't imagine
-                        a job I like doing more ☺️
-                    </p>
                 </div>
             </div>
         </div>
