@@ -21,7 +21,7 @@ Hey there and welcome to this little series. It's about writing better CSS by ma
 
 The **B**lock **E**lement **M**odifier concept (or the flavor of it I use) was [developed](http://getbem.com/) by [@floatdrop](https://twitter.com/floatdrop) and [@iamstarkov](https://twitter.com/iamstarkov). It does not require you to download or install anything, you can start in any new or existing project right away.
 
-I currently find BEM immensely helpful for writing CSS but starting out, I did not find examples in a _real world scenario_. I watched a ton of tutorials but they all were using isolated demonstrations, requiring a lot of knowledge with other technologies or simply not answering questions I had in my current project.
+I currently find BEM immensely helpful for writing CSS but starting out, I did not find examples in a _real world scenario_. I watched a ton of tutorials, but they all where using isolated demonstrations, requiring a lot of knowledge with other technologies or simply not answering questions I had in my current project.
 
 > I am pretty much trying to write the tutorial I wish I had when I was starting out and wanted to structure my CSS better.
 
