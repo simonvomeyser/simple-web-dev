@@ -21,7 +21,7 @@ Since constantly facepalming is no way to live your life I tried a lot of tools 
 
 Here I simply want to mention a few things that the Trello Team does really well and with an incredible amount of focus on User Experience (UX).
 
-I mean.. I regularly feel hugged by the Trello UX team.. is that really just me?
+I mean... I regularly feel hugged by the Trello UX team.. is that really just me?
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1522257594/Trello/agkalini3.jpg)
 
@@ -51,7 +51,7 @@ I know this stuff sounds simple... but if it's so simple why do most tools negle
 - E (Quick) Edit
 - F to search a Card
 
-Shortcuts can be so easy. Check Trellos [Shortcut Page](https://trello.com/shortcuts) for more info, you'll be surprised. 
+Shortcuts can be so easy. Check Trello's [Shortcut Page](https://trello.com/shortcuts) for more info, you'll be surprised. 
 
 Since the whole point of this article is to mention little UX gems: Pressing "Right Arrow" does not even take you to the list right of you, but also to the corresponding nth card in the list. 
 
