@@ -1,19 +1,19 @@
 .header {
   background-color: $white;
   border-bottom: 3px solid $neutral-200;
-  padding: 0.5rem 0;
+  padding: 0.75rem 0;
   margin-bottom: 2rem;
 
   @include e('logo') {
     img {
-      height: 60px;
+      height: 55px;
       width: auto;
-        transform: translateY(-2px);
+      transform: translateY(-2px);
     }
   }
 
   @include e('inner') {
-      display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
   }
@@ -53,7 +53,7 @@
     }
     a {
       color: $neutral-400;
-      font-size: 16px;
+      font-size: 18px;
     }
     ul {
       display: block;

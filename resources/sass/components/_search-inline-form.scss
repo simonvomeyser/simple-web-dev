@@ -1,5 +1,5 @@
 .search-inline-form {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,9 @@
 
 @include breakpoint('mobile') {
   .search-inline-form {
-    @include e('inner') {
+      margin-bottom: 2rem;
+
+      @include e('inner') {
       width: 100%;
       max-width: unset;
       input {
