@@ -11,7 +11,7 @@
         </div>
         <div class="about__copy">
             <p>
-                This site is intended to be a small diary of things I learn while on this intimidating journey through web development land.
+                This site is a small diary of the things I learn while on this intimidating journey through web development land.
             </p>
             <p>
                 I strongly believe in sharing knowledge and even though I am neither smart, a writer or the least bit funny I will attempt to write articles about things I learned. I also might crack a few jokes here and there.
@@ -25,7 +25,7 @@
             </blockquote>
 
             <p>
-                I have no idea where this experiment will lead to but I want to try this blog thing, if only for the benefit of me getting out of my comfort zone and learning things more thoroughly will trying to explain them.
+                I have no idea where this experiment will lead to but I want to try it, if only for the benefit of me getting out of my comfort zone and learning things more thoroughly while trying to explain them.
             </p>
             <p>
                 Feel free to interact with me or send any feedback. If somebody besides my mum is interested in this blog I may add comments or will try to structure it a little bit better.
