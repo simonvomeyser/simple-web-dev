@@ -1,0 +1,8 @@
+.lozad {
+    opacity: 0;
+    @include anim(opacity, 1.5s);
+
+    &[data-loaded="true"] {
+        opacity: 1;
+    }
+}
