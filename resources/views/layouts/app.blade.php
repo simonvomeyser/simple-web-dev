@@ -7,7 +7,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Sanchez" rel="stylesheet">
 
-    <title>Simple Web Dev - A blog about webdevelopment</title>
+    <title>Simple Web Dev - A simple blog about web development</title>
+    <meta name="description" content="This site is a small diary of the things I learn while on an intimidating journey through web development land.">
 
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
 
