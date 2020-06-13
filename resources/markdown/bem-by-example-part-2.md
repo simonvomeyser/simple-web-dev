@@ -193,7 +193,7 @@ Are you still following? Just don't care about the navigation (the next block) r
 
 > Always look at blocks in isolation is the key to not get confused!
 
-After grabbing the image in (from a [Figma](https://www.figma.com/file/DyCnbDJJ38ODholutt2WtOfp/BEM-by-Example) [export](https://help.figma.com/export/export-options), from [here](https://res.cloudinary.com/simonvomeyser/image/upload/v1539585285/BEM%20by%20Example/Header_Hero_Image.png) or any other [nice image from Unsplash](https://unsplash.com/search/photos/technology-white)) I would only style the `header.css` as shown here:
+After grabbing the image in (from a [Figma](https://www.figma.com/file/DyCnbDJJ38ODholutt2WtOfp/BEM-by-Example) [export](https://help.figma.com/hc/en-us/articles/360040028114-Getting-Started-with-Exports), from [here](https://res.cloudinary.com/simonvomeyser/image/upload/v1539585285/BEM%20by%20Example/Header_Hero_Image.png) or any other [nice image from Unsplash](https://unsplash.com/search/photos/technology-white)) I would only style the `header.css` as shown here:
 
 
 ```css
