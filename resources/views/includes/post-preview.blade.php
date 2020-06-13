@@ -1,7 +1,8 @@
 <article class="post-preview">
     <div class="post-preview__thumbnail">
+        <img class="lozad" data-src="{{$post->list_image}}" alt="List image of the post {{$post->title}}">
         <a href="{{ $post->getLink() }}">
-            <img class="lozad" data-src="{{$post->list_image}}" alt="List image of the post {{$post->title}}">
+            <button class="button button--min-width button--no-hover">Read more</button>
         </a>
     </div>
     <div class="post-preview__under-image">

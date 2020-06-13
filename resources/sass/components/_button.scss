@@ -31,4 +31,12 @@
   &:hover {
     opacity: .75;
   }
+    @include m("no-hover") {
+        min-width: 150px;
+        &:hover {
+            opacity: 1;
+        }
+
+    }
+
 }
