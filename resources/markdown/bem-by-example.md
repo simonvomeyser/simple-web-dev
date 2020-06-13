@@ -85,7 +85,7 @@ But they all have one thing in common: They scare and confuse the hell out of be
 
 - It is a really easy approach you can start using today,
 - No setup, just simple HTML and CSS knowledge required
-- Battles [Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS) Problems quite will (meaning one style overwriting another)
+- Battles [Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS) problems quite well
 - Lessens your fear of changing things later
 - It's a good segway into component-based thinking like in React
 - The more maintainable CSS will prevent you from Voodoo curses of future developers
