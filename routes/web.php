@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('legal-notice', 'legal-notice')->name('legal-notice');
+Route::view('privacy', 'privacy')->name('privacy');
+
 Route::get('/', function (Request $request) {
 
     $searchString = $request->input('q');
@@ -30,6 +33,7 @@ Route::get('/', function (Request $request) {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
 
 Route::get('/{slug}', function ($slug) {
     $post = MarkdownPost::find($slug);
