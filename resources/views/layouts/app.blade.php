@@ -34,8 +34,8 @@
         </main>
         <footer class="footer container">
             <ul>
-                <li><a href="#">Legal Notice</a></li>
-                <li><a href="#">Privacy</a></li>
+                <li><a href="{{route('legal-notice')}}">Legal Notice</a></li>
+                <li><a href="{{route('privacy')}}">Privacy</a></li>
             </ul>
         </footer>
     </div>
