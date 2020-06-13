@@ -1,6 +1,6 @@
 <template>
     <div class="morphing-headline">
-        A blog about web dev and <span>{{item}}</span>
+        A blog about web dev and <br> <span v-text="item"></span>
     </div>
 </template>
 
@@ -17,6 +17,9 @@ const items = [
     "projects",
     "communication",
     "fun",
+    "teamwork",
+    "productivity",
+    "project management",
 ];
 
 export default {
