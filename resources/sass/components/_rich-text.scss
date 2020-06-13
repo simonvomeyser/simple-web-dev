@@ -1,151 +1,167 @@
 .rich-text {
-  font-size: 20px;
-  line-height: 1.6;
-  color: $neutral-400;
-  a {
-    text-decoration: none;
-    color: $primary-400;
-    @include anim();
-    &:hover {
-      color: $primary;
-    }
-  }
-  .twitter-tweet {
-    margin: 0 auto !important;
-    margin-top: 1.5rem !important;
-  }
-
-
-  p,
-  pre[class*="language-"],
-  blockquote,
-  ul,
-  ol,
-  .embed-playground,
-  .embed-video,
-  .sidenote {
-    margin-top: 1.5rem;
-  }
-  em,
-  i {
-    font-style: italic;
-  }
-  strong,
-  b {
-    font-weight: bold;
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 1rem auto;
-  }
-
-  blockquote:not(.twitter-tweet) {
-    @extend .fancy-quote
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $neutral-400;
-    font-weight: 400;
-    margin-top: 2.5em;
-    margin-bottom: -0.25em;
-    font-size: 26px;
-  }
-    h1 {
-        text-align: center;
-        font-size: 32px;
-        font-family: $fontFamilySpecial;
-    }
-  h2 {
-    position: relative;
-    font-size: 30px;
-    color: $neutral-400;
-    font-weight: 400;
-    padding-left: 1rem;
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: " ";
-      display: block;
-      width: 6px;
-      border-radius: 70px;
-      background: $primary-200;
-      height: 100%;
-    }
-  }
-  pre {
-    // override prism
-    background: $primary-100;
-    font-size: 16px;
-    font-family: "Courier 10 Pitch", Courier, monospace;
+    font-size: 20px;
     line-height: 1.6;
-    max-width: 100%;
-    overflow: auto;
-    padding: 1.6em;
-  }
-  code {
-    // inline
-    font-size: 16px;
-    background-color: $primary-100;
-    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
     color: $neutral-400;
-    padding: 3px 5px;
-  }
 
-  ul {
-    list-style: circle;
-    padding-left: 2rem;
-    li + li {
-      margin-top: 0.5rem;
+    a {
+        text-decoration: none;
+        color: $primary-400;
+        @include anim();
+
+        &:hover {
+            color: $primary;
+        }
     }
-  }
-}
 
-@include breakpoint("mobile") {
-  .rich-text {
-    font-size: 18px;
-    color: $neutral-400;
+    .twitter-tweet {
+        margin: 0 auto !important;
+        margin-top: 1.5rem !important;
+    }
+
+
     p,
     pre[class*="language-"],
-    .wp-block-code,
-    .wp-block-embed,
+    blockquote,
     ul,
     ol,
-    .twitter-tweet,
-    .sidenote-shortcode,
-    blockquote {
-      margin-top: 1rem;
+    .embed-playground,
+    .embed-video,
+    .sidenote {
+        margin-top: 1.5rem;
     }
-    blockquote {
-      > * {
-        margin-top: 0;
-      }
+
+    em,
+    i {
+        font-style: italic;
     }
+
+    strong,
+    b {
+        font-weight: bold;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 1rem auto;
+    }
+
+    blockquote:not(.twitter-tweet) {
+        @extend .fancy-quote
+    }
+
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-      line-height: 1.3;
-      font-size: 1.1rem;
+        color: $neutral-400;
+        font-weight: 400;
+        margin-top: 2.5em;
+        margin-bottom: -0.25em;
+        font-size: 26px;
     }
+
+    h1 {
+        text-align: center;
+        font-size: 32px;
+        font-family: $fontFamilySpecial;
+    }
+
     h2 {
-      font-size: 1.3rem;
+        position: relative;
+        font-size: 30px;
+        color: $neutral-400;
+        font-weight: 400;
+        padding-left: 1rem;
+
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: " ";
+            display: block;
+            width: 6px;
+            border-radius: 70px;
+            background: $primary-200;
+            height: 100%;
+        }
     }
-  }
-  code,
-  kbd,
-  tt,
-  var {
-    color: $neutral-400;
-    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-  }
+
+    pre {
+        // override prism
+        background: $primary-100;
+        font-size: 16px;
+        font-family: "Courier 10 Pitch", Courier, monospace;
+        line-height: 1.6;
+        max-width: 100%;
+        overflow: auto;
+        padding: 1.6em;
+    }
+
+    code {
+        // inline
+        font-size: 16px;
+        background-color: $primary-100;
+        font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+        color: $neutral-400;
+        padding: 3px 5px;
+    }
+
+    ul {
+        list-style: circle;
+        padding-left: 2rem;
+
+        li + li {
+            margin-top: 0.5rem;
+        }
+    }
+}
+
+@include breakpoint("mobile") {
+    .rich-text {
+        font-size: 18px;
+        color: $neutral-400;
+
+        p,
+        pre[class*="language-"],
+        .wp-block-code,
+        .wp-block-embed,
+        ul,
+        ol,
+        .twitter-tweet,
+        .sidenote-shortcode,
+        blockquote {
+            margin-top: 1rem;
+        }
+
+        blockquote {
+            > * {
+                margin-top: 0;
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            line-height: 1.3;
+            font-size: 1.1rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+        }
+    }
+    code,
+    kbd,
+    tt,
+    var {
+        color: $neutral-400;
+        font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+    }
 }
