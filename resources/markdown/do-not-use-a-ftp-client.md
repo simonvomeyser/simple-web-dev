@@ -1,13 +1,11 @@
 ---
-title: You might not need a FTP client to deploy your website…
+title: You might not need an FTP client to deploy your website…
 release_date: February 2020
 slug: do-not-use-a-ftp-client
 excerpt: >-
-  For a long time I was really hesitant to dive into the world of alternatives
-  to FTP Clients for deployment.
-
-  But there are a few small steps that really are easy without sailing rough
-  seas on docker ships.
+  For a long time I was hesitant to dive into alternatives and always used FTP clients for deployment.
+  
+  Recently I noticed there are a many small steps without immediately sailing rough seas on docker ships.
 tags:
   - Backend
   - Dev Ops
@@ -146,7 +144,7 @@ And voilà: Your changes should be online in no time.
 
 There are a lot of [advanced options](https://github.com/git-ftp/git-ftp/blob/master/man/git-ftp.1.md) but these few lines of the code above have made my life a lot better already 🥰
 
-When you have "fresh" project I usually set the project up with a FTP client but git-ftp also offers the `init` command for that. It actually does not matter that much because I think the most headaches coming from FTP are introduced during later updates and not the initial upload.
+When you have "fresh" project I usually set the project up with an FTP client but git-ftp also offers the `init` command for that. It actually does not matter that much because I think the most headaches coming from FTP are introduced during later updates and not the initial upload.
 
 ### Caveats
 
