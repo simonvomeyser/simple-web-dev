@@ -19,11 +19,9 @@ Warning, this article might contain some rambling about non code related stuff!
 
 I strongly believe in the fact, that all developers are only as good as their teams. In this article I want to talk a little about why I think *keeping your design in the cloud* is a low hanging fruit for team productivity - in every project that includes some stakeholder other than you. 
 
+We developers seem to have a proclivity for closed curtains, dimmed light and entering the Matrix while avoiding distractions. But almost all projects that are not only for your personal use involve people we need to talk to.
 
-We developers seem to have a proclivity for closed curtains, dimmed the light and entering the Matrix while  avoiding distractions from the outside worlds. I admit, I really enjoy it sometimes. But almost all projects that are not only for your personal use involve people we need to talk to.
-
-As much as concentrated, uninterrupted boxes of deep work (??? add link) improve your work, there is no benefit in coding a feature in record breaking time just to notice that  
-
+As much as concentrated, uninterrupted boxes of deep work (??? add link) improve your work, there is no benefit in coding a feature in record-breaking time just to notice it's not what the customer or your team needed.  
 
 I really love the quote from ???:
 
@@ -31,27 +29,35 @@ I really love the quote from ???:
 
 That said, it is also true, that communication poses other hurdles: Most time a "unit of work" spends in a system (??? add link to kanban) is in the dreadful stages "blocked", "awaiting review" or "Joe is on fishing vacation"
 
-Every tool or workflow that therefore improves blockages or inefficient workflows should be greeted with applause and drowned in roses.
+---------------------------(??? maybe omit the upper part) -------------------------------
 
-One really inefficient workflow we all were guilty of is copying a file, adding something to it's end and spreading that thing like a metaphor that will get me in trouble.
+As a web developer doing a lot of teamwork with designers my email history contains a lot `mobile.final-rev2.less-blue.jpg` files - and I am as guilty of this pile of shame as the designers are.
 
-The problem is so ubiquitous that it has become a meme:
+The problem is so ubiquitous it has become a meme:
 
 ??? add image of final fucking final psd
 
-I don't want to talk about the fact that still of load of .final.docx files are passed around, that's a battle of its own. As a web developer doing a lot of frontend work but working together with designers my google mail history is filled with `mobile.final-rev2.less-blue.jpg` files.
+But what can you do about that? 
 
-This workflow is not only annoying and timeconsuming, it also leads to a less ideal product.
+But I came to the conclusion, that improving this workflow not only only has a positive influence on my very own porductivity, the whole project and end product will be a lot better.
 
 > When the cost of communication is high, people stop to ask
 
-This might be tempting situation with an annoying customer - but it leads to less questions and therefore a project where the developer misunderstood what the designer tried to paint what the customer could not put into words.
+This might be tempting situation with an annoying customer - but it leads to fewer questions and therefore a project where the developer misunderstood what the designer thought the customer said.
 
 ?? maybe add image of what the customer wanted
 
-Luckily there are now services that improve that workflow and which are almost a "must use" for teams:
+Luckily there are more and more services trying to tackle that problem by facilitating communication through a cloud based approach.  
 
 ## Design in the cloud
+
+Instead of sending around the next version of the file it is kept in a central location - ideally with all its revisions, iterations and comments. 
+
+There are a few things that are important here:
+
+- How well can non-technical people access the Design and give feedback
+- How similar are the tools to what the Designer is used to, great switching cost
+- 
 
 I first came across this concept when I noticed that 
 
