@@ -59,7 +59,7 @@ Erm... back to the topic. I hope you see the workflow problem when a developer c
 
 It simply adds way too much overhead to communication, including the back and forth between the designer and the client. 
 
-*Which `.png` file was the latest version again? In which Word document did you put your remarks?*
+>> Which `.png` file was the latest version again and where are the comments?
 
 Instead of sending around the next version it is therefore clearly better to keep the design in a central location - theee clouuudd
 
@@ -105,7 +105,7 @@ https://www.invisionapp.com/
 
 For quite some time Sketch seemed to be the big competitor for Adobe products and was even announced as "Photoshop Killer"... just like too little RAM.
 
-While I liked to use Sketch in the beginning I am not so happy with their pricing model anymore. I stopped using it since I bought a "lifetime liscense" but suddenly had to pay for updates again and can't open files saved with newer versions :/
+While I liked to use Sketch in the beginning I am not so happy with their pricing model anymore. I stopped using it since I bought a "lifetime license" but suddenly had to pay for updates again and can't open files saved with newer versions :/
 
 One might say they pulled a "Microsoft Word" - move
 
@@ -115,9 +115,9 @@ The reason I list Sketch here is that they [announced](https://www.sketch.com/do
  
 I could not open the files anymore, but I could looked at online, but I must say I was not really happy with it. We did not find a way to export assets or to make view color codes visible. 
 
-Maybe I was just not smart enough or they updated the [inspector](https://www.sketch.com/docs/sketch-cloud/#cloud-inspector-beta) by now, in this case I'll apologize.
+Maybe I was just not smart enough, or they updated the [inspector](https://www.sketch.com/docs/sketch-cloud/#cloud-inspector-beta) by now, in this case I'll apologize.
 
-I think this is not the best solution to improve your team's productivity, still a damn good desing app though.
+I think this is not the best solution to improve your team's productivity, still a damn good app though.
 
 https://www.sketch.com/
 
@@ -129,7 +129,7 @@ Some of them seem intentionally created to be a little less colorful and can ser
 
 ## Why Figma stole my heart
 
-I purposfully omitted Figma in the list above because I wanted to talk a little more in depth about this app.
+I omitted Figma in the list above because I wanted to talk a little more in depth about this app.
 
 (?? do you have a moment to talk about figma)
 
@@ -145,11 +145,11 @@ I can only speak from a developer's perspective here, but I love that you can ex
 
 They have a really generous free tier and you only pay for more advanced features like  really granular permissions, more than 30 days of version history and so on.
 
-If I had two critize something it would be really small things like the fact, that you can easyily send links to non technical people to view the design, but to comment they have to create a account. 
+If I had two criticize something it would be tiny things like the fact, that you can easily send links to non-technical people to view the design, but to comment they have to create a account. 
 
-This is a small hurdle since a stakeholder does not necessarily want to have an account... and the non tech ones always seem to forget their password (??? add laug simile). Adobe XD offers that feature by the way.
+This is a small hurdle since a stakeholder does not necessarily want to have an account (and that most of them always seem to forget their passwords 😅). Adobe XD offers an anonymous comment feature by the way.
 
-Also the design team has to get used to completely different tool, something that could be a big deal depending on how specialized the designers are and how much of their system depends on their current tool.
+Also, the design team has to get used to a completely different tool, something that could be a big deal depending on how specialized the designers are and how much of their system depends on their current tool.
 
 All in all I still think Figma is the best choice in most cases, but we developers will need to have this conversation with a lot of empathy - just imagine you had to switch your beloved code editor to improve the whole team.
 
