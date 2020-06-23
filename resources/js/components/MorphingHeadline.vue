@@ -1,6 +1,6 @@
 <template>
     <div class="morphing-headline">
-        A blog about web dev and <br> <span v-text="item"></span>
+        Just a blog about web dev and <br> <span v-text="item"></span>
     </div>
 </template>
 
