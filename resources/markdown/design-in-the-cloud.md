@@ -1,6 +1,6 @@
 ---
 title: Teams should design in the cloud... or why Figma stole my heart
-release_date:  
+release_date: today
 slug: web-design-in-the-cloud 
 excerpt: >-
   I strongly believe that all developers are only as good as their teams. 
@@ -19,7 +19,7 @@ list_image: >-
 ---
 
 
-As a web developer doing a lot of teamwork with designers my email history contains a lot `mobile.final-rev2.less-blue.jpg` files - and I am as guilty of this workflow as the designers are.
+As a web developer doing a lot of teamwork with designers my email inbox contains many `mobile-rev2_less-blue.final.jpg` files - and I am as guilty of this workflow as the designers are.
 
 The problem is so ubiquitous it has become a meme... and an accessory
 
@@ -31,19 +31,17 @@ The answer is quite simple: Because our goal as nerds should always be to create
 
 Design in the cloud has really become a *low hanging fruit* in terms of improving your internal workflow as well as your customer-facing communication. 
 
-It will not only have a positive influence on productivity, the whole project and end product will be a lot better.
-
 I always try to remember the following:
 
-> When the cost of communication is high, people simply communicate less
+> When the cost of communication is high, people stop to ask questions
 
 This might be tempting situation with an annoying customer - but it leads to fewer solved problems and therefore a project where the developer misunderstood what the designer thought the customer wanted.
 
 ?? maybe add image of what the customer wanted
 
-Luckily there are more and more services trying to tackle one workflow part of that problem with a cloud based approach. 
+Luckily there are more and more services trying to tackle one part of that problem with a cloud based approach. 
 
-I want to show a few of them here from a developer perspective... and maybe toss a few roses in [https://www.figma.com/](Figma's) direction, but that's just a personal thing. 🌹 
+I want to show a few of these approaches here... and maybe toss a few roses in [https://www.figma.com/](Figma's) direction, but that's just a personal thing. 🌹 
 
 ## My perspective
 
@@ -59,7 +57,7 @@ Erm... back to the topic. I hope you see the workflow problem when a developer c
 
 It simply adds way too much overhead to communication, including the back and forth between the designer and the client. 
 
->> Which `.png` file was the latest version again and where are the comments?
+> Which file was the latest version again ... and where are the comments?
 
 Instead of sending around the next version it is therefore clearly better to keep the design in a central location - theee clouuudd
 
@@ -139,9 +137,9 @@ We could talk a lot about single features and compare them, but the most importa
 
 The team really put some thought on what is in my opinion the most important thing for a succesful product: 
 
->> It speeds up the whole team, not only parts of it
+> It speeds up the whole team, not only parts of it
 
-I can only speak from a developer's perspective here, but I love that you can export anything, choose your own file format, copy CSS values, almost never have missing fonts or any other problems. 
+I can only speak from a developer's perspective here, but I love that you can export anything, choose your own file format, upload any size of image, copy CSS values, almost never have missing fonts or compatibility problems, since the app works on all platforms.
 
 They have a really generous free tier and you only pay for more advanced features like  really granular permissions, more than 30 days of version history and so on.
 
@@ -149,7 +147,7 @@ If I had two criticize something it would be tiny things like the fact, that you
 
 This is a small hurdle since a stakeholder does not necessarily want to have an account (and that most of them always seem to forget their passwords 😅). Adobe XD offers an anonymous comment feature by the way.
 
-Also, the design team has to get used to a completely different tool, something that could be a big deal depending on how specialized the designers are and how much of their system depends on their current tool.
+Also, the design team has to get used to a completely different tool, something that could be a big deal depending on how specialized the designers are.
 
 All in all I still think Figma is the best choice in most cases, but we developers will need to have this conversation with a lot of empathy - just imagine you had to switch your beloved code editor to improve the whole team.
 
@@ -157,7 +155,7 @@ All in all I still think Figma is the best choice in most cases, but we develope
 
 Our developer guild has a unique way of looking at workflows, and we tend to get itchy a little faster when we see constant repetition. 
 
-Some designers or product managers often don't see the problems of sending around hundreds of huge .psd files, so why don't add out don't repeat yourself perspective in the next team meeting or retrospective. 
+Some designers or product managers often don't see these kind of problems so why don't we add our perspective in the next team meeting or retrospective. Just suggest a cloud based design and review workflow.
 
-Becuase no matter which cloud design tool your team decides to use - you will most definitely create a better workflow and have more time for what really matters: Create an awesome product. :)
+No matter which cloud design tool your team decides to use - you will most definitely create a better workflow and have more time for what really matters: Creating an awesome product. :)
 
