@@ -23,7 +23,7 @@ As a web developer doing a lot of teamwork with designers my email inbox contain
 
 The problem is so ubiquitous it has become a meme... and an accessory
 
-??? add image of final fucking final psd, maybe keyring?
+![Images of Photoshop Files called final.final.psd](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016372/design-in-the-cloud/f-in-final.png)
 
 But what can you do about that? Why should we developers care? 
 
@@ -37,7 +37,7 @@ I always try to remember the following:
 
 This might be tempting situation with an annoying customer - but it leads to fewer solved problems and therefore a project where the developer misunderstood what the designer thought the customer wanted.
 
-?? maybe add image of what the customer wanted
+![Image of failed communication, the customer wanted a swing, the developer created a helicopter](https://res.cloudinary.com/simonvomeyser/image/upload/v1593017502/design-in-the-cloud/what-the-customer.png)
 
 Luckily there are more and more services trying to tackle one part of that problem with a cloud based approach. 
 
@@ -61,7 +61,8 @@ It simply adds way too much overhead to communication, including the back and fo
 
 Instead of sending around the next version it is therefore clearly better to keep the design in a central location - theee clouuudd
 
-add toy story iamge of "thee clouuuud"
+![Toy Story Meme of little Aliens saying 'the cloud'](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016372/design-in-the-cloud/the-cloud.png)
+
 
 ## What are (some of the) tools
 
@@ -69,7 +70,7 @@ There are many awesome tools on the market by now. I can't do all of them the ju
 
 ### Adobe XD
 
-?? add logo
+![Logo of Adobe XD](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/adobexd.png)
 
 I am really happy that Adobe entered the ring! It helps to get the adoption going because many designers are used to the companies' products.  
 
@@ -83,7 +84,7 @@ https://www.adobe.com/products/xd.html
 
 ### Invison
 
-?? add logo
+![Invision Logo](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/invision.png)
 
 Invision App is the first tool I came across where you could upload your screen design from Sketch or Photoshop, then send a link to anyone and discuss or demo your project.
 
@@ -101,13 +102,15 @@ https://www.invisionapp.com/
 
 ### Sketch Cloud
 
+![Sketch Logo](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/sketch.png)
+
 For quite some time Sketch seemed to be the big competitor for Adobe products and was even announced as "Photoshop Killer"... just like too little RAM.
 
 While I liked to use Sketch in the beginning I am not so happy with their pricing model anymore. I stopped using it since I bought a "lifetime license" but suddenly had to pay for updates again and can't open files saved with newer versions :/
 
 One might say they pulled a "Microsoft Word" - move
 
-(??? add pricing image)
+![Sketch's pricing, noting the one year period](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/sketch-pricing.png)
 
 The reason I list Sketch here is that they [announced](https://www.sketch.com/docs/sketch-cloud/) a cloud solution recently, and I used it with a team I was working with.
  
@@ -127,9 +130,11 @@ Some of them seem intentionally created to be a little less colorful and can ser
 
 ## Why Figma stole my heart
 
+![Logo of Figma](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/Figma.png)
+
 I omitted Figma in the list above because I wanted to talk a little more in depth about this app.
 
-(?? do you have a moment to talk about figma)
+![Meme of Figma sales pitch](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016374/design-in-the-cloud/a-moment.png)
 
 I more or less stumbled across their app two years ago and must say to this day I am impressed as well as intimidated by it's perfomance and usability. 
 
