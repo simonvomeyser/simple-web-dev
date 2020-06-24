@@ -51,7 +51,7 @@ In almost all cases the design was awesome and something I would have never been
 
 On the one hand because I am not that talented, but on the other hand I simply did not own paid licenses to the products above. (I own one for Photoshop to glue my head on Arnold Schwarzenegger's body though) 
 
-(???Add arnold image)
+![Gif of really bad photshopping my head on Arnold Schwarzenegger's body](https://res.cloudinary.com/simonvomeyser/image/upload/v1593019587/design-in-the-cloud/arnie.gif)
 
 Erm... back to the topic. I hope you see the workflow problem when a developer cannot reliably open the designer's file to export images or to look up spacings, fonts or colors. 
 
