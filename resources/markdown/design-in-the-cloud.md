@@ -136,11 +136,11 @@ I omitted Figma in the list above because I wanted to talk a little more in dept
 
 ![Meme of Figma sales pitch](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016374/design-in-the-cloud/a-moment.png)
 
-I more or less stumbled across their app two years ago and must say to this day I am impressed as well as intimidated by it's perfomance and usability. 
+I more or less stumbled across their app two years ago and must say to this day I am impressed as well as intimidated by its performance and usability. 
 
-We could talk a lot about single features and compare them, but the most important thing to me is the fact, that Figma facilitates teamwork just a little bit better than other apps.
+We could talk a lot about single features and compare them, but the most important thing to me is the fact, that Figma facilitates teamwork just a bit better than other apps.
 
-The team really put some thought on what is in my opinion the most important thing for a succesful product: 
+The team really put some thought on what is in my opinion the most important thing for a successful product: 
 
 > It speeds up the whole team, not only parts of it
 
@@ -164,7 +164,7 @@ All in all I still think Figma is the best choice in most cases, but we develope
 
 Our developer guild has a unique way of looking at workflows, and we tend to get itchy a little faster when we see constant repetition. 
 
-Some designers or product managers often don't see these kind of problems so why don't we add our perspective in the next team meeting or retrospective. Just suggest a cloud based design and review workflow.
+Some designers or product managers often don't see this kind of problems so why don't we add our perspective in the next team meeting or retrospective. Just suggest a cloud based design and review workflow.
 
 No matter which cloud design tool your team decides to use - you will most definitely create a better workflow and have more time for what really matters: Creating an awesome product. :)
 
