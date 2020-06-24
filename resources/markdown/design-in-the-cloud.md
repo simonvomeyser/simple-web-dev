@@ -146,7 +146,11 @@ The team really put some thought on what is in my opinion the most important thi
 
 I can only speak from a developer's perspective here, but I love that you can export anything, choose your own file format, upload any size of image, copy CSS values, almost never have missing fonts or compatibility problems, since the app works on all platforms.
 
-They have a really generous free tier and you only pay for more advanced features like  really granular permissions, more than 30 days of version history and so on.
+They have a really generous free tier, and you only pay for more advanced features like  really granular permissions, more than 30 days of version history and so on.
+
+Also, their name sounds quite dirty in German, and they have humor:
+
+![Tweet Screenshot - Figma's name sounds dirty in German](https://res.cloudinary.com/simonvomeyser/image/upload/v1593018072/design-in-the-cloud/figma-dirty.png)
 
 If I had two criticize something it would be tiny things like the fact, that you can easily send links to non-technical people to view the design, but to comment they have to create a account. 
 
