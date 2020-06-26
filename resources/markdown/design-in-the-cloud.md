@@ -13,9 +13,9 @@ tags:
   - Teamwork
   - Workflow
 header_image: >-
-  https://placehold.it/1024x768 
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1593192269/design-in-the-cloud/Header_1.png 
 list_image: >-
-  https://placehold.it/1024x768
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1593193066/design-in-the-cloud/Header-List.png
 ---
 
 
