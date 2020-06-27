@@ -56,38 +56,39 @@ On the one hand because I am not that talented, but on the other hand I simply d
 
 Erm... back to the topic. I hope you see the workflow problem when a developer cannot reliably open the designer's file to export images or to look up spacings, fonts or colors. 
 
-It simply adds way too much overhead to communication, including the back and forth between the designer and the client. 
+It simply adds way too much overhead to communication, including the back and forth between everbody by sending comments and exported files around. 
 
 > Which file was the latest version again ... and where are the comments?
 
-Instead of sending around the next version of a screen design it is therefore clearly better to keep in a central, always updated location everybody can access - theee clouuudd
+It is therefore clearly better to keep the design and discussions in a central, always updated location everybody can access - theee clouuuud.
 
 ![Toy Story Meme of little Aliens saying 'the cloud'](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016372/design-in-the-cloud/the-cloud.png)
 
-
 ## What are (some) tools
 
-There are many awesome tools on the market by now. I can't do all of them the justice, but I want to give a quick overview about the options I know of:
+There are so many full featured tools on the market by now, and I surely can't do all of them justice.
+
+I only want to give a quick overview about the options I know of, all through the lense of improving team productivity.
 
 ### Adobe XD
 
 ![Logo of Adobe XD](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/adobexd.png)
 
-I am really happy that Adobe entered the ring! It helps to get the adoption going because many designers are used to the companies' products.  
+I am really happy Adobe entered the ring of cloud based screen design tools! It helps to get the adoption going because many designers are used to Adobe's products like Photoshop and Illustrator.  
 
-It offers many features for collaboration like sending links where non tech-savvy people can simple watch the design and give feedback without the hassle of installing an app or finding an exported image in their email inbox. 
+[Adobe XD](https://www.adobe.com/products/xd.html) specialized in screen design and offers many features for collaboration. You can send links to where a stakeholder simply can watch the design and give feedback without the hassle of installing an app or finding an exported image in their email inbox. 
 
-The best thing is that it is free, so developers can install it, open the current, cloud synced file and copy color values or export assets. 
+The best thing is that it is free, so all developers can install it, open the current, cloud synced file and copy color values or export assets. 
 
-I had a few problems here since it does not play *that* nicely with SVGs or Icons and I think to make an asset exportable there is a little work involved. Other than that I only had good experiences with it.
+I had a few problems here since it does not play *that* nicely with SVGs or Icons and I think to make an asset exportable there is a little work involved.
 
-https://www.adobe.com/products/xd.html
+Other than that I only had good experiences with it and Adobe XD really is a good tool to improve teamwork.
 
 ### Invison
 
 ![Invision Logo](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/invision.png)
 
-Invision App is the first tool I came across where you could upload your screen design from Sketch or Photoshop, then send a link to anyone and discuss or demo your project.
+[Invision App](https://www.invisionapp.com/) is the first tool I came across where you could upload your screen design from Sketch or Photoshop, then send a link to anyone and discuss or demo your project.
 
 While the idea was great at that time, I really found it a bit complicated to use as a developer, also there was the constant need for the designer to re-upload their work after changes, hardly any way to export and so on.
 
@@ -99,13 +100,12 @@ This app seems to be fairly full featured, but you'll need a subscription plan t
 
 I found their discussion tools to be one of the best on the marked, and at least you can try their services for free :)
 
-https://www.invisionapp.com/
 
 ### Sketch Cloud
 
 ![Sketch Logo](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/sketch.png)
 
-For quite some time Sketch seemed to be the big competitor for Adobe products and was even announced as "Photoshop Killer"... just like too little RAM.
+For quite some time [Sketch](https://www.sketch.com/) seemed to be the big competitor for Adobe products and was even announced as "Photoshop Killer"... just like too little RAM.
 
 While I liked to use Sketch in the beginning I am not so happy with their pricing model anymore. I stopped using it since I bought a "lifetime license" but suddenly had to pay for updates again and can't open files saved with newer versions :/
 
@@ -119,9 +119,7 @@ Since I could not open the designer's files anymore I used the link to the cloud
 
 Maybe I was just not smart enough, or they updated the [inspector](https://www.sketch.com/docs/sketch-cloud/#cloud-inspector-beta) by now, in this case I'll apologize.
 
-I think Sketch and their Cloud is not the best solution to improve your team's productivity to be honest. Sketch is still a damn good app though.
-
-[Visit sketch.com](https://www.sketch.com/)
+I think their Cloud is not the best solution to improve your team's productivity to be honest. Sketch is still a damn good app though.
 
 ### Other tools
 
