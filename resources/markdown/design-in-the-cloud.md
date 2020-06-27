@@ -41,7 +41,7 @@ This might be tempting situation with an annoying customer - but it leads to few
 
 Luckily there are more and more services trying to tackle one part of that problem with a cloud based approach. 
 
-I want to show a few of these approaches here... and maybe toss a few roses in [https://www.figma.com/](Figma's) direction, but that's just a personal thing. 🌹 
+I want to show a few of these approaches here... and maybe toss a few roses in [Figma's](https://www.figma.com/) direction, but that's just a personal thing. 🌹 
 
 ## My perspective
 
