@@ -12,6 +12,7 @@ tags:
   - Frontend
   - Teamwork
   - Workflow
+  - Tools
 header_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1593192269/design-in-the-cloud/Header_1.png 
 list_image: >-
@@ -27,9 +28,9 @@ The problem is so ubiquitous it has become a meme... and an accessory
 
 But what can you do about that? Why should we developers care? 
 
-The answer is quite simple: Because our goal as nerds should always be to create better product, and that does not only include improving our own workflow by learning that next keyboard shortcut.
+The answer is quite simple: Because our end goal as nerdy developers should always be to create better product, and that's not solely achieved by learning a new keyboard shortcut or adding a smart abstraction to our code.
 
-Design in the cloud has really become a *low hanging fruit* in terms of improving your internal workflow as well as your customer-facing communication. 
+Design in the cloud has really become a *low hanging fruit* in terms of improving your team workflow as well as your customer-facing communication. 
 
 I always try to remember the following:
 
@@ -59,12 +60,12 @@ It simply adds way too much overhead to communication, including the back and fo
 
 > Which file was the latest version again ... and where are the comments?
 
-Instead of sending around the next version it is therefore clearly better to keep the design in a central location - theee clouuudd
+Instead of sending around the next version of a screen design it is therefore clearly better to keep in a central, always updated location everybody can access - theee clouuudd
 
 ![Toy Story Meme of little Aliens saying 'the cloud'](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016372/design-in-the-cloud/the-cloud.png)
 
 
-## What are (some of the) tools
+## What are (some) tools
 
 There are many awesome tools on the market by now. I can't do all of them the justice, but I want to give a quick overview about the options I know of:
 
@@ -114,13 +115,13 @@ One might say they pulled a "Microsoft Word" - move
 
 The reason I list Sketch here is that they [announced](https://www.sketch.com/docs/sketch-cloud/) a cloud solution recently, and I used it with a team I was working with.
  
-I could not open the files anymore, but I could looked at online, but I must say I was not really happy with it. We did not find a way to export assets or to make view color codes visible. 
+Since I could not open the designer's files anymore I used the link to the cloud version. Sadly I must say that I was not really happy with it. We did not find a way to make assets exportable or to view color codes with ease. 
 
 Maybe I was just not smart enough, or they updated the [inspector](https://www.sketch.com/docs/sketch-cloud/#cloud-inspector-beta) by now, in this case I'll apologize.
 
-I think this is not the best solution to improve your team's productivity, still a damn good app though.
+I think Sketch and their Cloud is not the best solution to improve your team's productivity to be honest. Sketch is still a damn good app though.
 
-https://www.sketch.com/
+[Visit sketch.com](https://www.sketch.com/)
 
 ### Other tools
 
@@ -154,17 +155,19 @@ Also, their name sounds quite dirty in German, and they have humor:
 
 If I had two criticize something it would be tiny things like the fact, that you can easily send links to non-technical people to view the design, but to comment they have to create a account. 
 
-This is a small hurdle since a stakeholder does not necessarily want to have an account (and that most of them always seem to forget their passwords 😅). Adobe XD offers an anonymous comment feature by the way.
+This is a small hurdle since a stakeholder does not necessarily want to have an account (and that most of them always seem to forget their passwords 😅). 
+
+Adobe XD offers an anonymous comment feature, just to be fair here.
 
 Also, the design team has to get used to a completely different tool, something that could be a big deal depending on how specialized the designers are.
 
-All in all I still think Figma is the best choice in most cases, but we developers will need to have this conversation with a lot of empathy - just imagine you had to switch your beloved code editor to improve the whole team.
+All in all I still think Figma is the best choice in most cases, but we developers will need to have this conversation with a lot of empathy - just imagine you had to sacrifice your beloved code editor to improve the whole team.
 
 ## Bottom line
 
-Our developer guild has a unique way of looking at workflows, and we tend to get itchy a little faster when we see constant repetition. 
+Our developer guild has a unique way of looking at workflows, and we tend to get itchy a little faster when we see constant repetition. Our perspective can be of great value for a team. 
 
-Some designers or product managers often don't see this kind of problems so why don't we add our perspective in the next team meeting or retrospective. Just suggest a cloud based design and review workflow.
+Some designers or product managers often don't see this kind of problems so why don't talk about this topic in the next team meeting or retrospective.
 
 No matter which cloud design tool your team decides to use - you will most definitely create a better workflow and have more time for what really matters: Creating an awesome product. :)
 
