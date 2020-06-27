@@ -7,8 +7,9 @@ excerpt: >-
 
   I mean.. I regularly feel hugged by the Trello UX team.. is that really just me?
 tags:
-  - Producitvity
+  - Productivity
   - Tools
+  - UI/UX
 header_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1532495798/Trello/trello-header.png
 list_image: >-
