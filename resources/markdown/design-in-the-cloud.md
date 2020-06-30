@@ -1,11 +1,11 @@
 ---
-title: Teams should design in the cloud... or why Figma stole my heart
+title: Teams should design in the cloud... and why Figma stole my heart
 release_date: today
 slug: web-design-in-the-cloud 
 excerpt: >-
   I strongly believe that all developers are only as good as their teams. 
 
-  In this article I want to talk and get a little meta about why I think design in the cloud is a low hanging fruit for team productivity.
+  In this article I want to talk a little meta about why I think design in the cloud is a low hanging fruit for team productivity, and why every developer should care.
 
 tags:
   - Project Management
