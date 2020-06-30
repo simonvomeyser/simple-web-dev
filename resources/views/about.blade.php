@@ -13,6 +13,37 @@
             <p>
                 This site is a small diary of the things I learn while on this intimidating journey through web development land.
             </p>
+        </div>
+
+        <div class="about__authors">
+            <div class="author" id="simon">
+                <div class="author__head">
+                    <div class="author__image">
+                        <img src="{{asset('images/simon.png')}}" alt="Avatar of Simon">
+                    </div>
+                    <div class="author__meta">
+                        <div class="author__name">Simon vom Eyser</div>
+                        <a href="https://simonvomeyser.de" rel="noopener noreferrer" target="_blank"
+                           class="author__link">
+                            <img src="{{asset('images/link.svg')}}" alt="Link symbol">
+                            https://simonvomeyser.de
+                        </a>
+                        <a href="https://twitter.com/simonvomeyser" rel="noopener noreferrer" target="_blank"
+                           class="author__link">
+                            <img src="{{asset('images/twitter.svg')}}" alt="Link symbol">
+                            @simonvomeyser
+                        </a>
+                        <a href="mailto:simon.vom.eyser@gmail.com" class="author__link">
+                            <img src="{{asset('images/mail.svg')}}" alt="Link symbol">
+                            simon.vom.eyser@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about__copy">
+
             <p>
                 I strongly believe in sharing knowledge and even though I am neither smart, a writer or the least bit funny I will attempt to write articles about things I learned. I also might crack a few jokes here and there.
             </p>
@@ -35,32 +66,7 @@
                 <br>- Simon
             </p>
         </div>
-        <div class="about__authors">
-            <div class="author" id="simon">
-                <div class="author__head">
-                    <div class="author__image">
-                        <img src="{{asset('images/simon.png')}}" alt="Avatar of Simon">
-                    </div>
-                    <div class="author__meta">
-                        <div class="author__name">Simon vom Eyser</div>
-                        <a href="https://simonvomeyser.de" rel="noopener noreferrer" target="_blank"
-                            class="author__link">
-                            <img src="{{asset('images/link.svg')}}" alt="Link symbol">
-                            https://simonvomeyser.de
-                        </a>
-                        <a href="https://twitter.com/simonvomeyser" rel="noopener noreferrer" target="_blank"
-                            class="author__link">
-                            <img src="{{asset('images/twitter.svg')}}" alt="Link symbol">
-                            @simonvomeyser
-                        </a>
-                        <a href="mailto:simon.vom.eyser@gmail.com" class="author__link">
-                            <img src="{{asset('images/mail.svg')}}" alt="Link symbol">
-                            simon.vom.eyser@gmail.com
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </section>
 
