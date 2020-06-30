@@ -18,7 +18,7 @@
     <meta property="og:type" content="@hasSection('og_type')@yield('og_type')@else{{'website'}}@endif" />
     <meta
         property="og:image"
-        content="@hasSection('og_image')@yield('og_image')@else{{URL::to('images/og-image-default.png')}}@endif"
+        content="@hasSection('og_image')@yield('og_image')@else{{URL::to('images/default-og-image.png')}}@endif"
     />
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ URL::to('favicon/apple-icon-57x57.png') }}">
