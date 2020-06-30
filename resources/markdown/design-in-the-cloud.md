@@ -1,6 +1,6 @@
 ---
 title: Teams should design in the cloud... and why Figma stole my heart
-release_date: today
+release_date: July 2020
 slug: web-design-in-the-cloud 
 excerpt: >-
   I strongly believe that all developers are only as good as their teams. 
