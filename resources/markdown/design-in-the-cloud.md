@@ -142,14 +142,14 @@ I more or less stumbled across their app two years ago and must say to this day 
 
 We could talk a lot about single features and compare them, but the most important thing to me is the fact, that Figma facilitates teamwork just a bit better than other apps.
 
-The team really put some thought on what is in my opinion the most important thing for a successful product: 
+The team really put some thought in what is in my opinion the most important for a successful product: 
 
 > It speeds up the whole team, not only parts of it
 
-I can only speak from a developer's perspective here, but I love that you can export anything and even choose the  image file type or size. You can simple upload any size of image, even copy and paste SVG codes with ease.
+I can only speak from a developer's perspective here, but I love that you can export anything and even choose the  image file type or size. You can simply upload any size of image, even copy and paste SVG codes with ease.
  
- Accessing CSS values and spacing is also really easy, and I almost never have missing fonts or compatibility problems since they integrate directly with google fonts, and the Electron app works on all platforms.
-
+Accessing CSS values and spacing is also really easy, and I almost never have missing fonts or compatibility problems since they integrate directly with google fonts, and the Electron app works on all platforms.
+ 
 They have a really generous free tier, and you only pay for more advanced features like really granular permissions, more than 30 days of version history and so on.
 
 Also, their name sounds quite dirty in German - hey, they are humorous about it:
