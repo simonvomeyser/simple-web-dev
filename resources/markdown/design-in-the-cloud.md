@@ -72,7 +72,7 @@ I only want to give a quick overview about the options I know of with a focus of
 
 ### Invison
 
-![Invision Logo](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/invision.png)
+![Invision Logo](https://res.cloudinary.com/simonvomeyser/image/upload/v1593533534/design-in-the-cloud/invision.png)
 
 [Invision App](https://www.invisionapp.com/) is the first tool I came across where you could upload your screen design from Sketch or Photoshop, then send a link to anyone and discuss or demo your project.
 
@@ -91,7 +91,7 @@ Why not try them if your team wants to stick with their tools.
 
 ### Adobe XD
 
-![Logo of Adobe XD](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/adobexd.png)
+![Logo of Adobe XD](https://res.cloudinary.com/simonvomeyser/image/upload/v1593533327/design-in-the-cloud/adobexd.png)
 
 I am really happy Adobe entered the ring of cloud based screen design tools! It helps to get the adoption going because many designers are used to Adobe's products like Photoshop and Illustrator.  
 
@@ -106,7 +106,7 @@ Other than that I only had good experiences with it. Adobe XD really is a good t
 
 ### Sketch Cloud
 
-![Sketch Logo](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/sketch.png)
+![Sketch Logo](https://res.cloudinary.com/simonvomeyser/image/upload/v1593533534/design-in-the-cloud/sketch.png)
 
 For quite some time [Sketch](https://www.sketch.com/) seemed to be the big competitor for Adobe products and was even announced as "Photoshop Killer"... just like too little RAM.
 
@@ -132,7 +132,7 @@ Some of them seem intentionally created to be a little less colorful and can ser
 
 ## Why Figma stole my heart
 
-![Logo of Figma](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/Figma.png)
+![Logo of Figma](https://res.cloudinary.com/simonvomeyser/image/upload/v1593533327/design-in-the-cloud/Figma.png)
 
 I omitted Figma in the list above because I wanted to talk a little more in depth about this app.
 
