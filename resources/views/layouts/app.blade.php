@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -11,6 +11,10 @@
     <meta name="description" content="This site is a small diary of the things I learn while on this intimidating journey through web development land.">
 
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
+
+    <meta property="og:title" content="Simple Web Dev - Just a blog about web development">
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ asset('images/default-og-image.png') }}">
 
     <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
