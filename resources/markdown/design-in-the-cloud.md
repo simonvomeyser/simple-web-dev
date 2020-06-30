@@ -166,7 +166,7 @@ I'd also have to mention, that the design team has to get used to a completely d
 
 All in all I still think Figma is the best choice in most cases. 
 
-we developers will need to have this conversation with a lot of empathy though - just imagine you had to sacrifice your beloved code editor to improve the whole team.
+We developers will need to have this conversation with a lot of empathy though - just imagine you had to sacrifice your beloved code editor to improve the whole team.
 
 ## Bottom line
 
