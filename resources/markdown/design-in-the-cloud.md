@@ -20,21 +20,21 @@ list_image: >-
 ---
 
 
-As a web developer doing a lot of teamwork with designers my email inbox contains many `mobile-rev2_less-blue.final.jpg` files - and I am as guilty of this workflow as the designers are.
+As a web developer doing a lot of team project my email inbox contains lots of `mobile-rev2_less-blue.final.jpg` files - and I am as guilty of this workflow as the designers are.
 
-The problem is so ubiquitous it has become a meme... and an accessory
+The problem is so ubiquitous it has become a meme... and an accessory:
 
 ![Images of Photoshop Files called final.final.psd](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016372/design-in-the-cloud/f-in-final.png)
 
-But what can you do about that? Why should we developers care? 
+But what can you do about that? Why should especially we as developers care? 
 
-The answer is quite simple: Because our end goal as nerdy developers should always be to create better product, and that's not solely achieved by learning a new keyboard shortcut or adding a smart abstraction to our code.
+The answer is quite simple: Because our end goal should always be to create better product, and that's not solely achieved by learning a new keyboard shortcut or adding a smart abstraction.
 
-Design in the cloud has really become a *low hanging fruit* in terms of improving your team workflow as well as your customer-facing communication. 
+Design in the cloud has really become a *low hanging fruit* to improve your team workflow as well as your customer communication. 
 
 I always try to remember the following:
 
-> When the cost of communication is high, people stop to ask questions
+> When the cost of communication is high, people simply stop to ask questions
 
 This might be tempting situation with an annoying customer - but it leads to fewer solved problems and therefore a project where the developer misunderstood what the designer thought the customer wanted.
 
@@ -54,9 +54,9 @@ On the one hand because I am not that talented, but on the other hand I simply d
 
 ![Gif of really bad photshopping my head on Arnold Schwarzenegger's body](https://res.cloudinary.com/simonvomeyser/image/upload/v1593019587/design-in-the-cloud/arnie.gif)
 
-Erm... back to the topic. I hope you see the workflow problem when a developer cannot reliably open the designer's file to export images or to look up spacings, fonts or colors. 
+Erm... back to the topic. I hope you see the workflow problem when a frontend developer cannot access the designer's files to for example export images or to look up spacings, fonts or colors. 
 
-It simply adds way too much overhead to communication, including the back and forth between everbody by sending comments and exported files around. 
+The alternative in most cases is sending around exported files between all stakeholders. I think this workflow simply adds way too much overhead to communication. 
 
 > Which file was the latest version again ... and where are the comments?
 
@@ -68,21 +68,7 @@ It is therefore clearly better to keep the design and discussions in a central, 
 
 There are so many full featured tools on the market by now, and I surely can't do all of them justice.
 
-I only want to give a quick overview about the options I know of, all through the lense of improving team productivity.
-
-### Adobe XD
-
-![Logo of Adobe XD](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/adobexd.png)
-
-I am really happy Adobe entered the ring of cloud based screen design tools! It helps to get the adoption going because many designers are used to Adobe's products like Photoshop and Illustrator.  
-
-[Adobe XD](https://www.adobe.com/products/xd.html) specialized in screen design and offers many features for collaboration. You can send links to where a stakeholder simply can watch the design and give feedback without the hassle of installing an app or finding an exported image in their email inbox. 
-
-The best thing is that it is free, so all developers can install it, open the current, cloud synced file and copy color values or export assets. 
-
-I had a few problems here since it does not play *that* nicely with SVGs or Icons and I think to make an asset exportable there is a little work involved.
-
-Other than that I only had good experiences with it and Adobe XD really is a good tool to improve teamwork.
+I only want to give a quick overview about the options I know of with a focus of improving team productivity, and with the narrow view of a developer not able to draw unicorns that well.
 
 ### Invison
 
@@ -92,13 +78,30 @@ Other than that I only had good experiences with it and Adobe XD really is a goo
 
 While the idea was great at that time, I really found it a bit complicated to use as a developer, also there was the constant need for the designer to re-upload their work after changes, hardly any way to export and so on.
 
-After researching them for this article I noticed they introduced their own screen design app called [InVision Studio](https://www.invisionapp.com/studio) to be not bound to these limitations. 
+After researching them for this article I noticed they introduced their own screen design app called [InVision Studio](https://www.invisionapp.com/studio) to not be bound to these limitations. 
 
-This app seems to be fairly full featured, but you'll need a subscription plan to use it with more than one project.
+The app seems to be fairly full featured, but you'll need a subscription plan to use it with more than one project.
 
 ![Pricing plan of Invision](https://res.cloudinary.com/simonvomeyser/image/upload/v1592319566/design-in-the-cloud/Untitled.png)
 
-I found their discussion tools to be one of the best on the marked, and at least you can try their services for free :)
+I found their discussion tools to be one of the best on the marked, and you can try their services for free.
+
+Why not try them if your team wants to stick with their tools.
+
+
+### Adobe XD
+
+![Logo of Adobe XD](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/adobexd.png)
+
+I am really happy Adobe entered the ring of cloud based screen design tools! It helps to get the adoption going because many designers are used to Adobe's products like Photoshop and Illustrator.  
+
+[Adobe XD](https://www.adobe.com/products/xd.html) specialized in screen design and offers many features for collaboration. You can send links to a stakeholder to simply watch the design and give feedback without the hassle of installing an app. 
+
+The best thing is that it is **completely** free, so all developers can install it, open the current, cloud synced file and copy color values or export assets. 
+
+I had a few problems here since it does not play *that* nicely with SVGs or Icons and I think to make an asset exportable there is a little work involved.
+
+Other than that I only had good experiences with it. Adobe XD really is a good tool to improve your teamwork.
 
 
 ### Sketch Cloud
@@ -107,13 +110,13 @@ I found their discussion tools to be one of the best on the marked, and at least
 
 For quite some time [Sketch](https://www.sketch.com/) seemed to be the big competitor for Adobe products and was even announced as "Photoshop Killer"... just like too little RAM.
 
-While I liked to use Sketch in the beginning I am not so happy with their pricing model anymore. I stopped using it since I bought a "lifetime license" but suddenly had to pay for updates again and can't open files saved with newer versions :/
+While I liked to use Sketch in the beginning I am not so happy with their pricing model anymore. I stopped using it since I bought a *lifetime license* but suddenly had to pay for updates again and can't open files saved with newer versions 🤨
 
-One might say they pulled a "Microsoft Word" - move
+One might say they pulled a "docx" - move.
 
 ![Sketch's pricing, noting the one year period](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016371/design-in-the-cloud/sketch-pricing.png)
 
-The reason I list Sketch here is that they [announced](https://www.sketch.com/docs/sketch-cloud/) a cloud solution recently, and I used it with a team I was working with.
+The reason I list Sketch here is that they [announced](https://www.sketch.com/docs/sketch-cloud/) a cloud solution recently, and I used it in a team I was working with.
  
 Since I could not open the designer's files anymore I used the link to the cloud version. Sadly I must say that I was not really happy with it. We did not find a way to make assets exportable or to view color codes with ease. 
 
@@ -143,29 +146,33 @@ The team really put some thought on what is in my opinion the most important thi
 
 > It speeds up the whole team, not only parts of it
 
-I can only speak from a developer's perspective here, but I love that you can export anything, choose your own file format, upload any size of image, copy CSS values, almost never have missing fonts or compatibility problems, since the app works on all platforms.
+I can only speak from a developer's perspective here, but I love that you can export anything and even choose the  image file type or size. You can simple upload any size of image, even copy and paste SVG codes with ease.
+ 
+ Accessing CSS values and spacing is also really easy, and I almost never have missing fonts or compatibility problems since they integrate directly with google fonts, and the Electron app works on all platforms.
 
-They have a really generous free tier, and you only pay for more advanced features like  really granular permissions, more than 30 days of version history and so on.
+They have a really generous free tier, and you only pay for more advanced features like really granular permissions, more than 30 days of version history and so on.
 
-Also, their name sounds quite dirty in German, and they have humor:
+Also, their name sounds quite dirty in German - hey, they are humorous about it:
 
 ![Tweet Screenshot - Figma's name sounds dirty in German](https://res.cloudinary.com/simonvomeyser/image/upload/v1593018072/design-in-the-cloud/figma-dirty.png)
 
-If I had two criticize something it would be tiny things like the fact, that you can easily send links to non-technical people to view the design, but to comment they have to create a account. 
+If I had two criticize something it would be tiny things like the fact, that you can of course easily send links to non-technical people to view the design, but to comment they have to create an account. 
 
-This is a small hurdle since a stakeholder does not necessarily want to have an account (and that most of them always seem to forget their passwords 😅). 
+This is a small hurdle, but in my experience a non tech stakeholder does not necessarily want to have an account - and most of them always forget their passwords 😅. 
 
-Adobe XD offers an anonymous comment feature, just to be fair here.
+Adobe XD offers this anonymous comment feature, just to be fair here.
 
-Also, the design team has to get used to a completely different tool, something that could be a big deal depending on how specialized the designers are.
+I'd also have to mention, that the design team has to get used to a completely different tool. This could be a big deal depending on how specialized the designers are.
 
-All in all I still think Figma is the best choice in most cases, but we developers will need to have this conversation with a lot of empathy - just imagine you had to sacrifice your beloved code editor to improve the whole team.
+All in all I still think Figma is the best choice in most cases. 
+
+we developers will need to have this conversation with a lot of empathy though - just imagine you had to sacrifice your beloved code editor to improve the whole team.
 
 ## Bottom line
 
-Our developer guild has a unique way of looking at workflows, and we tend to get itchy a little faster when we see constant repetition. Our perspective can be of great value for a team. 
+Our developer guild has a unique way of looking at things, and we tend to get itchy a little faster when we see inefficient things. We should use our perspective to improve the very workflows that annoy us - instead of joking about the next confused email. 
 
-Some designers or product managers often don't see this kind of problems so why don't talk about this topic in the next team meeting or retrospective.
+Some designers, managers or customers just don't see this special kind of problems as we do - why don't talk about it in the next team meeting or retrospective.
 
-No matter which cloud design tool your team decides to use - you will most definitely create a better workflow and have more time for what really matters: Creating an awesome product. :)
+No matter which cloud design tool your team then decides to use - you will most definitely create a better workflow, better demos, and have more time for what really matters: Creating an awesome product. :)
 
