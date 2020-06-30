@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('title', $post->title)
+@section('meta_description', strip_tags($post->excerpt))
+@section('og_type', 'article')
+@section('og_image', $post->list_image)
+
 @push('footer-scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-core.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>

@@ -7,14 +7,19 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Sanchez" rel="stylesheet">
 
-    <title>Simple Web Dev - Just a blog about web development</title>
-    <meta name="description" content="This site is a small diary of the things I learn while on this intimidating journey through web development land.">
+    <title>@hasSection('title')@yield('title')@else{{'Simple Web Dev - Just a blog about web development'}}@endif</title>
+
+    <meta name="description" content="@hasSection('meta_description')@yield('meta_description')@else{{'This site is a small diary of the things I learn while on this intimidating journey through web development land'}}@endif">
 
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
 
-    <meta property="og:title" content="Simple Web Dev - Just a blog about web development">
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{ asset('images/default-og-image.png') }}">
+    <meta property="og:title" content="@hasSection('title')@yield('title')@else{{'Simple Web Dev - Just a blog about web development'}}@endif">
+    <meta property="og:description" content="@hasSection('meta_description')@yield('meta_description')@else{{'This site is a small diary of the things I learn while on this intimidating journey through web development land'}}@endif">
+    <meta property="og:type" content="@hasSection('og_type')@yield('og_type')@else{{'website'}}@endif" />
+    <meta
+        property="og:image"
+        content="@hasSection('og_image')@yield('og_image')@else{{asset('images/og-image-default.png')}}@endif"
+    />
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ URL::to('favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ URL::to('favicon/apple-icon-60x60.png') }}">
