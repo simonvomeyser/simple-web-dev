@@ -20,13 +20,13 @@ list_image: >-
 ---
 
 
-As a web developer doing a lot of team project my email inbox contains lots of `mobile-rev2_less-blue.final.jpg` files - and I am as guilty of this workflow as the designers are.
+As a web developer doing a lot of teamwork my email inbox contains quite a few `design-final-3.jpg` files - and I am as guilty of this as my teammates are.
 
 The problem is so ubiquitous it has become a meme... and an accessory:
 
 ![Images of Photoshop Files called final.final.psd](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016372/design-in-the-cloud/f-in-final.png)
 
-But what can you do about that? Why should especially we as developers care? 
+But why should especially we as developers care? 
 
 The answer is quite simple: Because our end goal should always be to create better product, and that's not solely achieved by learning a new keyboard shortcut or adding a smart abstraction.
 
