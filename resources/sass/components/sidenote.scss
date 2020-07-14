@@ -34,3 +34,17 @@
     }
   }
 }
+
+@include breakpoint('mobile') {
+    .sidenote {
+        @include e(chevron) {
+            top: -8px;
+            svg {
+                fill: $neutral-400;
+                width: 80px;
+                height: 80px;
+                opacity: .2;
+            }
+        }
+    }
+}
