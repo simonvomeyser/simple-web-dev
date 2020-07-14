@@ -43,7 +43,7 @@ We are going to implement the following single page layout I tried my nonexisten
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1535611665/BEM%20by%20Example/Demo.png)
 
-To make things a little bit more easy, you can [look at the Design in Figma](https://www.figma.com/file/DyCnbDJJ38ODholutt2WtOfp/BEM-by-Example?node-id=0%3A1) . You can inspect the elements for colors there and export the images if you want to use the assets I used in this design. For that, you need to sign up for a free Figma account though. Just do it, [Figma is pure awesomeness](http://blog.simonvomeyser.de/why-figma-stole-my-heart/).
+To make things a little bit more easy, you can [look at the Design in Figma](https://www.figma.com/file/DyCnbDJJ38ODholutt2WtOfp/BEM-by-Example?node-id=0%3A1) . You can inspect the elements for colors there and export the images if you want to use the assets I used in this design. For that, you need to sign up for a free Figma account though. Just do it, [Figma is pure awesomeness](/web-design-in-the-cloud).
 
 If you want to be old school, [here is a jpg of the design](https://res.cloudinary.com/simonvomeyser/image/upload/v1536816215/BEM%20by%20Example/Desktop.png) for you to download.
 
