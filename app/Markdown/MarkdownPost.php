@@ -121,11 +121,9 @@ class MarkdownPost
      */
     public function similar()
     {
-        $similar = static::released()->filter(function ($post) {
+        return static::released()->filter(function ($post) {
             return $post->slug !== $this->slug;
         });
-
-        return $similar;
     }
 
     public function contains($word)
