@@ -43,13 +43,13 @@ We are going to implement the following single page layout I tried my nonexisten
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1535611665/BEM%20by%20Example/Demo.png)
 
-To make things a little bit more easy, you can [look at the Design in Figma](https://www.figma.com/file/DyCnbDJJ38ODholutt2WtOfp/BEM-by-Example?node-id=0%3A1) . You can inspect the elements for colors there and export the images if you want to use the assets I used in this design. For that, you need to sign up for a free Figma account though. Just do it, [Figma is pure awesomeness](/web-design-in-the-cloud).
+To make things a bit more easy, you can [look at the Design in Figma](https://www.figma.com/file/DyCnbDJJ38ODholutt2WtOfp/BEM-by-Example?node-id=0%3A1) . You can inspect the elements for colors there and export the images if you want to use the assets I used in this design. For that, you need to sign up for a free Figma account though. Just do it, [Figma is pure awesomeness](/web-design-in-the-cloud).
 
 If you want to be old school, [here is a jpg of the design](https://res.cloudinary.com/simonvomeyser/image/upload/v1536816215/BEM%20by%20Example/Desktop.png) for you to download.
 
 We will start with the header in the next chapter and work our way through the content section to the footer in the other chapters.
 
-> This very article is meant as an introduction only
+> This very article is an introduction only
 
 I will cover only the BEM basics and why structuring your CSS is important at all. If you want to dive right in the implementation stuff of the design above, jump to the [second Part](/bem-by-example-part-2) where we put our pedal to the metal.
 
@@ -71,7 +71,7 @@ The cascading nature of CSS seems to add layer upon layer of complexity always r
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1535690029/BEM%20by%20Example/css_example.png) 
 
-Would you dare to make changes to Joes CSS on line 6857? Me neither. But don't blame him, he got way better. I hope you agree that the example above is no way to live your life. So **we need structure in our CSS**. And sorry about the "your mom" joke earlier.
+Would you dare to make changes to Joe's CSS on line 6857? Me neither. But don't blame him, he got way better. I hope you agree that the example above is no way to live your life. So **we need structure in our CSS**. And sorry about the "your mom" joke earlier.
 
 ## The current state of CSS Structuring and why to choose BEM
 
@@ -81,7 +81,7 @@ There are many ways out there to structure and use CSS in a project. Just look a
 
 All these are not necessarily comparable, some are Frameworks, some are concepts, some include build systems. 
 
-But they all have one thing in common: They scare and confuse the hell out of beginners. If you are at a stage where you don't know how to start I have a rather pragmatic answer for you: Just use BEM as I will show you. This will give you a solid bang for your buck and you will later see similarities in almost every concept. Other reasons I would advise you to start with BEM:
+But they all have one thing in common: They scare and confuse the hell out of beginners. If you are at a stage where you don't know how to start I have a rather pragmatic answer for you: Just use BEM as I will show you. This will give you a solid bang for your buck, and you will later see similarities in almost every concept. Other reasons I would advise you to start with BEM:
 
 - It is a really easy approach you can start using today,
 - No setup, just simple HTML and CSS knowledge required
@@ -92,9 +92,9 @@ But they all have one thing in common: They scare and confuse the hell out of be
 
 ## BEM BAM BEM?! Let's finally start!
 
-So after all this advertising, what the hell is BEM? In all it's simplicity, the core concept is to structure your website into modules, meaning reusable parts. 
+So after all this advertising, what the hell is BEM? In all its simplicity, the core concept is to structure your website into modules, meaning reusable parts. 
 
-These are called **Blocks**, the _B_ in BEM. A block should be something encapsulating its own styles and not being depended on it's surroundings. So at the end, you should be able to drop a block anywhere on your site or even other sites and it should look exactly the same. If you ask me, that's a little idealistic, but the core concept is really helpful. 
+These are called **Blocks**, the _B_ in BEM. A block should be something encapsulating its own styles and not being depended on its surroundings. So at the end, you should be able to drop a block anywhere on your site or even other sites, and it should look exactly the same. If you ask me, that's a little idealistic, but the core concept is really helpful. 
 
 ![](https://res.cloudinary.com/simonvomeyser/image/upload/v1535949544/BEM%20by%20Example/soundsgood.jpg) 
 
@@ -128,11 +128,11 @@ So `class="newsletter__heading"` thereby means the **Element** _Heading_ is insi
 </div>
 ```
 
-This looks a little verbose and this is what some people don't like about BEM. If you ask me, it's really reasonable and you can understand at a glance what hierarchy is at play here. 
+This looks a little verbose and this is what some people don't like about BEM. If you ask me, it's really reasonable, and you can understand at a glance what hierarchy is at play here. 
 
 If you wrap the elements in divs or place the class name on them (like with the input) depends wholly on the context, both is possible. 
 
-The last part of the puzzle is to explain how **Modifiers** work. These can be attached to elements (or blocks themself) to alter their appearance. In our example, and since we are dirty spammers that want people to subscribe, we want the second button to stand out more. We will add a modifier class like so.
+The last part of the puzzle is to explain how **Modifiers** work. These can be attached to elements (or blocks) to alter their appearance. In our example, and since we are dirty spammers that want people to subscribe, we want the second button to stand out more. We will add a modifier class like so.
 
 ```html
 <button class="newsletter__button">
@@ -143,7 +143,7 @@ The last part of the puzzle is to explain how **Modifiers** work. These can be a
 </button>
 ```
 
-It's important to combine the original class and the modifier class even if it looks a bit ugly (insert "your mom joke" here) . 
+It's important to combine the original class, and the modifier class even if it looks a bit ugly (insert "your mom joke" here) . 
 
 This has a host of [reasons](http://getbem.com/faq/#why-the-modifier-css-classes-are-not-represented-as-a-combined-selector-) but to keep it short: No CSS duplication, more semantic markup and benefits of a higher specificity should be enough reason to endure a markup that is a little more verbose.
 
@@ -186,7 +186,7 @@ Wohoo! We did our first frontend work using the BEM naming convention. You can f
 <embed-playground src="https://codepen.io/simonvomeyser/embed/rroJzG">
 </embed-playground>
 
-There are a lot of things we could discuss about this isolated example already, but this will happen in the next post often enough. Just to warn you in advance:
+There are a lot of things we could discuss this isolated example already, but this will happen in the next post. Just to warn you in advance:
 
 In my opinion, if you use BEM or name all your classes like Lord of the Rings characters (I actually saw that once) does not matter all that much for your client. But for maintainability it's important that you have a system. I like BEM and it helped me in all kinds of projects.
 
