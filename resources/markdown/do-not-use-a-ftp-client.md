@@ -90,13 +90,13 @@ When you now turn this around, you could simply sync your directory you develop 
 rsync -a ~/Desktop/my-website/ ssh-username@domain.com:/www/htdocs/my-webiste/
 ```
 
-Of course there are thousand of options how to overwrite, ignore some, show progress, test run before you nuke anything and so on. I found a [cool video](https://www.youtube.com/watch?v=qE77MbDnljA) that will help you get started 🙂
+Of course there are lots of options how to overwrite, ignore some, show progress, test run before you nuke anything and so on. I found a [cool video](https://www.youtube.com/watch?v=qE77MbDnljA) that will help you get started 🙂
 
 ### Caveats
 
-As I already said this is not as easy on Windows as it is on Mac or Linux. It will also feel quite hacky and you might be nervous before hitting 'Enter'. 
+As I already said this is not as easy on Windows as it is on Mac or Linux. It will also feel quite hacky, and you might be nervous before hitting 'Enter'. 
 
-Just save the command you will use regularly somewhere so the probability of setting something on fire is a bit smaller.
+Just save the command you will use regularly somewhere, so the probability of setting something on fire is a bit smaller.
 
 <div id="git-ftp">
 
@@ -226,10 +226,15 @@ While this project served me and my clients well it still has a few downsides:
 - Running tests has to be done locally
 - There is still a lot that can go wrong
 
-### Where to go next
+## Where to go next
 
 You might have noticed these things top to bottom of this post get more and more complicated. The possible next step I would say is maybe check out a continuous integration setup with [GitLab](https://about.gitlab.com/product/continuous-integration/) (it's free!), use a service like [Runcloud](https://runcloud.io/) or check out [Forge](https://forge.laravel.com/) if you are using Laravel!
 
-The main goal of this article was to show that there is a middle ground between cowboy coding deploy style ( 🔫 pew pew) with manual FTP uploads  and a total Docker/Kubernetes/AWS/Whatever craziness.
+
+The main goal of this article was to show that there is a middle ground between cowboy deploy style ( 🔫 pew pew) with manual FTP uploads  and a total Docker/Kubernetes/AWS/Whatever craziness.
 
 > Grow with your skills, try what is possible and gradually move away from FTP Clients.
+
+## Notes from the Future
+
+July 2020: You might also look into [Deployer](https://deployer.org/) for a PHP based solution - it looks promising.

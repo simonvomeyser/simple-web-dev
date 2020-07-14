@@ -38,6 +38,9 @@
           justify-content: center;
           align-items: center;
           background: rgba(white, .8);
+          &:focus {
+              opacity: 1;
+          }
       }
     img {
       @include anim();
