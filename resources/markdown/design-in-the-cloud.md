@@ -26,11 +26,11 @@ The problem is so ubiquitous it has become a meme... and an accessory:
 
 ![Images of Photoshop Files called final.final.psd](https://res.cloudinary.com/simonvomeyser/image/upload/v1593016372/design-in-the-cloud/f-in-final.png)
 
-But why should especially we as developers care? 
+But why should especially we as developers care? Isn't that the designer's job?
 
-The answer is quite simple: Because our end goal should always be to create better product, and that's not solely achieved by learning a new keyboard shortcut or adding a smart abstraction.
+The answer is quite simple: Since our end goal should always be to create better product, we developers should facepalm less and instead constructively voice our perspective when we encounter inefficient workflows.
 
-Design in the cloud has really become a *low hanging fruit* to improve your team workflow as well as your customer communication. 
+Design in the cloud is such a topic and has really become a *low hanging fruit* to improve team workflow as well as customer communication. 
 
 I always try to remember the following:
 
@@ -50,7 +50,7 @@ From a developer's point of view I've seen designers use all sorts of funky tool
 
 In almost all cases the design was awesome and something I would have never been able to do... well, for two reasons:
 
-On the one hand because I am not that talented, but on the other hand I simply did not own paid licenses to the products above. (I own one for Photoshop to glue my head on Arnold Schwarzenegger's body though) 
+On the one hand because I am not that talented, but on the other hand I simply did not own paid licenses to the products above. I own one for Photoshop to glue my head on Arnold Schwarzenegger's body though.
 
 ![Gif of really bad photshopping my head on Arnold Schwarzenegger's body](https://res.cloudinary.com/simonvomeyser/image/upload/v1593019587/design-in-the-cloud/arnie.gif)
 
@@ -68,7 +68,7 @@ It is therefore clearly better to keep the design and discussions in a central, 
 
 There are so many full featured tools on the market by now, and I surely can't do all of them justice.
 
-I only want to give a quick overview about the options I know of with a focus of improving team productivity, and with the narrow view of a developer not able to draw unicorns that well.
+I only want to give a quick overview about the options I know about - with a focus of improving team productivity, and with the narrow view of a developer not able to draw unicorns that well.
 
 ### Invison
 
