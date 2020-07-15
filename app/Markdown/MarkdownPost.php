@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
 use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 
@@ -100,6 +101,7 @@ class MarkdownPost
         $environment = Environment::createCommonMarkEnvironment();
 
         $environment->addExtension(new ExternalLinkExtension());
+        $environment->addExtension(new HeadingPermalinkExtension());
         $environment->addInlineRenderer('League\CommonMark\Inline\Element\Image', new LazyImageRenderer());
 
         $converter = new CommonMarkConverter([
