@@ -62,7 +62,7 @@ I find this attention to detail impressive and inspiring 😊
 
 ## Notifications and fighting E-Mail SPAM
 
-Most Applications either inform you too seldomly about important changes or bombard you with emails by default. I have seen coworkers simple marking all emails coming from a tool as spam since it was too complicated to find the settings. 
+Most Applications either inform you too seldom about important changes or bombard you with emails by default. I have seen coworkers simply marking all emails coming from a tool as spam since it was too complicated to find the settings. 
 
 At Trello, the team really has put a lot of thought into their notification and email system to not make them loose significance by sheer mass. There are three simple options for E-Mails:
 
