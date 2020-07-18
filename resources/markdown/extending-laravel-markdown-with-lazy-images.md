@@ -157,13 +157,24 @@ https://ocramius.github.io/blog/when-to-declare-classes-final/
 https://verraes.net/2014/05/final-classes-in-php/
 @todo end add screenshot of taylor classes final 
 
-I still have no final (eheh) opinion about this, but in this case it would have been helpful and made sense in my naive understanding. This also has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument there.
+I still have no final (eheh) opinion about this, but in this case it would have been helpful and made sense in my naive understanding. This also has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument though.
 
-I ended up 
+I ended up not subclassing but calling the original renderer and modifying the output in a composition over inheritance approach.
 
-!!!!!! I need to add a renderer that extends the commonmark renderer... so I can do that... but write about the fact that I normally you would do it differently
+The actual *programming* that needed to be done was quite simple, but that is the whole reason I wanted to write this post. Usually the implemention of a feature is way less complicated than wrapping your head around the way a library wants to be extended.
 
-Okay, pin down my thoughts here: It needs to be quite hacky since I really need to replace the Image renderer.
+```php
+$baseImage = $this->baseImageRenderer->render($inline, $htmlRenderer);
+
+// Provide modern browser
+$baseImage->setAttribute('loading', 'lazy');
+// Set the src to the already 'secure' src of the base image
+$baseImage->setAttribute('data-src', $baseImage->getAttribute('src'));
+// Empty the original src
+$baseImage->setAttribute('src', ''); 
+
+return $baseImage;
+``` 
 
 
 ## Closing
