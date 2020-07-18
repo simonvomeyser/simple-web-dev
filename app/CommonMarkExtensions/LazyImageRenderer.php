@@ -34,16 +34,15 @@ class LazyImageRenderer implements InlineRendererInterface, ConfigurationAwareIn
      */
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
-        /** @var HtmlElement $htmlElement */
         $this->baseImageRenderer->setConfiguration($this->config);
-        $htmlElement = $this->baseImageRenderer->render($inline, $htmlRenderer);
+        $baseImage = $this->baseImageRenderer->render($inline, $htmlRenderer);
 
-        $htmlElement->setAttribute('loading', 'lazy');
-        $htmlElement->setAttribute('data-src', $htmlElement->getAttribute('src'));
-        $htmlElement->setAttribute('class', 'lozad');
-        $htmlElement->setAttribute('src', '');
+        $baseImage->setAttribute('loading', 'lazy');
+        $baseImage->setAttribute('data-src', $baseImage->getAttribute('src'));
+        $baseImage->setAttribute('class', 'lozad');
+        $baseImage->setAttribute('src', '');
 
-        return $htmlElement;
+        return $baseImage;
     }
 
     public function setConfiguration(ConfigurationInterface $configuration)
