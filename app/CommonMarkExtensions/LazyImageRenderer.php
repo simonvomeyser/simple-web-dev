@@ -1,60 +1,38 @@
 <?php
 namespace App\CommonMarkExtensions;
 
-use League\CommonMark\Environment;
 use League\CommonMark\HtmlElement;
-use League\CommonMark\Util\RegexHelper;
-use League\CommonMark\Inline\Element\Link;
-use League\CommonMark\Inline\Element\Image;
+use League\CommonMark\Inline\Renderer\ImageRenderer;
+use League\CommonMark\Util\ConfigurationAwareInterface;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\Util\ConfigurationInterface;
 use League\CommonMark\Inline\Element\AbstractInline;
 use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 
-class LazyImageRenderer implements InlineRendererInterface
+class LazyImageRenderer implements InlineRendererInterface, ConfigurationAwareInterface
 {
-    /**
-     * @var ConfigurationInterface
-     */
+    /** @var ConfigurationInterface */
     protected $config;
 
     /**
-     * @param Image                    $inline
+     * @param AbstractInline $inline
      * @param ElementRendererInterface $htmlRenderer
      *
      * @return HtmlElement
      */
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
-        if (!($inline instanceof Image)) {
-            throw new \InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));
-        }
-        
-        $attrs = $inline->getData('attributes', []);
-        
-        if (RegexHelper::isLinkPotentiallyUnsafe($inline->getUrl())) {
-            $attrs['src'] = '';
-        } else {
-            $attrs['src'] = $inline->getUrl();
-        }
+        /** @var HtmlElement $htmlElement */
+        $imageRenderer = new ImageRenderer();
+        $imageRenderer->setConfiguration($this->config);
+        $htmlElement = $imageRenderer->render($inline, $htmlRenderer);
 
+        $htmlElement->setAttribute('loading', 'lazy');
+        $htmlElement->setAttribute('data-src', $htmlElement->getAttribute('src'));
+        $htmlElement->setAttribute('class', 'lozad');
+        $htmlElement->setAttribute('src', '');
 
-        $alt = $htmlRenderer->renderInlines($inline->children());
-        $alt = \preg_replace('/\<[^>]*alt="([^"]*)"[^>]*\>/', '$1', $alt);
-        $attrs['alt'] = \preg_replace('/\<[^>]*\>/', '', $alt);
-        //this should be sufficient soon
-        $attrs['loading'] = 'lazy';
-        //until then
-        $attrs['data-src'] = $attrs['src'];
-        unset($attrs['src']);
-        $attrs['class'] = 'lozad';
-
-
-        if (isset($inline->data['title'])) {
-            $attrs['title'] = $inline->data['title'];
-        }
-
-        return new HtmlElement('img', $attrs, '', true);
+        return $htmlElement;
     }
 
     public function setConfiguration(ConfigurationInterface $configuration)

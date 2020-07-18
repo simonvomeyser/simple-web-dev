@@ -2,6 +2,7 @@
 
 namespace App\Markdown;
 
+use App\CommonMarkExtensions\LazyImageExtension;
 use App\CommonMarkExtensions\LazyImageRenderer;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Env;
@@ -102,7 +103,7 @@ class MarkdownPost
 
         $environment->addExtension(new ExternalLinkExtension());
         $environment->addExtension(new HeadingPermalinkExtension());
-        $environment->addInlineRenderer('League\CommonMark\Inline\Element\Image', new LazyImageRenderer());
+        $environment->addExtension(new LazyImageExtension());
 
         $converter = new CommonMarkConverter([
             'allow_unsafe_links' => false,
