@@ -27,7 +27,7 @@ https://github.com/laravel/framework/pull/30982
 
 While I was implementing simple-web.dev I wanted to use Laravel to have full control about the implementation - and I definitely wanted to write the posts in Markdown to keep them in version control. 
 
-I found that Laravel already ships with a really powerful library for Markdown parsing called [league/commonmark](https://github.com/thephpleague/commonmark) and wanted to make use of that.
+I found that Laravel also already ships with a really powerful library for Markdown parsing called [league/commonmark](https://github.com/thephpleague/commonmark) and wanted to make use of that.
 
 I will go over a few necessary customizations and how I implemented them since I found that a little confusing at first.
 
@@ -63,9 +63,11 @@ $html = Markdown::parse(File::get('file.md'));
 
 Now that's pretty 😍 - but we are bound to the configuration Laravel dictates, so let's not stop here.
  
-## Customize it
+## Configure it
 
 As far as I looked into it the `Illuminate\Mail\Markdown` class is not bound into the service container, there is no Facade and no quick way to replace it. That's no drama though, this class is specialized in rendering *mails* for Laravel so why toy with it?
+
+@todo on abstracting out markdown behind an interface: It's used only once and I get it. when used twice there would be time
 
 The most comfortable way I found is to customize the underlying ![league/commonmark](https://github.com/thephpleague/commonmark) implementation is to use it like Laravel does it:
 
@@ -86,7 +88,7 @@ Here we can already see how to customize the environment to our heart's liking w
 You can already see things that Laravel does:
 
 - Adding a table Extension to provide the table component described in the [docs](https://laravel.com/docs/7.x/mail)
-- Defaulting to not allow unsafe links, a precaution to prevent potential exploits, and the whole reason the markdown renderer was [changed](https://github.com/laravel/framework/pull/30982) by Taylor Otwell in 6.x in the first place.
+- Defaulting to not allow unsafe links, a precaution to prevent potential exploits, and the whole reason the markdown renderer was [changed](https://github.com/laravel/framework/pull/30982)
 
 You can do many more things from here without even diving into depth, just a few examples of things I added to render the posts of this page:
 
@@ -127,7 +129,7 @@ But what we want to do is *extending* an already parsed 'inline' element, an ima
 
 ### Creating our Extension
 
-Most of the core extensions work in quite a similar, straightforward way: They don't add parsers or renderers, they listen for the `DocumentParsedEvent` and traverse the already created data structure to add a few things. 
+Most of the core extensions work in quite a similar, straightforward way: They don't add parsers or renderers, they just listen for the `DocumentParsedEvent` and traverse the already created data structure to add a few things. 
 
 The [External Links Extension](https://commonmark.thephpleague.com/1.3/extensions/external-links/) adds things like `target="_blank"` for example.
 
@@ -135,7 +137,7 @@ I ran into a problem with this approach since I wanted my lazy image extension t
 
 Sadly, the really important work like checking for secure URLs is not done in the parser, it's done in the renderer, right before the image data get's turned into HTML. I had no access or possibility to empty the `src` attribute, something vital for most lazy loading libraries.
 
-It is possible to simply copy the content of the `League\CommonMark\Inline\Renderer\ImageRenderer`, adding my own functionality and adding this Renderer with a higher priority
+I found out it is possible to simply copy the content of the `League\CommonMark\Inline\Renderer\ImageRenderer`, adding my own functionality and adding this new renderer with a higher priority
 
 ```php
 
@@ -145,10 +147,12 @@ $environment->addInlineRenderer(
     9000 // Priority, the original is added with 0, we need to go higher, over 9000!
 );
     
-``` 
-That might be a viable option for a quick and dirty solution, but I think that's no way to live your life. The native `ImageRenderer` might change in the future, receive security updates and people using our extension would not benefit from those. 
 
-I needed the processing inside the native image renderer to run and then tag on our functionality. I thought of simply extending the class, but the library authors declared almost all classes as final - something I saw many discussions about, but it was the first time it affected me.
+``` 
+
+That might be a quick and dirty solution, but I think this is no way to live your life. The native `ImageRenderer` might change in the future, receive security updates and people using our extension would not benefit from those. 
+
+I needed the processing inside the native image renderer to run and then run our functionality. I thought of simply extending the class, but the library authors declared almost all classes as final - something I saw many discussions about, but it was the first time it affected me.
 
 @todo add screenshot of taylor classes final 
 https://twitter.com/taylorotwell/status/1237068965177892864?lang=en
@@ -157,18 +161,24 @@ https://ocramius.github.io/blog/when-to-declare-classes-final/
 https://verraes.net/2014/05/final-classes-in-php/
 @todo end add screenshot of taylor classes final 
 
-I still have no final (eheh) opinion about this, but in this case it would have been helpful and made sense in my naive understanding. This also has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument though.
+I still have no strong final (eheh) opinion about this, but in this case it would have been helpful and made sense in my naive understanding. This is also has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument and respect the package author's decision though.
 
-I ended up not subclassing but calling the original renderer and modifying the output in a composition over inheritance approach.
-
-The actual *programming* that needed to be done was quite simple, but that is the whole reason I wanted to write this post. Usually the implemention of a feature is way less complicated than wrapping your head around the way a library wants to be extended.
+I ended up not subclassing but calling the original renderer and modifying the output in a composition over inheritance approach. To be a bit more concise: My own class just creates the core image renderer, gets it's output and changes it. Then you just tell the library to use your renderer instead of the original one, like in the first naive example.
 
 ```php
+
+
+```
+
+The actual *programming* that needed to be done after that was quite simple in the end, but that is the whole reason I wanted to write this post. Usually the implementation of a feature is way less complicated than wrapping your head around the way a library wants to be extended and finding a way to start.
+
+```php
+// create the HTML Element for the original image
 $baseImage = $this->baseImageRenderer->render($inline, $htmlRenderer);
 
-// Provide modern browser
+// Provide modern browser lazy loading
 $baseImage->setAttribute('loading', 'lazy');
-// Set the src to the already 'secure' src of the base image
+// Set the data-src to the src that respects 'allow_unsafe_links' config
 $baseImage->setAttribute('data-src', $baseImage->getAttribute('src'));
 // Empty the original src
 $baseImage->setAttribute('src', ''); 
@@ -176,17 +186,15 @@ $baseImage->setAttribute('src', '');
 return $baseImage;
 ``` 
 
+I just added a few customizations that you can look up in the [documentation](@todo) of the package I created. In essence, you just read from the config here to make the class that get's added to the image customizable, and also the name of the `data` attribute. 
+
+The [code](@todo) should be fairly easy to understand now :)
+
 
 ## Closing
 
-Extending and tailoring the Libarary to your needs is fairly straightforward once you got your feed off the ground.
+Extending and tailoring the library to your needs is fairly straightforward once you got your feet off the ground. I even found an approach to not only tag on things but to alter the behaviour of the core with the lazy image extension, even if I was a little confused by the API at first. That might only be a matter of taste though, I know quite a few developers who prefer a more expressive setup instead of the hidden complexity style Laravel made popular.
 
-After all I found the `phpleague/commonmark` package to be well-structured and easy to extend, even if the way to use it is a little confusing at first. That might only be a matter of taste though, I know quite a few developers who prefer a more expressive API instead of hidden complexity.
-
-I hope this little exploration helps someone out there trying to extend Laravel's Markdown functionality! 
-
+I hope this little exploration helps someone out there trying to extend Laravel's and therefore the `commonmark` package's functionality! 
  
 
-# More todo
-
-- 
