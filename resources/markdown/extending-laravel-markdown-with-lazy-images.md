@@ -20,15 +20,17 @@ I found that Laravel also ships with a really powerful library for Markdown pars
 
 I will go over using and customizing this library, something I found a little confusing at first. I will also show how to implement an extension by adding lazy loaded images to my posts, a feature all blogs should have - me in particular since I use way too many childish GIFs.
 
-@todo Add childish gif
+![A really childish gif of Monster Inc](https://res.cloudinary.com/simonvomeyser/image/upload/v1595350001/extending-laravel-markdown/childish.gif)
 
 ## Using it
 
 By the time of writing, Laravel uses its internal Markdown parser for one purpose only: To make [Markdown Mailables](https://laravel.com/docs/7.x/mail#markdown-mailables) possible. 
 
-These Mailables are a weird mix of Blade and Markdown syntax - the Blade template is rendered by the class `\Illuminate\Mail\Markdown` making heavy use of the [sections and slots](@todo). 
+These Mailables are a weird but beautiful mix of Blade and Markdown syntax
 
-@todo maybe add a gif "oh it's so pretty ugly child gif"
+![A cute image of a deformed but perfect rubik's cube being appreciated for it's weirdness](https://res.cloudinary.com/simonvomeyser/image/upload/v1595350001/extending-laravel-markdown/you-are-perfect.png)
+
+The Blade template is rendered by the class `\Illuminate\Mail\Markdown` making heavy use of the [sections and layouts](https://laravel.com/docs/7.x/blade#extending-a-layout). 
 
 Hidden inside of these blade sections there are direct calls to the function we are looking for:
 
@@ -116,7 +118,7 @@ The library uses the concept of *parsers* and *renderes* . Parsing means "recogn
 
 It gets even a little more confusing since the library distinguishes between *block* (paragraphs) and *inline* (images, bold text) handling, both have respective *parsers* and *renderes*. 
 
-@todo what meme
+![Grandma really overwhelmed by the php library](https://res.cloudinary.com/simonvomeyser/image/upload/v1595350001/extending-laravel-markdown/what-grandma.png)
 
 I will not go more into depth here because in many cases you will not write your own versions of these.
 
@@ -146,12 +148,7 @@ That's no way to live your life. The native `ImageRenderer` might change in the 
 
 I needed the processing inside the native image renderer to run before my functionality. Extending was not an option because the classes are marked as final - something I saw many [discussions](https://twitter.com/taylorotwell/status/1237068965177892864) about, but it was the first time it affected me.
 
-@todo add screenshot of taylor classes final 
-https://twitter.com/taylorotwell/status/1237068965177892864?lang=en
-https://matthiasnoback.nl/2018/09/final-classes-by-default-why/
-https://ocramius.github.io/blog/when-to-declare-classes-final/
-https://verraes.net/2014/05/final-classes-in-php/
-@todo end add screenshot of taylor classes final 
+![A lot of twitter noise and discussions about the final keyword](https://res.cloudinary.com/simonvomeyser/image/upload/v1595350000/extending-laravel-markdown/final-discussion.png)
 
 I still have no final (eheh) opinion about this. This is also has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument and respect the package author's decision though.
 
