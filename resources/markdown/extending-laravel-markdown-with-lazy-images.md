@@ -1,5 +1,5 @@
 ---
-title: Using Laravel's Markdown parser for a personal blog - and adding lazy images
+title: Using Laravel's Markdown parser for a blog - and adding lazy images
 release_date: Today
 slug: extending-laravel-markdown-with-lazy-images
 excerpt:
@@ -56,17 +56,20 @@ Now that's pretty 😍 - but we are bound to the configuration Laravel dictates,
 
 The Markdown class is specialized in rendering mails for Laravel, so why toy with it, we could configure it our self.
 
-<sidenote heading="On version compatibility">
+<sidenote heading="Depending on a core library">
 
 The Markdown rendering class is not bound to the service container or hidden behind an interface. For Laravel there is no sense in offering a sophisticated abstraction if the functionality is only used in one place.
 
-For us in relying on the concrete library our code will break if the Laravel core team decides to switch the underlying markdown library. For now this is the most approachable solution though, just be wary of for this.
+For us in relying on the concrete library this means our code might break if the Laravel core team decides to switch the underlying markdown library. For now this is the most approachable solution though, just be wary of for this.
 
 </sidenote>
 
-The most comfortable way I found is to customize the underlying [league/commonmark](https://github.com/thephpleague/commonmark) implementation is to use it like Laravel does it:
+The most comfortable customize the underlying [league/commonmark](https://github.com/thephpleague/commonmark) implementation is to use it like Laravel does it:
 
 ```php
+
+use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment;
 
 $environment = Environment::createCommonMarkEnvironment();
 
@@ -75,23 +78,16 @@ $converter = new CommonMarkConverter([
     'allow_unsafe_links' => false,
 ], $environment);
 
-$html = $converter->convertToHtml('Your Markdown String');
+$html = $converter->convertToHtml('Your **Markdown** String');
 
 ```
 
-Here we can already see how to customize the environment to our heart's liking with the possibilities the [underlying library provides](https://commonmark.thephpleague.com/1.4/customization/overview/).
-
-You can already see things that Laravel does:
+You can already see things that Laravel customizes:
 
 - Adding a table Extension to provide the table component described in the [docs](https://laravel.com/docs/7.x/mail)
 - Defaulting to not allow unsafe links, a precaution to prevent potential exploits, and the whole reason the markdown renderer was [changed](https://github.com/laravel/framework/pull/30982) in Laravel 6.x
 
-You can do many more things from here without even diving into depth, just a few examples of things I added to render the posts of this page:
-
-@todo maybe add images?
-
-- Adding the [External Link Extension](https://commonmark.thephpleague.com/1.4/extensions/external-links/) to have almost all links open in new windows, except the ones pointing to the same site
-- Adding the [Heading Permalinks Extension](https://commonmark.thephpleague.com/1.4/extensions/heading-permalinks/) to be able to link directly to headings 
+You can do [many more customizations](https://commonmark.thephpleague.com/1.4/customization/overview/) without even diving into depth, I added the [External Link Extension](https://commonmark.thephpleague.com/1.4/extensions/external-links/) to have links open in new windows
 
 Nearly everything can be achieved fairly quickly with the tools we already have on board, but what can you do when there is not extension available for the functionality you want?
 
@@ -99,29 +95,37 @@ Nearly everything can be achieved fairly quickly with the tools we already have 
 
 I wanted to add lazy images to my posts since it is a [common best practice](https://developers.google.com/search/docs/guides/lazy-loading) - but I did not find an extension for it.
 
-**The TL;DR is**: When you are looking for exactly that functionality you can [download my extension](https://github.com/simonvomeyser/commonmark-ext-lazy-image/) - If you want to see how I did it and maybe want to create your own functionality keep on reading :)
+**The TL;DR is**: 
+
+When you are only looking for lazy images you can [download my extension](https://github.com/simonvomeyser/commonmark-ext-lazy-image/)
+ 
+ If you want to see how I did it and maybe want to create your own extension keep on reading!
 
 ### Diving in
 
-If you are used coding in Laravel the `League\CommonMark` library feels a bit *old school* . It confused me at first that I needed to create an environment, add the extensions to this environment, then add the environment to the parser... and then add config for the extensions to the parser, not the environment. 
+If you are used coding in Laravel the `League\CommonMark` library feels a bit *old school* . The setup and the configuration confused me at first. 
  
-I don't mean to make a derogatory comment here though - the library is insanely flexible the authors and maintainers did awesome work. You can extend almost everything, listen for events and even access the generated data structure (AST) before it is rendered to HTML.
+I don't mean to make a derogatory comment here though - the library is insanely flexible the authors and maintainers did good work. You can extend almost everything and even access the generated data structure (AST) before it is rendered to HTML.
 
-@todo side note wtf is a AST
+<sidenote heading="WTH is a AST?">
+
+That's short for Abstract Syntax Tree - something that confused me multiple times since it could mean *everything*
+
+Just think of it as a data structure representing the markdown file, that could be an array for lines and in there a nested array for words.
+
+It's not *exactly* what happens since the there are a lot of custom objects involved, but you hopefully get the idea.
+
+</sidenote>
  
-The library features the possibility to add *parsers* and *renderes* on the created environment. Parsing means "recognizing a pattern in markdown and add it to the things that should be rendered". Rendering happens after the parsing is complete and means actually transforming the data (AST) into an HTML string.
+The library uses the concept of *parsers* and *renderes* . Parsing means "recognizing a pattern in markdown and add it to the things that should be rendered". Rendering happens after the parsing is complete and means actually transforming the AST into an HTML string.
+
+It gets even a little more confusing since the library distinguishes between *block* (paragraphs) and *inline* (images, bold text) handling, both have respective *parsers* and *renderes*. 
 
 @todo what meme
 
-It gets even a little more confusing since the library distinguishes between *inline* and *block* handling, both have respective *parsers* and *renderes*. 
+I will not go more into depth here because in many cases you will not write your own versions of these.
 
-@todo talk about how you could go into depth
-
-If you need to really parse new syntax like transforming twitter handles into links to the person's profile, there is [a tutorial](https://commonmark.thephpleague.com/1.3/customization/inline-parsing/#inline-parser-examples) for that.
-
-I will stop here since I found a better way to achieve my goal with lazy images.
-
-But what we want to do is *extending* an already parsed 'inline' element, an image, with classes and attributes to make it lazy.
+If you need to really parse new syntax like transforming twitter handles into links to the person's profile, there is a good [tutorial](https://commonmark.thephpleague.com/1.3/customization/inline-parsing/#inline-parser-examples) for that. This new parser creates a link in the AST that is later rendered by the native link renderer.
 
 ### Creating our Extension
 
@@ -129,20 +133,20 @@ Most of the core extensions work in quite a similar, straightforward way: They d
 
 The [External Links Extension](https://commonmark.thephpleague.com/1.3/extensions/external-links/) adds things like `target="_blank"` for example.
 
-I ran into a problem with this approach since I wanted my lazy image extension to not only add things like an `loading="lazy"` attribute, something that hopefully will be sufficient [in the future](https://web.dev/native-lazy-loading/). I wanted to support the [various lazy loading libraries](https://www.cssscript.com/top-10-lazy-loading-javascript-libraries/) out there with configuration options.
+I ran into a problem with this approach since I wanted my lazy image extension to not only add things like an `loading="lazy"` attribute, something that hopefully will be sufficient [in the future](https://web.dev/native-lazy-loading/). For now, I also wanted to support [various lazy loading libraries](https://www.cssscript.com/top-10-lazy-loading-javascript-libraries/).
 
-Sadly, the really important work like checking for secure URLs is not done in the parser, it's done in the renderer, right before the image data get's turned into HTML. I had no access or possibility to empty the `src` attribute, something vital for most lazy loading libraries.
+Sadly, the really important work like checking for secure URLs does not happen in the image parser, it's done in the renderer. I had no access or possibility to remove the `src` attribute, something vital for most lazy loading libraries.
 
-I found out it is possible to simply copy the content of the `League\CommonMark\Inline\Renderer\ImageRenderer`, adding my own functionality and adding this new renderer with a higher priority
+I found out it is possible though to copy the content of the `League\CommonMark\Inline\Renderer\ImageRenderer`, adding my own functionality and adding this new renderer with a higher priority
 
 ```php
+//...
 
 $environment->addInlineRenderer( 
     'League\CommonMark\Inline\Element\Image', 
     new LazyImageRenderer(),
-    9000 // Priority, original is 0, we need to go higher, 10 ... or over 9000!
+    42 // Priority, original is 0, we just need to go higher
 );
-
 ``` 
 
 That might be a quick and dirty solution, but I think this is no way to live your life. The native `ImageRenderer` might change in the future, receive security updates and people using our extension would not benefit from those. 
@@ -178,14 +182,22 @@ return $baseImage;
 
 ``` 
 
-I just added a few customizations that you can look up in the [documentation](@todo) of the package I created. In essence, you just read from the config here to make the class that get's added to the image customizable, and also the name of the `data` attribute. 
+I just added a few customizations that you can look up in the [documentation](https://github.com/simonvomeyser/commonmark-ext-lazy-image/blob/master/readme.md#options) of the package I created. 
 
-The [code](@todo) should be fairly easy to understand now :)
+To add these config keys you just read from it. 
 
+```php
+// The class that should be added
+$htmlClass = $this->environment->getConfig('lazy_image/html_class', '');
+```
+
+The resulting (code)[https://github.com/simonvomeyser/commonmark-ext-lazy-image/blob/master/src/LazyImageRenderer.php] of the renderer should be pretty understandable now.
 
 ## Closing
 
-Extending and tailoring the library to your needs is fairly straightforward once you got your feet off the ground. I even found an approach to not only tag on things but to alter the behaviour of the core with the lazy image extension, even if I was a little confused by the API at first. That might only be a matter of taste though, I know quite a few developers who prefer a more expressive setup instead of the hidden complexity style Laravel made popular.
+Extending and tailoring the library to your needs is fairly straightforward once you got your feet off the ground. 
+
+I found an approach to not only tag on things but to alter the behaviour of the core with the lazy image extension.
 
 I hope this little exploration helps someone out there trying to extend Laravel's and therefore the `commonmark` package's functionality! 
  
