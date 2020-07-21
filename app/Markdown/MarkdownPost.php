@@ -2,11 +2,7 @@
 
 namespace App\Markdown;
 
-use App\CommonMarkExtensions\LazyImageExtension;
-use App\CommonMarkExtensions\LazyImageRenderer;
-use Illuminate\Mail\Markdown;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Env;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -17,6 +13,7 @@ use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
+use SimonVomEyser\CommonMarkExtension\LazyImageExtension;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 
@@ -104,6 +101,7 @@ class MarkdownPost
 
         $environment->addExtension(new ExternalLinkExtension());
         $environment->addExtension(new HeadingPermalinkExtension());
+        $environment->addExtension(new LazyImageExtension());
 
         $converter = new CommonMarkConverter([
             'allow_unsafe_links' => false,
@@ -112,6 +110,11 @@ class MarkdownPost
                 'open_in_new_window' => true,
                 'html_class' => 'external-link',
             ],
+            'lazy_image' => [
+                'strip_src' => true,
+                'html_class' => 'lozad',
+                'data_attribute' => 'src',
+            ]
         ], $environment);
 
         return new HtmlString($converter->convertToHtml($markdown));
