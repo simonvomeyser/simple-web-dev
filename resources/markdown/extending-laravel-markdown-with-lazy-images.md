@@ -2,12 +2,16 @@
 title: Using Laravel's Markdown parser for a blog - and adding lazy images
 release_date: Today
 slug: extending-laravel-markdown-with-lazy-images
-excerpt:
+excerpt: >-
+    I found out Laravel ships with a pretty powerful package for rendering Markdown.
+    
+    I created an extension to that parser for lazy images and ramble a little about my experiences with the customizations I did for this blog.
+
 tags: 
     - Backend
     - Tutorial
-header_image: https://placehold.it/1024x768 
-list_image: https://placehold.it/1024x768 
+header_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1595353159/extending-laravel-markdown/Header_1.png
+list_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1595353159/extending-laravel-markdown/Header_1.png
 ---
 
 @todo taylor as captain america
