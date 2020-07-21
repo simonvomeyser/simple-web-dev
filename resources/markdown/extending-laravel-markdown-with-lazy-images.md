@@ -10,6 +10,7 @@ excerpt: >-
 tags: 
     - Backend
     - Tutorial
+    - Laravel
 header_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1595353159/extending-laravel-markdown/Header_1.png
 list_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1595353159/extending-laravel-markdown/Header_1.png
 ---
