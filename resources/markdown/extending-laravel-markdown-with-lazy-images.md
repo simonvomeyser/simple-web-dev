@@ -180,7 +180,7 @@ To add these config keys you just read from it.
 $htmlClass = $this->environment->getConfig('lazy_image/html_class', '');
 ```
 
-The resulting (code)[https://github.com/simonvomeyser/commonmark-ext-lazy-image/blob/master/src/LazyImageRenderer.php] of the renderer should be pretty understandable now.
+The resulting [code](https://github.com/simonvomeyser/commonmark-ext-lazy-image/blob/master/src/LazyImageRenderer.php) of the renderer should be pretty understandable now.
 
 ## Closing
 
