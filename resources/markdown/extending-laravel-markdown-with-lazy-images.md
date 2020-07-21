@@ -56,7 +56,7 @@ Now that's pretty 😍 - but we are bound to the configuration Laravel dictates,
 
 The Markdown class is specialized in rendering mails for Laravel, so why toy with it, we could configure it our self.
 
-<sidenote heading="Depending on a core library">
+<sidenote heading="Directly using a core library">
 
 The Markdown rendering class is not bound to the service container or hidden behind an interface. For Laravel there is no sense in offering a sophisticated abstraction if the functionality is only used in one place.
 
@@ -129,15 +129,13 @@ If you need to really parse new syntax like transforming twitter handles into li
 
 ### Creating our Extension
 
-Most of the core extensions work in quite a similar, straightforward way: They don't add parsers or renderers, they just listen for the `DocumentParsedEvent` and traverse the already created data structure to add a few things. 
+Most of the core extensions work in a understandable way: They don't add parsers or renderers, they just change the already created data structure to add a few things. 
 
-The [External Links Extension](https://commonmark.thephpleague.com/1.3/extensions/external-links/) adds things like `target="_blank"` for example.
+Since I wanted my lazy image extension to not only add things like an `loading="lazy"` attribute but also wanted to support [various lazy loading libraries](https://www.cssscript.com/top-10-lazy-loading-javascript-libraries/) I had to find another solution though.
 
-I ran into a problem with this approach since I wanted my lazy image extension to not only add things like an `loading="lazy"` attribute, something that hopefully will be sufficient [in the future](https://web.dev/native-lazy-loading/). For now, I also wanted to support [various lazy loading libraries](https://www.cssscript.com/top-10-lazy-loading-javascript-libraries/).
+The really important work for images does not happen in the image parser, it's done in the renderer. I had no access or possibility to remove the `src` attribute, something vital for most lazy loading libraries.
 
-Sadly, the really important work like checking for secure URLs does not happen in the image parser, it's done in the renderer. I had no access or possibility to remove the `src` attribute, something vital for most lazy loading libraries.
-
-I found out it is possible though to copy the content of the `League\CommonMark\Inline\Renderer\ImageRenderer`, adding my own functionality and adding this new renderer with a higher priority
+In a naive approach found out it is possible to copy the original render, adding my own functionality and making the core use it instead of the original:
 
 ```php
 //...
@@ -149,7 +147,7 @@ $environment->addInlineRenderer(
 );
 ``` 
 
-That might be a quick and dirty solution, but I think this is no way to live your life. The native `ImageRenderer` might change in the future, receive security updates and people using our extension would not benefit from those. 
+That's no way to live your life. The native `ImageRenderer` might change in the future, receive security updates and people using our extension would not benefit from those. 
 
 I needed the processing inside the native image renderer to run and then run our functionality. I thought of simply extending the class, but the library authors declared almost all classes as final - something I saw many discussions about, but it was the first time it affected me.
 
