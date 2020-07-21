@@ -10,32 +10,19 @@ header_image: https://placehold.it/1024x768
 list_image: https://placehold.it/1024x768 
 ---
 
-Laravel makes use of a lot of powerful third party libraries and assembles them into a badass unit like Captain America does with the Avengers. 
-
 @todo taylor as captain america
+
+Laravel makes use of a lot of powerful third party libraries and assembles them into a badass unit like Captain America does with the Avengers. 
 
 Parts of the Symphony Framework provide solid low level functionality and testing is entrusted to the awesome folks at PHPUnit.
 
-@todo link articles, on version differences
+I found that Laravel also ships with a really powerful library for Markdown parsing called [commonmark](https://github.com/thephpleague/commonmark) and wanted to make use of that implementing this blog.
 
-I also read some articles about the power of the Laravel Markdown Renderer [here](https://medium.com/@DarkGhostHunter/laravel-there-is-a-markdown-parser-and-you-dont-know-it-5f523e22121e)  which recently switched to the Commonmark Library from Parsedown https://github.com/laravel/framework/pull/30982
-
-https://laracasts.com/discuss/channels/laravel/best-way-to-render-markdown-in-views
-https://github.com/laravel/framework/pull/30982
-
-@todo end link articles
-
-While I was implementing simple-web.dev I wanted to use Laravel to have full control about the implementation - and I definitely wanted to write the posts in Markdown to keep them in version control. 
-
-I found that Laravel also already ships with a really powerful library for Markdown parsing called [league/commonmark](https://github.com/thephpleague/commonmark) and wanted to make use of that.
-
-I will go over a few necessary customizations and how I implemented them since I found that a little confusing at first.
-
-I will also show an easy extension example by adding lazy loaded images to my posts, a feature all blogs should have - me in particular since I use way too many childish GIFs.
+I will go over using and customizing this library, something I found a little confusing at first. I will also show how to implement an extension by adding lazy loaded images to my posts, a feature all blogs should have - me in particular since I use way too many childish GIFs.
 
 @todo Add childish gif
 
-## Using Laravel's Commonmark implementation
+## Using it
 
 By the time of writing, Laravel uses its internal Markdown parser for one purpose only: To make [Markdown Mailables](/@todo) possible. 
 
@@ -55,23 +42,26 @@ echo \Illuminate\Mail\Markdown::parse('# Hello');
 With this static method we can already use the internal Markdown parser for our own markdown files:
 
 ```php
+
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\File;
 
 $html = Markdown::parse(File::get('file.md'));
+
 ```
 
 Now that's pretty 😍 - but we are bound to the configuration Laravel dictates, so let's not stop here.
  
-## Configure it
+## Configuring it
 
 As far as I looked into it the `Illuminate\Mail\Markdown` class is not bound into the service container, there is no Facade and no quick way to replace it. That's no drama though, this class is specialized in rendering *mails* for Laravel so why toy with it?
 
 @todo on abstracting out markdown behind an interface: It's used only once and I get it. when used twice there would be time
 
-The most comfortable way I found is to customize the underlying ![league/commonmark](https://github.com/thephpleague/commonmark) implementation is to use it like Laravel does it:
+The most comfortable way I found is to customize the underlying [league/commonmark](https://github.com/thephpleague/commonmark) implementation is to use it like Laravel does it:
 
 ```php
+
 $environment = Environment::createCommonMarkEnvironment();
 
 $environment->addExtension(new TableExtension);
@@ -81,6 +71,7 @@ $converter = new CommonMarkConverter([
 ], $environment);
 
 $html = $converter->convertToHtml('Your Markdown String');
+
 ```
 
 Here we can already see how to customize the environment to our heart's liking with the possibilities the [underlying library provides](https://commonmark.thephpleague.com/1.4/customization/overview/).
@@ -88,7 +79,7 @@ Here we can already see how to customize the environment to our heart's liking w
 You can already see things that Laravel does:
 
 - Adding a table Extension to provide the table component described in the [docs](https://laravel.com/docs/7.x/mail)
-- Defaulting to not allow unsafe links, a precaution to prevent potential exploits, and the whole reason the markdown renderer was [changed](https://github.com/laravel/framework/pull/30982)
+- Defaulting to not allow unsafe links, a precaution to prevent potential exploits, and the whole reason the markdown renderer was [changed](https://github.com/laravel/framework/pull/30982) in Laravel 6.x
 
 You can do many more things from here without even diving into depth, just a few examples of things I added to render the posts of this page:
 
@@ -103,7 +94,7 @@ Nearly everything can be achieved fairly quickly with the tools we already have 
 
 I wanted to add lazy images to my posts since it is a [common best practice](https://developers.google.com/search/docs/guides/lazy-loading) - but I did not find an extension for it.
 
-The TL;DR is: When you are looking for exactly that functionality you can [download my extension](@todo) - If you want to see how I did it and maybe want to create your own functionality keep on reading :)
+**The TL;DR is**: When you are looking for exactly that functionality you can [download my extension](https://github.com/simonvomeyser/commonmark-ext-lazy-image/) - If you want to see how I did it and maybe want to create your own functionality keep on reading :)
 
 ### Diving in
 
@@ -144,9 +135,8 @@ I found out it is possible to simply copy the content of the `League\CommonMark\
 $environment->addInlineRenderer( 
     'League\CommonMark\Inline\Element\Image', 
     new LazyImageRenderer(),
-    9000 // Priority, the original is added with 0, we need to go higher, over 9000!
+    9000 // Priority, original is 0, we need to go higher, 10 ... or over 9000!
 );
-    
 
 ``` 
 
@@ -168,6 +158,7 @@ I ended up not subclassing but calling the original renderer and modifying the o
 The actual *programming* that needed to be done after that was quite simple in the end, but that is the whole reason I wanted to write this post. Usually the implementation of a feature is way less complicated than wrapping your head around the way a library wants to be extended and finding a way to start.
 
 ```php
+
 // create the HTML Element for the original image
 $baseImage = $this->baseImageRenderer->render($inline, $htmlRenderer);
 
@@ -179,6 +170,7 @@ $baseImage->setAttribute('data-src', $baseImage->getAttribute('src'));
 $baseImage->setAttribute('src', ''); 
 
 return $baseImage;
+
 ``` 
 
 I just added a few customizations that you can look up in the [documentation](@todo) of the package I created. In essence, you just read from the config here to make the class that get's added to the image customizable, and also the name of the `data` attribute. 
