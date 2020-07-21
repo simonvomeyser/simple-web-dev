@@ -115,12 +115,7 @@
     }
 
     code {
-        // inline
-        font-size: 16px;
-        background-color: $primary-100;
-        font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
         color: $neutral-400;
-        padding: 3px 5px;
     }
 
     ul {
@@ -131,6 +126,16 @@
             margin-top: 0.5rem;
         }
     }
+  p, a {
+      > code {
+        // inline code block
+          color: $neutral-400;
+          font-family: "Courier 10 Pitch", Courier, monospace;
+          font-size: 18px;
+          background-color: $primary-100;
+          padding: 3px 5px;
+      }
+  }
 }
 
 @include breakpoint("mobile") {
