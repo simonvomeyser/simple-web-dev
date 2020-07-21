@@ -126,11 +126,11 @@ If you need to really parse new syntax like transforming twitter handles into li
 
 Most of the core extensions work in a understandable way: They don't add parsers or renderers, they just change the already created data structure to add a few things. 
 
-Since I wanted my lazy image extension to not only add things like an `loading="lazy"` attribute but also wanted to support [various lazy loading libraries](https://www.cssscript.com/top-10-lazy-loading-javascript-libraries/) I had to find another solution though.
+Since I wanted my lazy image extension to not only add things like an `loading="lazy"` attribute but also to support [lazy loading libraries](https://www.cssscript.com/top-10-lazy-loading-javascript-libraries/) by removing the `src` attribute and adding that in a `data-` attribute I had problem: 
 
-The really important work for images does not happen in the image parser, it's done in the renderer. I had no access or possibility to remove the `src` attribute, something vital for most lazy loading libraries.
+The important work of creating the image HTML like checking if it has a secure URL is implemented in the renderer, not in the parser.
 
-In a naive approach found out it is possible to copy the original render, adding my own functionality and making the core use it instead of the original:
+In first naive approach was to simply copy the original renderer, adding my own functionality and making the core use my class instead of the original:
 
 ```php
 //...
@@ -144,7 +144,7 @@ $environment->addInlineRenderer(
 
 That's no way to live your life. The native `ImageRenderer` might change in the future, receive security updates and people using our extension would not benefit from those. 
 
-I needed the processing inside the native image renderer to run and then run our functionality. I thought of simply extending the class, but the library authors declared almost all classes as final - something I saw many discussions about, but it was the first time it affected me.
+I needed the processing inside the native image renderer to run before my functionality. Extending was not an option because the classes are marked as final - something I saw many [discussions](https://twitter.com/taylorotwell/status/1237068965177892864) about, but it was the first time it affected me.
 
 @todo add screenshot of taylor classes final 
 https://twitter.com/taylorotwell/status/1237068965177892864?lang=en
@@ -153,7 +153,7 @@ https://ocramius.github.io/blog/when-to-declare-classes-final/
 https://verraes.net/2014/05/final-classes-in-php/
 @todo end add screenshot of taylor classes final 
 
-I still have no strong final (eheh) opinion about this, but in this case it would have been helpful and made sense in my naive understanding. This is also has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument and respect the package author's decision though.
+I still have no final (eheh) opinion about this. This is also has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument and respect the package author's decision though.
 
 I ended up not subclassing but calling the original renderer and modifying the output in a composition over inheritance approach. To be a bit more concise: My own class just creates the core image renderer, gets it's output and changes it. Then you just tell the library to use your renderer instead of the original one, like in the first naive example.
 
