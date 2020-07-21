@@ -54,13 +54,13 @@ Now that's pretty 😍 - but we are bound to the configuration Laravel dictates,
  
 ## Configuring it
 
-The Markdown class is specialized in rendering mails for Laravel, so why toy with it?
+The Markdown class is specialized in rendering mails for Laravel, so why toy with it, we could configure it our self.
 
-<sidenote heading="On expandability">
+<sidenote heading="On version compatibility">
 
-The `Illuminate\Mail\Markdown` class is not bound to the service container or hidden behind an Interface. For Laravel there is no sense in offering a sophisticated abstraction if the functionality is only used in one place.
+The Markdown rendering class is not bound to the service container or hidden behind an interface. For Laravel there is no sense in offering a sophisticated abstraction if the functionality is only used in one place.
 
-In relying on the concrete library our code will break if the Laravel core team decides to switch the underlying markdown library. For now this is the most approachable solution though, just be wary of for this.
+For us in relying on the concrete library our code will break if the Laravel core team decides to switch the underlying markdown library. For now this is the most approachable solution though, just be wary of for this.
 
 </sidenote>
 
@@ -71,7 +71,6 @@ The most comfortable way I found is to customize the underlying [league/commonma
 $environment = Environment::createCommonMarkEnvironment();
 
 $environment->addExtension(new TableExtension);
-
 $converter = new CommonMarkConverter([
     'allow_unsafe_links' => false,
 ], $environment);
