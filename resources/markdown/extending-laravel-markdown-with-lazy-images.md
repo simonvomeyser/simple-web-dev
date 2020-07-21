@@ -33,21 +33,17 @@ These Mailables are a weird mix of Blade and Markdown syntax - the Blade templat
 Hidden inside of these blade sections there are direct calls to the function we are looking for:
 
 ```php
-
 // Will render Markdown, this creates "<h1>Hello</h1>
 echo \Illuminate\Mail\Markdown::parse('# Hello');
-
 ```
 
 With this static method we can already use the internal Markdown parser for our own markdown files:
 
 ```php
-
 use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\File;
 
 $html = Markdown::parse(File::get('file.md'));
-
 ```
 
 Now that's pretty 😍 - but we are bound to the configuration Laravel dictates, so let's not stop here.
@@ -67,7 +63,6 @@ For us in relying on the concrete library this means our code might break if the
 The most comfortable customize the underlying [league/commonmark](https://github.com/thephpleague/commonmark) implementation is to use it like Laravel does it:
 
 ```php
-
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
 
@@ -165,7 +160,6 @@ I ended up not subclassing but calling the original renderer and modifying the o
 The actual *programming* that needed to be done after that was quite simple in the end, but that is the whole reason I wanted to write this post. Usually the implementation of a feature is way less complicated than wrapping your head around the way a library wants to be extended and finding a way to start.
 
 ```php
-
 // create the HTML Element for the original image
 $baseImage = $this->baseImageRenderer->render($inline, $htmlRenderer);
 
