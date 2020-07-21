@@ -165,11 +165,6 @@ I still have no strong final (eheh) opinion about this, but in this case it woul
 
 I ended up not subclassing but calling the original renderer and modifying the output in a composition over inheritance approach. To be a bit more concise: My own class just creates the core image renderer, gets it's output and changes it. Then you just tell the library to use your renderer instead of the original one, like in the first naive example.
 
-```php
-
-
-```
-
 The actual *programming* that needed to be done after that was quite simple in the end, but that is the whole reason I wanted to write this post. Usually the implementation of a feature is way less complicated than wrapping your head around the way a library wants to be extended and finding a way to start.
 
 ```php
