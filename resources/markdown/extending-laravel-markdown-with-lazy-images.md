@@ -24,13 +24,13 @@ I will go over using and customizing this library, something I found a little co
 
 ## Using it
 
-By the time of writing, Laravel uses its internal Markdown parser for one purpose only: To make [Markdown Mailables](/@todo) possible. 
+By the time of writing, Laravel uses its internal Markdown parser for one purpose only: To make [Markdown Mailables](https://laravel.com/docs/7.x/mail#markdown-mailables) possible. 
 
 These Mailables are a weird mix of Blade and Markdown syntax - the Blade template is rendered by the class `\Illuminate\Mail\Markdown` making heavy use of the [sections and slots](@todo). 
 
 @todo maybe add a gif "oh it's so pretty ugly child gif"
 
-Hidden inside of these blade sections rendering the mail's layout there are direct calls to the one function we are looking for:
+Hidden inside of these blade sections there are direct calls to the function we are looking for:
 
 ```php
 
@@ -54,9 +54,15 @@ Now that's pretty 😍 - but we are bound to the configuration Laravel dictates,
  
 ## Configuring it
 
-As far as I looked into it the `Illuminate\Mail\Markdown` class is not bound into the service container, there is no Facade and no quick way to replace it. That's no drama though, this class is specialized in rendering *mails* for Laravel so why toy with it?
+The Markdown class is specialized in rendering mails for Laravel, so why toy with it?
 
-@todo on abstracting out markdown behind an interface: It's used only once and I get it. when used twice there would be time
+<sidenote heading="On expandability">
+
+The `Illuminate\Mail\Markdown` class is not bound to the service container or hidden behind an Interface. For Laravel there is no sense in offering a sophisticated abstraction if the functionality is only used in one place.
+
+In relying on the concrete library our code will break if the Laravel core team decides to switch the underlying markdown library. For now this is the most approachable solution though, just be wary of for this.
+
+</sidenote>
 
 The most comfortable way I found is to customize the underlying [league/commonmark](https://github.com/thephpleague/commonmark) implementation is to use it like Laravel does it:
 
