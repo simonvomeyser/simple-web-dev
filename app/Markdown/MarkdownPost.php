@@ -4,6 +4,7 @@ namespace App\Markdown;
 
 use App\CommonMarkExtensions\LazyImageExtension;
 use App\CommonMarkExtensions\LazyImageRenderer;
+use Illuminate\Mail\Markdown;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Env;
 use Illuminate\Support\Str;
@@ -103,7 +104,6 @@ class MarkdownPost
 
         $environment->addExtension(new ExternalLinkExtension());
         $environment->addExtension(new HeadingPermalinkExtension());
-        $environment->addExtension(new LazyImageExtension());
 
         $converter = new CommonMarkConverter([
             'allow_unsafe_links' => false,
