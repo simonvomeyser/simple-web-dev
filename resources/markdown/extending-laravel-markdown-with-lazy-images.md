@@ -3,9 +3,9 @@ title: Using Laravel's Markdown parser for a blog - and adding lazy images
 release_date: Today
 slug: extending-laravel-markdown-with-lazy-images
 excerpt: >-
-    I found out Laravel ships with a pretty powerful package for rendering Markdown.
+    I found out Laravel 6.x already ships with a pretty powerful package for parsing Markdown, and it can be extended and customized.
     
-    I created an extension to that parser for lazy images and ramble a little about my experiences with the customizations I did for this blog.
+    After a few headaches I was able to configure it to my liking for this blog, and even create an extension that adds lazy images. 
 
 tags: 
     - Backend
@@ -15,29 +15,35 @@ header_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1595353159/
 list_image: https://res.cloudinary.com/simonvomeyser/image/upload/v1595353159/extending-laravel-markdown/Header_1.png
 ---
 
-@todo taylor as captain america
-
 Laravel makes use of a lot of powerful third party libraries and assembles them into a badass unit like Captain America does with the Avengers. 
 
 Parts of the Symphony Framework provide solid low level functionality and testing is entrusted to the awesome folks at PHPUnit.
 
-I found that Laravel also ships with a really powerful library for Markdown parsing called [commonmark](https://github.com/thephpleague/commonmark) and wanted to make use of that implementing this blog.
+I found that Laravel also ships with a powerful library for Markdown parsing called [commonmark](https://github.com/thephpleague/commonmark). I wanted use it during the relaunch of this site because my all posts are written in Markdown.
 
-I will go over using and customizing this library, something I found a little confusing at first. I will also show how to implement an extension by adding lazy loaded images to my posts, a feature all blogs should have - me in particular since I use way too many childish GIFs.
+<sidenote heading="Only in Laravel 6 or higher">
+
+The Markdown parser in Laravel 5.x was called [Parsedown](https://github.com/erusev/parsedown) and replaced in 6.x, since the new package offers more [security](https://github.com/laravel/framework/pull/30982)
+
+</sidenote>
+
+In this post I will explain how I was confused... and then customized the library and implemented a [custom extension](https://github.com/simonvomeyser/commonmark-ext-lazy-image/) for lazy loaded images.
+
+I really needed this extension because I tend to use way too many childish GIFs.
 
 ![A really childish gif of Monster Inc](https://res.cloudinary.com/simonvomeyser/image/upload/v1595350001/extending-laravel-markdown/childish.gif)
 
-## Using it
+## Using the core library
 
-By the time of writing, Laravel uses its internal Markdown parser for one purpose only: To make [Markdown Mailables](https://laravel.com/docs/7.x/mail#markdown-mailables) possible. 
+By the time of writing, Laravel 6.x uses its internal Markdown parser for one purpose only: To make [Markdown Mailables](https://laravel.com/docs/7.x/mail#markdown-mailables) possible. 
 
-These Mailables are a weird but beautiful mix of Blade and Markdown syntax
+These Mailables are a weird but wonderful mix of Blade and Markdown syntax.
 
 ![A cute image of a deformed but perfect rubik's cube being appreciated for it's weirdness](https://res.cloudinary.com/simonvomeyser/image/upload/v1595350001/extending-laravel-markdown/you-are-perfect.png)
 
-The Blade template is rendered by the class `\Illuminate\Mail\Markdown` making heavy use of the [sections and layouts](https://laravel.com/docs/7.x/blade#extending-a-layout). 
+All the rendering for this beautiful beasts is done by the class `\Illuminate\Mail\Markdown`, making heavy use of [sections and layouts](https://laravel.com/docs/7.x/blade#extending-a-layout). 
 
-Hidden inside of these blade sections there are direct calls to the function we are looking for:
+Hidden inside of these blade files there are direct calls to the one function that is interesting for us:
 
 ```php
 // Will render Markdown, this creates "<h1>Hello</h1>
@@ -53,21 +59,25 @@ use Illuminate\Support\Facades\File;
 $html = Markdown::parse(File::get('file.md'));
 ```
 
-Now that's pretty 😍 - but we are bound to the configuration Laravel dictates, so let's not stop here.
+Now that's pretty easy 😍 - but we are bound to the configuration Laravel dictates, so let's not stop here.
  
-## Configuring it
+## Okay, how to configure it?
 
-The Markdown class is specialized in rendering mails for Laravel, so why toy with it, we could configure it our self.
+The `\Illuminate\Mail\Markdown` class is specialized in rendering mails for Laravel, so why toy with it. Let's configure the underlying library on our own!
 
 <sidenote heading="Directly using a core library">
 
 The Markdown rendering class is not bound to the service container or hidden behind an interface. For Laravel there is no sense in offering a sophisticated abstraction if the functionality is only used in one place.
 
-For us in relying on the concrete library this means our code might break if the Laravel core team decides to switch the underlying markdown library. For now this is the most approachable solution though, just be wary of for this.
+For us in relying on the concrete library this means our code might break if the Laravel core team decides to switch the underlying markdown library. 
+
+For now this is the most approachable solution though and it's unlikely that the library will change soon, but be wary of for this.
+
+![Someone being not so smart and welding next to a gas tank](https://res.cloudinary.com/simonvomeyser/image/upload/v1595439948/extending-laravel-markdown/what-could-possibly-go-wrong.jpg)
 
 </sidenote>
 
-The most comfortable customize the underlying [league/commonmark](https://github.com/thephpleague/commonmark) implementation is to use it like Laravel does it:
+Laravel customizes the [league/commonmark](https://github.com/thephpleague/commonmark) package something like this:
 
 ```php
 use League\CommonMark\CommonMarkConverter;
@@ -80,60 +90,69 @@ $converter = new CommonMarkConverter([
     'allow_unsafe_links' => false,
 ], $environment);
 
-$html = $converter->convertToHtml('Your **Markdown** String');
+$html = $converter->convertToHtml('The **Markdown** email');
 
 ```
 
-You can already see things that Laravel customizes:
+You can already see things that are happening here:
 
 - Adding a table Extension to provide the table component described in the [docs](https://laravel.com/docs/7.x/mail)
-- Defaulting to not allow unsafe links, a precaution to prevent potential exploits, and the whole reason the markdown renderer was [changed](https://github.com/laravel/framework/pull/30982) in Laravel 6.x
+- Defaulting to not allow unsafe links, a precaution to prevent potential exploits
 
-You can do [many more customizations](https://commonmark.thephpleague.com/1.4/customization/overview/) without even diving into depth, I added the [External Link Extension](https://commonmark.thephpleague.com/1.4/extensions/external-links/) to have links open in new windows
-
-Nearly everything can be achieved fairly quickly with the tools we already have on board, but what can you do when there is not extension available for the functionality you want?
-
-## Extend it!
-
-I wanted to add lazy images to my posts since it is a [common best practice](https://developers.google.com/search/docs/guides/lazy-loading) - but I did not find an extension for it.
-
-**The TL;DR is**: 
-
-When you are only looking for lazy images you can [download my extension](https://github.com/simonvomeyser/commonmark-ext-lazy-image/)
+If you set up your converter like this, you can do [many more customizations](https://commonmark.thephpleague.com/1.4/customization/overview/) without even really diving into depth.
  
- If you want to see how I did it and maybe want to create your own extension keep on reading!
+ I for example added the package's native [External Link Extension](https://commonmark.thephpleague.com/1.4/extensions/external-links/) to have links open in new windows.
 
-### Diving in
+Hm, but what can you do when there is not extension available for the functionality you want?
 
-If you are used coding in Laravel the `League\CommonMark` library feels a bit *old school* . The setup and the configuration confused me at first. 
+## Now extend it!
+
+I wanted to add lazy images to my posts since it is a [performance best practice](https://developers.google.com/search/docs/guides/lazy-loading) - but I did not find an extension for this.
+
+When you are only looking for lazy images you can [download my extension](https://github.com/simonvomeyser/commonmark-ext-lazy-image/), if you want to see how I did it and maybe want to create your own extension keep on reading!
+
+### Into the depth
+
+If you are used coding in Laravel the `League\CommonMark` library feels a bit *old school*. The setup and the configuration confused me already.
  
-I don't mean to make a derogatory comment here though - the library is insanely flexible the authors and maintainers did good work. You can extend almost everything and even access the generated data structure (AST) before it is rendered to HTML.
+I don't mean to make a derogatory comment here though - the library is insanely flexible the authors did awesome work. You can alter almost everything and even access the generated AST before it is rendered to HTML.
 
-<sidenote heading="WTH is a AST?">
+<sidenote heading="WTF is a AST?">
 
-That's short for Abstract Syntax Tree - something that confused me multiple times since it could mean *everything*
+That's short for Abstract Syntax Tree - something that confused me multiple times since I never was smart enough for the [formal definition](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
 
-Just think of it as a data structure representing the markdown file, that could be an array for lines and in there a nested array for words.
+In this case just think of it as a data structure representing the markdown file: That could for example be an array for each line and in there a nested array for each word.
 
-It's not *exactly* what happens since the there are a lot of custom objects involved, but you hopefully get the idea.
+This is not *exactly* who the library does it, there are a lot of custom objects involved, but you hopefully get the idea.
 
 </sidenote>
  
-The library uses the concept of *parsers* and *renderes* . Parsing means "recognizing a pattern in markdown and add it to the things that should be rendered". Rendering happens after the parsing is complete and means actually transforming the AST into an HTML string.
+The library uses a concept of *parsers* and *renderes*. Parsing means "recognizing a pattern in markdown and add it to the things that should be rendered". Rendering happens after the parsing is complete and means actually transforming the AST into an HTML string.
 
-It gets even a little more confusing since the library distinguishes between *block* (paragraphs) and *inline* (images, bold text) handling, both have respective *parsers* and *renderes*. 
+It gets even a little more confusing since the library distinguishes between the handling of *blocks* (like paragraphs) and *inlines* (like images, bold text) . Both types have respective *parsers* and *renderes*. 
 
 ![Grandma really overwhelmed by the php library](https://res.cloudinary.com/simonvomeyser/image/upload/v1595350001/extending-laravel-markdown/what-grandma.png)
 
 I will not go more into depth here because in many cases you will not write your own versions of these.
 
-If you need to really parse new syntax like transforming twitter handles into links to the person's profile, there is a good [tutorial](https://commonmark.thephpleague.com/1.3/customization/inline-parsing/#inline-parser-examples) for that. This new parser creates a link in the AST that is later rendered by the native link renderer.
+<sidenote heading="Help, I want to write parsers and renderes">
+
+If you need to really parse new syntax like transforming Twitter handles into links to the person's profile, there is a good [tutorial](https://commonmark.thephpleague.com/1.3/customization/inline-parsing/#inline-parser-examples) for it. 
+
+This new parser searches for Twitter handles and adds a Link object to the profile URL to the in the AST. This object is later rendered by the native link renderer.
+
+I cannot go further into this, but I hope this helps with the initial understanding. 
+
+![Morpheus of the Matrix telling you, that you are on your own now. Poor you.](https://res.cloudinary.com/simonvomeyser/image/upload/v1595441262/extending-laravel-markdown/on-your-own-now.jpg)
+
+</sidenote>
+
 
 ### Creating our Extension
 
-Most of the core extensions work in a understandable way: They don't add parsers or renderers, they just change the already created data structure to add a few things. 
+Most of the core extensions work in more understandable way: They don't add parsers or renderers, they just change the already created data by adding a few things. If that's your jam maybe look at the source of the [External Link Extension](https://github.com/thephpleague/commonmark/blob/latest/src/Extension/ExternalLink/ExternalLinkProcessor.php), it's quite easy to understand.
 
-Since I wanted my lazy image extension to not only add things like an `loading="lazy"` attribute but also to support [lazy loading libraries](https://www.cssscript.com/top-10-lazy-loading-javascript-libraries/) by removing the `src` attribute and adding that in a `data-` attribute I had problem: 
+Since I wanted my lazy image extension to not only add something like an `loading="lazy"` attribute but also to support [lazy loading libraries](https://www.cssscript.com/top-10-lazy-loading-javascript-libraries/) by removing the `src` attribute and adding that in a `data-` attribute I had problem: 
 
 The important work of creating the image HTML like checking if it has a secure URL is implemented in the renderer, not in the parser.
 
@@ -149,19 +168,22 @@ $environment->addInlineRenderer(
 );
 ``` 
 
-That's no way to live your life. The native `ImageRenderer` might change in the future, receive security updates and people using our extension would not benefit from those. 
+That works but is no way to live your life. The native `ImageRenderer` might change in the future, receive security updates and people using our extension would not benefit from those. 
 
-I needed the processing inside the native image renderer to run before my functionality. Extending was not an option because the classes are marked as final - something I saw many [discussions](https://twitter.com/taylorotwell/status/1237068965177892864) about, but it was the first time it affected me.
+I needed the processing inside the native image renderer to run before my functionality. Extending was not an option because the classes are final - something I saw many [discussions](https://twitter.com/taylorotwell/status/1237068965177892864) about, but it was the first time it affected me.
 
 ![A lot of twitter noise and discussions about the final keyword](https://res.cloudinary.com/simonvomeyser/image/upload/v1595350000/extending-laravel-markdown/final-discussion.png)
 
-I still have no final (eheh) opinion about this. This is also has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument and respect the package author's decision though.
+I still have no final (eheh) opinion about this. This extendability issue has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument and respect the author's decision.
 
-I ended up not subclassing but calling the original renderer and modifying the output in a composition over inheritance approach. To be a bit more concise: My own class just creates the core image renderer, gets it's output and changes it. Then you just tell the library to use your renderer instead of the original one, like in the first naive example.
+I ended up not subclassing but calling the original renderer and modifying the output in a composition over inheritance approach. My own class just creates the core image renderer, gets it's output and changes that output it. 
 
-The actual *programming* that needed to be done after that was quite simple in the end, but that is the whole reason I wanted to write this post. Usually the implementation of a feature is way less complicated than wrapping your head around the way a library wants to be extended and finding a way to start.
+Then you just tell the library itself to use your renderer instead of the original one, like in the first naive example.
+
+The actual *programming* that needed to be done after that was quite simple in the end, but that is the whole reason I wanted to write this post. Usually the implementation of a feature is way less complicated than finding a way to start.
 
 ```php
+//...
 // create the HTML Element for the original image
 $baseImage = $this->baseImageRenderer->render($inline, $htmlRenderer);
 
@@ -176,22 +198,27 @@ return $baseImage;
 
 ``` 
 
-I just added a few customizations that you can look up in the [documentation](https://github.com/simonvomeyser/commonmark-ext-lazy-image/blob/master/readme.md#options) of the package I created. 
+I just added a few customization options that you can look up in the [documentation](https://github.com/simonvomeyser/commonmark-ext-lazy-image/blob/master/readme.md#options) of the package I created. 
 
-To add these config keys you just read from it. 
+Working options is really straightforward: 
 
 ```php
-// The class that should be added
+//...
 $htmlClass = $this->environment->getConfig('lazy_image/html_class', '');
+
+if ($htmlClass) {
+    $baseImage->setAttribute('class', $htmlClass);
+}
+//...
 ```
 
 The resulting [code](https://github.com/simonvomeyser/commonmark-ext-lazy-image/blob/master/src/LazyImageRenderer.php) of the renderer should be pretty understandable now.
 
 ## Closing
 
-Extending and tailoring the library to your needs is fairly straightforward once you got your feet off the ground. 
+Extending and tailoring Laravel's Markdown library to your needs is fairly straightforward once you wrap your head around the concepts. 
 
-I found an approach to not only tag on things but to alter the behaviour of the core with the lazy image extension.
+I found an approach to not only glue some things to the existing output but to alter the behavior of the core with the lazy image extension.
 
 I hope this little exploration helps someone out there trying to extend Laravel's and therefore the `commonmark` package's functionality! 
  
