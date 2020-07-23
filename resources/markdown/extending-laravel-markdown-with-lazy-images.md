@@ -115,7 +115,7 @@ When you are only looking for lazy images you can [download my extension](https:
 
 If you are used coding in Laravel the `League\CommonMark` library feels a bit *old school*. The setup and the configuration confused me already.
  
-I don't mean to make a derogatory comment here though - the library is insanely flexible the authors did awesome work. You can alter almost everything and even access the generated AST before it is rendered to HTML.
+I don't mean to make a derogatory comment here though - the library is insanely flexible the authors did awesome work. You can alter almost everything and even access the generated AST before it is rendered to HTML. 
 
 <sidenote heading="WTF is a AST?">
 
@@ -126,8 +126,10 @@ In this case just think of it as a data structure representing the markdown file
 This is not *exactly* who the library does it, there are a lot of custom objects involved, but you hopefully get the idea.
 
 </sidenote>
+
+So before writing anything, we need to talk a little about the concepts:
  
-The library uses a concept of *parsers* and *renderes*. Parsing means "recognizing a pattern in markdown and add it to the things that should be rendered". Rendering happens after the parsing is complete and means actually transforming the AST into an HTML string.
+The library thinks in *parsers* and *renderes*. Parsing means "recognizing a pattern in markdown and adding it to the things that should be rendered". Rendering happens after all the parsing is complete and is the actual transformation of the data into an HTML string.
 
 It gets even a little more confusing since the library distinguishes between the handling of *blocks* (like paragraphs) and *inlines* (like images, bold text) . Both types have respective *parsers* and *renderes*. 
 
