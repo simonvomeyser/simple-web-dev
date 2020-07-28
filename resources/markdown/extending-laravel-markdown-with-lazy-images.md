@@ -176,7 +176,7 @@ I needed the processing inside the native image renderer to run before my functi
 
 ![A lot of twitter noise and discussions about the final keyword](https://res.cloudinary.com/simonvomeyser/image/upload/v1595350000/extending-laravel-markdown/final-discussion.png)
 
-I still have no final (eheh) opinion about this. This extendability issue has been discussed in the [issues](https://github.com/thephpleague/commonmark/issues/379) and I get the argument and respect the author's decision.
+I still have no final (eheh) opinion about this. There was already a discussion in the [issues](https://github.com/thephpleague/commonmark/issues/379) so I will not rehash it here. I get the argument and respect the package author's decision.
 
 I ended up not subclassing but calling the original renderer and modifying the output in a composition over inheritance approach. My own class just creates the core image renderer, gets it's output and changes that output it. 
 
