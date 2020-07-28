@@ -14,7 +14,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "simonvomeyser/commonmark-ext-lazy-image": "@dev",
+        "simonvomeyser/commonmark-ext-lazy-image": "^1.0",
         "spatie/yaml-front-matter": "^2.0"
     },
     "require-dev": {
@@ -61,11 +61,5 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    },
-    "repositories": {
-        "local": {
-            "type": "path",
-            "url": "../commonmark-ext-lazy-image"
-        }
     }
 }
