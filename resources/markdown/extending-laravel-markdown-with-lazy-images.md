@@ -1,6 +1,6 @@
 ---
 title: Using Laravel's Markdown parser for a blog - and adding lazy images
-release_date: Today
+release_date: 15.08.2020    
 slug: extending-laravel-markdown-with-lazy-images
 excerpt: >-
     I found out Laravel 6.x already ships with a pretty powerful package for parsing Markdown, and it can be extended and customized.
