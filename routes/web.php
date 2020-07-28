@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function() {
+  return \Illuminate\Mail\Markdown::parse('# Hello');
+});
 Route::view('legal-notice', 'legal-notice')->name('legal-notice');
 Route::view('privacy', 'privacy')->name('privacy');
 

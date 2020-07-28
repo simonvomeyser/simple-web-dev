@@ -57,11 +57,25 @@
     h4,
     h5,
     h6 {
+        position: relative;
         color: $neutral-400;
         font-weight: 400;
         margin-top: 2.5em;
         margin-bottom: -0.25em;
         font-size: 26px;
+        .heading-permalink {
+            position: absolute;
+            right: -5px;
+            top: 1px;
+            opacity: 0;
+            @include anim();
+        }
+
+        &:hover, &:focus {
+            .heading-permalink {
+                opacity: 1;
+            }
+        }
     }
 
     h1 {
@@ -71,7 +85,6 @@
     }
 
     h2 {
-        position: relative;
         font-size: 30px;
         color: $neutral-400;
         font-weight: 400;
@@ -102,12 +115,7 @@
     }
 
     code {
-        // inline
-        font-size: 16px;
-        background-color: $primary-100;
-        font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
         color: $neutral-400;
-        padding: 3px 5px;
     }
 
     ul {
@@ -118,6 +126,16 @@
             margin-top: 0.5rem;
         }
     }
+  p, a {
+      > code {
+        // inline code block
+          color: $neutral-400;
+          font-family: "Courier 10 Pitch", Courier, monospace;
+          font-size: 18px;
+          background-color: $primary-100;
+          padding: 3px 5px;
+      }
+  }
 }
 
 @include breakpoint("mobile") {
