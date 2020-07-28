@@ -12,6 +12,7 @@
     border: 0;
     width: 100%;
     text-align: left;
+    overflow: hidden;
     border-bottom: 2px solid $neutral-400;
   }
   @include e(content) {
