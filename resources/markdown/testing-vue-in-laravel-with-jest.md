@@ -1,15 +1,16 @@
 ---
 title: Testing your Vue.js in Laravel - common gotchas and why to start as early as possible
 release_date: Today
-slug: do-not-use-a-ftp-client
+slug: vue-testing-in-laravel
 excerpt: >-
 
     Laravel offers an awesome testing environment, but if you are like me and use Vue.js for much of the frontend, you most likely have big blindspot on your testing map
     
-    I want to talk about a few roadblocks, bruises and broken legs I experienced while adding a vue testing layer to my applications
+    I want to talk about a few roadblocks, bruises and broken legs I experienced while adding vue testing layers to applications.
 tags:
-  - Backend
+  - Frontend
   - Dev Ops
+  - Testing
 header_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
 list_image: >-
@@ -26,9 +27,9 @@ The result is always the same:
 
 > If it's hard to write tests, nobody writes them
 
-In most of my projects this meant even, that writing frontend tests was put off until later... and that's in an app where a lot of logic is done in the frontend. The customer does not care, if your well tested backend does return the right data, if your vue components display it wrong.
+In most of my projects this meant even, that writing frontend tests was put off until later... and that's in an app where a lot of logic happens in the frontend. The customer does not care, if your well tested backend does return the right data, if your vue components break and look like you implemented a Nickleback record.
 
-For this reason I want to talk a little bit about the things I had to fight with and already want to issue a warning:
+For this reason I want to talk a little about the things I had to fight with and already want to issue a warning:
 
 > Start testing your frontend as early as possible
 
