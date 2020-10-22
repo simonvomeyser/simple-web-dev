@@ -15,6 +15,6 @@ new Vue({
     }
 });
 
-// lazy loads elements with selector as '.lazing-loading-image'
+// lazy loads images with .lozad
 const observer = lozad();
 observer.observe();
