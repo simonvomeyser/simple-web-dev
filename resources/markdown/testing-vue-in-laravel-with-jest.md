@@ -17,6 +17,13 @@ list_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
 ---
 
+
+- Dont take to long for the intro
+- Say that it is for non SPAs
+- Most tutorials are like "add this I don't know why"
+
+Javascript libraries and solutions are changing all the time and its quite annoying. Broken examples from docs and tutorials are not hard to find and requires to search around for a working solution. Be aware of dates and versions when reading JS tutorials(like this one). I’m writing this tutorial to help others get through the task of setting up 
+
 For a long time the default sexy Laravel stack included Vue.js as a frontend framework and that's awesome. Both technologies have a nice, clean approach to modern web application development and play nice with each other. While nowadays new alternatives like Livewire(**tod link**) emerge, or you could of course use the power of React, the pairing between Vue and Laravel was something that felt... just meant to be. 💕
 
 **todo marryage foto of laravel and vue** 
