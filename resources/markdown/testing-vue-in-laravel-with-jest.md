@@ -40,9 +40,17 @@ npx vue-tests-laravel-setup
 
 ```
 
-## Let's start... why Jest?
+## Let's start: Laravel and Vue Versions
 
-There are essentially two test runners that are recommended by the **toodo vue docs**: Mocha and Jest. Since I also work with React I like Jest a lot. There is a lot already build in and that's less to worry about, right?
+I could only test this tutorial with newer versions of Laravel, starting from 6.x, but it should still work with a **fresh install** of 5.6.
+
+Currently this article is only talking about Vue 2.x, but the created npm package will try to detect your installed vue version and make changes accordingly.
+
+I of course can't know all the ways you configured your already running projects. If you encounter an error and you think a solution would help a lot of people let's [figure something out together](mailto:info@simonvomeyser.de) and get more people into testing Vue in Laravel :) 
+
+## ...and why use Jest and not Mocha?
+
+There are essentially two test runners that are recommended by the **toodo vue docs**: Mocha and Jest. Since I also work with React I like Jest a lot. Since there is a lot already build in that's one thing less to worry about, right?
 
 <sidenote heading="Maybe I'm too stupid for Mocha">
 
@@ -55,20 +63,34 @@ Smarter people might have made it work though (add link **todo**)
 </sidenote>
  
 
-## Just npm install 300 packages
+## Okay, just install these 500 NPM packages
 
-
-
+Most tutorials of this kind just throw a lot of `npm install` statements at you - and there is good reason for it. Explaining what all new packages do is cumbersome, and most people don't have the time to read an in depth explanation anyways.
  
+If you "just want to make the damn thing work" I understand, we can still be friends: Take look at the <tldr-link>summary</tldr-link>.
 
-- how to set up jest and make it work
-- First roadblock: Polyfills, rendering
-- Second roadblock: Plugins
-- Third roadbloack: Global functions
-- fourth roadbloack: 
-- fiths roadbloack: event emitters
+I will try to cover at least a little more nerdy details here, but the **todo link package I created** already does everything for you.
+ 
+### We need the basics
 
-summary, test as early as possible
+Let's start simple, we will need `jest` as our testrunner, 
+
+
+- We need jest + vue test utils
+- We need vue + template compiler, don't forget that
+- Talk about single file components
+- Jest config??
+
+
+- Getting special
+    - It is hard to compile
+    - Vue jest needs babel needs babel jest, needs babel config
+    
+- Example files
+- Example project
+
+- What the package will do
+- Summary
 
 
 
