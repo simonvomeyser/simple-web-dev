@@ -1,12 +1,12 @@
 ---
-title: Testing your Vue.js in Laravel - common gotchas and why to start as early as possible
+title: Testing Vue in Laravel with Jest - let's make it a little more easy
 release_date: Today
 slug: vue-testing-in-laravel
 excerpt: >-
 
-    Laravel offers an awesome testing environment, but if you are like me and use Vue.js for much of the frontend, you most likely have big blindspot on your testing map
+    Laravel offers an awesome testing environment for php, but if use Vue.js for much of your frontend, you most likely have big blindspot if you don't test that too.
     
-    I want to talk about a few roadblocks, bruises and broken legs I experienced while adding vue testing layers to applications.
+    I try to ease the initial setup of testing Vue components in a dafault Laravel 6-8 Application.
 tags:
   - Frontend
   - Dev Ops
@@ -17,6 +17,13 @@ list_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
 ---
 
+Okay, let's admit it: Testing Laravel itself is an outright joy, but setting up tests for Vue.js components in your frontend is still quite a fight. Laravel can't provide an out-of-the-box solution, so you need to Google-Dive and assemble your own Frankenstein's Assertion Webpack Babel Monster. 
+
+JavaScript and NPM packages change all the time, so most blogposts and tutorials are likely out of date (like this one, I greet you, future person 👋).
+
+I still hope to help with my "currently working 2020 solution" here and will show you a little package making setting everything up a cinch. 
+
+## Why JEST
 
 - Dont take to long for the intro
 - Say that it is for non SPAs
