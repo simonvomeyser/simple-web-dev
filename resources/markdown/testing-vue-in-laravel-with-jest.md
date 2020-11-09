@@ -6,7 +6,7 @@ excerpt: >-
 
     Laravel offers an awesome testing environment for php, but if use Vue.js for much of your frontend, you most likely have big blindspot if you don't test that too.
     
-    I try to ease the initial setup of testing Vue components in a dafault Laravel 6-8 Application.
+    I try to ease the initial setup of testing Vue single file components in a dafault Laravel 6-8 Application.
 tags:
   - Frontend
   - Dev Ops
@@ -60,13 +60,18 @@ Now you can run `npm run test`. Happy testing :)
 
 </tldr>
 
-## Let's start: Laravel and Vue Versions
+## Let's start: Laravel, Vue and prerequisites
 
 I could only test this tutorial with newer versions of Laravel, starting from 6.x, but it should still work with a **fresh install** of 5.6.
 
 Currently this article is only talking about Vue 2.x, but the created npm package will try to detect your installed vue version and make changes accordingly.
 
 I of course can't know all the ways you configured your already running projects. If you encounter an error and you think a solution would help a lot of people let's [figure something out together](mailto:info@simonvomeyser.de) and get more people into testing Vue in Laravel :) 
+
+**todo**Tell them that vue needs to be installed (vue and template compoiler)
+
+**todo**Tell them about Single file components
+**todo**Tell them about vue three
 
 ## ...and why use Jest and not Mocha?
 
@@ -82,24 +87,48 @@ Smarter people might have made it work though (add link **todo**)
 
 </sidenote>
  
-
 ## Okay, just install these 500 NPM packages
 
 Most tutorials of this kind just throw a lot of `npm install` statements at you - and there is good reason for it. Explaining what all these packages do is cumbersome, and most people don't have the time to read an in depth explanation anyways.
  
 If you "just want to make the damn thing work" I understand, we can still be friends: Take look at the <tldr-link>summary</tldr-link>.
 
-I will try to cover at least a little more nerdy details here, but the **todo link package I created** already does everything for you.
+I will try to cover at least a little more nerdy details here, but the **todo link package I created** already does everything for you, so jump there if you are in a hurry, it will get quite nerdy from here!
+
+**lets get nerdy gif**
  
-### We need the basics
 
-Let's start simple, we will need `jest` as our testrunner, 
+## Basics, we need the basics
 
+Let's start simple, we will need `jest` as our testrunner, that's like PHPUnit. We also will need `vue-test-utils`: Think of those like special assertions for vue.
 
-- We need jest + vue test utils
-- We need vue + template compiler, don't forget that
-- Talk about single file components
-- Jest config??
+```bash
+npm install jest vue-test-utils
+```
+
+Don't forget here, that we obviously need *vue* itself, and it's template compiler for the single file components too. If you haven't already, run: 
+
+```bash
+npm install vue vue-template-compiler
+```
+ 
+## Into the config abyss
+
+It would be awesome if we could simply write or first test now right? Sadly in JavaScript land nothing seems to work out of the box.
+
+// I dont think so gif (todo)
+
+The first config we need is the config for `jest` itself. (Granted, `PHPUnit` also needs a config file that really confuses me every time I try to write it myself)
+
+You can throw your jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` (**todo right?**) file with the following content
+
+```js
+//
+```
+
+- create setup.js
+- create first test and vue compoenten under test
+- Nothing works, why? 
 
 
 - Getting special
