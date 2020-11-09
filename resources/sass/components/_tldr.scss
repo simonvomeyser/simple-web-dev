@@ -1,0 +1,16 @@
+.tldr {
+    margin: 2rem 0 1rem 0;
+    @include e(trigger) {
+        display: flex;
+        justify-content: center;
+    }
+    @include e(content) {
+        margin-top: 1rem;
+    }
+}
+
+@include breakpoint('mobile') {
+    .container {
+        padding: 0 1rem;
+    }
+}

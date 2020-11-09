@@ -13,6 +13,10 @@
 
   @include anim();
 
+  @include m("well-fed") {
+      padding: 10px 16px;
+  }
+
   @include m("full-width") {
     width: 100%;
   }
