@@ -28,7 +28,7 @@ I also wrote and will show you a little package making setting everything up a c
 > If it's hard to set up tests, nobody will write them
  
 
-## TLDR
+<tldr> 
 
 In a hurry? Just do this and try your luck! 🤞
 
@@ -38,7 +38,27 @@ npm install -—save-dev jest vue-jest @vue/test-utils babel-core@^7.0.0-bridge.
 
 npx vue-tests-laravel-setup
 
+node_modules/bin/jest
+
 ```
+
+You should see the passing example test which got added by `vue-tests-laravel-setup`. No you can simply add a test script to your `package.json` file.
+
+```js
+{
+    // ...
+    "scripts": {
+        //...        
+        "test" : "jest"
+        //...        
+    },
+    // ...
+}
+```
+
+Now you can run `npm run test`. Happy testing :)
+
+</tldr>
 
 ## Let's start: Laravel and Vue Versions
 
@@ -65,7 +85,7 @@ Smarter people might have made it work though (add link **todo**)
 
 ## Okay, just install these 500 NPM packages
 
-Most tutorials of this kind just throw a lot of `npm install` statements at you - and there is good reason for it. Explaining what all new packages do is cumbersome, and most people don't have the time to read an in depth explanation anyways.
+Most tutorials of this kind just throw a lot of `npm install` statements at you - and there is good reason for it. Explaining what all these packages do is cumbersome, and most people don't have the time to read an in depth explanation anyways.
  
 If you "just want to make the damn thing work" I understand, we can still be friends: Take look at the <tldr-link>summary</tldr-link>.
 
