@@ -100,13 +100,13 @@ I will try to cover at least a little more nerdy details here, but the **todo li
 
 ## Basics, we need the basics
 
-Let's start simple, we will need `jest` as our testrunner, that's like PHPUnit. We also will need `vue-test-utils`: Think of those like special assertions for vue.
+Let's start simple, we will need `jest` as our testrunner, that's the JavaScript friend of PHPUnit. We also will need `vue-test-utils`: Think of those like special assertions for vue.
 
 ```bash
 npm install jest vue-test-utils
 ```
 
-Don't forget here, that we obviously need *vue* itself, and it's template compiler for the single file components too. If you haven't already, run: 
+Don't forget here, that we obviously need *vue* itself, and it's template compiler for the single file components. If you haven't already, run: 
 
 ```bash
 npm install vue vue-template-compiler
@@ -114,19 +114,123 @@ npm install vue vue-template-compiler
  
 ## Into the config abyss
 
-It would be awesome if we could simply write or first test now right? Sadly in JavaScript land nothing seems to work out of the box.
+It would be awesome if we could simply write our first test now right? Sadly, JavaScript says no.
 
+// javascript says no gif?
 // I dont think so gif (todo)
 
-The first config we need is the config for `jest` itself. (Granted, `PHPUnit` also needs a config file that really confuses me every time I try to write it myself)
+The first config we need is the config for `jest` itself. (Granted, `PHPUnit` also needs a really spiky config file)
 
-You can throw your jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` (**todo right?**) file with the following content
+You can throw your jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` file with the following content:
 
 ```js
-//
+// jest.config.js
+module.exports = {
+    // the extensions  load these extension
+    "moduleFileExtensions": [
+        "js",
+        "json",
+        "vue"
+    ],
+    // (optional) with that you can import your components like
+    // import Counter from '@/Counter.vue'
+    // (no need for a full path)
+    "moduleNameMapper": {
+        "^@/(.*)$": "<rootDir>/resources/js/$1"
+    },
+    // Where are your vue tests located?
+    "roots": [
+        "<rootDir>/tests/Vue"
+    ],
+    // vue: transform vue with vue-jest to make jest understand Vue's syntax
+    // js: needed e.g to use import statements in tests
+    "transform": {
+        ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+        "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
+}
 ```
 
-- create setup.js
+I would recommend creating a `setup.js` file where you can preparations for all test.
+
+For that reason, my (**link**)npm-package creates that file by default. I will skip it here though, this article is nerdy enough.
+
+<sidenote heading="Hey, but I want a setup.js file!">
+
+Ah, you are instantly 7% more cool! 
+
+It makes sense to have that file since we will need a lot later!
+
+Just add the following lines to your `jest.config.js`:
+
+```js
+"setupFilesAfterEnv": [
+    "<rootDir>tests/Vue/setup.js"
+],
+```
+
+Of course, you need to create that (empty) file in the `test/Vue/` or jest will vomit a lot of errors on your shoes.
+
+</sidenote>
+
+
+
+## Woha, now we can create tests?
+
+Almost. Not quite. Now it gets ugly.
+
+First of all note, that `jest` is a running on node, and in node, as of now we can't use our beloved `import ... from ...` statements. That's a problem since all of your single file components will likely use these statements, and it would be nice to write tests the same way.
+
+That's the reason, libraries like `vue-jest` already come bundled with `bable`, a mighty tool used to transform JavaScript. 
+
+And... if we use babel, we need another config file to tell what we actually want to transform.
+
+**opra you get a config file, and you get a conifg file**
+
+
+## In babel land
+
+The least complicated way to do this is to simply at a `.babelrc` file in your repo like this:
+
+```json
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
+That will work since in normal Laravel installs, `laravel-mix`, the mothership Laravel asset building,  takes care of everything, and it is ignoring this file. If you want to only add transformations for testing, do it like this, even though it is not necessary in most cases.:
+
+```json
+{
+    "env": {
+        "test": {
+            "presets": [
+                [
+                    "@babel/preset-env"
+                ]
+            ]
+        }
+    }
+}
+```
+
+This tells `babel-jest` and `vue-jest`: "Be a good kid and transform all the test code we write before testing. Use the things this preset of `babel` to make it as compatible as possible - and please just work".
+
+I'll leave it at that, we would actually only need a few select plugins and not a whole preset, but this post is nerdy enough.
+
+## Just oooone more thing
+
+We are almost there I promise. The last problem we have to solve is that newer version of `jest` as well as `laravel-mix` use a newer version of `babel` that is incopatbile with `vue-jest`. I'll make it short, there is a plugin for that, called `bable-bridge` described in the `vue-jest` **link**docs.
+
+    
+```bash
+npm install --save-dev babel-core@bridge
+```
+
+And believe it or not, we can **finally** write our first test.
+
+## The first test
+
 - create first test and vue compoenten under test
 - Nothing works, why? 
 
