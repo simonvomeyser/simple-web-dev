@@ -227,23 +227,107 @@ We are almost there I promise. The last problem we have to solve is that newer v
 npm install --save-dev babel-core@bridge
 ```
 
-And believe it or not, we can **finally** write our first test.
+Believe it or not, we can **finally** write our first test.
 
-## The first test
+**vue needs babel need jest needs babel bridge needs babel config image**
 
-- create first test and vue compoenten under test
-- Nothing works, why? 
+## The first test, keep it simple
+
+For the first test I would recommend you keep it simple. There are a lot of other problems that can happen even though `jest` now finally knows how to handle your tests and vue files.
+
+Common problems are:
+
+- Using other (global) components in the component under test
+- Plugins
+- Global functions you added like `tans()` or `route()`
+- Ajax-Calls made by a component
+- Using a global event emitter
+
+I plan on writing a post about mitigating some of these problems, but for this post a simple component should be enough. After all, the topic is the test *setup*. Just keep in mind that there are still roadblocks ahead.
+
+In your `resources/js/` folder create the following file:
+
+```vue
+// resources/js/Counter.vue
+<template>
+    <div>
+        <h1>Count: {{ counter }}</h1>
+
+        <button @click="counter++" jest="increment-button">+1</button>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            counter: 0,
+        }
+    }
+}
+</script>
+```
+
+The typical simple and useless counter component, but good to see, if our setup works.
+ 
+Next step, create your test under `tests/js/`
+
+```js
+// tests/js/Counter.spec
+import { mount } from '@vue/test-utils'
+import Counter from '../../resources/js/Counter.vue'
+
+describe('Counter.vue', () => {
+    it('increments counter', () => {
+        const wrapper = mount(Counter);
+
+        expect(wrapper.vm.counter).toBe(0);
+
+        wrapper.find('[jest="increment-button"]').trigger('click')
+
+        expect(wrapper.vm.counter).toBe(1);
+    })
+})
+```
+
+Now you should be able to run jest via `node_modules/.bin/jest` and see the following output:
+
+**add image or gif about the jest test**
+
+To make it a little simpler add a script to your `package.json` file 
+
+```js
+// package.json
+{
+    // ...
+    "scripts": {
+        //...        
+        "test" : "jest"
+        //...        
+    },
+    // ...
+}
+```
+
+# Still having problems?
+
+In almost all of my apps and for my colleagues this setup did work. If you still experience errors, here are a few options:
+
+- Consider using my **todo link** package for the setup, there is much less room for typos
+- Install the testing packages with the compatible versions as shown in the <tldr>TL;DR</tldr> 
+- Submit an issue, a Pull Request to the **todo**Repo or **todo**Contact me, let's make vue testing more approachable together
 
 
-- Getting special
-    - It is hard to compile
-    - Vue jest needs babel needs babel jest, needs babel config
-    
-- Example files
-- Example project
+# Wrap it up 🌯
 
-- What the package will do
-- Summary
+This post shows that there is a lot involved in simply getting *started* with Vue.js tests in your Laravel App.
+
+Even though there are still many roadblocks from here, I am sure a simpler setup will get more people to write test.
+ 
+Hopefully that will result in better, less error prone web applications, and I hope to have contributed at least a small amount to that.
+
+So long, Cherrio 👋
+Simon
 
 
 
