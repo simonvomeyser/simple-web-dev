@@ -4,9 +4,9 @@ release_date: Today
 slug: vue-testing-in-laravel
 excerpt: >-
 
-    Laravel offers an awesome testing environment for php, but if use Vue.js for much of your frontend, you most likely have big blindspot if you don't test that too.
+    Laravel offers an awesome testing environment for php already, but if use Vue.js for much of your frontend, you most likely have big blindspot if you don't test that too.
     
-    I try to ease the initial setup of testing Vue single file components in a dafault Laravel 6-8 Application.
+    Let me try to simplify the initial setup of testing Vue single file components in a dafault Laravel 6-8 application.
 tags:
   - Frontend
   - Dev Ops
@@ -17,13 +17,17 @@ list_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
 ---
 
-Okay, let's admit it: Testing Laravel itself is an outright joy, but setting up tests for Vue.js components in your frontend is still quite a fight. Laravel can't provide an out-of-the-box solution, so you need to Google-Dive and assemble your own Frankenstein's Assertion Webpack Babel Monster. 
+Okay, let's admit it: Testing Laravel itself is an outright joy, but setting up tests for Vue.js components in your frontend is quite a fight. 
+
+Laravel can't provide an out-of-the-box solution, so you need to Google-deep-dive and assemble your own Frankenstein's Assertion Webpack Babel Monster @trade;. 
 
 JavaScript and NPM packages change all the time, so most blogposts and tutorials are likely out of date (like this one, I greet you, future person 👋).
 
 I still hope to help with my "currently working 2020 Laravel 8.x solution" here.
   
-I also wrote and will show you a little package making setting everything up a cinch. Maybe this will still work at the time you are reading this. Why? Because:
+I also wrote a little package to make the setup a cinch. 
+
+In my opinion, setting up tests for your frontend should be easy. Why? Because:
 
 > If it's hard to set up tests, nobody will write them
  
@@ -309,22 +313,22 @@ To make it a little simpler add a script to your `package.json` file
 }
 ```
 
-# Still having problems?
+## Still having problems?
 
-In almost all of my apps and for my colleagues this setup did work. If you still experience errors, here are a few options:
+In almost all of my projects and for the "beta tester" I annoyed with this tutorial (**toto insert people**) It did make the setup a chinch. If you still experience errors, here are a few options:
 
 - Consider using my **todo link** package for the setup, there is much less room for typos
-- Install the testing packages with the compatible versions as shown in the <tldr>TL;DR</tldr> 
-- Submit an issue, a Pull Request to the **todo**Repo or **todo**Contact me, let's make vue testing more approachable together
+- Install the testing packages with the compatible versions as shown in the <tldr-link>TL;DR</tldr-link> 
+- Submit an issue or a pull request to the **todo**Repo - or simply **todo**Contact me, let's make vue testing more approachable together
 
 
-# Wrap it up 🌯
+## Wrap it up 🌯
 
 This post shows that there is a lot involved in simply getting *started* with Vue.js tests in your Laravel App.
 
-Even though there are still many roadblocks from here, I am sure a simpler setup will get more people to write test.
+Even though there are still many roadblocks from here, this setup might help some folks to get started.
  
-Hopefully that will result in better, less error prone web applications, and I hope to have contributed at least a small amount to that.
+I hope to have contributed at least a small amount to help developing more resilient and less error prone frontends.
 
 So long, Cherrio 👋
 Simon
