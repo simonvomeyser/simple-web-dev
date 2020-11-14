@@ -12,9 +12,9 @@ tags:
   - Dev Ops
   - Testing
 header_image: >-
-  https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1605361788/testing-vue/header.jpg
 list_image: >-
-  https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1605362168/testing-vue/header_small.png
 ---
 
 Okay, let's admit it: Testing Laravel itself is an outright joy, but setting up tests for Vue.js components in your frontend is quite a fight. 
