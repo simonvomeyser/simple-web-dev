@@ -17,21 +17,6 @@ list_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1605362168/testing-vue/header_small.png
 ---
 
-Okay, let's admit it: Testing Laravel itself is an outright joy, but setting up tests for Vue.js components in your frontend is quite a fight. 
-
-Laravel can't provide an out-of-the-box solution, so you need to Google-deep-dive and assemble your own Frankenstein's Assertion Webpack Babel Monster @trade;. 
-
-JavaScript and NPM packages change all the time, so most blogposts and tutorials are likely out of date (like this one, I greet you, future person 👋).
-
-I still hope to help with my "currently working 2020 Laravel 8.x solution" here.
-  
-I also wrote a little package to make the setup a cinch. 
-
-In my opinion, setting up tests for your frontend should be easy. Why? Because:
-
-> If it's hard to set up tests, nobody will write them
- 
-
 <tldr> 
 
 In a hurry? Just do this and try your luck! 🤞
@@ -64,18 +49,39 @@ Now you can run `npm run test`. Happy testing :)
 
 </tldr>
 
+
+Okay, let's admit it: Testing Laravel itself is an outright joy, but setting up tests for Vue.js is quite a fight. 
+
+Laravel can't provide an out-of-the-box solution, so you need to Google-deep-dive and assemble your own Frankenstein's Assertion Webpack Babel Monster&trade; . 
+
+Since JavaScript and NPM packages change all the time, most blogposts and tutorials are likely out of date. This might be too, I greet you, future person 👋.
+
+I still hope to help with my currently working solution here, and I also wrote a **todo link**little npm package to make the setup a cinch. 
+
+In my opinion, setting up tests for your frontend should be easy. Why? Because:
+
+> If it's hard to set up tests, nobody will write them
+
 ## Let's start: Laravel, Vue and prerequisites
 
-I could only test this tutorial with newer versions of Laravel, starting from 6.x, but it should still work with a **fresh install** of 5.6.
+There are a million ways you could have configured your Laravel and Vue, so foreseeing all of them is a rather worthless endeavour. Here are a few things that need to be given: 
 
-Currently this article is only talking about Vue 2.x, but the created npm package will try to detect your installed vue version and make changes accordingly.
 
-I of course can't know all the ways you configured your already running projects. If you encounter an error and you think a solution would help a lot of people let's [figure something out together](mailto:info@simonvomeyser.de) and get more people into testing Vue in Laravel :) 
+### Laravel
 
-**todo**Tell them that vue needs to be installed (vue and template compoiler)
+This tutorial assumes a rather untouched setup, so you most likely use `laravel-mix` with a few configurations. If you toyed a lot with your build setup there might by things that blow up.
 
-**todo**Tell them about Single file components
-**todo**Tell them about vue three
+I tested this with most of my projects though, and it worked flawlessly going back to Laravel 5.6.
+
+### Vue
+
+This tutorial deals with **single file components only** and is meant **only for Vue 2.x currently**.
+
+As soon as `laravel-mix` in version 6.x is out of beta I will have a look at the setup for Vue 3 and hopefully make it work :) 
+
+## We need runners
+
+What is a test runner
 
 ## ...and why use Jest and not Mocha?
 
