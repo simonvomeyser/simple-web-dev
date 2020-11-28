@@ -55,7 +55,7 @@ Keep in mind, that you will need `vue` and `vue-template-compiler` for Vue 2.
 
 </tldr>
 
-Testing Laravel' PHP is an outright joy, but setting up tests for Vue.js is a dangerous fight with the NPM dragon.
+Testing Laravel is an outright joy, but simply *setting up* tests for Vue.js is still a dangerous fight with the NPM dragon.
 
 But what can we do? Is the only option to Google-deep-dive and assemble your own Frankenstein's Assertion Webpack Babel Monster&trade;? 
 
@@ -71,9 +71,6 @@ By the way, I greet you future-person! Do we have jetpacks yet? 🚀👋.
 
 </sidenote>
 
-In my opinion, setting up tests for your frontend should be as easy as in the backend. Why? Because:
-
-> If it's hard to set up tests, nobody will write them
 
 ## Let's start: Laravel, Vue and prerequisites
 
@@ -81,7 +78,7 @@ There are a million ways you could have configured Laravel and Vue, so trying to
 
 ### Laravel
 
-This tutorial assumes a rather untouched setup, so you most likely use Laravel Mix with a few configurations. If you toyed a lot with your build setup or replaced Laravel Mix entirely, there might by a few bombs that blow up.
+This tutorial assumes a rather untouched setup, so you most likely use Laravel Mix with a few configurations. If you toyed a lot with your build setup or replaced Laravel Mix entirely, there might by a few bombs waiting to go off.
 
 I tested this with most of my projects though, and it worked well going back to Laravel 5.6. with Laravel Mix 2.0.
 
@@ -97,13 +94,14 @@ All set? Okay, let's start:
 
 Okay, that's a joke with a grain of truth. Most tutorials just throw a lot of `npm install` statements at you - and there is good reason for it. 
 
-Explaining what all packages needed do is often cumbersome, and most people don't have the time to read an in depth explanation anyways.
+Explaining what all packages in a tutorial do is cumbersome, and most people don't have the time to read an in depth explanation anyways.
  
-> If you think "just tell me what to do" read the <tldr-link>summary</tldr-link>
+> In a hurry? Read the <tldr-link>summary</tldr-link>
 
 Still here? Okay, let's go on, it will get quite nerdy from here!
 
-**lets get nerdy gif**
+![GIF of Christina Aguilera dancing to "Let's get nerdy"](https://res.cloudinary.com/simonvomeyser/image/upload/v1606575661/testing-vue/lets-get-nerdy.gif)
+
 
 ## Basics, bring the basics
 
@@ -137,12 +135,9 @@ npm install vue@^2.0 vue-template-compiler
  
 ## Into the config abyss
 
-So we have a testrunner and Vue. It would be awesome if we could simply write our first test now right? 
+So we have a testrunner and Vue. It would be awesome if we could simply write our first test now right? 🙄
 
-Sadly, JavaScript says no. 🙄
-
-// javascript says no gif?
-// I dont think so gif (todo)
+![Bad Little Britain Joke about "Javascript says no"](https://res.cloudinary.com/simonvomeyser/image/upload/v1606575288/testing-vue/js-says-no.png)
 
 First we need a config file for `jest` itself . Granted, `PHPUnit` also has a really spiky config file, so I'll take back the eye-roll.
 
@@ -172,9 +167,9 @@ module.exports = {
 }
 ```
 
-I would recommend creating a `setup.js` file where you can preparations for all test.
+I would also recommend creating a `setup.js` file where you can later do preparations for tests.
 
-For that reason, my (**link**)npm-package creates that file by default. I will skip it here though, this article is nerdy enough.
+My (**link**)npm-package creates that file by default, but I will skip it here though: It's not mandatory and this article is long enough.
 
 <sidenote heading="Hey, but I want a setup.js file!">
 
@@ -195,23 +190,24 @@ Of course, you need to create that (empty) file in the `test/Vue/` or jest will 
 </sidenote>
 
 
-## Woha, and now we can test?
+## Cool, now we can write tests?
 
 Almost. Not quite. Now it gets ugly.
 
-First of all note, that `jest` is a running on node, and ,as of now, we can't use our beloved `import` statements yet. 
+First of all note, that `jest` is a running on node, and, as of now, we can't use our beloved `import` statements in node. 
+
 All of your single file components will likely use these statements, and it would be nice to write tests the same way. 
 
-For that reason, [Babel.js](https://babeljs.io/) can and is most commonly used to transform our tests and components before feeding them to jest.
+For that reason [Babel.js](https://babeljs.io/) is most commonly used to transform our tests and components before feeding them to jest.
 
 This is also the reason for the [transform statements](#transform-statements) in our `jest.config.js` file.
 
-You guest it: If we use Babel, we will need *another* config file to tell what and how we actually want to transform.
+You guest it: If we use Babel, we will need *another* config file to tell what and how we actually want to do transformations.
 
-**opra you get a config file, and you get a conifg file**
+![Oprah screaming "you get a config file, and you get one"](https://res.cloudinary.com/simonvomeyser/image/upload/v1606575288/testing-vue/oprah.png)
 
 
-## In babel land
+## In babel config land
 
 The least complicated way to do this is to simply at a `.babelrc` file in your repo like this:
 
@@ -247,9 +243,11 @@ I'll leave it at that, we would actually only need a few selected plugins from t
 
 We are almost there I promise. The last problem we have to solve is that newer version of `jest` as well as `laravel-mix` use a newer version of `babel` that is incompatible with `vue-jest`. 
 
-I'll make it short, there is another library for that, called `bable-bridge`. See the [vue-jest docs](https://github.com/vuejs/vue-jest#usage-with-babel-7) for more information.
+I'll make it short, there is another library to make them compatible called `bable-bridge`. 
 
-Do it:
+See the [vue-jest docs](https://github.com/vuejs/vue-jest#usage-with-babel-7) for more information.
+
+Install it via
     
 ```bash
 npm install --save-dev babel-core@bridge
@@ -274,7 +272,7 @@ I plan on writing a post about mitigating some of these problems, but for this p
 
 In your `resources/js/` folder create a `Counter.vue` file:
 
-```vue
+```js
 // resources/js/Counter.vue
 <template>
     <div>
@@ -355,8 +353,7 @@ This post shows that there is a lot involved in simply getting *started* with Vu
 
 Even though there are still many roadblocks from here, I hope this post will save some people time.
 
-So long, Cherrio 👋
-Simon
+So long, Cherrio 👋 <br> Simon
 
 
 
