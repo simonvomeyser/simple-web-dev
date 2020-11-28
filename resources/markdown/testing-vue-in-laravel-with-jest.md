@@ -4,9 +4,9 @@ release_date: Today
 slug: vue-testing-in-laravel
 excerpt: >-
 
-    Laravel offers an awesome testing environment for php already, but if use Vue.js for much of your frontend, you most likely have big blindspot if you don't test that too.
+    Laravel offers an awesome testing environment for php, but if use Vue.js components for much of your frontend and don't test them, you have a big testing-blindspot.
     
-    Let me try to simplify the initial setup of testing Vue single file components in a dafault Laravel 6-8 application.
+    Since it is quite a struggle to get started, I nerd out about simplifing the testing setup for Vue single file components in a Laravel application.
 tags:
   - Frontend
   - Dev Ops
@@ -23,41 +23,55 @@ In a hurry? Just do this and try your luck! 🤞
 
 ```bash
 
-npm install -—save-dev jest vue-jest @vue/test-utils babel-core@^7.0.0-bridge.0 @babel/preset-env
+npm install -—save-dev jest vue-jest @vue/test-utils babel-core@bridge
 
 npx vue-tests-laravel-setup
+
+```
+
+Now you can run your tests by 
+
+```bash
 
 node_modules/bin/jest
 
 ```
 
-You should see the passing example test which got added by `vue-tests-laravel-setup`. No you can simply add a test script to your `package.json` file.
+Happy testing :)
 
-```js
-{
-    // ...
-    "scripts": {
-        //...        
-        "test" : "jest"
-        //...        
-    },
-    // ...
-}
+<sidenote heading="Problems? Use specific versions!">
+
+You can try to install the specific versions of the packages we need, these are the following:
+
+```bash
+npm i @vue/test-utils@^1.1.1 babel-core@^7.0.0-bridge.0 jest@^26.6.3 vue-jest@^3.0.7
 ```
 
-Now you can run `npm run test`. Happy testing :)
+This should work, because it only updates patch and minor version which *should* not contain any breaking changes, and these were the versions I used.
+
+Keep in mind, that you will need `vue` and `vue-template-compiler` for Vue 2. 
+    
+</sidenote>
 
 </tldr>
 
-Okay, let's admit it: Testing Laravel in 2020 is an outright joy, but setting up tests for Vue.js is a fight. 
+Testing Laravel' PHP is an outright joy, but setting up tests for Vue.js is a dangerous fight with the NPM dragon.
 
-Since JavaScript and NPM packages change all the time, most blogposts and tutorials are likely out of date, including this one. I greet you future-person, do we have jetpacks yet? 🚀👋. Be cautious if it's 2030 when you are reading this, some things might have changed.
+But what can we do? Is the only option to Google-deep-dive and assemble your own Frankenstein's Assertion Webpack Babel Monster&trade;? 
 
-So how to set up Vue testing in Laravel? Is the only option to Google-deep-dive and assemble your own Frankenstein's Assertion Webpack Babel Monster&trade;? 
+In this post I will nerd out on explanations, but also try to simplify the setup. I wrote a npm package to automate most of it, so if you are in a hurry [jump there](**todo**).
 
-In this post I will try to make the setup easy, I also wrote a **todo link**little npm package to make the setup a cinch. 
+<sidenote heading="A word of cation from the past">
 
-In my opinion, setting up tests for your frontend should be easy. Why? Because:
+JavaScript packages change all the time, most blogposts and tutorials are likely out of date, instructions that are one month old will blow up, even if they worked last time. 
+
+Be cautious if it's 2030 when you are reading this, some things might have changed. I tried my best to write about the prerequisites, but there are a lot of things that are nearly impossible to accommodate for.
+
+By the way, I greet you future-person! Do we have jetpacks yet? 🚀👋. 
+
+</sidenote>
+
+In my opinion, setting up tests for your frontend should be as easy as in the backend. Why? Because:
 
 > If it's hard to set up tests, nobody will write them
 
@@ -91,17 +105,12 @@ From here I will try to cover a little more details here, but the **todo link pa
 **lets get nerdy gif**
  
 
-## Basics, we need the basics
+## Basics, bring the basics
 
-Let's start simple, we will need `jest` as our testrunner, that's the JavaScript equivalent of PHPUnit. 
+Let's start simple, we will need `jest` as our "testrunner", that's the JavaScript equivalent of PHPUnit. 
 
 <sidenote heading="Why use Jest and not Mocha?">
 
-We also will need `vue-test-utils`: Think of those like special assertions for vue.
-
-```bash
-npm install jest vue-test-utils
-```
 
 There are essentially two test runners/frameworks that are recommended by the [Vue Docs](https://vuejs.org/v2/guide/testing.html#Frameworks): Mocha and Jest. Since I also work with React I have experience with Jest. There is a lot already build in, which means less to worry about, right?
 
@@ -113,7 +122,14 @@ Smarter people might have made it work though (add link **todo**)
 
 </sidenote>
 
-Don't forget here, that we obviously need *Vue.js* itself, and it's template compiler for the single file components. If you haven't already, run: 
+
+We also will need `vue-test-utils`: Think of those like special assertions for vue.
+
+```bash
+npm install jest vue-test-utils
+```
+
+Don't forget, that you will obviously need *Vue.js* itself, and it's template compiler for the single file components. If you haven't already, run: 
 
 ```bash
 npm install vue vue-template-compiler
@@ -121,12 +137,12 @@ npm install vue vue-template-compiler
  
 ## Into the config abyss
 
-It would be awesome if we could simply write our first test now right? Sadly, JavaScript says no.
+It would be awesome if we could simply write our first test now right? Sadly, JavaScript says no. 🙄
 
 // javascript says no gif?
 // I dont think so gif (todo)
 
-The *first* of many configs we need is the one for `jest` itself 🙄. Granted, `PHPUnit` also has a really spiky config file, so I'll take back the eye-roll.
+Sadly we need a config file for `jest` itself . Granted, `PHPUnit` also has a really spiky config file, so I'll take back the eye-roll.
 
 You can throw your jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` since it's easier to parse.
 
@@ -239,7 +255,6 @@ Believe it or not, we can **finally** write our first test.
 For the first test I would recommend you keep it simple. There are a lot of other problems that can happen even though `jest` now finally knows how to handle your tests and vue files.
 
 Common problems are:
-
 - Using other (global) components in the component under test
 - Plugins
 - Global functions you added like `tans()` or `route()`
@@ -250,7 +265,7 @@ I plan on writing a post about mitigating some of these problems, but for this p
 
 In your `resources/js/` folder create the following file:
 
-```vue
+```js
 // resources/js/Counter.vue
 <template>
     <div>
@@ -273,10 +288,10 @@ export default {
 
 The typical simple and useless counter component, but good to see, if our setup works.
  
-Next step, create your test under `tests/js/`
+Next step, create your test in `tests/js/` as `Counter.spec.js`
 
 ```js
-// tests/js/Counter.spec
+// tests/js/Counter.spec.js
 import { mount } from '@vue/test-utils'
 import Counter from '../../resources/js/Counter.vue'
 
@@ -314,7 +329,9 @@ To make it a little simpler add a script to your `package.json` file
 
 ## Still having problems?
 
-In almost all of my projects and for the "beta tester" I annoyed with this tutorial (**toto insert people**) It did make the setup a chinch. If you still experience errors, here are a few options:
+In almost all of my projects and for the "beta testers" I annoyed with this tutorial (**toto insert people, dajo, furkan, martin**) It did make the setup quite easy. 
+
+If you still experience errors, here are a few options:
 
 - Consider using my **todo link** package for the setup, there is much less room for typos
 - Install the testing packages with the compatible versions as shown in the <tldr-link>TL;DR</tldr-link> 
@@ -326,8 +343,6 @@ In almost all of my projects and for the "beta tester" I annoyed with this tutor
 This post shows that there is a lot involved in simply getting *started* with Vue.js tests in your Laravel App.
 
 Even though there are still many roadblocks from here, this setup might help some folks to get started.
- 
-I hope to have contributed at least a small amount to help developing more resilient and less error prone frontends.
 
 So long, Cherrio 👋
 Simon
