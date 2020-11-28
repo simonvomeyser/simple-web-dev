@@ -61,7 +61,7 @@ But what can we do? Is the only option to Google-deep-dive and assemble your own
 
 In this post I will nerd out on explanations, but also try to simplify the setup. I wrote a npm package to automate most of it, so if you are in a hurry [jump there](**todo**).
 
-<sidenote heading="A word of cation from the past">
+<sidenote heading="A word of caution from the past">
 
 JavaScript packages change all the time, most blogposts and tutorials are likely out of date, instructions that are one month old will blow up, even if they worked last time. 
 
@@ -77,33 +77,33 @@ In my opinion, setting up tests for your frontend should be as easy as in the ba
 
 ## Let's start: Laravel, Vue and prerequisites
 
-There are a million ways you could have configured your Laravel and Vue, so foreseeing all of them is a rather worthless endeavour. Also be cautious, if this post is older then 6-12 month, things change so quickly.
-
-Here are a few things that need to be given: 
+There are a million ways you could have configured Laravel and Vue, so trying to foresee all of them is a impossible for me. Still, here are a few things that need to be given and could cause problems: 
 
 ### Laravel
 
-This tutorial assumes a rather untouched setup, so you most likely use `laravel-mix` with a few configurations. If you toyed a lot with your build setup there might by things that blow up.
+This tutorial assumes a rather untouched setup, so you most likely use Laravel Mix with a few configurations. If you toyed a lot with your build setup or replaced Laravel Mix entirely, there might by a few bombs that blow up.
 
-I tested this with most of my projects though, and it worked flawlessly going back to Laravel 5.6.
+I tested this with most of my projects though, and it worked well going back to Laravel 5.6. with Laravel Mix 2.0.
 
 ### Vue
 
-This tutorial deals with **single file components only** and is meant **only for Vue 2.x currently**.
+This tutorial deals with [single file components](https://vuejs.org/v2/guide/single-file-components.html) and is meant **only for Vue 2.x currently**.
 
 As soon as `laravel-mix` in version 6.x is out of beta I will have a look at the setup for Vue 3 and hopefully make it work :) 
 
+All set? Okay, let's start:
  
 ## Just install 500 NPM packages
 
-Most tutorials of this kind just throw a lot of `npm install` statements at you - and there is good reason for it. Explaining what all these packages do is cumbersome, and most people don't have the time to read an in depth explanation anyways.
+Okay, that's a joke with a grain of truth. Most tutorials just throw a lot of `npm install` statements at you - and there is good reason for it. 
+
+Explaining what all packages needed do is often cumbersome, and most people don't have the time to read an in depth explanation anyways.
  
 > If you think "just tell me what to do" read the <tldr-link>summary</tldr-link>
 
-From here I will try to cover a little more details here, but the **todo link package I created** already does everything for you, so jump there if you are in a hurry. It will get quite nerdy from here!
+Still here? Okay, let's go on, it will get quite nerdy from here!
 
 **lets get nerdy gif**
- 
 
 ## Basics, bring the basics
 
@@ -129,24 +129,26 @@ We also will need `vue-test-utils`: Think of those like special assertions for v
 npm install jest vue-test-utils
 ```
 
-Don't forget, that you will obviously need *Vue.js* itself, and it's template compiler for the single file components. If you haven't already, run: 
+Don't forget, that you will obviously need *Vue.js* in version 2 itself, and it's template compiler for the single file components. If you haven't already, run: 
 
 ```bash
-npm install vue vue-template-compiler
+npm install vue@^2.0 vue-template-compiler
 ```
  
 ## Into the config abyss
 
-It would be awesome if we could simply write our first test now right? Sadly, JavaScript says no. 🙄
+So we have a testrunner and Vue. It would be awesome if we could simply write our first test now right? 
+
+Sadly, JavaScript says no. 🙄
 
 // javascript says no gif?
 // I dont think so gif (todo)
 
-Sadly we need a config file for `jest` itself . Granted, `PHPUnit` also has a really spiky config file, so I'll take back the eye-roll.
+First we need a config file for `jest` itself . Granted, `PHPUnit` also has a really spiky config file, so I'll take back the eye-roll.
 
-You can throw your jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` since it's easier to parse.
+You can throw your jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` since it's easier to find and read.
 
-Create a file in your root with the following content:
+Create the file `jest.config.js` in your projects root directory with the following content: <span id="transform-statements">&nbsp;</span>
 
 ```js
 // jest.config.js
@@ -193,16 +195,18 @@ Of course, you need to create that (empty) file in the `test/Vue/` or jest will 
 </sidenote>
 
 
-
-## Woha, now we can create tests?
+## Woha, and now we can test?
 
 Almost. Not quite. Now it gets ugly.
 
-First of all note, that `jest` is a running on node, and in node, as of now we can't use our beloved `import ... from ...` statements. That's a problem since all of your single file components will likely use these statements, and it would be nice to write tests the same way.
+First of all note, that `jest` is a running on node, and ,as of now, we can't use our beloved `import` statements yet. 
+All of your single file components will likely use these statements, and it would be nice to write tests the same way. 
 
-That's the reason, libraries like `vue-jest` already come bundled with `bable`, a mighty tool used to transform JavaScript. 
+For that reason, [Babel.js](https://babeljs.io/) can and is most commonly used to transform our tests and components before feeding them to jest.
 
-And... if we use babel, we need another config file to tell what we actually want to transform.
+This is also the reason for the [transform statements](#transform-statements) in our `jest.config.js` file.
+
+You guest it: If we use Babel, we will need *another* config file to tell what and how we actually want to transform.
 
 **opra you get a config file, and you get a conifg file**
 
@@ -217,7 +221,9 @@ The least complicated way to do this is to simply at a `.babelrc` file in your r
 }
 ```
 
-That will work since in normal Laravel installs, `laravel-mix`, the mothership Laravel asset building,  takes care of everything, and it is ignoring this file. If you want to only add transformations for testing, do it like this, even though it is not necessary in most cases.:
+That will work since in normal Laravel installs, `laravel-mix`, the mothership Laravel asset building, uses its own babel config and will ignore this file. 
+
+If you want to be really picky you still could only add the config for testing,  even though it is not necessary in normal Laravel projects:
 
 ```json
 {
@@ -233,20 +239,23 @@ That will work since in normal Laravel installs, `laravel-mix`, the mothership L
 }
 ```
 
-This tells `babel-jest` and `vue-jest`: "Be a good kid and transform all the test code we write before testing. Use the things this preset of `babel` to make it as compatible as possible - and please just work".
+Both configs tell `babel-jest` and `vue-jest`: "Be a good kid, use the things in this preset of `babel` to make it as compatible as possible - and please just work".
 
-I'll leave it at that, we would actually only need a few select plugins and not a whole preset, but this post is nerdy enough.
+I'll leave it at that, we would actually only need a few selected plugins from the `preset-env` preset, but this post is nerdy enough.
 
-## Just oooone more thing
+## Just one more thing
 
-We are almost there I promise. The last problem we have to solve is that newer version of `jest` as well as `laravel-mix` use a newer version of `babel` that is incopatbile with `vue-jest`. I'll make it short, there is a plugin for that, called `bable-bridge` described in the `vue-jest` **link**docs.
+We are almost there I promise. The last problem we have to solve is that newer version of `jest` as well as `laravel-mix` use a newer version of `babel` that is incompatible with `vue-jest`. 
 
+I'll make it short, there is another library for that, called `bable-bridge`. See the [vue-jest docs](https://github.com/vuejs/vue-jest#usage-with-babel-7) for more information.
+
+Do it:
     
 ```bash
 npm install --save-dev babel-core@bridge
 ```
 
-Believe it or not, we can **finally** write our first test.
+Believe it or not, now we can **finally** write our first test. That was... *easy* right?
 
 **vue needs babel need jest needs babel bridge needs babel config image**
 
@@ -263,15 +272,15 @@ Common problems are:
 
 I plan on writing a post about mitigating some of these problems, but for this post a simple component should be enough. After all, the topic is the test *setup*. Just keep in mind that there are still roadblocks ahead.
 
-In your `resources/js/` folder create the following file:
+In your `resources/js/` folder create a `Counter.vue` file:
 
-```js
+```vue
 // resources/js/Counter.vue
 <template>
     <div>
         <h1>Count: {{ counter }}</h1>
 
-        <button @click="counter++" jest="increment-button">+1</button>
+        <button @click="counter++">+1</button>
     </div>
 </template>
 
@@ -301,7 +310,7 @@ describe('Counter.vue', () => {
 
         expect(wrapper.vm.counter).toBe(0);
 
-        wrapper.find('[jest="increment-button"]').trigger('click')
+        wrapper.find('button').trigger('click')
 
         expect(wrapper.vm.counter).toBe(1);
     })
@@ -327,9 +336,11 @@ To make it a little simpler add a script to your `package.json` file
 }
 ```
 
+Tadaaa, we made it through :)
+
 ## Still having problems?
 
-In almost all of my projects and for the "beta testers" I annoyed with this tutorial (**toto insert people, dajo, furkan, martin**) It did make the setup quite easy. 
+In almost all of my projects and for the colleagues I annoyed with testing this tutorial there were no problems. 
 
 If you still experience errors, here are a few options:
 
@@ -342,7 +353,7 @@ If you still experience errors, here are a few options:
 
 This post shows that there is a lot involved in simply getting *started* with Vue.js tests in your Laravel App.
 
-Even though there are still many roadblocks from here, this setup might help some folks to get started.
+Even though there are still many roadblocks from here, I hope this post will save some people time.
 
 So long, Cherrio 👋
 Simon
