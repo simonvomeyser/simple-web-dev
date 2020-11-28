@@ -9,7 +9,7 @@
 
     <title>@hasSection('title')@yield('title')@else{{'Simple Web Dev - Just a blog about web development'}}@endif</title>
 
-    <meta name="description" content="@hasSection('meta_description')@yield('meta_description')@else{{'This site is a small diary of the things I learn while on this intimidating journey through web development land'}}@endif">
+    <meta name="description" content="@hasSection('meta_description')@yield('meta_description')@else{{'A small diary of the things I learn on this journey in web development land.'}}@endif">
 
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
 
