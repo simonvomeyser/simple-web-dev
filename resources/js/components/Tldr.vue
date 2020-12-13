@@ -43,16 +43,19 @@ export default {
     },
     mounted() {
         this.$root.$on('tldr', () => {
-            this.openUp();
+            this.open = true;
         });
+
+        if(window.location.hash === '#tldr') {
+            this.open = true;
+        }
+
         this.handleDebouncedScroll = debounce(this.handleScroll, 100);
         window.addEventListener('scroll', this.handleDebouncedScroll);
         window.addEventListener('keydown', this.handleKeydown);
+
     },
     methods: {
-        openUp() {
-            this.open = true;
-        },
         handleScroll() {
             this.showInfo = (window.scrollY > 50 && window.scrollY < 1000 );
         },
