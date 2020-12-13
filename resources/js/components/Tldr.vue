@@ -3,8 +3,12 @@
         <div class="tldr__info">
             <div class="tldr-info">
                 <div class="tldr-info__heading">In a hurry?</div>
-                <div class="tldr-info__copy">This post has a short summary!</div>
-                <button @click="openUp" class="tldr-info__button">TLDR</button>
+                <div class="tldr-info__copy">This post <br> has a short summary!</div>
+                <div class="tldr-info__button">
+                    <button class="button button--understatement">
+                        TLDR
+                    </button>
+                </div>
             </div>
         </div>
         <div class="tldr__content" id="tldr" v-show="open">

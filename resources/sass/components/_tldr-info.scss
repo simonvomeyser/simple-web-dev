@@ -1,0 +1,12 @@
+.tldr-info {
+    @include e(heading) {
+        color: $neutral-450;
+        font-size: 20px;
+    }
+    @include e(copy) {
+        margin-bottom: .5rem;
+        font-size: 14px;
+    }
+    @include e(button) {
+    }
+}
