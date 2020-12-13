@@ -1,6 +1,6 @@
 <template>
     <div class="tldr" data-close>
-        <div class="tldr__info" :class="{'tldr__info--shown' : showInfo}">
+        <div class="tldr__info" :class="{'tldr__info--shown' : showInfo && !open}">
             <div class="tldr-info">
                 <div class="tldr-info__heading">In a hurry?</div>
                 <div class="tldr-info__copy">This post <br> has a short summary!</div>
