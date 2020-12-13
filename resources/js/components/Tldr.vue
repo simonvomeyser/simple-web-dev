@@ -11,6 +11,7 @@
                 </div>
             </div>
         </div>
+        <transition name="modal">
         <div class="tldr__modal" v-show="open">
             <div class="tldr-modal">
                 <div class="tldr-modal__content">
@@ -20,6 +21,7 @@
                 </div>
             </div>
         </div>
+        </transition>
     </div>
 </template>
 

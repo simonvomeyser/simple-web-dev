@@ -21,3 +21,13 @@
         }
     }
 }
+
+
+.modal-enter-active, .modal-leave-active {
+    transition: all .5s;
+}
+
+.modal-enter, .modal-leave-to {
+    opacity: 0;
+    top: -1rem;
+}

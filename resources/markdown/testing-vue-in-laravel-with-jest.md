@@ -17,44 +17,6 @@ list_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1605362168/testing-vue/header_small.png
 ---
 
-<tldr> 
-
-In a hurry? Just do this and try your luck! 🤞
-
-```bash
-
-npm install -—save-dev jest vue-jest @vue/test-utils babel-core@bridge
-
-npx vue-tests-laravel-setup
-
-```
-
-Now you can run your tests by 
-
-```bash
-
-node_modules/.bin/jest
-
-```
-
-Happy testing :)
-
-<sidenote heading="Problems? Use specific versions!">
-
-You can try to install the specific versions of the packages we need, these are the following:
-
-```bash
-npm i @vue/test-utils@^1.1.1 babel-core@^7.0.0-bridge.0 jest@^26.6.3 vue-jest@^3.0.7
-```
-
-This should work, because it only updates patch and minor version which *should* not contain any breaking changes, and these were the versions I used.
-
-Keep in mind, that you will need `vue` and `vue-template-compiler` for Vue 2. 
-    
-</sidenote>
-
-</tldr>
-
 Testing Laravel is an outright joy, but simply *setting up* tests for Vue.js is still a dangerous fight with the NODE dragon.
 
 But what can we do? Is the only option to Google-deep-dive and assemble your own Frankenstein's Assertion Webpack Babel Monster&trade;? 
@@ -355,5 +317,43 @@ Even though there are still many roadblocks from here, I hope this post will sav
 So long, Cherrio 👋 <br> Simon
 
 
+
+<tldr> 
+
+In a hurry? Just do this and try your luck! 🤞
+
+```bash
+
+npm install -—save-dev jest vue-jest @vue/test-utils babel-core@bridge
+
+npx vue-tests-laravel-setup
+
+```
+
+Now you can run your tests by 
+
+```bash
+
+node_modules/.bin/jest
+
+```
+
+Happy testing :)
+
+<sidenote heading="Problems? Use specific versions!">
+
+You can try to install the specific versions of the packages we need, these are the following:
+
+```bash
+npm i @vue/test-utils@^1.1.1 babel-core@^7.0.0-bridge.0 jest@^26.6.3 vue-jest@^3.0.7
+```
+
+This should work, because it only updates patch and minor version which *should* not contain any breaking changes, and these were the versions I used.
+
+Keep in mind, that you will need `vue` and `vue-template-compiler` for Vue 2. 
+    
+</sidenote>
+
+</tldr>
 
 
