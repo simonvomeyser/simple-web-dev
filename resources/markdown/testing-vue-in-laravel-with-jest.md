@@ -55,7 +55,7 @@ Keep in mind, that you will need `vue` and `vue-template-compiler` for Vue 2.
 
 </tldr>
 
-Testing Laravel is an outright joy, but simply *setting up* tests for Vue.js is still a dangerous fight with the NPM dragon.
+Testing Laravel is an outright joy, but simply *setting up* tests for Vue.js is still a dangerous fight with the NODE dragon.
 
 But what can we do? Is the only option to Google-deep-dive and assemble your own Frankenstein's Assertion Webpack Babel Monster&trade;? 
 
@@ -78,7 +78,7 @@ There are a million ways you could have configured Laravel and Vue, so trying to
 
 ### Laravel
 
-This tutorial assumes a rather untouched frontend setup, so you most likely use Laravel Mix with a few configurations. If you toyed a lot with your build setup or replaced Laravel Mix entirely, there might by a few bombs waiting to go off.
+This tutorial assumes a rather conventional frontend setup, so you most likely use Laravel Mix with a few configurations. If you toyed a lot with your build setup or replaced Laravel Mix entirely, there might by a few bombs waiting to go off.
 
 I tested this with most of my projects though, and it worked well going back to Laravel 5.7. with Laravel Mix 2.0.
 
@@ -86,7 +86,7 @@ I tested this with most of my projects though, and it worked well going back to 
 
 This tutorial deals with [single file components](https://vuejs.org/v2/guide/single-file-components.html) and is meant **only for Vue 2.x currently**.
 
-As soon as `laravel-mix` in version 6.x is out of beta I will have a look at the setup for Vue 3 and hopefully make it work :) 
+As soon as Laravel Mix in version 6.x is out of beta I will have a look at the setup for Vue 3 and hopefully make it work :) 
 
 All set? Okay, let's start:
  
@@ -94,11 +94,11 @@ All set? Okay, let's start:
 
 Okay, that's a joke with a grain of truth. Most tutorials just throw a lot of `npm install` statements at you - and there is good reason for it. 
 
-Explaining what all packages in a tutorial do is cumbersome, and most people don't have the time to read an in depth explanation anyways.
+Explaining what all these packages do is cumbersome, and most readers don't have the time for an in depth explanation anyways. I will try to explain a little more than normal here.
  
 > In a hurry? Read the <tldr-link>summary</tldr-link>
 
-Still here? Okay, let's go on, it will get quite nerdy from here!
+Still reading? Okay, let's get into the weeds, it might get quite nerdy from here!
 
 ![GIF of Christina Aguilera dancing to "Let's get nerdy"](https://res.cloudinary.com/simonvomeyser/image/upload/v1606575661/testing-vue/lets-get-nerdy.gif)
 
@@ -137,7 +137,7 @@ So we have a testrunner and Vue. It would be awesome if we could simply write ou
 
 First we need a config file for `jest` itself. Granted, `PHPUnit` also has a really spiky config file, so I'll take back the eye-roll.
 
-You can throw your Jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` since it's easier to find and read.
+You can throw your Jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` since it's to read.
 
 Create the file `jest.config.js` in your projects root directory with the following content: <span id="transform-statements">&nbsp;</span>
 
@@ -165,7 +165,7 @@ module.exports = {
 
 I would also recommend creating a `setup.js` file where you can later do preparations for tests.
 
-My (**link**)npm-package creates that file by default, but I will skip it here though: It's not mandatory and this article is long enough.
+My [npm-package](https://github.com/simonvomeyser/vue-tests-laravel-setup) creates that file by default, but I will skip it here though: It's not mandatory and this article is long enough.
 
 <sidenote heading="Hey, but I want a setup.js file!">
 
@@ -194,7 +194,7 @@ First of all note, that `jest` is a running on Node, and, as of now, we can't us
 
 All of your single file components will likely use these statements, and it would be nice to write tests the same way. 
 
-For that reason [Babel.js](https://babeljs.io/) is most commonly used to transform our tests and components before feeding them to Jest.
+For that reason [Babel.js](https://babeljs.io/) can be used to transform our tests and components before feeding them to Jest.
 
 This is also the reason for the [transform statements](#transform-statements) in our `jest.config.js` file.
 
@@ -207,17 +207,19 @@ You guest it: If we use Babel, we will need *another* config file to tell what a
 
 The least complicated way to do this is to simply at a `.babelrc` file in your repo like this:
 
-```json
+```js
+// .babelrc
 {
   "presets": ["@babel/preset-env"]
 }
 ```
 
-That will work since in normal Laravel installs, `laravel-mix`, the mothership Laravel asset building, uses its own babel config and will ignore this file. 
+That will work since in normal Laravel installs, `laravel-mix`, the mothership Laravel asset building, uses its own internal Babel config and will ignore this file. 
 
-If you want to be really picky you still could only add the config for testing,  even though it is not necessary in normal Laravel projects:
+If you want to be really picky you still could only add the config for testing, even though it is not necessary in normal Laravel projects and looks quiet confusing:
 
-```json
+```js
+// .babelrc
 {
     "env": {
         "test": {
@@ -231,13 +233,13 @@ If you want to be really picky you still could only add the config for testing, 
 }
 ```
 
-Both configs tell `babel-jest` and `vue-jest`: "Be a good kid, use the things in this preset of `babel` to make it as compatible as possible - and please just work".
+Both configs tell `babel-jest` and `vue-jest`: "Please, just use the things in this preset of `babel` to make it as compatible as possible - and just make it work".
 
 I'll leave it at that, we would actually only need a few selected plugins from the `preset-env` preset, but this post is nerdy enough.
 
 ## Just one more thing
 
-We are almost there I promise. The last problem we have to solve is that newer version of Jest as well as Laravel Mix use a newer version of Babel that is incompatible with `vue-jest`. 
+We are almost there I promise. The last problem we have to solve is that newer version of Jest as well as Laravel Mix use a newer version of Babel that is incompatible with `vue-jest`. 🤯
 
 I'll make it short, there is another library to make them compatible called `bable-bridge`. 
 
@@ -249,19 +251,19 @@ Install it via
 npm install --save-dev babel-core@bridge
 ```
 
-Believe it or not, now we can **finally** write our first test. That was... *easy* right?
+Believe it or not, now we can **finally** write our first test. That was... *smooth sailing* right?
 
 ![Confusing street signs with all the things required for vue testing](https://res.cloudinary.com/simonvomeyser/image/upload/v1607869583/testing-vue/street-signs.png)
 
 
-## The first test, keep it simple
+## The first test, better keep it simple
 
-For the first test I would recommend you keep it simple. There are a lot of other problems that can happen even though `jest` now finally knows how to handle your tests and vue files.
+For the first test I would recommend you keep it simple. There are a lot of other problems that can happen even though Jest now finally knows how to handle your tests and Vue files.
 
 Common problems are:
 - Using other (global) components in the component under test
 - Plugins
-- Global functions you added like `tans()` or `route()`
+- Global functions you added like `trans()` or `route()`
 - Ajax-Calls made by a component
 - Using a global event emitter
 
@@ -290,7 +292,7 @@ export default {
 </script>
 ```
 
-The typical simple and useless counter component, but good to see, if our setup works.
+The typical useless counter component, but good to see, if our setup works.
  
 Next step, create your test in `tests/js/` as `Counter.spec.js`
 
@@ -329,7 +331,7 @@ To make it a little simpler add a script to your `package.json` file
 }
 ```
 
-Tadaaa, we made it through :)
+Believe it our not, we made it through :)
 
 ## Still having problems?
 
@@ -346,7 +348,7 @@ Let's make vue testing more approachable together!
 
 ## Wrap it up 🌯
 
-This post shows that there is a lot involved in simply getting *started* with Vue.js tests in your Laravel App.
+This post shows that there is a lot involved in simply getting *started* with Vue.js tests in your Laravel application.
 
 Even though there are still many roadblocks from here, I hope this post will save some people time.
 
