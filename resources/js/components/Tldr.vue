@@ -1,11 +1,14 @@
 <template>
     <div class="tldr">
-
-        <div class="tldr__trigger" v-if="!hideButton">
-            <button class="button button--secondary button--well-fed" @click="openUp">TL;DR?</button>
+        <div class="tldr__info">
+            <div class="tldr-info">
+                <div class="tldr-info__heading">In a hurry?</div>
+                <div class="tldr-info__copy">This post has a short summary!</div>
+                <button @click="openUp" class="tldr-info__button">TLDR</button>
+            </div>
         </div>
         <div class="tldr__content" id="tldr" v-show="open">
-            <h2>TL; DR</h2>
+            <h2>Summary</h2>
             <slot></slot>
         </div>
     </div>

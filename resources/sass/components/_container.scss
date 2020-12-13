@@ -1,10 +1,10 @@
 .container {
-  max-width: 1400px;
+  max-width: $container-width;
   margin: 0 auto;
   padding: 0 2rem;
-  
+
   @include m(narrow) {
-    max-width: 740px;
+    max-width: $container-narrow-width;
   }
 }
 
