@@ -1,6 +1,6 @@
 ---
 title: Testing Vue in Laravel with Jest - let's make it a little more easy
-release_date: Today
+release_date: 18.12.2020
 slug: vue-testing-in-laravel
 excerpt: >-
 
