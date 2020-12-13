@@ -10,8 +10,10 @@
     }
 }
 
-@include breakpoint('mobile') {
-    .container {
-        padding: 0 1rem;
+@include breakpoint('tablet-down') {
+    .tldr {
+        @include e(info) {
+            display: none;
+        }
     }
 }
