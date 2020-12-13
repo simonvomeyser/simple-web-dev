@@ -1,6 +1,6 @@
 <template>
     <div class="tldr">
-        <div class="tldr__info">
+        <div class="tldr__info" :class="{'tldr__info--shown' : showInfo}">
             <div class="tldr-info">
                 <div class="tldr-info__heading">In a hurry?</div>
                 <div class="tldr-info__copy">This post <br> has a short summary!</div>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import debounce from 'lodash/debounce';
 
 export default {
     props: {
@@ -29,21 +30,26 @@ export default {
     data() {
         return {
             open: false,
-            hideButton: false
+            hideButton: false,
+            showInfo: false
         }
     },
     mounted() {
         this.$root.$on('tldr', () => {
             this.openUp();
         });
+        this.handleDebouncedScroll = debounce(this.handleScroll, 100);
+        window.addEventListener('scroll', this.handleDebouncedScroll);
     },
     methods: {
         openUp() {
             this.open = true;
-            setTimeout(() => {
-                this.hideButton = true;
-                location.hash = "tldr";
-            }, 250)
+        },
+        handleScroll() {
+            this.showInfo = (window.scrollY > 50 && window.scrollY < 1000 );
+        },
+        beforeDestroy() {
+            window.removeEventListener('scroll', this.handleDebouncedScroll);
         }
     }
 };
