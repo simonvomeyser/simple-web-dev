@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://simonvomeyser.de">
+  <a href="https://simple-web.dev">
     <img alt="Screenshot of the blog frontpage" src="https://github.com/simonvomeyser/simple-web-dev/blob/master/screenshot.png?raw=true" />
   </a>
 </p>
