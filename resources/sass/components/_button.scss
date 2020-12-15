@@ -13,6 +13,17 @@
 
   @include anim();
 
+  @include m("well-fed") {
+      padding: 10px 16px;
+  }
+
+  @include m("understatement") {
+        background: $white;
+        color: $neutral-400;
+        border: 1px solid $neutral-400;
+      min-width: 100px;
+  }
+
   @include m("full-width") {
     width: 100%;
   }
