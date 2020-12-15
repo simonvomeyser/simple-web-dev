@@ -233,6 +233,8 @@ I plan on writing a post about mitigating some of these problems, but for this p
 
 In your `resources/js/` folder create a `Counter.vue` file:
 
+<div v-pre>
+
 ```js
 // resources/js/Counter.vue
 <template>
@@ -253,6 +255,8 @@ export default {
 }
 </script>
 ```
+
+</div>
 
 The typical useless counter component, but good to see, if our setup works.
  
