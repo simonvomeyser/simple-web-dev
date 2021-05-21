@@ -20,7 +20,7 @@
                     <h1> {{$post->title}} </h1>
                 </div>
                 <div class="post-meta__date">
-                    Written by Simon {{$post->getReadableRelease()}}
+                    Written by Simon vom Eyser {{$post->getReadableRelease()}}
                 </div>
                 <div class="post-meta__tags">
                     @each('includes.tag-pill', $post->tags, 'tag')
