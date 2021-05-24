@@ -1,6 +1,6 @@
 ---
-title: How and why to use Spatie's response cache with Statamic 
-release_date: today
+title: How to use Spatie's response cache with Statamic 
+release_date: 30.05.2021
 slug: use-spatie-response-cache-with-statamic
 excerpt: >-
     Spatie's response cache package speeds up your page quite considerably.
@@ -12,30 +12,30 @@ tags:
   - Statamic
   - CMS
 header_image: >-
-  https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1621870712/response-cache-statamic/header.png
 list_image: >-
-  https://res.cloudinary.com/simonvomeyser/image/upload/v1588611570/dont-use-ftp/dont-use-ftp-list-header-image.png
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1621870712/response-cache-statamic/header.png
 ---
 
-I think [Spatie's response cache package](https://github.com/spatie/laravel-responsecache) should simply be used on all static Laravel pages. Not only does it improve your user's experience, it also takes load of your server and makes Google like you more. 
+I think [Spatie's response cache package](https://github.com/spatie/laravel-responsecache) should simply be used on all Laravel pages. Not only does it improve your user's experience, it also takes load of your server and makes Google like you more. 
 
-When using this package with dynamic content, there is this dreaded, scary thing called *cache invalidation*. The saying goes:
+When using this package with dynamic content, like with my favorite CMS [Statamic](https://statamic.com/) (❤️), there is this dreaded, scary thing called *cache invalidation*. The saying goes:
 
-> Only 2 things in development are hard: Naming things, cache invalidation and off-by-one errors
+> Only 2 things in development are hard: <br> Naming things, cache invalidation and off-by-one errors
 
-Luckily I found a really simple way of using it with my favorite CMS [Statamic](https://statamic.com/) (❤️) . You don't need to manually keep track of changes made.
+Luckily I found a really simple way of using it. You don't need to manually keep track of changes made.
 
 ## Enough Talk
 
 To keep this short for change, let me get right down to it:
 
-Of course, you need to have an working version of [Statamic installed](https://statamic.dev/installation). In your project, also install the response cache package by running
+Of course, you need to have an working version of [Statamic installed](https://statamic.dev/installation). In your project, also install the [response cache package](https://github.com/spatie/laravel-responsecache#installation) by running
 
 ```bash 
 composer require spatie/laravel-responsecache
 ```
 
-After that, you need to add the middleware to your web group to apply the cache to all your routes. See [the docs](https://github.com/spatie/laravel-responsecache) for more information.
+After that, you need to add the middleware to your web group to apply the cache to all your routes. See [the docs](https://github.com/spatie/laravel-responsecache) for more information and options.
 
 ```php
 // app/Http/Kernel.php
@@ -50,20 +50,19 @@ protected $middlewareGroups = [
 
 ```
 
-Now here is the kicker: To clear the cache everytime something is updated in the Statamic backend, you need to create a new [Even Subscriber](https://laravel.com/docs/master/events#event-subscribers) that clears the cache like so. You may place the file wherever you want. 
+Now here is the kicker: To clear the cache everytime something is updated in the Statamic backend, you need to create a new [Even Subscriber](https://laravel.com/docs/master/events#event-subscribers) that clears the cache after that. Create and place the following file wherever you want:
 
 ```php
 // app/Subscribers/ResponseCacheStatamicSubscriber
 
 <?php
 
-
 namespace App\Subscribers;
 
 use Spatie\ResponseCache\Facades\ResponseCache;
 use Statamic\Events\Concerns\ListensForContentEvents;
 
-class ResponseCacheBuster
+class ResponseCacheStatamicSubscriber
 {
     use ListensForContentEvents;
 
@@ -100,9 +99,26 @@ The whole *magic* here is happening in the trait `Statamic\Events\Concerns\Liste
 
 Then simply add this subscriber to the `EventServiceProvider` and you are already done!
 
-go on here
+```php
+//App\Providers\AppServiceProvider
 
 
+use App\Subscribers\ResponseCacheBuster;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Statamic\Git\Subscriber;
+
+class EventServiceProvider extends ServiceProvider
+{
+    // ...
+
+    protected $subscribe = [
+        ResponseCacheStatamicSubscriber::class
+    ];
+
+    // ...
+}
+
+```
 
 ## During Development
 
@@ -117,11 +133,13 @@ RESPONSE_CACHE_ENABLED=false
 
 ## Why though?
 
-You may ask "why the hassle, Statamic already comes with a pretty good cache". While this might be true and I am by no means an expert in the awesome work the Statamic Team is doing I found Spatie's response cache making my pages much faster.
+You may ask "why the hassle, Statamic already comes with a pretty good cache". You are right, and in essence this approach should yield quite similar results like [Application Driver](https://statamic.dev/static-caching#application-driver) approach of the build in statamic cache. 
 
-Especially on landing pages that iterate through a lot of collections I found a quite remarkable speed improvement with this approach. Let me know your experiences, maybe on Twitter <3
+I found a little speed improvement in this approach though, but this could be because I mostly create Statamic sites with Blade views instead of using Antlers, the Statamic templating engine.
 
-So long
+If you use this or not, I just wanted to share what I learned 👍
+
+Best!
 Simon
 
 
