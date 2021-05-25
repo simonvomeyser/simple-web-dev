@@ -47,7 +47,7 @@
             <div class="header__inner container">
 
                 <a class="header__logo" href="{{route('index')}}">
-                    <img src="{{asset('images/logo.svg')}}" alt="The page's logo, looking all fancy and stuff">
+                    <img src="{{asset('images/logo.svg')}}" width="380" height="181" alt="The page's logo, looking all fancy and stuff">
                 </a>
                 <nav class="header__nav">
                     <ul>
