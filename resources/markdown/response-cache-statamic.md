@@ -1,6 +1,6 @@
 ---
 title: How to use Spatie's response cache with Statamic 
-release_date: today
+release_date: 30.05.2021
 slug: use-spatie-response-cache-with-statamic
 excerpt: >-
     Spatie's response cache package speeds up your page quite considerably.
