@@ -99,7 +99,7 @@ So we have a testrunner and Vue. It would be awesome if we could simply write ou
 
 First we need a config file for `jest` itself. Granted, `PHPUnit` also has a really spiky config file, so I'll take back the eye-roll.
 
-You can throw your Jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` since it's to read.
+You can throw your Jest config into a key in your `package.json`, but I prefer to create a `jest.config.js` since it's easier to read.
 
 Create the file `jest.config.js` in your projects root directory with the following content: <span id="transform-statements">&nbsp;</span>
 
@@ -160,7 +160,7 @@ For that reason [Babel.js](https://babeljs.io/) can be used to transform our tes
 
 This is also the reason for the [transform statements](#transform-statements) in our `jest.config.js` file.
 
-You guest it: If we use Babel, we will need *another* config file to tell what and how we actually want to do transformations.
+You guessed it: If we use Babel, we will need *another* config file to tell what and how we actually want to do transformations.
 
 ![Oprah screaming "you get a config file, and you get one"](https://res.cloudinary.com/simonvomeyser/image/upload/v1606575288/testing-vue/oprah.png)
 
