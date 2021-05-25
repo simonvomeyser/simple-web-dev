@@ -15,6 +15,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "simonvomeyser/commonmark-ext-lazy-image": "^1.0",
+        "spatie/laravel-responsecache": "^6.6",
         "spatie/yaml-front-matter": "^2.0"
     },
     "require-dev": {
