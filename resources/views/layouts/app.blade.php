@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Sanchez" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Sanchez&display=swap" rel="stylesheet">
 
     <title>@hasSection('title')@yield('title')@else{{'Simple Web Dev - Just a blog about web development'}}@endif</title>
 
