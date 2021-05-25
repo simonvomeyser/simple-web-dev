@@ -1,6 +1,6 @@
 ---
 title: How to use Spatie's response cache with Statamic 
-release_date: 30.05.2021
+release_date: today
 slug: use-spatie-response-cache-with-statamic
 excerpt: >-
     Spatie's response cache package speeds up your page quite considerably.
@@ -16,9 +16,9 @@ list_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1621870712/response-cache-statamic/header.png
 ---
 
-I think [Spatie's response cache package](https://github.com/spatie/laravel-responsecache) should be used on more pages. The speed improvement is impressive, and even on highly dynamic pages, data is read more often than it is written and changed - a lot of room for improvement.
+I think [Spatie's response cache package](https://github.com/spatie/laravel-responsecache) should be used on more pages. The speed improvement is impressive, and even on highly dynamic pages, data is read more often than it is written or changed - a lot of room for improvement.
 
-On static pages, the package is a real no-brainer, but when using it with dynamic content, like with my favorite CMS [Statamic](https://statamic.com/) (❤️), there is this dreaded, scary thing called *cache invalidation*. The saying goes:
+On static pages, the package should be a real no-brainer. When using it with dynamic content, like with my favorite CMS [Statamic](https://statamic.com/) (❤️), there is this dreaded, scary thing called *cache invalidation*. When and how should we clear the cache when content changes? The saying goes:
 
 > Only 2 things in development are hard: <br> Naming things, cache invalidation and off-by-one errors
 
@@ -28,7 +28,7 @@ Luckily I found a really simple way of integrating it!
 
 To keep this post short for change, let me get right to it:
 
-Of course, you need to have an working version of [Statamic installed](https://statamic.dev/installation). In your project, also install the [response cache package](https://github.com/spatie/laravel-responsecache#installation) by running
+Of course, you need to have a working version of [Statamic installed](https://statamic.dev/installation). In your project, also install the [response cache package](https://github.com/spatie/laravel-responsecache#installation) by running
 
 ```bash 
 composer require spatie/laravel-responsecache
@@ -49,7 +49,7 @@ protected $middlewareGroups = [
 
 ```
 
-Now here is the kicker: To clear the cache everytime something is updated in the Statamic backend, you need to create a new [Event Subscriber](https://laravel.com/docs/master/events#event-subscribers) that clears the cache after a "Statamic Backend Event". Create and place the following file wherever you want:
+Now here is the kicker: To clear the cache everytime something is updated in the Statamic backend, you need to create a new [Event Subscriber](https://laravel.com/docs/master/events#event-subscribers) that clears the cache after a "something happened in Statamic" event. Create and place the following file wherever you want:
 
 ```php
 // app/Subscribers/ResponseCacheStatamicSubscriber
