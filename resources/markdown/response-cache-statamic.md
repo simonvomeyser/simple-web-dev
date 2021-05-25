@@ -132,7 +132,7 @@ RESPONSE_CACHE_ENABLED=false
 
 ## Why though?
 
-You may ask "why the hassle, Statamic already comes with a pretty good cache". You are right, and in essence this approach should yield quite similar results like the [Application Driver](https://statamic.dev/static-caching#application-driver) approach of the build in statamic cache. 
+You may ask "why the hassle, Statamic already comes with a pretty good cache". You are right, and in essence this approach should yield quite similar results like the [Application Driver](https://statamic.dev/static-caching#application-driver) approach of the build in Statamic cache. 
 
 I found a little speed improvement using Spatie's library though, but this could be because I mostly create Statamic sites [with Blade](https://statamic.com/addons/silentz/blade) instead of using Antlers, the Statamic templating engine.
 
