@@ -9,7 +9,7 @@
             47798 Krefeld<br>
         </p>
         <p>
-            Phone: +49177 4100666<br>
+            Phone: +49157 33915334<br>
             Email: <a href="mailto:simon.vom.eyser@gmail.com">simon.vom.eyser@gmail.com</a></p>
         <h2>Liability for links</h2>
         <p>

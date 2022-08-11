@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Sanchez&display=swap" rel="stylesheet">
 
     <title>@hasSection('title')@yield('title')@else{{'Simple Web Dev - Just a blog about web development'}}@endif</title>
 
@@ -39,6 +38,7 @@
     <meta name="msapplication-TileImage" content="{{ URL::to('favicon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#8798FD">
 
+    <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Sanchez&display=swap">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
             <div class="header__inner container">
 
                 <a class="header__logo" href="{{route('index')}}">
-                    <img src="{{asset('images/logo.svg')}}" alt="The page's logo, looking all fancy and stuff">
+                    <img src="{{asset('images/logo.svg')}}" width="380" height="181" alt="The page's logo, looking all fancy and stuff">
                 </a>
                 <nav class="header__nav">
                     <ul>

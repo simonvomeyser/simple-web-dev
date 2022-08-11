@@ -43,7 +43,7 @@
             The party responsible for processing data on this website is:</p>
         <p>
             Simon vom Eyser <br/>
-            Phone: +49 1774100666 <br>
+            Phone: +49157 33915334 <br>
             Email: <a href="mailto:simon.vom.eyser@gmail.com">simon.vom.eyser@gmail.com</a>
         </p>
         <p>The responsible party is the natural or legal person who alone or jointly with others decides on the purposes and
