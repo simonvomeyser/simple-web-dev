@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Resources\MarkdownPostApiResource;
 use App\Markdown\MarkdownPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,5 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/recent-posts', function() {
-  return  MarkdownPost::released()->take(2);
+  return  MarkdownPostApiResource::collection(MarkdownPost::released()->take(2));
 });
