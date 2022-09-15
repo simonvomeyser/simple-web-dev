@@ -3,19 +3,21 @@
 namespace App\Markdown;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
-use Illuminate\Support\HtmlString;
-use League\CommonMark\Environment;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
+use League\CommonMark\MarkdownConverter;
 use SimonVomEyser\CommonMarkExtension\LazyImageExtension;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
-use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 
 class MarkdownPost
 {
@@ -79,6 +81,7 @@ class MarkdownPost
             $this->excerpt = '';
         }
     }
+
     public function isReleased()
     {
         return $this->release_date && $this->release_date->isPast();
@@ -97,33 +100,33 @@ class MarkdownPost
 
     protected function parseMarkdownToHTML(string $markdown)
     {
-        $environment = Environment::createCommonMarkEnvironment();
-
-        $environment->addExtension(new ExternalLinkExtension());
-        $environment->addExtension(new HeadingPermalinkExtension());
-        $environment->addExtension(new LazyImageExtension());
-
-        $converter = new CommonMarkConverter([
+        $environment = new Environment([
+            'lazy_image' => [
+                'strip_src' => true,
+                'html_class' => 'lozad',
+                'data_attribute' => 'src',
+            ],
             'allow_unsafe_links' => false,
             'external_link' => [
                 'internal_hosts' => config('app.url'),
                 'open_in_new_window' => true,
                 'html_class' => 'external-link',
             ],
-            'lazy_image' => [
-                'strip_src' => true,
-                'html_class' => 'lozad',
-                'data_attribute' => 'src',
-            ]
-        ], $environment);
+        ]);
+        $environment->addExtension(new CommonMarkCoreExtension());
+        $environment->addExtension(new ExternalLinkExtension());
+        $environment->addExtension(new HeadingPermalinkExtension());
+        $environment->addExtension(new LazyImageExtension());
 
-        return new HtmlString($converter->convertToHtml($markdown));
+        $converter = new MarkdownConverter($environment);
+
+        return new HtmlString($converter->convert($markdown));
     }
 
     /**
-     * @todo Find a better implemention, this only filters out current
      * @return Collection
      * @throws InvalidArgumentException
+     * @todo Find a better implemention, this only filters out current
      */
     public function similar()
     {
@@ -147,7 +150,7 @@ class MarkdownPost
 
     public static function all()
     {
-        if (env('APP_ENV') !== 'local' && Cache::has('markdownPosts')) {
+        if (app()->environment() !== 'local' && Cache::has('markdownPosts')) {
             return Cache::get('markdownPosts');
         }
 
@@ -185,7 +188,7 @@ class MarkdownPost
     {
         return static::all()->filter(function ($post) use ($slug) {
             return $post->slug === $slug;
-        })->first();;
+        })->first();
     }
 
     public static function getFolderPath(): string
