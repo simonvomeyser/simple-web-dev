@@ -23,6 +23,8 @@ I use Laravel Envoy in some projects (including currently in this [open sourced 
 
 I recently was happy to notice, that you can use all laravel helper functions inside Laravel Envoy scripts – but sadly, the `env()` command was not working
 
+<div v-pre>
+
 ```php
 
 // this outputs "HELLO WORLD" on the server, that's cool! 🙂
@@ -37,9 +39,13 @@ I recently was happy to notice, that you can use all laravel helper functions in
 
 ```
 
+</div>
+
 I guess that is the case because Laravel Envoy is set to be more of a framework-agnostic SSH solution for PHP and the `LoadEnvironmentVariables` class is deeply wired into the kernel of a Laravel application.
 
 Luckily, you can load the `.env` content in the `@setup` method like described in the docs of underlying library [phpdotenv](https://github.com/vlucas/phpdotenv)
+
+<div v-pre>
 
 ```php
 @setup
@@ -48,9 +54,13 @@ Luckily, you can load the `.env` content in the `@setup` method like described i
 @endsetup
 ```
 
+</div>
+
 You now are able to create a deploy script that uses Variables from your `.env` file via the `env()` helper!
 
 Keep in mind, that inside the `@task ... @endtask` block we have to use Blade-style syntax to use variables, when defining the `@servers` we use pure PHP:
+
+<div v-pre>
 
 ```php
 @servers(['web' => [env('DEPLOY_USER') . '@' . env('DEPLOY_HOST')]])
@@ -65,6 +75,8 @@ Keep in mind, that inside the `@task ... @endtask` block we have to use Blade-st
     php artisan config:clear
 @endtask
 ```
+
+</div>
 
 We are now able to hide away either sensitive or irrelevant information and put it into our `.env` 🎉
 
