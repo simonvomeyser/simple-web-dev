@@ -26,6 +26,7 @@ I recently was happy to notice, that you can use all laravel helper functions in
 <div v-pre>
 
 ```php
+// ...
 
 // this outputs "HELLO WORLD" on the server, that's cool! 🙂
 @task('deploy', ['on' => 'web'])
@@ -52,6 +53,8 @@ Luckily, you can load the `.env` content in the `@setup` method like described i
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 @endsetup
+
+// ...
 ```
 
 </div>
@@ -63,6 +66,11 @@ Keep in mind, that inside the `@task ... @endtask` block we have to use Blade-st
 <div v-pre>
 
 ```php
+@setup
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+@endsetup
+
 @servers(['web' => [env('DEPLOY_USER') . '@' . env('DEPLOY_HOST')]])
 
 @task('deploy', ['on' => 'web'])
