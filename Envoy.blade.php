@@ -1,5 +1,4 @@
 @setup
-    require __DIR__.'/vendor/autoload.php';
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 @endsetup
@@ -12,7 +11,7 @@
     git pull
     npm install
     npm run prod
-    php81 /usr/bin/composer install
+    php81 /usr/bin/composer install --no-dev
     php81 artisan cache:clear
     php81 artisan config:clear
     php81 artisan view:clear
