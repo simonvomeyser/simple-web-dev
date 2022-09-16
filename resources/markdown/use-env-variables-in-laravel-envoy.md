@@ -17,6 +17,7 @@ header_image: >-
 list_image: >-
   https://via.placeholder.com/1024x768
 ---
+<small>Tested on Laravel `9.3` and Laravel Envoy `2.8`</small>
 
 I use Laravel Envoy in some projects (including currently in this [open sourced blog](https://github.com/simonvomeyser/simple-web-dev)) to deploy projects directly from the commandline. While some of these projects should use ci-pipeline (and maybe will) I also like the simplicity of changing something, running the test locally and then deploying it – all on my machine. 
 
