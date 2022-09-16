@@ -28,7 +28,10 @@
             </div>
         </div>
         <div class="post__image">
-            <img src="{{$post->header_image}}" alt="Header image of {{$post->title}}">
+            <img src="{{$post->header_image}}"
+                 width="658"
+                 height="366"
+                 alt="Header image of {{$post->title}}">
         </div>
         <div class="post__content rich-text">
             {{$post->content}}
