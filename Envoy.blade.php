@@ -8,6 +8,7 @@
 @task('deploy', ['on' => 'web'])
     source {{ env('DEPLOY_LOCATION') }}/../.bashrc
     cd {{ env('DEPLOY_LOCATION') }}
+    git checkout .
     git pull
     npm install
     npm run prod
