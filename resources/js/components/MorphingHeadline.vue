@@ -1,6 +1,7 @@
 <template>
     <div class="morphing-headline">
-        Just a blog about web dev and <br> <span v-text="item"></span>
+        Just a blog about web dev and <br>
+        <span v-text="item"></span>
     </div>
 </template>
 
@@ -23,20 +24,24 @@ const items = [
 ];
 
 export default {
-  data() {
-    return {
-      item: this.getRandomItem()
-    }
-  },
-  mounted() {
-    setInterval(() => {
-      this.item = this.getRandomItem()
-    }, 5000);
-  },
-  methods: {
-    getRandomItem() {
-      return items[Math.floor(Math.random() * items.length)];
+    data() {
+        return {
+            item: this.getRandomItem(),
+            lastItem: null
+        }
     },
-  }
+    mounted() {
+        setInterval(() => {
+            this.lastItem = this.item;
+            this.item = this.getRandomItem()
+        }, 1500);
+    },
+    methods: {
+        getRandomItem() {
+            const filteredItems = items.filter(item => item !== this.lastItem)
+                .filter(item => item !== this.lastItem);
+            return filteredItems[Math.floor(Math.random() * filteredItems.length)];
+        },
+    }
 };
 </script>
