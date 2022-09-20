@@ -36,6 +36,27 @@
         <div class="post__content rich-text">
             {{$post->content}}
         </div>
+        <div class="post__author-link" >
+            <div class="author" id="simon">
+                <div class="author__head">
+                    <div class="author__image">
+                        <img src="{{asset('images/simon.png')}}" alt="Avatar of Simon">
+                    </div>
+                    <div class="author__meta">
+                        <div class="author__name">Hey, want to connect?</div>
+                        <div class="author__text">
+                            I'm Simon, a web nerd from Germany. I like to meet new people, including you! <br> If you have questions, feedback or just want to say hi, feel free to reach out to me
+                            <a href="https://twitter.com/simonvomeyser" target="_blank" rel="noopener noreferrer">on Twitter</a>.
+                        </div>
+                        <a href="https://twitter.com/simonvomeyser" rel="noopener noreferrer" target="_blank"
+                           class="button button--min-width button--secondary">
+                            <img src="{{asset('images/twitter.svg')}}" alt="Link symbol" style="margin-right: .25rem;">
+                            Say hello!
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         @if ($post->similar())
             <div class="post__similar-heading">
                 Read more posts

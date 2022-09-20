@@ -11,6 +11,7 @@
     }
     @include e("image") {
         padding-right: 4rem;
+        flex-shrink: 0;
         img {
             width: 230px;
             height: 230px;
@@ -19,6 +20,13 @@
     @include e("meta") {
         display: flex;
         flex-direction: column;
+    }
+    @include e("text") {
+        margin-bottom: 1rem;
+        a {
+            color: $primary;
+            text-decoration: none;
+        }
     }
     @include e("link") {
         display: block;
@@ -31,6 +39,12 @@
             height: 30px;
             margin-right: .5rem;
         }
+    }
+    @include e("link--border") {
+        display: inline-block !important;
+        padding: .5rem 1rem;
+        border: 1px solid $neutral-400;
+        border-radius: 20px;
     }
     @include e("copy") {
         p + p {

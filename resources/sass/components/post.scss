@@ -1,53 +1,70 @@
 .post {
-  position: relative;
+    position: relative;
 
-  @include e('meta') {
-    margin-bottom: 1rem;
-  }
-  @include e('image') {
-      padding-top: 55%;
-      position: relative;
+    @include e('meta') {
+        margin-bottom: 1rem;
+    }
+    @include e('image') {
+        padding-top: 55%;
+        position: relative;
 
-      img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-      }
-  }
-  @include e('content') {
-    margin-bottom: 1rem;
-  }
-  @include e('similar-heading') {
-    color: $neutral-400;
-    font-weight: 400;
-    margin-top: 2.5em;
-    margin-bottom: -0.25em;
-    font-size: 26px;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  @include e('similar-list') {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  @include e('back') {
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    @include e('content') {
+        margin-bottom: 1rem;
+    }
+    @include e('similar-heading') {
+        color: $neutral-400;
+        font-weight: 400;
+        margin-top: 2.5em;
+        margin-bottom: -0.25em;
+        font-size: 26px;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    @include e('author-link') {
+        border-top: 1px solid $neutral-200;
+        border-bottom: 1px solid $neutral-200;
+        margin: 2rem -3rem;
+        padding-top: 2rem;
+    }
+    @include e('similar-list') {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    @include e('back') {
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-@include breakpoint('mobile') {
-  .post {
-    @include e('similar-list') {
-      grid-template-columns: 1fr;
-      grid-gap: 1rem;
+@include breakpoint('tablet-down') {
+    .post {
+        @include e('author-link') {
+            margin: 2rem 0;
+            padding-top: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
     }
-  }
+}
+@include breakpoint('mobile') {
+    .post {
+        @include e('similar-list') {
+            grid-template-columns: 1fr;
+            grid-gap: 1rem;
+        }
+
+    }
 }
