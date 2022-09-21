@@ -17,4 +17,5 @@
     php81 artisan config:clear
     php81 artisan view:clear
     php81 artisan cache-posts
+    php81 artisan responsecache:clear
 @endtask
