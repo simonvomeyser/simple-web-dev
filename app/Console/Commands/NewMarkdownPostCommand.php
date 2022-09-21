@@ -20,13 +20,16 @@ class NewMarkdownPostCommand extends Command
 
         if(File::exists($destination)) {
             $this->error('Post '.$destination.' already exists');
-            return;
+            return 1;
         }
 
         $content = Str::replace('{{title}}', $this->argument('title'), $content);
         $content = Str::replace('{{slug}}', $slug, $content);
 
-        File::put(resource_path($destination), $content);
+        File::put($destination, $content);
+
+        $this->line('Post '.$destination.' created. Happy writing!');
+        return 0;
     }
 
     protected function getStub()
