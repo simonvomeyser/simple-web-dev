@@ -2,13 +2,18 @@
 
 namespace Tests\Feature;
 
+use SimonVomEyser\LaravelAutomaticTests\Classes\StaticPagesTester;
 use SimonVomEyser\LaravelAutomaticTests\Facades\LaravelAutomaticTests;
 use Tests\TestCase;
 
 class StaticPagesAndLinksTest extends TestCase
 {
-    public function testBasic()
+    public function testAllInternalPagesReachableOnFrontpage()
     {
-        LaravelAutomaticTests::sayHello();
+        StaticPagesTester::create()
+            ->ignoreQueryParameters()
+            ->ignorePageAnchors()
+            ->run();
     }
+
 }
