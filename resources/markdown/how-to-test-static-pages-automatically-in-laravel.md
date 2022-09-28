@@ -19,8 +19,7 @@ list_image: >-
 ---
 <small>Tested on Laravel `9.x` </small>
 
-I love to write tests - mostly for the "peace of mind" feeling you get. When doing websites that involve a lot of static
-pages, I frequently ended up with tests like this
+I love to write tests - mostly for the "peace of mind" feeling you get. When doing websites that involve a lot of static pages I frequently ended up with tests like this
 
 ```php
 class StaticPagesTest extends TestCase
@@ -31,71 +30,85 @@ class StaticPagesTest extends TestCase
         $this->get(route('index'))->assertStatus(200);
         $this->get(route('infos'))->assertStatus(200);
         $this->get(route('about-us'))->assertStatus(200);
+        $this->get(route('projects'))->assertStatus(200);
+        $this->get(route('privacy'))->assertStatus(200);
         //... repeat x 100
     }
 }
 ```
 
-It should be obvious why this is a not-so-super-genius idea. These pages might change or new pages might be added. I
-often forgot pages and usually these tests ended up not providing much confidence anymore.
+It should be obvious why this is a not-so-super-genius idea. These pages might change or new pages might be added. I often forgot pages and usually these tests ended up not providing much confidence anymore.
 
 This should be easier... Laravel knows about your pages and routes right? hmmm...
 
 ** INSERT WHAT IF IMAGE **
 
-## The DOM Crawler Idea
+Presenting (shameless plug) [my package Laravel Automatic Tests](https://github.com/simonvomeyser/laravel-automatic-tests)
 
-I had the idea that maybe Laravel could crawl your frontpage, follow internal links and at least make sure, that they
-all work. The idea is not to test any specific behaviour, but to make sure, nothing linked results in a `404` or even
-a `500` error.
-
-Introducing: Mighty [Spatie](https://spatie.be) and their [Crawler Package](https://github.com/spatie/crawler)
-
-This package helps you to crawl a URL you give it and finds all links on that page. On top of that work I created a
-package that helps you to reliably test static pages in your website like this:
+This tests *all* your static pages reachable from your frontpage 🎉
 
 ```php
-use SimonVomEyser\AutomaticTests\StaticPagesTester
+//...
+use SimonVomEyser\LaravelAutomaticTests\StaticPagesTester;
 
 class StaticPagesTest extends TestCase
 {
     /** @test */
     public function the_static_pages_work()
     {
-       StaticPagesTester::run() 
+        StaticPagesTester::create()
+            ->startFromUrl('/home')
+            ->ignorePageAnchors()
+            ->skipDefaultAssertion()
+            ->addAssertion(function($response, $uri) {
+                // Example: check for redirects only when accessing admin area
+                if(str_contains($uri, '/admin')) {
+                    $response->assertRedirect()
+                }
+            })
+            ->run();
     }
 }
 ```
 
-in my opinion, this is pound for pound a quite high amount of confidence you get for just one line code.
+...in my opinion, this is pound for pound a quite high amount of confidence you get for just one line code.
 
-While I like opinionated packages that go for the 80% use-case, there are quite some options to adjust the package to
-your needs:
+## A few more details
+
+I had the idea that maybe Laravel could crawl your frontpage, follow internal links and at least make sure, that they all work. The idea is not to test any specific behaviour, but to make sure, nothing linked results in a `4xx` or even a `5xx` error.
+
+I first experimented with the [Crawler Package](https://github.com/spatie/crawler) from [Spatie](https://spatie.be), and this might be a cool solution for end-to-end tests. But I had to remember, that the default *feature tests* of Laravel simply new up the application without getting a real server/browser involved. 
+
+I therefore ended up writing a small crawler based on the `TestResponses` of Laravel to provide the functionality I was looking  for. That is also the reason, that this package for now only can find *internal* links.
+
+There are quite a few configuration options since I needed them in few of my projects. 
 
 ```php
-use SimonVomEyser\AutomaticTests\StaticPagesTester
 //...
+use SimonVomEyser\LaravelAutomaticTests\StaticPagesTester;
 
-// Test links in your sitemap and links on these pages
-// Only to a depth of 2
-StaticPagesTester::create()
-   ->url(config('app.url'). '/sitemap.xml')
-   ->setMaximumDepth(2)
-   ->run();
-   
+class StaticPagesTest extends TestCase
+{
+    /** @test */
+    public function the_static_pages_work()
+    {
+        StaticPagesTester::create()
+            ->startFromUrl('/home')
+            ->ignoreQueryParameters()
+            ->ignorePageAnchors()
+            ->addAssertion(function($response, $uri) {
+                // Example: check for redirects only when accessing admin area
+                if(str_contains($uri, '/admin')) {
+                    $response->assertRedirect()
+                }
+            })
+            ->run();
+    }
+}
 ```
 
-You can even test external links on your page!
+That's all for this post, I just wanted to explain the reasoning behind the decisions ... and of course promote my OSS Work a little 😅
 
-```php
 
-// Only test external links
-ExternalLinksTester::create()
-   ->executeJavascript() 
-   ->run();
-   
-```
-
-This will increase your UX and maybe even your [SEO](https://moz.com/blog/does-fixing-broken-links-matter-seo). This is especially helpful with a Blog like this, because old posts might link resources that disappeared.
-
-The configuration options for and more  
+best
+Simon
