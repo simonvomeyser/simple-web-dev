@@ -2,8 +2,7 @@
 
 namespace Tests\Feature;
 
-use SimonVomEyser\LaravelAutomaticTests\Classes\StaticPagesTester;
-use SimonVomEyser\LaravelAutomaticTests\Facades\LaravelAutomaticTests;
+use SimonVomEyser\LaravelAutomaticTests\StaticPagesTester;
 use Tests\TestCase;
 
 class StaticPagesAndLinksTest extends TestCase
