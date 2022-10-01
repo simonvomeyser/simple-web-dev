@@ -64,7 +64,7 @@ public function the_static_pages_work()
 
 ## A few more details
 
-I had the idea that maybe Laravel test could crawl your page, follow internal links and at least make sure, that they all work. 
+I had the idea that maybe we could crawl the page, follow internal links and at least make sure, that they all work. 
 
 The idea is not to test any specific behaviour, but to make sure, nothing linked results in a `4xx` or even a `5xx` error. It also lowers the barrier of entry to testing and that I would have at least a little layer of security for projects with no extensive testsuite.
 
