@@ -40,6 +40,7 @@ class MarkdownPost
         $this->mapToProperties($yamlObject->matter());
     }
 
+
     public function getLink()
     {
         return route('posts.single', ['slug' => $this->getSlug()]);
@@ -198,5 +199,10 @@ class MarkdownPost
     public static function fake($folderPath = null)
     {
         static::$folderPath = $folderPath ?? base_path('tests/Fixtures/');
+    }
+
+    public static function unfake()
+    {
+        static::$folderPath = null;
     }
 }

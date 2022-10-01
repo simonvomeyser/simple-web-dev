@@ -95,7 +95,7 @@ class StaticPagesTest extends TestCase
             })
             ->run();
             
-        dump(count($spt->urisHandled)) // Outputs the number uris found and tested
+        dump(count($spt->urisHandled)); // Outputs the number uris found and tested
     }
 }
 ```
