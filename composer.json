@@ -14,7 +14,7 @@
         "laravel/framework": "^9.0",
         "laravel/tinker": "^2.0",
         "simonvomeyser/commonmark-ext-lazy-image": "^2.0.0",
-        "simonvomeyser/laravel-automatic-tests": "dev-main",
+        "simonvomeyser/laravel-automatic-tests": "^1.0.0",
         "spatie/laravel-responsecache": "^7.0.0",
         "spatie/yaml-front-matter": "^2.0"
     },
@@ -51,12 +51,6 @@
             "Tests\\": "tests/"
         }
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../laravel-automatic-tests"
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
