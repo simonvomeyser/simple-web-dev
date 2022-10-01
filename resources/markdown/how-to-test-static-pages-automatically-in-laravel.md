@@ -1,6 +1,6 @@
 ---
 title: How to test static pages automatically in Laravel
-release_date: now
+release_date: 22-10-07
 slug: how-to-test-static-pages-automatically-in-laravel
 excerpt: >-
 
