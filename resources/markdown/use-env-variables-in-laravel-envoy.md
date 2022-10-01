@@ -1,5 +1,5 @@
 ---
-title: How to use env variables with Laravel Envoy Scripts
+title: How to use env variables with Laravel Envoy scripts
 release_date: 16.09.2022
 slug: use-env-variables-in-laravel-envoy
 excerpt: >-
