@@ -38,7 +38,7 @@ class StaticPagesTest extends TestCase
 }
 ```
 
-It should be obvious why this is a not-so-super-genius idea. Pages change or new pages might be added. I often forgot all of them and usually these tests ended up not providing much confidence anymore.
+It should be obvious why this is a not-so-super-genius idea. Pages change or new pages might be added. Usually these tests ended up not providing much confidence anymore.
 
 Also, what happens, if you link to a broken page or not existing page from one of your pages?
 
