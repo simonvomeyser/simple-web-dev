@@ -4,13 +4,14 @@ release_date: now
 slug: how-to-test-static-pages-automatically-in-laravel
 excerpt: >-
 
-    The excerpt of this markdown post goes here
-
-    Another line
+    I developed a way to automatically crawl and test big parts of your Laravel application.
+    
+    With just one line of code, you can now write a "peace of mind" test that gives you a lot of confidence.
 
 tags:
-    - tag1
-    - tag2
+    - testing
+    - laravel
+    - devops
 
 header_image: >-
   https://via.placeholder.com/1024x768
@@ -39,35 +40,21 @@ class StaticPagesTest extends TestCase
 
 It should be obvious why this is a not-so-super-genius idea. These pages might change or new pages might be added. I often forgot pages and usually these tests ended up not providing much confidence anymore.
 
+Also, what happens, if you link to a broken page or not existing page from one of your pages?
+
 This should be easier... Laravel knows about your pages and routes right? hmmm...
 
 ** INSERT WHAT IF IMAGE **
 
 Presenting (shameless plug) [my package Laravel Automatic Tests](https://github.com/simonvomeyser/laravel-automatic-tests)
 
-This tests *all* your static pages reachable from your frontpage 🎉
+This one line of code tests *all* your static pages reachable from your frontpage, recursively! 🎉
 
 ```php
-//...
-use SimonVomEyser\LaravelAutomaticTests\StaticPagesTester;
-
-class StaticPagesTest extends TestCase
+/** @test */
+public function the_static_pages_work()
 {
-    /** @test */
-    public function the_static_pages_work()
-    {
-        StaticPagesTester::create()
-            ->startFromUrl('/home')
-            ->ignorePageAnchors()
-            ->skipDefaultAssertion()
-            ->addAssertion(function($response, $uri) {
-                // Example: check for redirects only when accessing admin area
-                if(str_contains($uri, '/admin')) {
-                    $response->assertRedirect()
-                }
-            })
-            ->run();
-    }
+    StaticPagesTester::create()->run();
 }
 ```
 
@@ -75,13 +62,15 @@ class StaticPagesTest extends TestCase
 
 ## A few more details
 
-I had the idea that maybe Laravel could crawl your frontpage, follow internal links and at least make sure, that they all work. The idea is not to test any specific behaviour, but to make sure, nothing linked results in a `4xx` or even a `5xx` error.
+I had the idea that maybe Laravel test could crawl your page, follow internal links and at least make sure, that they all work. The idea is not to test any specific behaviour – that's what actual tests are fore.
+
+But to make sure, nothing linked results in a `4xx` or even a `5xx` error, and *to make testing even easier* I really liked the idea.
 
 I first experimented with the [Crawler Package](https://github.com/spatie/crawler) from [Spatie](https://spatie.be), and this might be a cool solution for end-to-end tests. But I had to remember, that the default *feature tests* of Laravel simply new up the application without getting a real server/browser involved. 
 
-I therefore ended up writing a small crawler based on the `TestResponses` of Laravel to provide the functionality I was looking  for. That is also the reason, that this package for now only can find *internal* links.
+I therefore ended up writing a small crawler based on the `TestResponses` of Laravel to provide the functionality I was looking  for. That is also the reason why this package for now only can find *internal* links and not checks for broken external links.
 
-There are quite a few configuration options since I needed them in few of my projects. 
+There are quite a few configuration options since I needed them in few of my projects, here is a little example:
 
 ```php
 //...
@@ -106,6 +95,16 @@ class StaticPagesTest extends TestCase
     }
 }
 ```
+
+This test starts from the url `/home` checks only the base url and ignores things like query parameters and page anchors (`?search=lorem`, `#contact`). It even adds an additional assertion that checks, that all uris starting with `/admin` explicitly return a redirect. 
+
+## Caveats
+
+This package is more of a proof of concept for me, and something I needed for simpler pages to quickly add a testing layer.
+
+Sadly, this *does not work with JavaScript* – it basically has the same limitations that default Laravel feature test have. 
+
+There is a [roadmap](https://github.com/simonvomeyser/laravel-automatic-tests#roadmap) you can check out for the things that could be a cool addition to this package.
 
 That's all for this post, I just wanted to explain the reasoning behind the decisions ... and of course promote my OSS Work a little 😅
 
