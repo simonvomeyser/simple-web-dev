@@ -14,13 +14,13 @@ tags:
     - devops
 
 header_image: >-
-  https://via.placeholder.com/1024x768
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1664632605/laravel-automatic-tests/header-automatic-tests.png
 list_image: >-
-  https://via.placeholder.com/1024x768
+  https://res.cloudinary.com/simonvomeyser/image/upload/v1664632605/laravel-automatic-tests/header-automatic-tests.png
 ---
 <small>Tested on Laravel `9.x` </small>
 
-I love to write tests - mostly for the "peace of mind" feeling you get. When doing websites that involve a lot of static pages I frequently ended up with tests like this
+I love to write tests - mostly for the "peace of mind" feeling you get when making changes. When working on websites that involve a lot of static pages – like simple portfolio projects – I frequently ended up with tests like this:
 
 ```php
 class StaticPagesTest extends TestCase
@@ -38,17 +38,19 @@ class StaticPagesTest extends TestCase
 }
 ```
 
-It should be obvious why this is a not-so-super-genius idea. These pages might change or new pages might be added. I often forgot pages and usually these tests ended up not providing much confidence anymore.
+It should be obvious why this is a not-so-super-genius idea. Pages change or new pages might be added. I often forgot all of them and usually these tests ended up not providing much confidence anymore.
 
 Also, what happens, if you link to a broken page or not existing page from one of your pages?
 
-This should be easier... Laravel knows about your pages and routes right? hmmm...
+This should be easier... I just want a quick "did I destroy something" check... and hey, Laravel knows about your pages and routes right? hmmm...
 
-** INSERT WHAT IF IMAGE **
+![](https://res.cloudinary.com/simonvomeyser/image/upload/v1664633884/laravel-automatic-tests/whatif.png)
 
-Presenting (shameless plug) [my package Laravel Automatic Tests](https://github.com/simonvomeyser/laravel-automatic-tests)
+Shameless plug:
 
-This one line of code tests *all* your static pages reachable from your frontpage, recursively! 🎉
+> My package [Laravel Automatic Tests](https://github.com/simonvomeyser/laravel-automatic-tests)
+
+This one line of code tests **all** your static pages reachable from your frontpage, recursively! 🎉
 
 ```php
 /** @test */
@@ -58,19 +60,19 @@ public function the_static_pages_work()
 }
 ```
 
-...in my opinion, this is pound for pound a quite high amount of confidence you get for just one line code.
+...in my opinion, this is (pound for pound) a quite high amount of confidence you get for just one line code.
 
 ## A few more details
 
-I had the idea that maybe Laravel test could crawl your page, follow internal links and at least make sure, that they all work. The idea is not to test any specific behaviour – that's what actual tests are fore.
+I had the idea that maybe Laravel test could crawl your page, follow internal links and at least make sure, that they all work. 
 
-But to make sure, nothing linked results in a `4xx` or even a `5xx` error, and *to make testing even easier* I really liked the idea.
+The idea is not to test any specific behaviour, but to make sure, nothing linked results in a `4xx` or even a `5xx` error. It also lowers the barrier of entry to testing and that I would have at least a little layer of security for projects with no extensive testsuite.
 
-I first experimented with the [Crawler Package](https://github.com/spatie/crawler) from [Spatie](https://spatie.be), and this might be a cool solution for end-to-end tests. But I had to remember, that the default *feature tests* of Laravel simply new up the application without getting a real server/browser involved. 
+I first experimented with the [Crawler Package](https://github.com/spatie/crawler) from [Spatie](https://spatie.be), and this might be a cool solution for end-to-end tests. But I had to remember, that the default *feature tests* of Laravel simply news up the application without getting a real server/browser involved. 
 
-I therefore ended up writing a small crawler based on the `TestResponses` of Laravel to provide the functionality I was looking  for. That is also the reason why this package for now only can find *internal* links and not checks for broken external links.
+I therefore ended up writing a small crawler based on the `TestResponses` of Laravel to provide the functionality I was looking  for. This also explains why this package currently only crawls **internal** links.
 
-There are quite a few configuration options since I needed them in few of my projects, here is a little example:
+There are quite a few configuration options since I needed them in my own projects. This is an example of some of them:
 
 ```php
 //...
@@ -81,7 +83,7 @@ class StaticPagesTest extends TestCase
     /** @test */
     public function the_static_pages_work()
     {
-        StaticPagesTester::create()
+        $spt = StaticPagesTester::create()
             ->startFromUrl('/home')
             ->ignoreQueryParameters()
             ->ignorePageAnchors()
@@ -92,6 +94,8 @@ class StaticPagesTest extends TestCase
                 }
             })
             ->run();
+            
+        dump(count($spt->urisHandled)) // Outputs the number uris found and tested
     }
 }
 ```
@@ -102,7 +106,7 @@ This test starts from the url `/home` checks only the base url and ignores thing
 
 This package is more of a proof of concept for me, and something I needed for simpler pages to quickly add a testing layer.
 
-Sadly, this *does not work with JavaScript* – it basically has the same limitations that default Laravel feature test have. 
+Sadly, this *does not work with JavaScript* – it basically has the same limitations that default Laravel feature test have. So no testing SPAs or [Ineartia.js](https://inertiajs.com/) projects
 
 There is a [roadmap](https://github.com/simonvomeyser/laravel-automatic-tests#roadmap) you can check out for the things that could be a cool addition to this package.
 
