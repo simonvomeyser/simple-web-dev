@@ -4,7 +4,7 @@ release_date: 16.09.2022
 slug: use-env-variables-in-laravel-envoy
 excerpt: >-
 
-    Laravel Envoy provides a nice alternative for projects that don't need or can have a push to deploy setup.
+    Laravel Envoy provides a nice alternative for projects that don't need or can't have a push to deploy setup.
 
     I found out that you can use environment-variables quite easily inside tasks.
 
