@@ -19,6 +19,11 @@
         property="og:image"
         content="@hasSection('og_image')@yield('og_image')@else{{URL::to('images/default-og-image.png')}}@endif"
     />
+    <meta name="twitter:card" content="summary" />
+
+    <meta name="twitter:title" content="@hasSection('title')@yield('title')@else{{'Simple Web Dev - Just a blog about web development'}}@endif" />
+    <meta name="twitter:description" content="@hasSection('meta_description')@yield('meta_description')@else{{'This site is a small diary of the things I learn while on this intimidating journey through web development land'}}@endif" />
+    <meta name="twitter:image" content="@hasSection('og_image')@yield('og_image')@else{{URL::to('images/default-og-image.png')}}@endif" />
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ URL::to('favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ URL::to('favicon/apple-icon-60x60.png') }}">
