@@ -9,8 +9,7 @@ excerpt: >-
     Another line
 
 tags:
-  - tag1
-  - tag2
+{{tags}}
 header_image: >-
   https://via.placeholder.com/1024x768
 list_image: >-
