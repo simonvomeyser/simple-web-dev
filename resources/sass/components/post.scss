@@ -32,7 +32,7 @@
     @include e('author-link') {
         border-top: 1px solid $neutral-200;
         border-bottom: 1px solid $neutral-200;
-        margin: 2rem -3rem;
+        margin: 7rem -3rem 2rem -3rem;
         padding-top: 2rem;
     }
     @include e('similar-list') {
