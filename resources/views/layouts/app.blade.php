@@ -43,7 +43,6 @@
     <meta name="msapplication-TileImage" content="{{ URL::to('favicon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#8798FD">
 
-    <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');" href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Sanchez&display=swap">
 </head>
 
 <body>
