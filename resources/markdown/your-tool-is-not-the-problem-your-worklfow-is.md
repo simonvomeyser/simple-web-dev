@@ -1,6 +1,6 @@
 ---
 title: Your Tool is not the Problem - Your Workflow is
-release_date: now
+release_date: 2022-10-04
 slug: your-tool-is-not-the-problem-your-workflow-is
 excerpt: >-
 
