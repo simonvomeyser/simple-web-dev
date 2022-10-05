@@ -23,10 +23,10 @@
                     </div>
                     <div class="author__meta">
                         <div class="author__name">Simon vom Eyser</div>
-                        <a href="https://simonvomeyser.de" rel="noopener noreferrer" target="_blank"
+                        <a href="https://simonvomeyser.com" rel="noopener noreferrer" target="_blank"
                            class="author__link">
                             <img src="{{asset('images/link.svg')}}" alt="Link symbol">
-                            https://simonvomeyser.de
+                            https://simonvomeyser.com
                         </a>
                         <a href="https://twitter.com/simonvomeyser" rel="noopener noreferrer" target="_blank"
                            class="author__link">
