@@ -25,3 +25,4 @@ mix.js('resources/js/app.js', 'public/js')
             `${Config.publicPath || 'public'}/**/*.(js|css)`
         ],
     })
+    .version();
