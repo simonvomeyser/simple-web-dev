@@ -4,9 +4,9 @@ release_date: 2022-10-04
 slug: your-tool-is-not-the-problem-your-workflow-is
 excerpt: >-
 
-    A few thoughts on the search for the best project management tools and teamwork.
+    A few (meta) thoughts on the search for the best project management tool.
 
-    Usually, the chaos you'll find in a tool is a quite accuarate representation of your teams' communication skills - and also a big chance for improvement.
+    Usually, the chaos you'll find in a software is a quite accuarate representation of your teams' communication skills - and also a big chance for improvement.
 
 tags:
   - Productivity 
@@ -19,9 +19,9 @@ header_image: >-
 list_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1664904878/your-worklow/header-workflow.png
 ---
-So what is the best project management tool, how do we find the perfect workflow?
+So what is the best project management tool, how do we find the perfect one that solved all our problems?
 
-Usually teams searching for such a tool learned the pain of chaotic email communication and missed deadlines. They want to do things better, and that's awesome. But what's the next step? Somebody will type into duckduckgo:
+Usually (software) teams searching for such a tool learned the pain of chaotic email communication and missed deadlines. They want to do things better, and that's awesome. But what's the next step? Somebody will type into duckduckgo:
 
 ## Best issue tracker (insert year clickbait) 
 
