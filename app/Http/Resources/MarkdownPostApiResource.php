@@ -15,7 +15,7 @@ class MarkdownPostApiResource extends JsonResource
     {
         return [
             'title' => $this->title,
-            'excerpt' =>  $this->excerpt->toHtml(),
+            'excerpt' => $this->excerpt->__toString(),
             'tags' => $this->tags,
             'list_image' => $this->list_image,
             'slug' => $this->slug,
