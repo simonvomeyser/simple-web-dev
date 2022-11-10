@@ -19,15 +19,15 @@ header_image: >-
 list_image: >-
   https://res.cloudinary.com/simonvomeyser/image/upload/v1664904878/your-worklow/header-workflow.png
 ---
-So what is the best project management tool, how do we find the perfect one that solved all our problems?
+So what is the best project management tool, how do we find the perfect one that solves all our problems?
 
-Usually (software) teams searching for such a tool learned the pain of chaotic email communication and missed deadlines. They want to do things better, and that's awesome. But what's the next step? Somebody will type into duckduckgo:
+Usually (software) teams searching for such a tool felt the pain of chaotic email communication and missed deadlines. They want to change things, and that's awesome. But what's the next step? Somebody will type into duckduckgo: "best tool for everything (year)"
 
 ## Best issue tracker (insert year clickbait) 
 
 After that? Either jumping from tool to tool trying to find **the one** with the perfect features – or just sticking with the first one tried, because changing things is hard.
 
-Either way, you end up with one part of the team (looking at developers like us) thinking  *"if this thing could only do XYZ, things would not be so complicated"* and other people totally overwhelmed and confused by the new tool and its possibilities. 
+Either way, you end up with one part of the team (looking at developers like us) thinking  *"if this thing could only do XYZ, things would not be so much better"* and other people already overwhelmed and confused by the current tool and its possibilities. 
 
 Chaos ensues, nobody is happy, and we are all blaming the new tool for different reasons.
 
@@ -41,7 +41,7 @@ The key is to understand that tools like Trello, Meistertask, Jira, Asana (and h
 
 Most of the time, the chaos you see in the project management tool shows the actual chaos in your organization, team or client communication. But hey – actually, that's a good thing!
 
-You've heard me right! At least, we made the problems visible. I'll take a visible chaos before a hidden carpet monster at any time, because now you can actually do things about it. But, you guessed it, that means now we have to *communicate* about things.
+At least, we made the problems visible. I'll take a visible chaos before a hidden carpet monster at any time, because now you can actually do things about it. But, you guessed it, that means now we have to *communicate* about things.
 
 ![Little girl meme saying communication? I'd rather not](https://res.cloudinary.com/simonvomeyser/image/upload/v1664904878/your-worklow/communication.png)
 
