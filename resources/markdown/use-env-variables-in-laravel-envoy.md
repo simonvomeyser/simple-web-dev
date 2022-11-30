@@ -80,7 +80,7 @@ Keep in mind, that inside the `@task ... @endtask` block we have to use Blade-st
     git pull
     npm install
     npm run prod
-    compsoser install --no-dev
+    composer install --no-dev
     php artisan cache:clear
     php artisan config:clear
 @endtask
